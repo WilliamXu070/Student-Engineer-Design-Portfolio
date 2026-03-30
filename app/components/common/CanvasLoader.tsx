@@ -13,6 +13,7 @@ import DesignPhilosophyModal from "./DesignPhilosophyModal";
 import PointerTracker from "./PointerTracker";
 import ProjectDetailsOverlay from "../experience/work/ProjectDetailsOverlay";
 import SceneSnapshotRestorer from "./SceneSnapshotRestorer";
+import ScrollLayerMarker from "./ScrollLayerMarker";
 import TimelineOverlay from "../experience/work/TimelineOverlay";
 import Preloader from "./Preloader";
 import ProgressLoader from "./ProgressLoader";
@@ -76,12 +77,18 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
     <div className="h-[100dvh] wrapper relative">
       <div className="h-[100dvh] relative" ref={ref}>
         <PointerTracker />
-        <Canvas className="base-canvas" shadows style={canvasStyle} ref={canvasRef} dpr={[1, 2]}>
+        <Canvas
+          className="base-canvas"
+          shadows
+          style={canvasStyle}
+          ref={canvasRef}
+          dpr={[1, 2]}>
           {/* <Perf/> */}
           <Suspense fallback={null}>
             <ambientLight intensity={0.5} />
 
             <ScrollControls pages={4} damping={0.4} maxSpeed={1} distance={1} style={{ zIndex: 1 }}>
+              <ScrollLayerMarker layer="root" />
               <SceneSnapshotRestorer />
               {props.children}
               <Preloader />

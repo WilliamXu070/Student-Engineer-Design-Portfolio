@@ -3,6 +3,8 @@ import { create } from 'zustand';
 interface PortalStore {
   activePortalId: string | null;
   setActivePortal: (activePortalId: string | null) => void;
+  portalReturnRootScrollProgress: number;
+  setPortalReturnRootScrollProgress: (progress: number) => void;
   activeProjectSlug: string | null;
   setActiveProjectSlug: (slug: string | null) => void;
   isSceneMotionPaused: boolean;
@@ -17,6 +19,8 @@ interface PortalStore {
 export const usePortalStore = create<PortalStore>((set) => ({
   activePortalId: null,
   setActivePortal: (activePortalId) => set(() => ({ activePortalId })),
+  portalReturnRootScrollProgress: 0,
+  setPortalReturnRootScrollProgress: (portalReturnRootScrollProgress) => set(() => ({ portalReturnRootScrollProgress })),
   activeProjectSlug: null,
   setActiveProjectSlug: (slug) => set(() => ({ activeProjectSlug: slug })),
   isSceneMotionPaused: false,

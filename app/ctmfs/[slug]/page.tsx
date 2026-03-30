@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import HidePortalCloseButton from "@/app/components/common/HidePortalCloseButton";
 import RememberedBackLink from "@/app/components/common/RememberedBackLink";
 import RememberedLink from "@/app/components/common/RememberedLink";
 import { PROJECTS, PROJECT_DETAILS, WORK_TIMELINE } from "@constants";
@@ -73,6 +74,7 @@ const CtmfPage = async ({ params }: CtmfPageProps) => {
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[linear-gradient(180deg,#eff8ff_0%,#daefff_18%,#a6cbe9_50%,#6287ad_100%)] text-slate-950">
+      <HidePortalCloseButton />
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-[10%] top-[10%] h-52 w-80 rounded-full bg-white/60 blur-3xl" />
         <div className="absolute right-[8%] top-[16%] h-44 w-64 rounded-full bg-white/45 blur-3xl" />

@@ -1,42 +1,61 @@
-# mohitvirli.github.io
-Hello there! I'm Mohit Virli, frontend engineer by profession, a creative at heart.
+# Student Engineer Design Portfolio
 
-This the updated version of my personal website which is now in 3D. LFG!
+An interactive 3D portfolio built with Next.js, React Three Fiber, GSAP, and Zustand. The home scene acts as a spatial navigation layer with two main portals:
 
-Checkout the live version at [mohitvirli.github.io](https://mohitvirli.github.io/)
+- `projects`: CTMF cards and stakeholder-mapping style case-study links
+- `work`: a scroll-driven project timeline with focus zones and invisible tuned hitboxes
 
-## Tech Stack
+## Stack
 
-- Next.js
-- React
-- React-three-fiber
-- DREI
+- Next.js 15
+- React 19
+- React Three Fiber / Drei / Three.js
 - GSAP
 - Zustand
-- Tailwind
+- Tailwind CSS
 
-## Preview
-Some of the sample images from the app. Better to check it out live!
+## Run Locally
 
-<img width="1242" alt="image" src="https://github.com/user-attachments/assets/877b0685-8d86-4f8b-b123-f3cc17d46fc7" />
-<img width="1241" alt="image" src="https://github.com/user-attachments/assets/09a92647-1781-4124-ba3f-1d6fb66f6974" />
-<img width="1241" alt="image" src="https://github.com/user-attachments/assets/a15017f4-f1f2-459e-b895-b3c14703635b" />
-<img width="1428" height="830" alt="image" src="https://github.com/user-attachments/assets/9f78c2e8-991c-4507-8ffb-72e61513c031" />
+```bash
+npm install
+npm run dev
+```
 
-## Docker
+The default dev server runs at `http://localhost:3000`.
 
-Build and run the app with Docker:
+Other useful commands:
+
+```bash
+npm run lint
+npm run build
+npm run start
+```
+
+## Project Structure
+
+- [`app/page.tsx`](./app/page.tsx): main 3D portfolio entry
+- [`app/components/common`](./app/components/common): canvas shell, debug HUD, shared modal and portal helpers
+- [`app/components/experience`](./app/components/experience): portal scenes for projects and work timeline
+- [`app/projects`](./app/projects): routed project detail pages
+- [`app/ctmfs`](./app/ctmfs): routed CTMF detail pages
+- [`app/constants`](./app/constants): project and timeline data, including work focus positions and overlay rectangles
+- [`app/stores`](./app/stores): Zustand state for portal transitions and overlay state
+
+## Current Interaction Notes
+
+- Portal return state is preserved so leaving a routed page can restore the matching portal context.
+- Work timeline focus is controlled in [`app/constants/work.ts`](./app/constants/work.ts) with `focusProgress`, `focusWidth`, and fixed overlay rectangles.
+- The debug HUD can be used to inspect scroll values, cursor position, and active DOM layering while tuning interactions.
+
+## Deployment
 
 ```bash
 docker build -t portfolio .
 docker run --rm -p 3000:3000 portfolio
 ```
 
-Or use Docker Compose:
+Or:
 
 ```bash
 docker compose up --build
 ```
-
-The app will be available at `http://localhost:3000`.
-

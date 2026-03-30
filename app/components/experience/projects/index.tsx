@@ -2,7 +2,7 @@ import { useScroll } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { getProjectsPortalCameraPosition, getProjectsPortalCameraRotation } from "@/app/lib/navigationMemory";
 import gsap from "gsap";
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 import { isMobile } from "react-device-detect";
 import * as THREE from "three";
 import { usePointerStore, usePortalStore } from "@stores";
@@ -18,9 +18,10 @@ const Projects = () => {
   const pointer = usePointerStore((state) => state.pointer);
   const data = useScroll();
 
-  useEffect(() => {
-    // Hide scrollbar when active.
+  useLayoutEffect(() => {
     data.el.style.overflow = isActive ? 'hidden' : 'auto';
+    data.fixed.style.pointerEvents = isActive ? 'none' : 'auto';
+
     if (isActive) {
       if (!isSceneRestoring) {
         const [x, y, z] = getProjectsPortalCameraPosition(isMobile);
@@ -29,6 +30,10 @@ const Projects = () => {
         gsap.to(camera.position, { x, y, z, duration: 1 });
       }
     }
+
+    return () => {
+      data.fixed.style.pointerEvents = 'auto';
+    };
   }, [camera.position, camera.rotation, data, isActive, isSceneRestoring]);
 
   useFrame((_, delta) => {

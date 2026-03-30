@@ -213,9 +213,6 @@ const DesignPhilosophyModal = () => {
             Position + Values
           </span>
         </div>
-        <span className="relative z-10 text-sm text-white/70">
-          {isOpen ? 'Close' : 'Open'}
-        </span>
       </button>
 
       <button
@@ -230,9 +227,6 @@ const DesignPhilosophyModal = () => {
             Position + Values
           </span>
         </div>
-        <span className="relative z-10 text-sm text-white/70">
-          {isOpen ? 'Close' : 'Open'}
-        </span>
       </button>
 
       <div

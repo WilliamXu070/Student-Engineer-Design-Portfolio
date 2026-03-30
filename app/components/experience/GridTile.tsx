@@ -1,7 +1,9 @@
 
 import { Edges, MeshPortalMaterial, Text, TextProps, useScroll } from '@react-three/drei';
 import { useFrame, useThree } from '@react-three/fiber';
-import { usePortalStore } from '@stores';
+import { PORTAL_CLOSE_EVENT, ensurePortalCloseButton, removePortalCloseButton } from '@/app/lib/portalUi';
+import { getPortalScrollLayers } from '@/app/lib/portalUi';
+import { usePortalStore, useScrollStore } from '@stores';
 import gsap from "gsap";
 import { useEffect, useRef } from 'react';
 import { isMobile } from 'react-device-detect';
@@ -26,50 +28,13 @@ const GridTile = (props: GridTileProps) => {
   const { title, textAlign, children, color, position, id } = props;
   const { camera } = useThree();
   const setActivePortal = usePortalStore((state) => state.setActivePortal);
+  const portalReturnRootScrollProgress = usePortalStore((state) => state.portalReturnRootScrollProgress);
+  const setPortalReturnRootScrollProgress = usePortalStore((state) => state.setPortalReturnRootScrollProgress);
   const isActive = usePortalStore((state) => state.activePortalId === id);
   const activePortalId = usePortalStore((state) => state.activePortalId);
+  const rootScrollProgress = useScrollStore((state) => state.scrollProgress);
+  const setScrollProgress = useScrollStore((state) => state.setScrollProgress);
   const data = useScroll();
-
-  const ensureCloseButton = () => {
-    if (document.querySelector('.close')) {
-      return;
-    }
-
-    const div = document.createElement('div');
-    div.className = 'fixed close';
-    div.style.transform = 'rotateX(90deg)';
-    div.onclick = () => exitPortal(true);
-    document.body.appendChild(div);
-
-    gsap.fromTo(div, {
-      scale: 0,
-      rotate: '-180deg',
-    }, {
-      opacity: 1,
-      zIndex: 120,
-      transform: 'rotateX(0deg)',
-      scale: 1,
-      duration: 1,
-    });
-  };
-
-  const removeCloseButton = () => {
-    const closeButton = document.querySelector('.close');
-
-    if (!closeButton) {
-      return;
-    }
-
-    gsap.to(closeButton, {
-      scale: 0,
-      duration: 0.5,
-      onComplete: () => {
-        document.querySelectorAll('.close').forEach((el) => {
-          el.remove();
-        });
-      }
-    });
-  };
 
   useEffect(() => {
     // Hanlde the hover box and title animation for mobile.
@@ -102,14 +67,14 @@ const GridTile = (props: GridTileProps) => {
       exitPortal(true);
     }
   };
+  const handlePortalClose = () => exitPortal(true);
 
   const portalInto = (e: React.MouseEvent) => {
     if (isActive || activePortalId) return;
     e.stopPropagation();
+    setPortalReturnRootScrollProgress(rootScrollProgress);
     setActivePortal(id);
     document.body.style.cursor = 'auto';
-    ensureCloseButton();
-    document.body.addEventListener('keydown', handleEscape);
     gsap.to(portalRef.current, {
       blend: 1,
       duration: 0.5,
@@ -119,6 +84,17 @@ const GridTile = (props: GridTileProps) => {
   const exitPortal = (force = false) => {
     if (!force && !activePortalId) return;
     setActivePortal(null)
+    const { root: rootScrollWrapper } = getPortalScrollLayers();
+    const restoreRootScroll = () => {
+      if (!rootScrollWrapper) {
+        return;
+      }
+
+      const rootScrollableHeight = rootScrollWrapper.scrollHeight - rootScrollWrapper.clientHeight;
+      rootScrollWrapper.scrollTop = Math.max(0, rootScrollableHeight * portalReturnRootScrollProgress);
+      rootScrollWrapper.dispatchEvent(new Event("scroll"));
+      setScrollProgress(portalReturnRootScrollProgress);
+    };
 
     gsap.to(camera.position, {
       x: 0,
@@ -136,20 +112,28 @@ const GridTile = (props: GridTileProps) => {
       duration: 1,
     });
 
-    removeCloseButton();
+    removePortalCloseButton();
     document.body.removeEventListener('keydown', handleEscape);
+    window.removeEventListener(PORTAL_CLOSE_EVENT, handlePortalClose);
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        restoreRootScroll();
+      });
+    });
   }
 
   useEffect(() => {
-    if (isActive) {
-      ensureCloseButton();
+    if (activePortalId === id) {
+      ensurePortalCloseButton();
       document.body.addEventListener('keydown', handleEscape);
+      window.addEventListener(PORTAL_CLOSE_EVENT, handlePortalClose);
       gsap.to(portalRef.current, {
         blend: 1,
         duration: 0.5,
       });
       return () => {
         document.body.removeEventListener('keydown', handleEscape);
+        window.removeEventListener(PORTAL_CLOSE_EVENT, handlePortalClose);
       };
     }
 
@@ -157,9 +141,13 @@ const GridTile = (props: GridTileProps) => {
       blend: 0,
       duration: 0.5,
     });
-    removeCloseButton();
     document.body.removeEventListener('keydown', handleEscape);
-  }, [isActive]);
+    window.removeEventListener(PORTAL_CLOSE_EVENT, handlePortalClose);
+
+    if (!activePortalId) {
+      removePortalCloseButton();
+    }
+  }, [activePortalId, id]);
 
   const fontProps: Partial<TextProps> = {
     font: "/soria-font.ttf",

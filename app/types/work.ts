@@ -7,4 +7,10 @@ export interface WorkTimelinePoint {
   subtitle?: string,
   position: 'left' | 'right',
   slug: string,
+  focusProgress: number,
+  focusWidth: number,
+  overlayLeft: number,
+  overlayTop: number,
+  overlayWidth: number,
+  overlayHeight: number,
 }

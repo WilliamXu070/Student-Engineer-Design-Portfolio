@@ -1,4 +1,4 @@
-import { Box, Edges, Line, Text, TextProps, useCursor } from "@react-three/drei";
+import { Box, Edges, Line, Text, TextProps } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { usePortalStore, useTimelineOverlayStore } from "@stores";
 import gsap from "gsap";
@@ -11,17 +11,20 @@ import { WorkTimelinePoint } from "@types";
 
 const reusableLeft = new THREE.Vector3(-0.3, 0, -0.1);
 const reusableRight = new THREE.Vector3(0.3, 0, -0.1);
+const getFocusFramePosition = (position: WorkTimelinePoint["position"]) =>
+  new THREE.Vector3(position === "left" ? -1.28 : 1.28, -0.56, -0.16);
 
-const TimelinePoint = ({ point, diff }: { point: WorkTimelinePoint; diff: number }) => {
+const TimelinePoint = ({ point, diff, progress }: { point: WorkTimelinePoint; diff: number; progress: number }) => {
   const pointRef = useRef<THREE.Group>(null);
   const isActive = usePortalStore((state) => state.activePortalId === "work");
-  const hoveredSlug = useTimelineOverlayStore((state) => state.hoveredSlug);
-  const selectedSlug = useTimelineOverlayStore((state) => state.selectedSlug);
   const setItem = useTimelineOverlayStore((state) => state.setItem);
   const removeItem = useTimelineOverlayStore((state) => state.removeItem);
+  const hoveredSlug = useTimelineOverlayStore((state) => state.hoveredSlug);
+  const selectedSlug = useTimelineOverlayStore((state) => state.selectedSlug);
+  const isFocused = Math.abs(progress - point.focusProgress) <= point.focusWidth;
   const hovered = hoveredSlug === point.slug;
   const selected = selectedSlug === point.slug;
-  useCursor(hovered || selected);
+  const showFocusFrame = isFocused || hovered || selected;
 
   const getPoint = useMemo(() => {
     switch (point.position) {
@@ -34,19 +37,10 @@ const TimelinePoint = ({ point, diff }: { point: WorkTimelinePoint; diff: number
     }
   }, [point.position]);
 
-  const overlayAnchor = useMemo(
-    () => new THREE.Vector3(point.position === "left" ? -1.72 : 1.72, -0.48, 0.12),
-    [point.position]
-  );
-
-  const hitboxPosition = useMemo(
-    () => new THREE.Vector3(point.position === "left" ? -1.7 : 1.7, -0.5, -0.16),
-    [point.position]
-  );
-
+  const focusFramePosition = useMemo(() => getFocusFramePosition(point.position), [point.position]);
   const textAlign = point.position === "left" ? "right" : "left";
-  const hitboxWidth = isMobile ? 4.8 : 5.4;
-  const hitboxHeight = isMobile ? 2.7 : 3;
+  const focusFrameWidth = isMobile ? 3.2 : 3.7;
+  const focusFrameHeight = isMobile ? 1.75 : 1.95;
 
   const textProps: Partial<TextProps> = useMemo(
     () => ({
@@ -67,13 +61,14 @@ const TimelinePoint = ({ point, diff }: { point: WorkTimelinePoint; diff: number
     }),
     [textProps]
   );
-
   const { camera, gl } = useThree();
 
   useFrame(() => {
-    if (!isActive || !pointRef.current) return;
+    if (!isActive || !showFocusFrame || !pointRef.current) {
+      return;
+    }
 
-    const projected = pointRef.current.localToWorld(overlayAnchor.clone()).project(camera);
+    const projected = pointRef.current.localToWorld(focusFramePosition.clone()).project(camera);
     const rect = gl.domElement.getBoundingClientRect();
 
     setItem({
@@ -88,21 +83,25 @@ const TimelinePoint = ({ point, diff }: { point: WorkTimelinePoint; diff: number
   });
 
   useEffect(() => {
-    if (!isActive) {
+    if (!showFocusFrame) {
       removeItem(point.slug);
     }
 
     return () => {
       removeItem(point.slug);
     };
-  }, [isActive, point.slug, removeItem]);
+  }, [point.slug, removeItem, showFocusFrame]);
 
   return (
     <group ref={pointRef} position={point.point} scale={isMobile ? 0.35 : 0.6}>
-      <Box args={[hitboxWidth, hitboxHeight, 0.04]} position={hitboxPosition}>
-        <meshBasicMaterial transparent opacity={0} />
-        <Edges color={hovered || selected ? "#bdd1e3" : "#475569"} lineWidth={hovered || selected ? 2.5 : 1.2} />
-      </Box>
+      {showFocusFrame && (
+        <group position={focusFramePosition}>
+          <Box args={[focusFrameWidth, focusFrameHeight, 0.04]}>
+            <meshBasicMaterial transparent opacity={0.02} color={hovered || selected ? "#e2e8f0" : "#ffffff"} />
+            <Edges color={selected ? "#f8fafc" : hovered ? "#cbd5e1" : "#94a3b8"} lineWidth={hovered || selected ? 2.8 : 1.6} />
+          </Box>
+        </group>
+      )}
 
       <group>
         <Box args={[0.2, 0.2, 0.2]} position={[0, 0, -0.1]} scale={[1 - diff, 1 - diff, 1 - diff]}>
@@ -207,6 +206,15 @@ const Timeline = ({ progress }: { progress: number }) => {
     return () => clearInterval(intervalRef.current!);
   }, [clearItems, curvePoints, isActive, isSceneRestoring, setHoveredSlug, setSelectedSlug]);
 
+  useEffect(() => {
+    return () => {
+      clearItems();
+      setHoveredSlug(null);
+      setSelectedSlug(null);
+      document.body.style.cursor = "auto";
+    };
+  }, [clearItems, setHoveredSlug, setSelectedSlug]);
+
   return (
     <group position={[0, -0.1, -0.1]}>
       <Text font="/soria-font.ttf" fontSize={isMobile ? 0.18 : 0.24} color="#dbe7f3" anchorX="center" position={[0, 2.35, 0.1]}>
@@ -226,7 +234,7 @@ const Timeline = ({ progress }: { progress: number }) => {
       <group ref={groupRef}>
         {visibleTimelinePoints.map((point, i) => {
           const diff = Math.min(2 * Math.max(i - progress * (timeline.length - 1), 0), 1);
-          return <TimelinePoint point={point} key={point.slug} diff={diff} />;
+          return <TimelinePoint point={point} key={point.slug} diff={diff} progress={progress} />;
         })}
       </group>
     </group>

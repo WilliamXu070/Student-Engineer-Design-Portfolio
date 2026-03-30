@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import HidePortalCloseButton from "@/app/components/common/HidePortalCloseButton";
 import RememberedBackLink from "@/app/components/common/RememberedBackLink";
 import RememberedLink from "@/app/components/common/RememberedLink";
 import { PROJECT_DETAILS, PROJECTS, WORK_TIMELINE } from "@constants";
@@ -53,10 +54,11 @@ const ProjectPage = async ({ params }: ProjectPageProps) => {
   }
 
   const { detail, timelinePoint } = data;
-  const relatedCtmfs = PROJECTS.filter((ctmf) => detail.ctmfRefs.includes(ctmf.slug));
+  const relatedCtmfs = PROJECTS.filter((ctmf) => detail.ctmfRefs.includes(ctmf.slug)).slice(0, 3);
 
   return (
     <main className="relative min-h-screen overflow-hidden bg-[linear-gradient(180deg,#e9f7ff_0%,#d7edff_20%,#a8cceb_50%,#668ab1_100%)] text-slate-950">
+      <HidePortalCloseButton />
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-[8%] top-[8%] h-48 w-80 rounded-full bg-white/60 blur-3xl" />
         <div className="absolute right-[10%] top-[16%] h-56 w-56 rounded-full bg-white/42 blur-3xl" />
@@ -66,7 +68,7 @@ const ProjectPage = async ({ params }: ProjectPageProps) => {
 
       <div className="relative mx-auto flex min-h-screen w-full max-w-6xl flex-col px-6 py-8 md:px-10 md:py-12">
         <div className="mb-10 flex items-center justify-between gap-4 border-b border-slate-900/10 pb-6">
-          <RememberedBackLink fallbackHref="/?portal=work" fallbackLabel="Back to Projects" />
+          <RememberedBackLink fallbackHref="/?portal=work" fallbackLabel="Back to Timeline" />
           <p
             className="text-right text-xs uppercase tracking-[0.28em] text-slate-800/50"
             style={{ fontFamily: "var(--font-vercetti)" }}>
@@ -118,7 +120,7 @@ const ProjectPage = async ({ params }: ProjectPageProps) => {
               Focus
             </p>
             <ul
-              className="mt-4 space-y-3 text-sm leading-7 text-slate-900/72"
+              className="mt-4 list-none space-y-3 pl-0 text-sm leading-7 text-slate-900/72"
               style={{ fontFamily: "var(--font-vercetti)" }}>
               {detail.criteria.slice(0, 3).map((criterion) => (
                 <li key={criterion} className="border-l border-sky-900/28 pl-4">
@@ -158,7 +160,7 @@ const ProjectPage = async ({ params }: ProjectPageProps) => {
               Criteria & Constraints
             </p>
             <ul
-              className="space-y-4 text-base leading-8 text-slate-900/76"
+              className="list-none space-y-4 pl-0 text-base leading-8 text-slate-900/76"
               style={{ fontFamily: "var(--font-vercetti)" }}>
               {detail.criteria.map((criterion) => (
                 <li key={criterion} className="border-b border-slate-900/8 pb-4 last:border-b-0 last:pb-0">

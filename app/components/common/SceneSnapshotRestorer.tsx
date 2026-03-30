@@ -1,5 +1,8 @@
 'use client';
 
+import { ensurePortalCloseButton } from "@/app/lib/portalUi";
+import { getPortalScrollLayers } from "@/app/lib/portalUi";
+import { useSearchParams } from "next/navigation";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useLayoutEffect } from "react";
 import { isMobile } from "react-device-detect";
@@ -8,15 +11,18 @@ import {
   clearSceneSnapshot,
   getProjectsPortalCameraPosition,
   getProjectsPortalCameraRotation,
+  type SceneSnapshot,
   readSceneSnapshot,
 } from "@/app/lib/navigationMemory";
 import { usePortalStore, useScrollStore } from "@stores";
 
 const SceneSnapshotRestorer = () => {
   const { camera } = useThree();
+  const searchParams = useSearchParams();
   const isSceneRestoring = usePortalStore((state) => state.isSceneRestoring);
   const setActivePortal = usePortalStore((state) => state.setActivePortal);
   const setActiveProjectSlug = usePortalStore((state) => state.setActiveProjectSlug);
+  const setPortalReturnRootScrollProgress = usePortalStore((state) => state.setPortalReturnRootScrollProgress);
   const setSceneMotionPaused = usePortalStore((state) => state.setSceneMotionPaused);
   const setSceneRestoring = usePortalStore((state) => state.setSceneRestoring);
   const setSceneCameraSnapshot = usePortalStore((state) => state.setSceneCameraSnapshot);
@@ -35,18 +41,36 @@ const SceneSnapshotRestorer = () => {
 
   useLayoutEffect(() => {
     const storedSnapshot = readSceneSnapshot();
+    const queryPortal = searchParams.get("portal");
+    const fallbackPortalId = queryPortal === "projects" || queryPortal === "work" ? queryPortal : null;
 
-    if (!storedSnapshot) {
+    const fallbackSnapshot: SceneSnapshot | null = fallbackPortalId
+      ? {
+          activePortalId: fallbackPortalId,
+          cameraPosition: fallbackPortalId === "projects"
+            ? getProjectsPortalCameraPosition(isMobile)
+            : [camera.position.x, camera.position.y, camera.position.z],
+          cameraRotation: fallbackPortalId === "projects"
+            ? getProjectsPortalCameraRotation()
+            : [camera.rotation.x, camera.rotation.y, camera.rotation.z],
+          rootScrollProgress: 0,
+          workScrollProgress: 0,
+        }
+      : null;
+
+    const baseSnapshot = storedSnapshot ?? fallbackSnapshot;
+
+    if (!baseSnapshot) {
       return;
     }
 
-    const snapshot = storedSnapshot.activePortalId === "projects"
+    const snapshot = baseSnapshot.activePortalId === "projects"
       ? {
-          ...storedSnapshot,
+          ...baseSnapshot,
           cameraPosition: getProjectsPortalCameraPosition(isMobile),
           cameraRotation: getProjectsPortalCameraRotation(),
         }
-      : storedSnapshot;
+      : baseSnapshot;
 
     const applyCameraSnapshot = () => {
       camera.position.set(...snapshot.cameraPosition);
@@ -55,9 +79,8 @@ const SceneSnapshotRestorer = () => {
       setSceneCameraSnapshot(snapshot.cameraPosition, snapshot.cameraRotation);
     };
 
-    const getScrollWrapper = () => document.querySelector('div[style*="z-index: 1"]') as HTMLElement | null;
     const applyRootScrollSnapshot = () => {
-      const rootScrollWrapper = getScrollWrapper();
+      const { root: rootScrollWrapper } = getPortalScrollLayers();
 
       if (!rootScrollWrapper) {
         return;
@@ -72,7 +95,7 @@ const SceneSnapshotRestorer = () => {
         return;
       }
 
-      const activeScrollWrapper = getScrollWrapper();
+      const { work: activeScrollWrapper } = getPortalScrollLayers();
 
       if (!activeScrollWrapper) {
         return;
@@ -86,7 +109,16 @@ const SceneSnapshotRestorer = () => {
     setSceneMotionPaused(true);
     setSceneRestoring(true);
     setActiveProjectSlug(null);
+    setPortalReturnRootScrollProgress(snapshot.rootScrollProgress);
     setActivePortal(snapshot.activePortalId);
+    if (snapshot.activePortalId === "projects") {
+      const { root: rootScrollWrapper } = getPortalScrollLayers();
+      const fixedLayer = rootScrollWrapper?.firstElementChild as HTMLElement | null;
+      if (fixedLayer) {
+        fixedLayer.style.pointerEvents = "none";
+      }
+      ensurePortalCloseButton();
+    }
     setScrollProgress(snapshot.workScrollProgress);
     applyRootScrollSnapshot();
     applyCameraSnapshot();
@@ -119,7 +151,7 @@ const SceneSnapshotRestorer = () => {
         window.clearTimeout(workScrollTimer);
       }
     };
-  }, [camera, setActivePortal, setActiveProjectSlug, setSceneCameraSnapshot, setSceneMotionPaused, setSceneRestoring, setScrollProgress]);
+  }, [camera, isMobile, searchParams, setActivePortal, setActiveProjectSlug, setPortalReturnRootScrollProgress, setSceneCameraSnapshot, setSceneMotionPaused, setSceneRestoring, setScrollProgress]);
 
   return null;
 };

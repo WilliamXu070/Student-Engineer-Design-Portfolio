@@ -1,6 +1,7 @@
 'use client';
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { readReturnTarget, type ReturnTarget } from "@/app/lib/navigationMemory";
@@ -11,6 +12,7 @@ type RememberedBackLinkProps = {
 };
 
 const RememberedBackLink = ({ fallbackHref, fallbackLabel }: RememberedBackLinkProps) => {
+  const pathname = usePathname();
   const [target, setTarget] = useState<ReturnTarget>({
     href: fallbackHref,
     label: fallbackLabel,
@@ -19,10 +21,15 @@ const RememberedBackLink = ({ fallbackHref, fallbackLabel }: RememberedBackLinkP
   useEffect(() => {
     const rememberedTarget = readReturnTarget();
 
-    if (rememberedTarget) {
+    if (rememberedTarget && rememberedTarget.href !== pathname) {
       setTarget(rememberedTarget);
+    } else {
+      setTarget({
+        href: fallbackHref,
+        label: fallbackLabel,
+      });
     }
-  }, []);
+  }, [fallbackHref, fallbackLabel, pathname]);
 
   return (
     <Link

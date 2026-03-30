@@ -1,55 +1,108 @@
 import { ScrollControls } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
+import { getPortalScrollLayers } from "@/app/lib/portalUi";
+import { WORK_TIMELINE } from "@constants";
 import { usePortalStore, useScrollStore } from "@stores";
 import gsap from "gsap";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
+import ScrollLayerMarker from "../../common/ScrollLayerMarker";
 import { Memory } from "../../models/Memory";
 import Timeline from "./Timeline";
+
+const MAGNET_RANGE = 0.1;
+const MAGNET_STRENGTH = 0.2;
 
 const Work = () => {
   const { camera } = useThree();
   const isActive = usePortalStore((state) => state.activePortalId === 'work');
   const isSceneRestoring = usePortalStore((state) => state.isSceneRestoring);
   const { scrollProgress, setScrollProgress } = useScrollStore();
+  const isAdjustingScrollRef = useRef(false);
 
   const handleScroll = (event: Event) => {
     const target = event.target as HTMLElement;
+
+    if (isAdjustingScrollRef.current) {
+      isAdjustingScrollRef.current = false;
+      return;
+    }
+
     const scrollTop = target.scrollTop;
     const scrollHeight = target.scrollHeight - target.clientHeight;
-    const progress = Math.min(Math.max(scrollTop / scrollHeight, 0), 1);
-    setScrollProgress(progress);
+    const rawProgress = Math.min(Math.max(scrollTop / scrollHeight, 0), 1);
+    const nearestPoint = WORK_TIMELINE.reduce((closest, point) => {
+      if (!closest) {
+        return point;
+      }
+
+      return Math.abs(point.focusProgress - rawProgress) < Math.abs(closest.focusProgress - rawProgress)
+        ? point
+        : closest;
+    }, WORK_TIMELINE[0]);
+
+    const distanceToFocus = Math.abs(nearestPoint.focusProgress - rawProgress);
+    const nextProgress = distanceToFocus <= MAGNET_RANGE
+      ? THREE.MathUtils.lerp(rawProgress, nearestPoint.focusProgress, MAGNET_STRENGTH)
+      : rawProgress;
+
+    if (scrollHeight > 0 && nextProgress !== rawProgress) {
+      isAdjustingScrollRef.current = true;
+      target.scrollTop = scrollHeight * nextProgress;
+    }
+
+    setScrollProgress(nextProgress);
   }
+
+  const handleWheel = (event: WheelEvent) => {
+    const target = event.currentTarget as HTMLElement;
+    event.preventDefault();
+    target.scrollTop -= event.deltaY;
+  };
 
   // Hack: If the portal is active, add the scroll event listener to the scroll
   // wrapper div. If the portal is not active, remove the scroll event listener.
   // ScrollControls doesn't work out of the box, so we have to manually handle
   // the scroll event.
   useEffect(() => {
+    const { root: rootScrollWrapper, work: workScrollWrapper } = getPortalScrollLayers();
+
     if (isActive) {
       if (!isSceneRestoring) {
         gsap.to(camera.rotation, { x: -Math.PI / 2, y: 0, z: 0, duration: 0.8 });
       }
-      const scrollWrapper = document.querySelector('div[style*="z-index: -1"]') as HTMLElement;
-      const originalScrollWrapper = document.querySelector('div[style*="z-index: 1"]') as HTMLElement;
+
+      if (!workScrollWrapper || !rootScrollWrapper) {
+        return;
+      }
+
       if (!isSceneRestoring) {
         setScrollProgress(0);
       }
-      scrollWrapper.addEventListener('scroll', handleScroll)
-      scrollWrapper.style.zIndex = '1';
-      originalScrollWrapper.style.zIndex = '-1';
+      workScrollWrapper.removeEventListener('scroll', handleScroll);
+      workScrollWrapper.removeEventListener('wheel', handleWheel);
+      workScrollWrapper.addEventListener('scroll', handleScroll);
+      workScrollWrapper.addEventListener('wheel', handleWheel, { passive: false });
+      workScrollWrapper.style.zIndex = '1';
+      rootScrollWrapper.style.zIndex = '-1';
     } else {
-      const scrollWrapper = document.querySelector('div[style*="z-index: 1"]') as HTMLElement;
-      const originalScrollWrapper = document.querySelector('div[style*="z-index: -1"]') as HTMLElement;
-
-      if (scrollWrapper) {
-        scrollWrapper.scrollTo({ top: 0, behavior: 'smooth' });
+      if (workScrollWrapper) {
+        workScrollWrapper.scrollTo({ top: 0, behavior: 'smooth' });
         setScrollProgress(0);
-        scrollWrapper.removeEventListener('scroll', handleScroll);
-        scrollWrapper.style.zIndex = '-1';
-        originalScrollWrapper.style.zIndex = '1';
+        workScrollWrapper.removeEventListener('scroll', handleScroll);
+        workScrollWrapper.removeEventListener('wheel', handleWheel);
+        workScrollWrapper.style.zIndex = '-1';
+      }
+
+      if (rootScrollWrapper) {
+        rootScrollWrapper.style.zIndex = '1';
       }
     }
+
+    return () => {
+      workScrollWrapper?.removeEventListener('scroll', handleScroll);
+      workScrollWrapper?.removeEventListener('wheel', handleWheel);
+    };
   }, [camera.rotation, isActive, isSceneRestoring, setScrollProgress]);
 
   return (
@@ -59,6 +112,7 @@ const Work = () => {
         <shadowMaterial opacity={0.1} />
       </mesh>
       <ScrollControls style={{ zIndex: -1}} pages={2} maxSpeed={0.4}>
+        <ScrollLayerMarker layer="work" />
         <Memory scale={new THREE.Vector3(5, 5, 5)} position={new THREE.Vector3(0, -6, 1)}/>
         <Timeline progress={isActive ? scrollProgress : 0} />
       </ScrollControls>
