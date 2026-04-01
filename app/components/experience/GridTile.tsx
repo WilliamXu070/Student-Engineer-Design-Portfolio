@@ -21,6 +21,7 @@ interface GridTileProps {
 
 // TODO: Rename this
 const GridTile = (props: GridTileProps) => {
+  const entryStartRef = useRef<number | null>(null);
   const titleRef = useRef<THREE.Group>(null);
   const gridRef = useRef<THREE.Group>(null);
   const hoverBoxRef = useRef<THREE.Mesh>(null);
@@ -32,6 +33,7 @@ const GridTile = (props: GridTileProps) => {
   const setPortalReturnRootScrollProgress = usePortalStore((state) => state.setPortalReturnRootScrollProgress);
   const isActive = usePortalStore((state) => state.activePortalId === id);
   const activePortalId = usePortalStore((state) => state.activePortalId);
+  const recordPortalEntryMetric = usePortalStore((state) => state.recordPortalEntryMetric);
   const rootScrollProgress = useScrollStore((state) => state.scrollProgress);
   const setScrollProgress = useScrollStore((state) => state.setScrollProgress);
   const data = useScroll();
@@ -72,6 +74,7 @@ const GridTile = (props: GridTileProps) => {
   const portalInto = (e: React.MouseEvent) => {
     if (isActive || activePortalId) return;
     e.stopPropagation();
+    entryStartRef.current = performance.now();
     setPortalReturnRootScrollProgress(rootScrollProgress);
     setActivePortal(id);
     document.body.style.cursor = 'auto';
@@ -123,7 +126,19 @@ const GridTile = (props: GridTileProps) => {
   }
 
   useEffect(() => {
+    let animationFrameOne = 0;
+    let animationFrameTwo = 0;
+
     if (activePortalId === id) {
+      animationFrameOne = window.requestAnimationFrame(() => {
+        animationFrameTwo = window.requestAnimationFrame(() => {
+          if (entryStartRef.current !== null) {
+            recordPortalEntryMetric(id, performance.now() - entryStartRef.current);
+            entryStartRef.current = null;
+          }
+        });
+      });
+
       ensurePortalCloseButton();
       document.body.addEventListener('keydown', handleEscape);
       window.addEventListener(PORTAL_CLOSE_EVENT, handlePortalClose);
@@ -132,6 +147,8 @@ const GridTile = (props: GridTileProps) => {
         duration: 0.5,
       });
       return () => {
+        window.cancelAnimationFrame(animationFrameOne);
+        window.cancelAnimationFrame(animationFrameTwo);
         document.body.removeEventListener('keydown', handleEscape);
         window.removeEventListener(PORTAL_CLOSE_EVENT, handlePortalClose);
       };
@@ -147,7 +164,7 @@ const GridTile = (props: GridTileProps) => {
     if (!activePortalId) {
       removePortalCloseButton();
     }
-  }, [activePortalId, id]);
+  }, [activePortalId, handlePortalClose, id, recordPortalEntryMetric]);
 
   const fontProps: Partial<TextProps> = {
     font: "/soria-font.ttf",

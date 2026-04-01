@@ -2,7 +2,7 @@ import { ScrollControls } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import { getPortalScrollLayers } from "@/app/lib/portalUi";
 import { WORK_TIMELINE } from "@constants";
-import { usePortalStore, useScrollStore } from "@stores";
+import { usePortalStore } from "@stores";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
@@ -17,7 +17,8 @@ const Work = () => {
   const { camera } = useThree();
   const isActive = usePortalStore((state) => state.activePortalId === 'work');
   const isSceneRestoring = usePortalStore((state) => state.isSceneRestoring);
-  const { scrollProgress, setScrollProgress } = useScrollStore();
+  const workScrollProgress = usePortalStore((state) => state.workPortalScrollProgress);
+  const setWorkPortalScrollProgress = usePortalStore((state) => state.setWorkPortalScrollProgress);
   const isAdjustingScrollRef = useRef(false);
 
   const handleScroll = (event: Event) => {
@@ -51,7 +52,7 @@ const Work = () => {
       target.scrollTop = scrollHeight * nextProgress;
     }
 
-    setScrollProgress(nextProgress);
+    setWorkPortalScrollProgress(nextProgress);
   }
 
   const handleWheel = (event: WheelEvent) => {
@@ -77,7 +78,7 @@ const Work = () => {
       }
 
       if (!isSceneRestoring) {
-        setScrollProgress(0);
+        setWorkPortalScrollProgress(0);
       }
       workScrollWrapper.removeEventListener('scroll', handleScroll);
       workScrollWrapper.removeEventListener('wheel', handleWheel);
@@ -87,8 +88,8 @@ const Work = () => {
       rootScrollWrapper.style.zIndex = '-1';
     } else {
       if (workScrollWrapper) {
-        workScrollWrapper.scrollTo({ top: 0, behavior: 'smooth' });
-        setScrollProgress(0);
+        workScrollWrapper.scrollTop = 0;
+        setWorkPortalScrollProgress(0);
         workScrollWrapper.removeEventListener('scroll', handleScroll);
         workScrollWrapper.removeEventListener('wheel', handleWheel);
         workScrollWrapper.style.zIndex = '-1';
@@ -103,7 +104,7 @@ const Work = () => {
       workScrollWrapper?.removeEventListener('scroll', handleScroll);
       workScrollWrapper?.removeEventListener('wheel', handleWheel);
     };
-  }, [camera.rotation, isActive, isSceneRestoring, setScrollProgress]);
+  }, [camera.rotation, isActive, isSceneRestoring, setWorkPortalScrollProgress]);
 
   return (
     <group>
@@ -114,7 +115,7 @@ const Work = () => {
       <ScrollControls style={{ zIndex: -1}} pages={2} maxSpeed={0.4}>
         <ScrollLayerMarker layer="work" />
         <Memory scale={new THREE.Vector3(5, 5, 5)} position={new THREE.Vector3(0, -6, 1)}/>
-        <Timeline progress={isActive ? scrollProgress : 0} />
+        <Timeline progress={isActive ? workScrollProgress : 0} />
       </ScrollControls>
     </group>
   );

@@ -5,6 +5,21 @@ This repository is a Next.js 15 portfolio app using the App Router. Primary sour
 
 Ignore generated output such as `.next/`, `.next_backup_*`, `test-results/`, and local editor files.
 
+## Local Skill And Plugin Scope
+Local frontend-design guidance lives in `my-frontend-design/`.
+
+- Plugin entry: `my-frontend-design/.codex-plugin/plugin.json`
+- Skill entry: `my-frontend-design/skills/frontend-design/SKILL.md`
+
+For frontend UI work, read `my-frontend-design/skills/frontend-design/SKILL.md` before coding and apply it directly. The active scope is:
+- choose a clear, bold visual direction before implementation
+- build production-ready code, not mockups
+- use distinctive typography, color, motion, spacing, and backgrounds
+- avoid generic AI patterns, especially default-safe fonts, purple-on-white gradients, and cookie-cutter layouts
+- match implementation complexity to the intended aesthetic
+
+Use the plugin only as the loader for the skill. `plugin.json` points to `./skills/`; the operational instructions come from `SKILL.md`.
+
 ## Build, Test, and Development Commands
 - `npm install`: install dependencies.
 - `npm run dev`: start the local Next.js dev server.
@@ -20,7 +35,7 @@ Follow `.editorconfig`: tabs for indentation, LF line endings, UTF-8, and a fina
 Use ESLint for consistency. `lint-staged` auto-fixes staged `*.js`, `*.jsx`, `*.ts`, and `*.tsx` files with `eslint --fix`.
 
 ## Testing Guidelines
-There is no dedicated unit or integration test suite yet. At minimum, verify changes with:
+After every code change, run:
 - `npm run lint`
 - `npm run build`
 

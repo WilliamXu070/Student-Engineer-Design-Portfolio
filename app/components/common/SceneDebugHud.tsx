@@ -42,6 +42,7 @@ const SceneDebugHud = () => {
   const isSceneRestoring = usePortalStore((state) => state.isSceneRestoring);
   const sceneCameraPosition = usePortalStore((state) => state.sceneCameraPosition);
   const sceneCameraRotation = usePortalStore((state) => state.sceneCameraRotation);
+  const portalEntryMetrics = usePortalStore((state) => state.portalEntryMetrics);
   const scrollProgress = useScrollStore((state) => state.scrollProgress);
   const hudRef = useRef<HTMLDivElement>(null);
   const [pathname, setPathname] = useState("");
@@ -179,6 +180,13 @@ const SceneDebugHud = () => {
         </div>
         <div>
           snap rot: {snapshot ? `${formatNumber(snapshot.cameraRotation[0])}, ${formatNumber(snapshot.cameraRotation[1])}, ${formatNumber(snapshot.cameraRotation[2])}` : "null"}
+        </div>
+        <div className="mt-2 border-t border-white/15 pt-2">portal entry</div>
+        <div>
+          projects: {portalEntryMetrics.projects ? `${portalEntryMetrics.projects.lastMs?.toFixed(0)}ms last / ${portalEntryMetrics.projects.firstMs?.toFixed(0)}ms first` : "n/a"}
+        </div>
+        <div>
+          work: {portalEntryMetrics.work ? `${portalEntryMetrics.work.lastMs?.toFixed(0)}ms last / ${portalEntryMetrics.work.firstMs?.toFixed(0)}ms first` : "n/a"}
         </div>
         <div className="mt-2 border-t border-white/15 pt-2">layer order</div>
         <div>root: {layers?.root ?? "null"}</div>

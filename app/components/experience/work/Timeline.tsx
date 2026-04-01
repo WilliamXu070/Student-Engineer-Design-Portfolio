@@ -152,6 +152,7 @@ const Timeline = ({ progress }: { progress: number }) => {
 
   const [visibleDashedCurvePoints, setVisibleDashedCurvePoints] = useState<THREE.Vector3[]>([]);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const groupRef = useRef<THREE.Group>(null);
 
   useFrame((_, delta) => {
@@ -186,24 +187,49 @@ const Timeline = ({ progress }: { progress: number }) => {
 
     if (isActive) {
       let i = 0;
-      clearInterval(intervalRef.current!);
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
       const startDelay = isSceneRestoring ? 0 : 1000;
-      setTimeout(() => {
+      timeoutRef.current = setTimeout(() => {
         intervalRef.current = setInterval(() => {
           const p = i++ / 100;
           setVisibleDashedCurvePoints(curvePoints.slice(0, Math.max(1, Math.ceil(p * curvePoints.length))));
-          if (i > 100 && intervalRef.current) clearInterval(intervalRef.current);
+          if (i > 100 && intervalRef.current) {
+            clearInterval(intervalRef.current);
+            intervalRef.current = null;
+          }
         }, 10);
       }, startDelay);
     } else {
       setVisibleDashedCurvePoints([]);
-      clearInterval(intervalRef.current!);
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
       clearItems();
       setHoveredSlug(null);
       setSelectedSlug(null);
     }
 
-    return () => clearInterval(intervalRef.current!);
+    return () => {
+      tl.kill();
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+    };
   }, [clearItems, curvePoints, isActive, isSceneRestoring, setHoveredSlug, setSelectedSlug]);
 
   useEffect(() => {

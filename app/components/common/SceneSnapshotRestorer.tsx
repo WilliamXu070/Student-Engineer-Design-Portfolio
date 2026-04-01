@@ -23,6 +23,7 @@ const SceneSnapshotRestorer = () => {
   const setActivePortal = usePortalStore((state) => state.setActivePortal);
   const setActiveProjectSlug = usePortalStore((state) => state.setActiveProjectSlug);
   const setPortalReturnRootScrollProgress = usePortalStore((state) => state.setPortalReturnRootScrollProgress);
+  const setWorkPortalScrollProgress = usePortalStore((state) => state.setWorkPortalScrollProgress);
   const setSceneMotionPaused = usePortalStore((state) => state.setSceneMotionPaused);
   const setSceneRestoring = usePortalStore((state) => state.setSceneRestoring);
   const setSceneCameraSnapshot = usePortalStore((state) => state.setSceneCameraSnapshot);
@@ -119,7 +120,8 @@ const SceneSnapshotRestorer = () => {
       }
       ensurePortalCloseButton();
     }
-    setScrollProgress(snapshot.workScrollProgress);
+    setScrollProgress(snapshot.rootScrollProgress);
+    setWorkPortalScrollProgress(snapshot.workScrollProgress);
     applyRootScrollSnapshot();
     applyCameraSnapshot();
 
@@ -151,7 +153,7 @@ const SceneSnapshotRestorer = () => {
         window.clearTimeout(workScrollTimer);
       }
     };
-  }, [camera, isMobile, searchParams, setActivePortal, setActiveProjectSlug, setPortalReturnRootScrollProgress, setSceneCameraSnapshot, setSceneMotionPaused, setSceneRestoring, setScrollProgress]);
+  }, [camera, isMobile, searchParams, setActivePortal, setActiveProjectSlug, setPortalReturnRootScrollProgress, setSceneCameraSnapshot, setSceneMotionPaused, setSceneRestoring, setScrollProgress, setWorkPortalScrollProgress]);
 
   return null;
 };

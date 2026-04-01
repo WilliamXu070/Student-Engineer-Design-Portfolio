@@ -12,6 +12,7 @@ const TimelineOverlay = () => {
   const isActive = usePortalStore((state) => state.activePortalId === "work");
   const sceneCameraPosition = usePortalStore((state) => state.sceneCameraPosition);
   const sceneCameraRotation = usePortalStore((state) => state.sceneCameraRotation);
+  const workPortalScrollProgress = usePortalStore((state) => state.workPortalScrollProgress);
   const rootScrollProgress = useScrollStore((state) => state.scrollProgress);
   const itemMap = useTimelineOverlayStore((state) => state.items);
   const setHoveredSlug = useTimelineOverlayStore((state) => state.setHoveredSlug);
@@ -64,7 +65,7 @@ const TimelineOverlay = () => {
                   : rootScrollProgress,
                 workScrollProgress: activeWorkScrollWrapper && workScrollableHeight > 0
                   ? activeWorkScrollWrapper.scrollTop / workScrollableHeight
-                  : rootScrollProgress,
+                  : workPortalScrollProgress,
               });
               rememberReturnTarget({ href: "/?portal=work", label: "Back to Timeline" });
               router.push(`/projects/${item.slug}`);
