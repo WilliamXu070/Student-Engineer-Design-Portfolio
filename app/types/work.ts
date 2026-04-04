@@ -7,6 +7,7 @@ export interface WorkTimelinePoint {
   subtitle?: string,
   position: 'left' | 'right',
   slug: string,
+  selectable?: boolean,
   focusProgress: number,
   focusWidth: number,
   overlayLeft: number,

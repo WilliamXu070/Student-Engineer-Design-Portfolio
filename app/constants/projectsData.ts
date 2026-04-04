@@ -14,73 +14,70 @@ export interface ProjectDetail {
 
 export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
   "praxis-i": {
-    title: "Mechanical Pencil Improvement",
+    title: "Silent Can opener",
     course: "Praxis I",
-    overview: "To develop a mechanical pencil that is capable of using different lead sizes while maintaining the ease of use and affordability of current mechanical pencils.",
+    overview: "A product design project investigating how to reduce the impulsive noise created when opening a carbonated soda can in quiet academic spaces without sacrificing accessibility, portability, or beverage integrity.",
     criteria: [
-      "Compatible with at least two different common lead sizes",
-      "Not exceed 11.0 grams in mass",
-      "Between 7mm and 15mm in diameter",
-      "Intuitive to use with less than 5 guidelines",
-      "Retail price under 10.00 CAD",
-      "Between 130mm and 150mm in length"
+      "Strong peak-noise reduction during opening",
+      "Minimal liquid loss and CO2 boil-off",
+      "Portable and conceptually compatible with standard can use",
+      "Accessible interaction with low force and low hand pressure",
+      "Safe, hygienic contact around the drinking surface",
     ],
     ctmfRefs: [
       "stakeholder-mapping",
-      "requirements-matrix",
       "morphological-chart",
       "pugh-chart",
     ],
     process: {
-      refinement: "The design brief which we received clearly identified the problem of mechanical pencils accepting only one lead size, but required clarification on the main stakeholders and several constraints. We added drafters and artists as new stakeholders, who often need to use different lead sizes for different purposes.",
-      generation: "In order to generate divergent solutions, we formulated a morphological chart of the functional decomposition of a mechanical pencil, and various methods of meeting the functions. We came up with solutions ranging from lead rollers to grinders... However, the addition of a new stakeholder required regenerating solutions.",
-      assessment: "Using a Pugh chart, we compared the relative performance of each candidate solution. In our first iteration, we used a standard Bic Matic... For the second iteration of the Pugh chart, we chose the multi-barreled pencil as the reference design, as it was the closest to existing products. We ultimately selected the modification design as our solution because it builds upon the proven design of current mechanical pencils, meaning that there are fewer variables which could result in its failure.",
-      reflection: "This project was a first introduction to how working as an engineer might be like, in the sense that I was working collaboratively with other members and designing a potential product. It shows the importance of reiteration within each step of the design of a product, and the importance of collaborative working through constructive criticism."
+      refinement: "The project first looked like a quieting problem around depressurization and external damping, but stakeholder analysis translated the NGOs into requirements that made portability, accessibility, safety, and beverage integrity non-negotiable alongside noise reduction.",
+      generation: "Early design concepts included puncture vents, water damping, and tab attachments. The vented-versus-unvented result then weakened the original frame, which is why divergence only became genuinely useful after the team reopened what was actually causing the sound event.",
+      assessment: "The final concept was not chosen just because it was final. The slider-based can earned recommendation by performing best against the explicit criteria, including a drop from 102 dB to 61 dB, lower liquid loss, lower hand pressure, and fewer gestures than the main alternatives.",
+      reflection: "Praxis I showed me that a design process can converge cleanly while still failing at the level of framing. The strongest lesson was that evidence can require a move backward in FDCR before further convergence becomes meaningful.",
     }
   },
   "civ102-bridge": {
-    title: "Matboard Bridge Design",
+    title: "The Bifrost",
     course: "CIV102",
-    overview: "A structural engineering project to design, construct, and test a matboard bridge supporting a 400N point load.",
+    overview: "A structural engineering project to design, construct, and test a buildable matboard bridge that could carry a moving 400 N train while balancing buckling resistance, material efficiency, and manufacturability.",
     criteria: [
-      "Maximum mass of 100g",
-      "Span at least 1000mm",
-      "Must withstand 400N point load",
+      "Carry a moving 400 N train across a 1,200 mm span",
+      "Fit within one 813 mm by 1,016 mm sheet of 1.27 mm matboard and two tubes of contact cement",
+      "Keep a horizontal deck with at least 100 mm of deck width below the maximum track height",
+      "Balance strength, buckling resistance, material use, and manufacturability",
     ],
     ctmfRefs: [
-      "requirements-matrix",
-      "systems-thinking",
-      "weighted-decision-matrix",
-      "prototyping-and-cad",
+      "challenge-assumptions",
+      "calculations-simulation",
+      "pugh-chart",
     ],
     process: {
-      refinement: "Understood the specific constraints of the matboard material properties.",
-      generation: "Iterated through Pi-beam, box-girder, and truss bridge variants before selecting a simplified box-girder with robust diaphragms.",
-      assessment: "Evaluated failure modes including shear, flexural yielding, and plate buckling using structural analysis formulas.",
-      reflection: "This project highlighted the gap between theoretical calculations and physical imperfections in construction."
+      refinement: "What looked like a straightforward strength-maximization problem became a tighter FDCR framing problem once moving-load effects, matboard limits, and fitting constraints were treated as real design pressures rather than background conditions.",
+      generation: "The project concentrated on a simple pi-beam form instead of truss or trapezoidal options, then used calculations and simulation to iterate against the current governing failure mode rather than adding material everywhere.",
+      assessment: "Analytical convergence raised the design from roughly 260 N in Design 0 to a final predicted capacity of 1367 N, but physical testing exposed a front-splice failure at 580 N and revealed that local manufacturing uncertainty had become the real governing weakness.",
+      reflection: "CIV102 reinforced that engineering credibility depends on more than analytical strength. A design can converge neatly in the calculations and still underperform if splice sensitivity, fabrication tolerance, and local reliability are not represented strongly enough.",
     }
   },
   "praxis-ii": {
-    title: "Systems Intervention Study",
+    title: "Convertible Heated Glove System",
     course: "Praxis II",
-    overview: "A systems-focused design project centered on understanding stakeholders, mapping interdependencies, and identifying leverage points for a practical intervention.",
+    overview: "A winter-astronomy design project that reframed a broad cold-weather usability problem into a dexterity-preservation challenge, resulting in a convertible heated glove system for telescope operation.",
     criteria: [
-      "Define a clear systems boundary and stakeholder ecosystem",
-      "Ground the proposal in observed needs and realistic constraints",
-      "Compare multiple intervention directions before selecting one",
-      "Communicate the rationale, tradeoffs, and anticipated impact clearly",
+      "Preserve functional fingertip dexterity during real winter observing tasks",
+      "Respect low-light compatibility, field portability, and existing telescope workflows",
+      "Protect against cold without behaving like a bulky ski glove or mitten",
+      "Support controlled transitions into a higher-dexterity mode when precision tasks demand it",
     ],
     ctmfRefs: [
-      "stakeholder-mapping",
-      "systems-thinking",
-      "scamper-method",
-      "weighted-decision-matrix",
+      "root-cause-analysis",
+      "verification-validation",
+      "biomimicry",
     ],
     process: {
-      refinement: "The initial framing required translating a broad challenge into a tractable intervention space. That meant clarifying who experiences the system most directly, where friction appears, and which constraints would shape any realistic proposal.",
-      generation: "Multiple intervention directions were explored through structured ideation, systems mapping, and discussion. Rather than settling on the first promising concept, the project emphasized generating alternatives that responded to different stakeholders and scales of change.",
-      assessment: "Concepts were weighed against feasibility, stakeholder fit, clarity of implementation, and potential effect within the larger system. This created a more disciplined basis for choosing a direction than intuition alone.",
-      reflection: "Praxis II reinforced that design is rarely about a single object in isolation. The more useful lens was understanding relationships, incentives, and the consequences that emerge when a system is changed.",
+      refinement: "The project began as a broad winter-astronomy usability problem, but observation and stakeholder engagement narrowed it into a more precise mismatch between cold-impaired dexterity and the fine repetitive manipulations telescope use demands.",
+      generation: "Multiple concept families were explored, including environment systems, software guidance, hand attachments, and telescope-interface aids, before the project converged on preserving the user’s dexterity directly through a heated glove path.",
+      assessment: "Testing developed in stages because the initial cold-plunge setup did not hold the condition long enough to generate trustworthy evidence. Once dexterity and temperature were separated and recombined more carefully, the project justified finger-focused heating, dropped the knob-turner, and developed the final multi-dexterity glove logic.",
+      reflection: "Praxis II made one design lesson explicit: rigor can become overconstraint. The project became stronger once the team softened premature certainty, focused on the actual dexterity bottleneck, and accepted that some tasks would still require controlled shifts between warmth and precision.",
     }
   },
   "portfolio": {

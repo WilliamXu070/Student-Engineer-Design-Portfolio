@@ -94,6 +94,104 @@ body {
     linear-gradient(180deg, #eef9ff 0%, #dceeff 24%, #b0d1ee 58%, #6c8db4 100%);
 }
 
+.project-brutalist,
+.ctmf-brutalist {
+  position: relative;
+  background-color: #14161d;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.project-brutalist::before,
+.ctmf-brutalist::before {
+  content: "";
+  position: absolute;
+  top: 6rem;
+  right: 4%;
+  width: clamp(8rem, 16vw, 14rem);
+  height: clamp(8rem, 16vw, 14rem);
+  border: 3px solid #000;
+  background: #ffd23c;
+  box-shadow: 10px 10px 0 #000;
+  transform: rotate(11deg);
+  z-index: 0;
+}
+
+.project-brutalist::after,
+.ctmf-brutalist::after {
+  content: "";
+  position: absolute;
+  left: 3%;
+  bottom: 5rem;
+  width: clamp(9rem, 18vw, 16rem);
+  height: clamp(7rem, 14vw, 12rem);
+  border: 3px solid #000;
+  background: #31d7c4;
+  box-shadow: 10px 10px 0 #000;
+  clip-path: polygon(0 16%, 82% 0, 100% 72%, 19% 100%);
+  transform: rotate(-7deg);
+  z-index: 0;
+}
+
+.project-brutalist .project-sky-haze,
+.project-brutalist .project-cloud,
+.project-brutalist .project-grid-glow,
+.project-brutalist .project-horizon-line {
+  display: none;
+}
+
+.project-brutalist h1,
+.project-brutalist h2,
+.project-brutalist h3,
+.project-brutalist blockquote,
+.ctmf-brutalist h1,
+.ctmf-brutalist h2,
+.ctmf-brutalist h3 {
+  font-family: var(--font-vercetti) !important;
+  letter-spacing: -0.05em;
+}
+
+.project-brutalist p,
+.project-brutalist li,
+.project-brutalist a,
+.project-brutalist span,
+.ctmf-brutalist p,
+.ctmf-brutalist li,
+.ctmf-brutalist a,
+.ctmf-brutalist span {
+  font-family: var(--font-vercetti) !important;
+}
+
+.project-brutalist img,
+.ctmf-brutalist img {
+  filter: contrast(1.04) saturate(0.92);
+}
+
+.project-brutalist .neo-panel,
+.ctmf-brutalist .neo-panel {
+  border: 3px solid #000;
+  border-radius: 0.35rem;
+  box-shadow: 10px 10px 0 #000;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.project-brutalist .neo-chip,
+.ctmf-brutalist .neo-chip {
+  border: 3px solid #000;
+  border-radius: 0.2rem;
+  box-shadow: 5px 5px 0 #000;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.project-brutalist .neo-angle,
+.ctmf-brutalist .neo-angle {
+  transform: rotate(-1.4deg);
+}
+
 .project-glass-panel {
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.26);

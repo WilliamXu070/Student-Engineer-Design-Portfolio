@@ -138,6 +138,10 @@ const Timeline = ({ progress }: { progress: number }) => {
   const setHoveredSlug = useTimelineOverlayStore((state) => state.setHoveredSlug);
   const setSelectedSlug = useTimelineOverlayStore((state) => state.setSelectedSlug);
   const timeline = useMemo(() => WORK_TIMELINE, []);
+  const selectableTimeline = useMemo(
+    () => timeline.filter((point) => point.selectable !== false),
+    [timeline]
+  );
 
   const curve = useMemo(() => new THREE.CatmullRomCurve3(timeline.map((p) => p.point), false), [timeline]);
   const curvePoints = useMemo(() => curve.getPoints(500), [curve]);
@@ -146,7 +150,9 @@ const Timeline = ({ progress }: { progress: number }) => {
     [curvePoints, progress]
   );
   const visibleTimelinePoints = useMemo(
-    () => timeline.slice(0, Math.max(1, Math.round(progress * (timeline.length - 1) + 1))),
+    () => timeline
+      .slice(0, Math.max(1, Math.round(progress * (timeline.length - 1) + 1)))
+      .filter((point) => point.selectable !== false),
     [timeline, progress]
   );
 
@@ -259,7 +265,7 @@ const Timeline = ({ progress }: { progress: number }) => {
       )}
       <group ref={groupRef}>
         {visibleTimelinePoints.map((point, i) => {
-          const diff = Math.min(2 * Math.max(i - progress * (timeline.length - 1), 0), 1);
+          const diff = Math.min(2 * Math.max(i - progress * (selectableTimeline.length - 1), 0), 1);
           return <TimelinePoint point={point} key={point.slug} diff={diff} progress={progress} />;
         })}
       </group>

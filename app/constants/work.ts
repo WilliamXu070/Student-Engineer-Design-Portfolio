@@ -51,6 +51,7 @@ export const WORK_TIMELINE: WorkTimelinePoint[] = [
     subtitle: 'Reflection & Growth',
     position: 'left',
     slug: 'portfolio',
+    selectable: false,
     focusProgress: 0.76,
     focusWidth: 0.05,
     overlayLeft: 514,

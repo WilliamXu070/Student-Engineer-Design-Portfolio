@@ -19,7 +19,7 @@ const TimelineOverlay = () => {
   const setSelectedSlug = useTimelineOverlayStore((state) => state.setSelectedSlug);
   const items = useMemo(() => Object.values(itemMap), [itemMap]);
   const itemConfigMap = useMemo(
-    () => new Map(WORK_TIMELINE.map((item) => [item.slug, item])),
+    () => new Map(WORK_TIMELINE.filter((item) => item.selectable !== false).map((item) => [item.slug, item])),
     []
   );
 

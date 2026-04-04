@@ -12,6 +12,7 @@ import Timeline from "./Timeline";
 
 const MAGNET_RANGE = 0.1;
 const MAGNET_STRENGTH = 0.2;
+const SELECTABLE_TIMELINE = WORK_TIMELINE.filter((point) => point.selectable !== false);
 
 const Work = () => {
   const { camera } = useThree();
@@ -32,7 +33,7 @@ const Work = () => {
     const scrollTop = target.scrollTop;
     const scrollHeight = target.scrollHeight - target.clientHeight;
     const rawProgress = Math.min(Math.max(scrollTop / scrollHeight, 0), 1);
-    const nearestPoint = WORK_TIMELINE.reduce((closest, point) => {
+    const nearestPoint = SELECTABLE_TIMELINE.reduce((closest, point) => {
       if (!closest) {
         return point;
       }
@@ -40,7 +41,7 @@ const Work = () => {
       return Math.abs(point.focusProgress - rawProgress) < Math.abs(closest.focusProgress - rawProgress)
         ? point
         : closest;
-    }, WORK_TIMELINE[0]);
+    }, SELECTABLE_TIMELINE[0]);
 
     const distanceToFocus = Math.abs(nearestPoint.focusProgress - rawProgress);
     const nextProgress = distanceToFocus <= MAGNET_RANGE
