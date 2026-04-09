@@ -1,6 +1,7 @@
 'use client';
 
 import { readSceneSnapshot } from "@/app/lib/navigationMemory";
+import { getPortalScrollLayers } from "@/app/lib/portalUi";
 import { usePortalStore, useScrollStore } from "@stores";
 import { useEffect, useRef, useState } from "react";
 
@@ -54,7 +55,7 @@ const SceneDebugHud = () => {
 
   useEffect(() => {
     const sync = () => {
-      const root = document.querySelector('div[style*="z-index: 1"]');
+      const { root } = getPortalScrollLayers();
       const fixed = root?.firstElementChild ?? null;
       const fill = root?.lastElementChild ?? null;
 

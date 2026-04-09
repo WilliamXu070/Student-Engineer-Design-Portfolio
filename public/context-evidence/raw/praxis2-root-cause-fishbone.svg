@@ -1,0 +1,90 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#171A22"/>
+  <rect x="38" y="38" width="1524" height="824" rx="18" fill="#EFE7D6" stroke="#000000" stroke-width="8"/>
+  <path d="M205 452H1160" stroke="#000000" stroke-width="10" stroke-linecap="round"/>
+  <path d="M1160 452L1275 365" stroke="#000000" stroke-width="10" stroke-linecap="round"/>
+  <path d="M1160 452L1275 539" stroke="#000000" stroke-width="10" stroke-linecap="round"/>
+  <path d="M306 452L226 318" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+  <path d="M306 452L226 586" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+  <path d="M536 452L456 318" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+  <path d="M536 452L456 586" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+  <path d="M766 452L686 318" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+  <path d="M766 452L686 586" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+  <path d="M996 452L916 318" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+  <path d="M996 452L916 586" stroke="#000000" stroke-width="8" stroke-linecap="round"/>
+
+  <rect x="1178" y="338" width="314" height="228" rx="16" fill="#FFD23C" stroke="#000000" stroke-width="8"/>
+  <text x="1204" y="392" fill="#000000" font-family="Arial, sans-serif" font-size="34" font-weight="700">
+    <tspan x="1204" dy="0">Winter telescope use</tspan>
+    <tspan x="1204" dy="42">becomes slow,</tspan>
+    <tspan x="1204" dy="42">frustrating, and</tspan>
+    <tspan x="1204" dy="42">dexterity-limited</tspan>
+  </text>
+
+  <text x="120" y="118" fill="#000000" font-family="Arial, sans-serif" font-size="44" font-weight="700">Root Cause Analysis Fishbone</text>
+  <text x="121" y="163" fill="#000000" font-family="Arial, sans-serif" font-size="24">Praxis II: cold-weather telescope operation</text>
+
+  <text x="108" y="244" fill="#000000" font-family="Arial, sans-serif" font-size="28" font-weight="700">Environment</text>
+  <text x="108" y="280" fill="#000000" font-family="Arial, sans-serif" font-size="22">
+    <tspan x="108" dy="0">Cold air and wind</tspan>
+    <tspan x="108" dy="28">Cold metal contact</tspan>
+    <tspan x="108" dy="28">Long outdoor exposure</tspan>
+    <tspan x="108" dy="28">Low-light operation</tspan>
+  </text>
+
+  <text x="104" y="668" fill="#000000" font-family="Arial, sans-serif" font-size="28" font-weight="700">Current Mitigation</text>
+  <text x="104" y="704" fill="#000000" font-family="Arial, sans-serif" font-size="22">
+    <tspan x="104" dy="0">Thick gloves reduce feel</tspan>
+    <tspan x="104" dy="28">Bare fingertips restore control</tspan>
+    <tspan x="104" dy="28">but increase cold exposure</tspan>
+    <tspan x="104" dy="28">Commercial heated gloves are bulky</tspan>
+  </text>
+
+  <text x="378" y="244" fill="#000000" font-family="Arial, sans-serif" font-size="28" font-weight="700">Hand / Physiology</text>
+  <text x="378" y="280" fill="#000000" font-family="Arial, sans-serif" font-size="22">
+    <tspan x="378" dy="0">Numbness and stiffness</tspan>
+    <tspan x="378" dy="28">Reduced fingertip sensitivity</tspan>
+    <tspan x="378" dy="28">Fine control degrades</tspan>
+    <tspan x="378" dy="28">Cold limits usable session time</tspan>
+  </text>
+
+  <text x="380" y="668" fill="#000000" font-family="Arial, sans-serif" font-size="28" font-weight="700">Workflow Amplifiers</text>
+  <text x="380" y="704" fill="#000000" font-family="Arial, sans-serif" font-size="22">
+    <tspan x="380" dy="0">Delays increase exposure</tspan>
+    <tspan x="380" dy="28">Rework and target reacquisition</tspan>
+    <tspan x="380" dy="28">Dropped parts in snow</tspan>
+    <tspan x="380" dy="28">Repeated correction loops</tspan>
+  </text>
+
+  <text x="622" y="244" fill="#000000" font-family="Arial, sans-serif" font-size="28" font-weight="700">Interface / Task</text>
+  <text x="622" y="280" fill="#000000" font-family="Arial, sans-serif" font-size="22">
+    <tspan x="622" dy="0">Focusing knobs</tspan>
+    <tspan x="622" dy="28">Eyepiece swaps</tspan>
+    <tspan x="622" dy="28">Clamps and connectors</tspan>
+    <tspan x="622" dy="28">Repeated micro-adjustments</tspan>
+  </text>
+
+  <text x="626" y="668" fill="#000000" font-family="Arial, sans-serif" font-size="28" font-weight="700">Community Constraints</text>
+  <text x="626" y="704" fill="#000000" font-family="Arial, sans-serif" font-size="22">
+    <tspan x="626" dy="0">Varied telescope geometries</tspan>
+    <tspan x="626" dy="28">DIY and non-standard parts</tspan>
+    <tspan x="626" dy="28">Shared equipment limits modification</tspan>
+    <tspan x="626" dy="28">Inclusive adoption matters</tspan>
+  </text>
+
+  <text x="904" y="244" fill="#000000" font-family="Arial, sans-serif" font-size="28" font-weight="700">Observed Root Bottleneck</text>
+  <text x="904" y="280" fill="#000000" font-family="Arial, sans-serif" font-size="22">
+    <tspan x="904" dy="0">Users remove gloves for</tspan>
+    <tspan x="904" dy="28">fine telescope tasks</tspan>
+    <tspan x="904" dy="28">because precision matters more</tspan>
+    <tspan x="904" dy="28">than warmth in the moment</tspan>
+  </text>
+
+  <text x="915" y="668" fill="#000000" font-family="Arial, sans-serif" font-size="28" font-weight="700">Divergence Pathways</text>
+  <text x="915" y="704" fill="#000000" font-family="Arial, sans-serif" font-size="22">
+    <tspan x="915" dy="0">1. Reduce dexterity demand</tspan>
+    <tspan x="915" dy="28">2. Preserve user dexterity</tspan>
+    <tspan x="915" dy="28">RCA kept both alive before</tspan>
+    <tspan x="915" dy="28">later convergence narrowed them</tspan>
+  </text>
+</svg>

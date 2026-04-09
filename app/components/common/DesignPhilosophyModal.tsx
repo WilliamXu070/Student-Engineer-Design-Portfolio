@@ -5,22 +5,6 @@ import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-type PositionClaim = {
-  claim: string;
-  why: string;
-  evidence: string;
-  evidenceTag: string;
-};
-
-type PositionSection = {
-  id: string;
-  title: string;
-  summary: string;
-  badgeClass: string;
-  shellClass: string;
-  claims: PositionClaim[];
-};
-
 type EvidenceFigure = {
   id: string;
   title: string;
@@ -31,14 +15,12 @@ type EvidenceFigure = {
   badgeClass: string;
 };
 
-const headlineClaims = [
-  'Good engineering depends on framing, not just solving.',
-  'I trust engineering that is controllable and buildable more than engineering that only looks sophisticated.',
-  'I used to think good engineering meant precise requirements and tight optimization.',
-  'Now I think good engineering also requires protecting the design space from premature certainty.',
-  'I have a bias toward explicit logic and measurable structure.',
-  'My main design risk is premature certainty.',
-];
+type ProjectLesson = {
+  id: string;
+  title: string;
+  paragraphs: string[];
+  figureId: EvidenceFigure['id'];
+};
 
 const selectableTextStyle: CSSProperties = {
   WebkitUserSelect: 'text',
@@ -50,186 +32,136 @@ const selectableTextStyle: CSSProperties = {
 const evidenceFigures: EvidenceFigure[] = [
   {
     id: 'praxis1',
-    title: 'Evidence broke the original frame',
-    project: 'Praxis I',
+    title: 'Praxis I',
+    project: 'Framing must change when the evidence changes',
     caption:
-      'A noise-testing setup sits beside the later reflection that names the deeper issue: the team stayed attached to the original explanation even after conflicting evidence appeared.',
+      'The Praxis I evidence sits here because it grounds the shift from simply solving the problem to questioning whether the original explanation of the problem was still valid.',
     src: '/context-evidence/praxis1-anchor.png',
     alt: 'Praxis I evidence card combining the can-noise test setup with a written reflection about revisiting assumptions.',
     badgeClass: 'border-cyan-300/30 bg-cyan-300/10 text-cyan-100',
   },
   {
     id: 'civ102',
-    title: 'Simple geometry, analyzable logic, buildable form',
-    project: 'CIV102',
+    title: 'CIV102',
+    project: 'Simplicity is an engineering judgment, not a cosmetic one',
     caption:
-      'The extracted bridge cross-section and the built prototype support the same claim: simplicity was a deliberate engineering choice because it improved analysis, construction, and reliability.',
+      'The bridge figure supports the argument that simpler geometry was not chosen for appearance alone, but because it was easier to analyze, build, and justify.',
     src: '/context-evidence/civ102-anchor.png',
     alt: 'CIV102 evidence card combining a bridge cross-section diagram with a photo of the finished bridge.',
     badgeClass: 'border-amber-300/30 bg-amber-300/10 text-amber-100',
   },
   {
     id: 'praxis2',
-    title: 'Rigor became overconstraint',
-    project: 'Praxis II',
+    title: 'Praxis II',
+    project: 'Rigor can become overconstraint',
     caption:
-      'The Beta release shift is represented here as a distilled figure from the slide content: the scope narrowed, and multiple rigid objectives were softened so viable concepts would remain in play.',
+      'The Praxis II figure belongs with the discussion of scope narrowing and objective softening, because it shows where explicit structure had to be loosened so viable concepts could remain in play.',
     src: '/context-evidence/praxis2-anchor.png',
     alt: 'Praxis II evidence card summarizing scope narrowing and objective softening from the Beta release.',
     badgeClass: 'border-emerald-300/30 bg-emerald-300/10 text-emerald-100',
   },
 ];
 
-const positionSections: PositionSection[] = [
+const figureById = new Map(evidenceFigures.map((figure) => [figure.id, figure]));
+
+const openingParagraphs = [
+  'My position as an engineering designer is that rigor matters only when it keeps the framing of the opportunity, the criteria for judgment, and the recommended concept responsive to evidence. Otherwise, rigor hardens into premature closure.',
+  'My earlier position statement presented engineering as a way of thinking before it is a way of building. I still believe that. I still see engineering design as a process of turning uncertainty into clarity through disciplined reasoning and experimentation. I still value questioning assumptions, working from first principles, reducing unnecessary complexity, and learning through iteration. What has changed over this year is not those values themselves, but my understanding of where they matter most in design practice.',
+  'Through Praxis I, CIV102, and Praxis II, I came to see that good engineering is not defined only by how efficiently a team solves a problem once a direction has been chosen. It depends just as much on whether the opportunity has been framed well, whether the criteria actually reflect the real constraints of the project, and whether the concept remains open to revision as representation, testing, and feedback produce new evidence. In other words, the quality of the final design depends on the quality of the reasoning that shapes it. That is the position that now organizes this portfolio.',
+];
+
+const evolutionParagraphs = [
+  'My earlier position emphasized understanding over execution alone. I described engineering as a practice of questioning assumptions rather than accepting them, reasoning from fundamentals rather than copying inherited solutions, simplifying systems rather than making them impressive for their own sake, and using iteration as a way to learn through action. That earlier statement was useful, but it was still broad. It described the habits I valued without fully explaining how those habits shaped engineering design across Frame, Diverge, Converge, and Represent.',
+  'Praxis gave those habits sharper meaning. Questioning assumptions became, more specifically, a commitment to revisiting the frame of an opportunity when evidence weakens the original explanation. First-principles reasoning became a way of deciding which constraints are truly fundamental, which are inherited, and which should be challenged before being turned into fixed criteria. Simplicity became less of a general aesthetic preference and more of an engineering judgment: I now value concepts whose behavior can be explained, whose trade-offs can be justified, and whose construction and validation are feasible within the actual project conditions. Iteration also became more precise in my thinking. I no longer see it only as refining solutions. I now see it as testing whether the frame, assumptions, and criteria are still valid before convergence becomes too rigid.',
+  'The main change, then, is this: I used to treat precision as a sign that the thinking was strong. Now I think strong engineering design depends on timing as much as precision. Criteria, structure, and convergence are useful, but only after the opportunity has been framed well enough. When they arrive too early, they can narrow the design space before the team understands what should actually be protected, optimized, or changed. That is the central lesson that emerged across the year.',
+];
+
+const projectLessons: ProjectLesson[] = [
   {
-    id: '01',
-    title: 'Design Identity',
-    summary:
-      'These claims define the kind of student engineer I am becoming and the standards I use to judge design work.',
-    badgeClass: 'border-sky-400/35 bg-sky-950 text-sky-100',
-    shellClass: 'border-sky-400/25 bg-[#101c28]',
-    claims: [
-      {
-        claim: 'Good engineering depends on framing, not just solving.',
-        why:
-          'In Praxis I, the vented versus unvented test weakened the original can-noise logic. What mattered most was not only that the test failed, but that the team kept working inside the old frame instead of reopening the problem.',
-        evidence:
-          'Use the vented and unvented test results together with your reflection on the frustration of continuing inside an invalidated assumption set.',
-        evidenceTag: 'Praxis I',
-      },
-      {
-        claim: 'I am the kind of engineer who wants the logic of a design to stay honest when the evidence changes.',
-        why:
-          'Your instinct in Praxis I was to reframe quickly once the evidence undercut the premise. That is a claim about how you approach problems, not just about one disappointing experiment.',
-        evidence:
-          'Point to the moment when the team could have kept refining the old idea, while you were focused on the deeper logic becoming unsound.',
-        evidenceTag: 'Praxis I',
-      },
-      {
-        claim: 'I trust engineering that is controllable and buildable more than engineering that only looks sophisticated.',
-        why:
-          'In CIV102, your push toward the simpler bridge form showed that you were drawn to a design you could analyze, construct, and execute reliably rather than a shape that looked more advanced on paper.',
-        evidence:
-          'Use the bridge-form comparison and the design-report rationale where simplicity and constructability are explicitly treated as strengths.',
-        evidenceTag: 'CIV102',
-      },
+    id: 'praxis1',
+    title: 'Praxis I: framing must change when the evidence changes',
+    paragraphs: [
+      'Praxis I exposed the cost of staying inside a weakened frame. In the can-noise work, the most important lesson was not simply that a test result was disappointing. It was that contradictory evidence should have triggered reframing, but the team remained attached to the original explanation of the problem. That moment clarified something important about my own practice: when evidence breaks the logic of the original opportunity framing, I would rather reopen the problem than continue optimizing within an unstable explanation.',
+      'Since then, I have become more alert to the difference between solving a problem well and solving the right problem.',
     ],
+    figureId: 'praxis1',
   },
   {
-    id: '02',
-    title: 'Values In Action',
-    summary:
-      'These claims show what my values look like behaviorally once a team is under pressure and choices actually need to be made.',
-    badgeClass: 'border-amber-400/35 bg-[#302014] text-amber-100',
-    shellClass: 'border-amber-400/25 bg-[#201611]',
-    claims: [
-      {
-        claim: 'When evidence breaks the logic of a design, I would rather reopen the problem than protect the original idea.',
-        why:
-          'This is how your value of clarity shows up in Praxis I. Once the test results weakened the original premise, your instinct was to revisit the frame rather than defend the path already taken.',
-        evidence:
-          'Use the shift point after the vented and unvented testing, plus your reaction to the team staying inside the original can-noise frame.',
-        evidenceTag: 'Praxis I',
-      },
-      {
-        claim: 'When options compete, I prioritize clarity and constructability over complexity.',
-        why:
-          'In CIV102, you did not prefer a simple bridge because it looked cleaner. You preferred it because a simpler form made the design more understandable, more controllable, and more executable.',
-        evidence:
-          'Use the design-selection logic from the bridge report, especially where simpler geometry is tied to analysis quality and construction reliability.',
-        evidenceTag: 'CIV102',
-      },
-      {
-        claim: 'I value rigor, but I now see that rigor can become a problem when it narrows the design space too early.',
-        why:
-          'Praxis II gave you a strong self-critical example because the overconstraint came partly from your own method. The original goals and objectives were so detailed that they started excluding viable concepts too early.',
-        evidence:
-          'Use the Beta release objective softening, especially the slides where the original detailed goals had to be loosened to keep viable concepts in play.',
-        evidenceTag: 'Praxis II',
-      },
+    id: 'civ102',
+    title: 'CIV102: simplicity is an engineering judgment, not a cosmetic one',
+    paragraphs: [
+      'CIV102 clarified why I am drawn to simpler concepts. My preference was not for a design that merely looked cleaner or more elegant. I was drawn to the bridge form that was easier to analyze, easier to represent clearly, easier to construct reliably, and easier to justify in terms of likely performance. That project helped me articulate a value that was present in my earlier statement but not yet well defined: I prefer concepts that remain legible across analysis, making, and verification.',
+      'When complexity improves performance and can be defended, I accept it. But when complexity mainly creates the appearance of sophistication without the same gain in clarity, constructability, or validation, I do not trust it as readily.',
     ],
+    figureId: 'civ102',
   },
   {
-    id: '03',
-    title: 'How My Position Evolved',
-    summary:
-      'This section makes the before-and-after arc explicit so the position reads as an iterated design stance rather than a fixed philosophy.',
-    badgeClass: 'border-emerald-400/35 bg-[#15261d] text-emerald-100',
-    shellClass: 'border-emerald-400/25 bg-[#111b16]',
-    claims: [
-      {
-        claim: 'At the start of the year, I thought good engineering meant defining precise requirements early and optimizing tightly around them.',
-        why:
-          'That earlier view helps explain both the frame persistence in Praxis I and the over-precise objectives in early Praxis II. Precision felt like evidence that the thinking was strong.',
-        evidence:
-          'Use earlier process language from Praxis I and early Praxis II that emphasizes precision, early narrowing, and tight optimization.',
-        evidenceTag: 'Praxis I + II',
-      },
-      {
-        claim: 'Now I think good engineering also requires protecting the design space from premature certainty.',
-        why:
-          'This is the clearest statement of the shift in your position. The lesson was not to become less rigorous, but to stop letting rigor harden too early.',
-        evidence:
-          'Use a direct comparison between Praxis I and Praxis II to show that your later learning was about timing and openness, not about abandoning standards.',
-        evidenceTag: 'Cross-Project',
-      },
-      {
-        claim: 'I used to treat precision as the same thing as good thinking; now I see that good thinking also includes knowing when not to close the problem yet.',
-        why:
-          'This makes the evolution more personal. It shifts the claim away from a general theory of design and toward a change in your own reasoning habits.',
-        evidence:
-          'Pair the Praxis I testing moment with the Praxis II objective softening so the change reads as one evolving pattern rather than two separate anecdotes.',
-        evidenceTag: 'Praxis I + II',
-      },
+    id: 'praxis2',
+    title: 'Praxis II: rigor can become overconstraint',
+    paragraphs: [
+      'Praxis II turned my own strengths back on me. Early in the project, the goals, objectives, and criteria became too rigid too early. What initially felt like rigor later appeared as overconstraint, because viable concepts were being narrowed out before enough divergence and exploration had taken place. The later scope narrowing and objective softening were important not because they reduced standards, but because they restored room for better judgment.',
+      'This project made my main design risk visible: I can over-associate explicit structure, measurable criteria, and early precision with good thinking, even when the opportunity is still too unstable for those tools to be fixed.',
     ],
-  },
-  {
-    id: '04',
-    title: 'Biases And Their Implications',
-    summary:
-      'These claims qualify the position honestly by showing where my strengths can harden into blind spots if I do not actively manage them.',
-    badgeClass: 'border-rose-400/35 bg-[#2d151c] text-rose-100',
-    shellClass: 'border-rose-400/25 bg-[#1d1215]',
-    claims: [
-      {
-        claim: 'I have a bias toward explicit logic, measurable structure, and defensible criteria.',
-        why:
-          'This pattern appears across all three projects: the attraction to analyzable bridge forms in CIV102, the frustration with weak assumptions in Praxis I, and the detailed scoping work in Praxis II.',
-        evidence:
-          'Use all three projects together so the bias reads as a consistent pattern in your behavior rather than a one-off trait.',
-        evidenceTag: 'Across Projects',
-      },
-      {
-        claim: 'The downside of that bias is that ambiguity can start to feel like bad thinking, even when it is a necessary stage of design.',
-        why:
-          'That is the strongest statement of the risk in your examples. Ambiguity is sometimes part of framing, but your instinct is to move toward explicit logic quickly once the discussion starts to feel loose.',
-        evidence:
-          'Use moments where you became frustrated when a team was not clarifying quickly, or where your own detailed criteria had to be softened because they had become too rigid.',
-        evidenceTag: 'Praxis I + II',
-      },
-      {
-        claim: 'My drive for rigor helps me find weak logic, but it can also make collaboration harder when others are still working through uncertainty.',
-        why:
-          'This keeps the bias honest. Your rigor is not a generic strength; it can create friction when you see the frame as already invalid while others are still processing what to do next.',
-        evidence:
-          'Use the Praxis I frustration after the assumption failure, especially if you can point to how that affected group discussion or direction.',
-        evidenceTag: 'Praxis I',
-      },
-      {
-        claim: 'My main design risk is not lack of rigor, but premature certainty.',
-        why:
-          'This synthesizes the full position into one sharp qualification. The pattern is not that you avoid structure; it is that structure can harden too early if you do not keep the frame open long enough.',
-        evidence:
-          'Use Praxis I staying in the old frame, CIV102 preferring analyzable simplicity, and Praxis II softening over-precise objectives as one through-line.',
-        evidenceTag: 'Core Risk',
-      },
-    ],
+    figureId: 'praxis2',
   },
 ];
 
-const evolutionFigures = evidenceFigures.filter((figure) =>
-  ['praxis1', 'praxis2'].includes(figure.id),
-);
+const designPracticeQuestions = [
+  'Is the opportunity framing sound, or is the team solving inside assumptions that should still be challenged?',
+  'Are the criteria grounded in actual stakeholder needs and project constraints, or have they hardened too early?',
+  'Is the concept strong enough to be represented, constructed, and explained clearly?',
+  'Can the concept be tested and validated in a way that produces meaningful evidence rather than only confirmation?',
+];
+
+const strengthsParagraphs = [
+  'This position has clear strengths. It helps me expose weak assumptions, build defensible criteria, and converge toward concepts that are feasible and justifiable rather than merely attractive. It also supports the values in my earlier position statement: clarity over unnecessary complexity, understanding over execution alone, and iteration as a route to insight rather than just output.',
+  'But this position also carries a bias. Because I trust explicit logic, measurable structure, and defensible criteria, ambiguity can start to feel like weak thinking even when ambiguity is still a necessary part of framing or divergence. That is why my main design risk is not lack of rigor, but premature closure. I can move too quickly toward structure, evaluation, and convergence before the opportunity has stabilized enough to support them.',
+  'The guardrail I need is not less rigor. It is better-timed rigor: revisiting assumptions when evidence shifts, treating criteria as revisable, allowing divergence to do real work before narrowing, and using representation and testing to challenge the frame rather than merely confirm it.',
+];
+
+const closingParagraphs = [
+  'This position is why the rest of this portfolio does not only show what I designed. It focuses on how my framing changed, how criteria were formed and revised, how concepts were selected or rejected, and how representation and testing shaped later decisions. It is also why the CTMFs I selected are not included as isolated tools, but as parts of a design practice that I am trying to understand more critically. The portfolio brief asks for a position statement that frames the organization of the portfolio and the assessment of CTMFs, and that is the role this section is intended to play.',
+  'Across Praxis I, CIV102, and Praxis II, I came to see that my work is strongest not when I narrow fastest, but when I keep the design space open long enough for evidence to improve the frame before convergence begins. That does not mean delaying judgment indefinitely. It means sequencing judgment properly.',
+  'That is the engineer I am trying to become: one who values disciplined reasoning, but who knows that the point of rigor is not to close uncertainty quickly. It is to close it honestly.',
+];
+
+const renderFigure = (figureId: EvidenceFigure['id']) => {
+  const figure = figureById.get(figureId);
+
+  if (!figure) {
+    return null;
+  }
+
+  return (
+    <figure className="my-6 rounded-[1.4rem] border border-slate-200/10 bg-[#0b1118] p-4 md:my-8 md:p-5">
+      <div className="relative mb-4 aspect-[16/10] overflow-hidden rounded-[1.1rem] border border-white/10 bg-[#0d141d]">
+        <Image
+          src={figure.src}
+          alt={figure.alt}
+          fill
+          sizes="(max-width: 1024px) 100vw, 52rem"
+          className="object-cover"
+        />
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(7,10,16,0.04),rgba(7,10,16,0.22))]" />
+      </div>
+
+      <figcaption>
+        <div
+          className={`mb-3 inline-flex rounded-full border px-3 py-1 text-[0.62rem] uppercase tracking-[0.22em] ${figure.badgeClass}`}
+        >
+          {figure.title}
+        </div>
+        <h4
+          className="mb-2 text-[1.02rem] font-light leading-[1.2] text-white md:text-[1.12rem]"
+          style={{ fontFamily: 'var(--font-soria)' }}
+        >
+          {figure.project}
+        </h4>
+        <p className="text-sm leading-7 text-slate-300">{figure.caption}</p>
+      </figcaption>
+    </figure>
+  );
+};
 
 const DesignPhilosophyModal = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -346,10 +278,10 @@ const DesignPhilosophyModal = () => {
                       Position In Context
                     </div>
                     <h2
-                      className="max-w-[28rem] text-3xl font-light leading-[1.02] text-white md:text-[3.1rem]"
+                      className="max-w-[40rem] text-3xl font-light leading-[1.02] text-white md:text-[3.1rem]"
                       style={{ fontFamily: 'var(--font-soria)' }}
                     >
-                      How I approach engineering now
+                      Rigor only matters when it stays responsive to evidence
                     </h2>
                   </div>
                   <button
@@ -360,11 +292,10 @@ const DesignPhilosophyModal = () => {
                   </button>
                 </div>
 
-                <p className="max-w-[46rem] text-sm leading-7 text-slate-200 md:text-[1rem]">
-                  My position now is that engineering design is not strongest when it looks most precise, but when its
-                  framing, logic, and constraints remain honest as evidence changes. I value buildable decisions,
-                  explicit reasoning, and rigor, but this year taught me that the main risk in my approach is letting
-                  certainty arrive too early.
+                <p className="max-w-[50rem] text-sm leading-7 text-slate-200 md:text-[1rem]">
+                  This statement explains how Praxis I, CIV102, and Praxis II changed the way I think about framing,
+                  criteria, convergence, and evidence. It is the argument that now organizes the projects and CTMFs in
+                  the rest of the portfolio.
                 </p>
               </div>
 
@@ -372,204 +303,122 @@ const DesignPhilosophyModal = () => {
                 className="flex-1 overflow-y-auto px-6 pb-8 pt-6 md:px-10 md:pb-10 md:pt-8"
                 style={selectableTextStyle}
               >
-                <section className="mb-8 rounded-[1.6rem] border border-slate-200/10 bg-[#111925] p-5 md:p-6">
-                  <div className="mb-5 flex items-center justify-between gap-3">
-                    <div className="text-[0.7rem] uppercase tracking-[0.28em] text-slate-300">
-                      Core Position At A Glance
+                <div className="mx-auto max-w-[52rem] space-y-8 md:space-y-10">
+                  <section className="rounded-[1.6rem] border border-slate-200/10 bg-[#111925] p-5 md:p-7">
+                    <div className="mb-4 text-[0.68rem] uppercase tracking-[0.28em] text-cyan-200/90">
+                      Position in Context
                     </div>
-                    <div className="rounded-full border border-white/10 bg-[#1a2330] px-3 py-1 text-[0.68rem] uppercase tracking-[0.22em] text-slate-300">
-                      read in under 30 seconds
+                    <div className="space-y-5 text-[0.98rem] leading-8 text-slate-100">
+                      {openingParagraphs.map((paragraph) => (
+                        <p key={paragraph}>{paragraph}</p>
+                      ))}
                     </div>
-                  </div>
+                  </section>
 
-                  <div className="mb-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-                    {headlineClaims.map((claim, index) => (
-                      <div
-                        key={claim}
-                        className="rounded-[1.25rem] border border-slate-200/10 bg-[#0d141d] px-4 py-4"
-                      >
-                        <div>
-                          <div className="mb-2 text-[0.64rem] uppercase tracking-[0.22em] text-cyan-200">
-                            0{index + 1}
-                          </div>
-                          <p className="text-sm font-medium leading-6 text-white md:text-[0.96rem]">{claim}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <p className="max-w-[44rem] text-sm leading-7 text-slate-300">
-                    The sections below unpack these headline claims through three project anchors: the Praxis I can-noise
-                    framing failure, the CIV102 preference for simpler bridge forms, and the Praxis II realization that
-                    rigor can become overconstraint.
-                  </p>
-                </section>
-
-                <section className="mb-8 rounded-[1.6rem] border border-slate-200/10 bg-[#111925] p-5 md:p-6">
-                  <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-                    <div>
-                      <div className="mb-3 text-[0.68rem] uppercase tracking-[0.28em] text-cyan-200/90">
-                        Context Figures
-                      </div>
-                      <h3
-                        className="text-[1.5rem] font-light text-white md:text-[1.8rem]"
-                        style={{ fontFamily: 'var(--font-soria)' }}
-                      >
-                        The project evidence behind the claims
-                      </h3>
+                  <section className="rounded-[1.6rem] border border-slate-200/10 bg-[#111925] p-5 md:p-7">
+                    <div className="mb-4 text-[0.68rem] uppercase tracking-[0.28em] text-emerald-200/90">
+                      How this position evolved
                     </div>
-                    <p className="max-w-[36rem] text-sm leading-7 text-slate-300">
-                      These extracted figures give the argument a physical anchor. Instead of only naming the project
-                      moments, the modal now shows the testing, form decisions, and scope changes that shaped the
-                      position.
-                    </p>
-                  </div>
+                    <div className="space-y-5 text-[0.98rem] leading-8 text-slate-100">
+                      {evolutionParagraphs.map((paragraph) => (
+                        <p key={paragraph}>{paragraph}</p>
+                      ))}
+                    </div>
+                  </section>
 
-                  <div className="grid gap-5 xl:grid-cols-3">
-                    {evidenceFigures.map((figure) => (
-                      <figure
-                        key={figure.id}
-                        className="rounded-[1.4rem] border border-slate-200/10 bg-[#0b1118] p-4"
-                      >
-                        <div className="relative mb-4 aspect-[16/10] overflow-hidden rounded-[1.2rem] border border-white/10 bg-[#0d141d]">
-                          <Image
-                            src={figure.src}
-                            alt={figure.alt}
-                            fill
-                            sizes="(max-width: 1279px) 100vw, 30vw"
-                            className="object-cover"
-                          />
-                          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(7,10,16,0.04),rgba(7,10,16,0.2))]" />
-                        </div>
+                  <section className="rounded-[1.6rem] border border-slate-200/10 bg-[#111925] p-5 md:p-7">
+                    <div className="mb-4 text-[0.68rem] uppercase tracking-[0.28em] text-amber-200/90">
+                      What the projects taught me
+                    </div>
 
-                        <div className="mb-3 flex items-center justify-between gap-3">
-                          <div
-                            className={`inline-flex rounded-full border px-3 py-1 text-[0.62rem] uppercase tracking-[0.22em] ${figure.badgeClass}`}
-                          >
-                            {figure.project}
-                          </div>
-                          <div className="text-[0.62rem] uppercase tracking-[0.22em] text-slate-500">Extracted Figure</div>
-                        </div>
-
-                        <figcaption>
-                          <h4
-                            className="mb-2 text-[1.02rem] font-light leading-[1.2] text-white"
+                    <div className="space-y-8">
+                      {projectLessons.map((lesson) => (
+                        <article key={lesson.id} className="border-t border-white/10 pt-6 first:border-t-0 first:pt-0">
+                          <h3
+                            className="mb-4 text-[1.45rem] font-light leading-[1.1] text-white md:text-[1.8rem]"
                             style={{ fontFamily: 'var(--font-soria)' }}
                           >
-                            {figure.title}
-                          </h4>
-                          <p className="text-sm leading-7 text-slate-300">{figure.caption}</p>
-                        </figcaption>
-                      </figure>
-                    ))}
-                  </div>
-                </section>
-
-                <div className="space-y-7">
-                  {positionSections.map((section) => (
-                    <section
-                      key={section.id}
-                      className={`rounded-[1.6rem] border p-5 md:p-6 ${section.shellClass}`}
-                    >
-                      <div>
-                        <div className="mb-5 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-                          <div>
-                            <div
-                              className={`mb-3 inline-flex rounded-full border px-3 py-1 text-[0.64rem] uppercase tracking-[0.22em] ${section.badgeClass}`}
-                            >
-                              {section.id}
-                            </div>
-                            <h3
-                              className="text-[1.5rem] font-light text-white md:text-[1.8rem]"
-                              style={{ fontFamily: 'var(--font-soria)' }}
-                            >
-                              {section.title}
-                            </h3>
+                            {lesson.title}
+                          </h3>
+                          <div className="space-y-5 text-[0.98rem] leading-8 text-slate-100">
+                            {lesson.paragraphs.map((paragraph) => (
+                              <p key={paragraph}>{paragraph}</p>
+                            ))}
                           </div>
-                          <p className="max-w-[33rem] text-sm leading-7 text-slate-300">
-                            {section.summary}
-                          </p>
-                        </div>
+                          {renderFigure(lesson.figureId)}
+                        </article>
+                      ))}
 
-                        {section.id === '03' && (
-                          <div className="mb-5 rounded-[1.35rem] border border-white/10 bg-[#0b1118] p-4 md:p-5">
-                            <div className="mb-4 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-                              <div>
-                                <div className="mb-2 text-[0.62rem] uppercase tracking-[0.22em] text-emerald-200/80">
-                                  Evolution Snapshot
-                                </div>
-                                <h4
-                                  className="text-[1.2rem] font-light text-white"
-                                  style={{ fontFamily: 'var(--font-soria)' }}
-                                >
-                                  The shift is visible in the evidence itself
-                                </h4>
-                              </div>
-                              <p className="max-w-[34rem] text-sm leading-7 text-slate-300">
-                                Praxis I shows the cost of staying inside a broken frame. Praxis II shows the later move
-                                to deliberately loosen constraints so the frame would not harden too early.
-                              </p>
-                            </div>
-
-                            <div className="grid gap-4 xl:grid-cols-2">
-                              {evolutionFigures.map((figure) => (
-                                <figure
-                                  key={figure.id}
-                                  className="rounded-[1.2rem] border border-slate-200/10 bg-[#101822] p-3"
-                                >
-                                  <div className="relative mb-3 aspect-[16/10] overflow-hidden rounded-[1rem] border border-white/10 bg-[#0d141d]">
-                                    <Image
-                                      src={figure.src}
-                                      alt={figure.alt}
-                                      fill
-                                      sizes="(max-width: 1279px) 100vw, 42vw"
-                                      className="object-cover"
-                                    />
-                                  </div>
-                                  <figcaption>
-                                    <div
-                                      className={`mb-2 inline-flex rounded-full border px-3 py-1 text-[0.62rem] uppercase tracking-[0.22em] ${figure.badgeClass}`}
-                                    >
-                                      {figure.project}
-                                    </div>
-                                    <p className="text-sm leading-7 text-slate-300">{figure.caption}</p>
-                                  </figcaption>
-                                </figure>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-
-                        <div className="grid gap-4 xl:grid-cols-2">
-                          {section.claims.map((entry) => (
-                            <article
-                              key={entry.claim}
-                              className="rounded-[1.3rem] border border-slate-200/10 bg-[#0b1118] p-5"
-                            >
-                              <div>
-                                <div className="mb-3 inline-flex rounded-full border border-white/12 bg-[#141c27] px-3 py-1 text-[0.62rem] uppercase tracking-[0.22em] text-slate-200">
-                                  {entry.evidenceTag}
-                                </div>
-                                <h4
-                                  className="mb-3 text-[1.08rem] font-light leading-[1.25] text-white"
-                                  style={{ fontFamily: 'var(--font-soria)' }}
-                                >
-                                  {entry.claim}
-                                </h4>
-                                <p className="mb-4 text-sm leading-7 text-slate-100">{entry.why}</p>
-                                <div className="rounded-[1rem] border border-white/10 bg-[#141c27] px-4 py-3">
-                                  <div className="mb-1 text-[0.62rem] uppercase tracking-[0.22em] text-cyan-200">
-                                    Evidence To Ground It
-                                  </div>
-                                  <p className="text-sm leading-7 text-slate-300">{entry.evidence}</p>
-                                </div>
-                              </div>
-                            </article>
-                          ))}
-                        </div>
+                      <div className="rounded-[1.2rem] border border-white/10 bg-[#0b1118] p-4 md:p-5">
+                        <p className="text-[0.98rem] leading-8 text-slate-100">
+                          Taken together, these three projects changed my position from a general belief in
+                          understanding, simplicity, and iteration into a more specific design stance. I now think good
+                          engineering design depends on keeping the frame, criteria, and concept open to revision for
+                          long enough that evidence can improve them before convergence closes the problem.
+                        </p>
                       </div>
-                    </section>
-                  ))}
+                    </div>
+                  </section>
+
+                  <section className="rounded-[1.6rem] border border-slate-200/10 bg-[#111925] p-5 md:p-7">
+                    <div className="mb-4 text-[0.68rem] uppercase tracking-[0.28em] text-sky-200/90">
+                      What this reveals about my design practice
+                    </div>
+
+                    <p className="mb-5 text-[0.98rem] leading-8 text-slate-100">
+                      In practice, this means I tend to judge design quality through four questions:
+                    </p>
+
+                    <ol className="space-y-3">
+                      {designPracticeQuestions.map((question, index) => (
+                        <li
+                          key={question}
+                          className="rounded-[1.1rem] border border-white/10 bg-[#0b1118] px-4 py-4 text-[0.98rem] leading-8 text-slate-100"
+                        >
+                          <span className="mr-3 inline-flex h-7 w-7 items-center justify-center rounded-full border border-cyan-300/25 bg-cyan-300/10 text-sm text-cyan-100">
+                            {index + 1}
+                          </span>
+                          {question}
+                        </li>
+                      ))}
+                    </ol>
+
+                    <div className="mt-5 space-y-5 text-[0.98rem] leading-8 text-slate-100">
+                      <p>
+                        These questions reflect the kind of engineering I trust most. I am most confident in decisions
+                        when the reasoning is explicit, the trade-offs are defensible, and the concept can survive
+                        movement across Frame, Diverge, Converge, Represent, and validation without losing coherence.
+                      </p>
+                      <p>
+                        I do not see engineering design as a search for maximum complexity or maximum novelty. I see it
+                        as a disciplined process of reducing uncertainty in the right order.
+                      </p>
+                    </div>
+                  </section>
+
+                  <section className="rounded-[1.6rem] border border-slate-200/10 bg-[#111925] p-5 md:p-7">
+                    <div className="mb-4 text-[0.68rem] uppercase tracking-[0.28em] text-rose-200/90">
+                      Strengths, bias, and guardrails
+                    </div>
+
+                    <div className="space-y-5 text-[0.98rem] leading-8 text-slate-100">
+                      {strengthsParagraphs.map((paragraph) => (
+                        <p key={paragraph}>{paragraph}</p>
+                      ))}
+                    </div>
+                  </section>
+
+                  <section className="rounded-[1.6rem] border border-slate-200/10 bg-[#111925] p-5 md:p-7">
+                    <div className="mb-4 text-[0.68rem] uppercase tracking-[0.28em] text-cyan-200/90">
+                      How this position organizes the rest of the portfolio
+                    </div>
+
+                    <div className="space-y-5 text-[0.98rem] leading-8 text-slate-100">
+                      {closingParagraphs.map((paragraph) => (
+                        <p key={paragraph}>{paragraph}</p>
+                      ))}
+                    </div>
+                  </section>
                 </div>
               </div>
             </div>

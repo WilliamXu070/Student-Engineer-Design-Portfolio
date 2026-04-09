@@ -7,28 +7,30 @@ import { isMobile } from "react-device-detect";
 import * as THREE from "three";
 
 import {
-  getProjectsPortalCameraPosition,
-  getProjectsPortalCameraRotation,
-  rememberReturnTarget,
-  rememberSceneSnapshot,
+	rememberReturnTarget,
+	rememberSceneSnapshot,
 } from "@/app/lib/navigationMemory";
+import { getPortalScrollLayers } from "@/app/lib/portalUi";
 import { usePortalStore, useScrollStore } from "@stores";
 import { Ctmf } from "@types";
 
 interface ProjectTileProps {
   project: Ctmf;
-  index: number;
+  itemKey: string;
+  entranceIndex: number;
   position: [number, number, number];
   rotation: [number, number, number];
-  activeId: number | null;
+  activeSlug: string | null;
   onClick: () => void;
 }
 
-const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: ProjectTileProps) => {
+const ProjectTile = ({ project, itemKey, entranceIndex, position, rotation, activeSlug, onClick }: ProjectTileProps) => {
   const projectRef = useRef<THREE.Group>(null);
   const hoverAnimRef = useRef<gsap.core.Timeline | null>(null);
   const [hovered, setHovered] = useState(false);
   const isProjectSectionActive = usePortalStore((state) => state.activePortalId === "projects");
+  const sceneCameraPosition = usePortalStore((state) => state.sceneCameraPosition);
+  const sceneCameraRotation = usePortalStore((state) => state.sceneCameraRotation);
   const router = useRouter();
   const rootScrollProgress = useScrollStore((state) => state.scrollProgress);
 
@@ -75,35 +77,35 @@ const ProjectTile = ({ project, index, position, rotation, activeId, onClick }: 
 
   useEffect(() => {
     if (isMobile) {
-      setHovered(activeId === index);
+      setHovered(activeSlug === itemKey);
     }
-  }, [isMobile, activeId]);
+  }, [activeSlug, isMobile, itemKey]);
 
   useEffect(() => {
     if (projectRef.current) {
       gsap.to(projectRef.current.position, {
         y: isProjectSectionActive ? 0 : -10,
         duration: 1,
-        delay: isProjectSectionActive ? index * 0.1 : 0,
+        delay: isProjectSectionActive ? entranceIndex * 0.1 : 0,
       });
     }
-  }, [isProjectSectionActive]);
+  }, [entranceIndex, isProjectSectionActive]);
 
-  const handleClick = (e: ThreeEvent<MouseEvent>) => {
-    e.stopPropagation();
-    const button = e.eventObject;
-    const rootScrollWrapper = document.querySelector('div[style*="z-index: 1"]') as HTMLElement | null;
-    const scrollableHeight = rootScrollWrapper ? rootScrollWrapper.scrollHeight - rootScrollWrapper.clientHeight : 0;
-    const liveRootScrollProgress = rootScrollWrapper && scrollableHeight > 0
-      ? rootScrollWrapper.scrollTop / scrollableHeight
+	const handleClick = (e: ThreeEvent<MouseEvent>) => {
+		e.stopPropagation();
+		const button = e.eventObject;
+		const { root: rootScrollWrapper } = getPortalScrollLayers();
+		const scrollableHeight = rootScrollWrapper ? rootScrollWrapper.scrollHeight - rootScrollWrapper.clientHeight : 0;
+		const liveRootScrollProgress = rootScrollWrapper && scrollableHeight > 0
+			? rootScrollWrapper.scrollTop / scrollableHeight
       : rootScrollProgress;
 
     gsap.to(button.position, { z: 0, duration: 0.1 })
       .then(() => gsap.to(button.position, { z: 0.3, duration: 0.3 }));
     rememberSceneSnapshot({
       activePortalId: "projects",
-      cameraPosition: getProjectsPortalCameraPosition(isMobile),
-      cameraRotation: getProjectsPortalCameraRotation(),
+      cameraPosition: sceneCameraPosition,
+      cameraRotation: sceneCameraRotation,
       rootScrollProgress: liveRootScrollProgress,
       workScrollProgress: 0,
     });

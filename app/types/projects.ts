@@ -6,6 +6,24 @@ interface ProjectUrl {
 export interface CtmfDossierSection {
   title: string;
   bullets: string[];
+  calloutTitle?: string;
+  callouts?: string[];
+  figures?: {
+    src: string;
+    alt: string;
+    caption: string;
+  }[];
+}
+
+export interface CtmfDossierArtifact {
+  title: string;
+  eyebrow: string;
+  description: string;
+  highlights?: string[];
+  src?: string;
+  alt?: string;
+  sourceHref?: string;
+  sourceLabel?: string;
 }
 
 export interface CtmfProjectDossier {
@@ -13,6 +31,7 @@ export interface CtmfProjectDossier {
   phaseCode: string;
   claimHeadline: string;
   summary: string;
+  artifacts?: CtmfDossierArtifact[];
   sections: CtmfDossierSection[];
 }
 

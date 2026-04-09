@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 
 import HidePortalCloseButton from "@/app/components/common/HidePortalCloseButton";
@@ -12,6 +13,82 @@ type CtmfPageProps = {
 	}>;
 };
 
+const stakeholderPraxisSections = [
+	{
+		title: "Core Claim",
+		bullets: [
+			"In Praxis I, stakeholder analysis mattered because it expanded the project from a noise-only problem into a broader user-centered engineering problem, and that shift changed what counted as a successful design.",
+		],
+	},
+	{
+		title: "CTMF Description / What It Is",
+		bullets: [
+			"Stakeholder analysis is a framing / representing CTMF that identifies who is affected by a design, what they care about, and how those concerns should be translated into requirements before the project narrows too quickly around one metric.",
+			"In Praxis I, it was needed to stop the project from collapsing into noise reduction alone and to keep other user-visible consequences of can opening in view.",
+		],
+	},
+	{
+		title: "What I Used The CTMF For In Praxis I / How It Influenced The Project",
+		calloutTitle: "What students actually raised",
+		callouts: [
+			'Interview 1: the can could "burst out" and get contents on the user\'s hands.',
+			'Interview 5: "the risk of the can spilling all over the place" was part of what made opening unpleasant.',
+			'Interview 6: opening could involve "digging it under the top" with the fingers and taking "very long."',
+		],
+		figures: [
+			{
+				src: "/context-evidence/raw/praxis1-stakeholder-contact.png",
+				alt: "Praxis I primary stakeholder contact with students holding soda cans during interviews.",
+				caption:
+					"Primary stakeholder contact is the reason this CTMF mattered. The project did not infer user concerns from the report after the fact; it gathered them directly from students using the product in context.",
+			},
+			{
+				src: "/context-evidence/raw/praxis1-p3-img2.png",
+				alt: "Praxis I slider concept render from the final concept direction.",
+				caption:
+					"The final recommendation became stronger because the slider did not only quiet the opening event. It also better protected the user-facing criteria that stakeholder conversations made visible.",
+			},
+		],
+		bullets: [
+			"This was collaborative early framing work rather than a solo artifact, and I used those stakeholder conversations to widen the problem beyond simply making the can quieter. The interviews made it clear that students were reacting not only to the sound itself, but to the whole opening event: spilling, fizz or contents on the hands, awkward finger interaction, and the opening action taking too long.",
+			"Those concerns then changed the engineering definition of success. The project added a beverage-integrity goal, meaning the drink should stay usable and should not spray or spill excessively during opening. In the report, that became Goal 2, along with a liquid-loss limit of no more than 1% of the drink and a carbonation-loss limit of no more than 1 g after 90 seconds. Ease of use also became more explicit: the opener should take less than 5 seconds, require no more than 3 separate hand actions, keep the peak force below 25 N, and keep concentrated hand pressure below 200 kPa. The related evaluation criteria later tracked these same ideas as spill control, force, pressure, and gesture burden.",
+			"This directly influenced convergence. The final recommendation was not justified only by acoustic performance. The slider remained stronger because it did a better job protecting beverage integrity and interaction quality as well: about 0.46% liquid loss, 0.4 g carbonation boil-off, about 80 kPa maximum hand pressure, and only 2 gestures. By contrast, the water opener looked much weaker once those user-facing criteria stayed visible, with about 1.80% liquid loss, 2.3 g carbonation boil-off, about 600 kPa pressure, and 5 gestures.",
+		],
+	},
+	{
+		title: "Limitations Of The CTMF",
+		figures: [
+			{
+				src: "/context-evidence/raw/praxis1-p2-img1.png",
+				alt: "Praxis I acoustic testing setup showing a phone decibel meter beside a soda can during opening.",
+				caption:
+					"Stakeholder analysis defined what the design needed to protect, but testing was still required to challenge the original explanation of what physically caused the sound event.",
+			},
+		],
+		bullets: [
+			"Stakeholder analysis clarified what success needed to protect, but it did not reveal what physically caused the sound event.",
+			"It could not determine whether the dominant issue was depressurization, tear-line fracture, or something else. That required mechanism-level testing and measurement.",
+			"In Praxis I, that meant stakeholder analysis gave the project a better frame, but testing was still needed to challenge the original physical explanation and show that the problem could not be solved by stakeholder framing alone.",
+		],
+	},
+	{
+		title: "Impact On My Position In Context",
+		bullets: [
+			"This CTMF fits my preference for explicit, grounded criteria before convergence begins.",
+			"It also guarded against one of my main biases: reducing the project to one technically attractive metric. In Praxis I, that metric would have been noise alone.",
+			"The deeper lesson for me was that good engineering framing has to keep multiple legitimate definitions of success visible at once, rather than optimizing too early around the clearest technical target.",
+		],
+	},
+	{
+		title: "Future Steps",
+		bullets: [
+			"Use stakeholder analysis early, but make interviews more systematic and map recurring concerns directly into requirements instead of leaving them as loose impressions.",
+			"Distinguish between concerns I expected beforehand and concerns that genuinely emerged through stakeholder conversations.",
+			"Revisit stakeholder analysis after testing to check whether the project is still protecting what stakeholders actually cared about once the explanation of the problem changes.",
+		],
+	},
+];
+
 const getCtmfData = (slug: string) => {
 	const ctmf = PROJECTS.find((entry) => entry.slug === slug);
 
@@ -20,6 +97,7 @@ const getCtmfData = (slug: string) => {
 	}
 
 	const relatedProjects = WORK_TIMELINE
+		.filter((point) => point.selectable !== false && point.slug !== "beyond")
 		.map((point) => {
 			const detail = PROJECT_DETAILS[point.slug];
 
@@ -81,7 +159,11 @@ const CtmfPage = async ({ params }: CtmfPageProps) => {
 
 			<div className="relative z-10 mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-8 md:px-10 md:py-12">
 				<div className="mb-10 flex items-center justify-between gap-4 border-b-[3px] border-black pb-6">
-					<RememberedBackLink fallbackHref="/?portal=projects" fallbackLabel="Back to CTMFs" />
+					<RememberedBackLink
+						fallbackHref="/?portal=projects"
+						fallbackLabel="Back to CTMFs"
+						className="neo-chip bg-[#efe7d6] px-4 py-2 text-black hover:-translate-y-1 hover:text-black"
+					/>
 					<p
 						className="neo-chip -rotate-2 bg-[#ffd23c] px-3 py-2 text-right text-xs uppercase tracking-[0.32em] text-black"
 						style={{ fontFamily: "var(--font-vercetti)" }}>
@@ -133,67 +215,183 @@ const CtmfPage = async ({ params }: CtmfPageProps) => {
 					</aside>
 				</section>
 
-				{ctmf.dossiers?.map((dossier) => (
-					<section
-						key={`${ctmf.slug}-${dossier.project}`}
-						className="flex flex-col gap-6 border-b-[3px] border-black py-10 md:py-14">
-						<aside className="neo-panel neo-angle bg-[#171a22] p-6 text-[#f8f3e8] md:p-8">
-							<p
-								className="text-xs uppercase tracking-[0.3em] text-[#ffd23c]"
-								style={{ fontFamily: "var(--font-vercetti)" }}>
-								{dossier.project} Planning Dossier
-							</p>
-							<div className="mt-4 flex items-center gap-3">
-								<span
-									className="neo-chip bg-[#ffd23c] px-3 py-1 text-[11px] uppercase tracking-[0.26em] text-black"
-									style={{ fontFamily: "var(--font-vercetti)" }}>
-									[{dossier.phaseCode}]
-								</span>
-								<span
-									className="text-[11px] uppercase tracking-[0.28em] text-[#31d7c4]"
-									style={{ fontFamily: "var(--font-vercetti)" }}>
-									FDCR placement
-								</span>
-							</div>
-							<p
-								className="mt-6 text-3xl leading-tight text-[#f8f3e8]"
-								style={{ fontFamily: "var(--font-soria)" }}>
-								{dossier.claimHeadline}
-							</p>
-							<p
-								className="mt-5 text-sm leading-7 text-[#f1eadc]"
-								style={{ fontFamily: "var(--font-vercetti)" }}>
-								{dossier.summary}
-							</p>
-						</aside>
+				{ctmf.dossiers?.map((dossier) => {
+					const isStakeholderPraxis =
+						ctmf.slug === "stakeholder-mapping" && dossier.project === "Praxis I";
+					const dossierSections =
+						isStakeholderPraxis ? stakeholderPraxisSections : dossier.sections;
 
-						<div className="flex flex-col gap-4">
-							{dossier.sections.map((section) => (
-								<article
-									key={section.title}
-									className="neo-panel bg-[#efe7d6] p-5 text-black md:p-6">
-									<p
-										className="mb-4 text-xs uppercase tracking-[0.28em] text-black/65"
+					return (
+						<section
+							key={`${ctmf.slug}-${dossier.project}`}
+							className="flex flex-col gap-6 border-b-[3px] border-black py-10 md:py-14">
+							<aside className="neo-panel neo-angle bg-[#171a22] p-6 text-[#f8f3e8] md:p-8">
+								<p
+									className="text-xs uppercase tracking-[0.3em] text-[#ffd23c]"
+									style={{ fontFamily: "var(--font-vercetti)" }}>
+									{dossier.project} CTMF Dossier
+								</p>
+								<div className="mt-4 flex items-center gap-3">
+									<span
+										className="neo-chip bg-[#ffd23c] px-3 py-1 text-[11px] uppercase tracking-[0.26em] text-black"
 										style={{ fontFamily: "var(--font-vercetti)" }}>
-										{section.title}
-									</p>
-									<ul
-										className="space-y-3 text-sm leading-7 text-black/80 md:text-[15px]"
+										[{dossier.phaseCode}]
+									</span>
+									<span
+										className="text-[11px] uppercase tracking-[0.28em] text-[#31d7c4]"
 										style={{ fontFamily: "var(--font-vercetti)" }}>
-										{section.bullets.map((bullet) => (
-											<li key={bullet} className="border-t-[3px] border-black/15 pt-3 first:border-t-0 first:pt-0">
-												{bullet}
-											</li>
-										))}
-									</ul>
-								</article>
-							))}
-						</div>
-					</section>
-				))}
+										FDCR placement
+									</span>
+								</div>
+								<p
+									className="mt-6 text-3xl leading-tight text-[#f8f3e8]"
+									style={{ fontFamily: "var(--font-soria)" }}>
+									{dossier.claimHeadline}
+								</p>
+								<p
+									className="mt-5 text-sm leading-7 text-[#f1eadc]"
+									style={{ fontFamily: "var(--font-vercetti)" }}>
+									{dossier.summary}
+								</p>
+							</aside>
+
+							{dossier.artifacts?.length && !isStakeholderPraxis ? (
+								<div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+									{dossier.artifacts.map((artifact) => (
+										<article
+											key={`${dossier.project}-${artifact.title}`}
+											className="neo-panel bg-[#171a22] p-5 text-[#f8f3e8]">
+											<p
+												className="text-[11px] uppercase tracking-[0.28em] text-[#31d7c4]"
+												style={{ fontFamily: "var(--font-vercetti)" }}>
+												{artifact.eyebrow}
+											</p>
+											<p
+												className="mt-3 text-2xl leading-tight text-[#f8f3e8]"
+												style={{ fontFamily: "var(--font-soria)" }}>
+												{artifact.title}
+											</p>
+
+											{artifact.src ? (
+												<div className="relative mt-4 aspect-[16/10] overflow-hidden rounded-[0.35rem] border-[3px] border-black bg-[#efe7d6]">
+													<Image
+														src={artifact.src}
+														alt={artifact.alt ?? artifact.title}
+														fill
+														sizes="(max-width: 1279px) 100vw, 30vw"
+														className="object-cover"
+													/>
+												</div>
+											) : null}
+
+											<p
+												className="mt-4 text-sm leading-7 text-[#f1eadc]"
+												style={{ fontFamily: "var(--font-vercetti)" }}>
+												{artifact.description}
+											</p>
+
+											{artifact.sourceHref ? (
+												<a
+													href={artifact.sourceHref}
+													className="mt-4 inline-flex border-[3px] border-black bg-[#ffd23c] px-3 py-2 text-[11px] uppercase tracking-[0.24em] text-black transition-transform hover:-translate-y-1"
+													style={{ fontFamily: "var(--font-vercetti)" }}>
+													{artifact.sourceLabel ?? "View Source"}
+												</a>
+											) : null}
+
+											{artifact.highlights?.length ? (
+												<ul
+													className="mt-4 space-y-3 text-sm leading-7 text-[#f1eadc]"
+													style={{ fontFamily: "var(--font-vercetti)" }}>
+													{artifact.highlights.map((highlight) => (
+														<li
+															key={highlight}
+															className="border-t-[3px] border-white/10 pt-3 first:border-t-0 first:pt-0">
+															{highlight}
+														</li>
+													))}
+												</ul>
+											) : null}
+										</article>
+									))}
+								</div>
+							) : null}
+
+							<div className="flex flex-col gap-4">
+								{dossierSections.map((section) => (
+									<article
+										key={section.title}
+										className="neo-panel bg-[#efe7d6] p-5 text-black md:p-6">
+										<p
+											className="mb-4 text-xs uppercase tracking-[0.28em] text-black/65"
+											style={{ fontFamily: "var(--font-vercetti)" }}>
+											{section.title}
+										</p>
+										<ul
+											className="space-y-3 text-sm leading-7 text-black/80 md:text-[15px]"
+											style={{ fontFamily: "var(--font-vercetti)" }}>
+											{section.bullets.map((bullet) => (
+												<li
+													key={bullet}
+													className="border-t-[3px] border-black/15 pt-3 first:border-t-0 first:pt-0">
+													{bullet}
+												</li>
+											))}
+										</ul>
+
+										{section.callouts?.length ? (
+											<div className="mt-6 border-[3px] border-black bg-[#171a22] p-4 text-[#f8f3e8]">
+												<p
+													className="text-[11px] uppercase tracking-[0.24em] text-[#31d7c4]"
+													style={{ fontFamily: "var(--font-vercetti)" }}>
+													{section.calloutTitle ?? "Callouts"}
+												</p>
+												<ul
+													className="mt-3 space-y-3 text-sm leading-7 text-[#f1eadc]"
+													style={{ fontFamily: "var(--font-vercetti)" }}>
+													{section.callouts.map((callout) => (
+														<li
+															key={callout}
+															className="border-t-[3px] border-white/10 pt-3 first:border-t-0 first:pt-0">
+															{callout}
+														</li>
+													))}
+												</ul>
+											</div>
+										) : null}
+
+										{section.figures?.length ? (
+											<div className="mt-6 grid gap-4 xl:grid-cols-2">
+												{section.figures.map((figure) => (
+													<figure key={figure.src} className="space-y-3">
+														<div className="relative aspect-[16/10] overflow-hidden border-[3px] border-black bg-[#171a22]">
+															<Image
+																src={figure.src}
+																alt={figure.alt}
+																fill
+																sizes="(max-width: 1279px) 100vw, 40vw"
+																className="object-cover"
+															/>
+														</div>
+														<figcaption
+															className="text-xs leading-6 text-black/70"
+															style={{ fontFamily: "var(--font-vercetti)" }}>
+															{figure.caption}
+														</figcaption>
+													</figure>
+												))}
+											</div>
+										) : null}
+									</article>
+								))}
+							</div>
+						</section>
+					);
+				})}
 
 				<section className="flex flex-col gap-6 py-10 md:py-14">
-					<div className="neo-panel bg-[#efe7d6] p-6 text-black md:p-8">
+					{ctmf.evidence.length ? (
+						<div className="neo-panel bg-[#efe7d6] p-6 text-black md:p-8">
 						<p
 							className="mb-5 text-sm uppercase tracking-[0.28em] text-black/70"
 							style={{ fontFamily: "var(--font-vercetti)" }}>
@@ -203,12 +401,15 @@ const CtmfPage = async ({ params }: CtmfPageProps) => {
 							className="space-y-4 text-base leading-8 text-black/80"
 							style={{ fontFamily: "var(--font-vercetti)" }}>
 							{ctmf.evidence.map((item) => (
-								<li key={item} className="border-b-[3px] border-black/15 pb-4 last:border-b-0 last:pb-0">
+								<li
+									key={item}
+									className="border-b-[3px] border-black/15 pb-4 last:border-b-0 last:pb-0">
 									{item}
 								</li>
 							))}
 						</ul>
-					</div>
+						</div>
+					) : null}
 
 					<article className="neo-panel bg-[#171a22] p-6 text-[#f8f3e8] md:p-8">
 						<p
@@ -241,7 +442,7 @@ const CtmfPage = async ({ params }: CtmfPageProps) => {
 								<p
 									className="text-xs uppercase tracking-[0.24em] text-black/60"
 									style={{ fontFamily: "var(--font-vercetti)" }}>
-									{project.course} · {project.year}
+									{project.course} - {project.year}
 								</p>
 								<p
 									className="mt-3 text-2xl text-black"

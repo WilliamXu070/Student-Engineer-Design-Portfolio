@@ -20,6 +20,15 @@ For frontend UI work, read `my-frontend-design/skills/frontend-design/SKILL.md` 
 
 Use the plugin only as the loader for the skill. `plugin.json` points to `./skills/`; the operational instructions come from `SKILL.md`.
 
+## Content Integration Workflow
+For project-page or portfolio content implementation work, do not treat the provided writing as standalone copy.
+
+- First inspect the target route/component and the relevant local context materials in `Context/`, `public/`, and any already-extracted evidence assets.
+- Look for images, figures, charts, screenshots, CAD, or other media that directly support the claims being made in the supplied text.
+- Prefer integrating the user's wording closely and restructuring the page around the argument and evidence, rather than paraphrasing it into generic summary cards.
+- When stronger visuals exist only inside local PDFs, slides, or docs, extract or derive reusable figure assets when feasible and use them to strengthen the page.
+- Treat media as evidence, not decoration: each chosen image should improve comprehension of a claim, decision, comparison, or reflection on the page.
+
 ## Build, Test, and Development Commands
 - `npm install`: install dependencies.
 - `npm run dev`: start the local Next.js dev server.

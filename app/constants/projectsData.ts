@@ -14,7 +14,7 @@ export interface ProjectDetail {
 
 export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
   "praxis-i": {
-    title: "Silent Can opener",
+    title: "Silent Can Opener",
     course: "Praxis I",
     overview: "A product design project investigating how to reduce the impulsive noise created when opening a carbonated soda can in quiet academic spaces without sacrificing accessibility, portability, or beverage integrity.",
     criteria: [
@@ -27,7 +27,7 @@ export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
     ctmfRefs: [
       "stakeholder-mapping",
       "morphological-chart",
-      "pugh-chart",
+      "pugh-chart-praxis-i",
     ],
     process: {
       refinement: "The project first looked like a quieting problem around depressurization and external damping, but stakeholder analysis translated the NGOs into requirements that made portability, accessibility, safety, and beverage integrity non-negotiable alongside noise reduction.",
@@ -49,7 +49,7 @@ export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
     ctmfRefs: [
       "challenge-assumptions",
       "calculations-simulation",
-      "pugh-chart",
+      "pugh-chart-civ102",
     ],
     process: {
       refinement: "What looked like a straightforward strength-maximization problem became a tighter FDCR framing problem once moving-load effects, matboard limits, and fitting constraints were treated as real design pressures rather than background conditions.",
@@ -61,12 +61,12 @@ export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
   "praxis-ii": {
     title: "Convertible Heated Glove System",
     course: "Praxis II",
-    overview: "A winter-astronomy design project that reframed a broad cold-weather usability problem into a dexterity-preservation challenge, resulting in a convertible heated glove system for telescope operation.",
+    overview: "A winter-astronomy design project that identified the real issue as loss of fine telescope manipulability in the cold, then converged on a convertible heated glove system that managed the warmth-versus-precision tradeoff more honestly.",
     criteria: [
-      "Preserve functional fingertip dexterity during real winter observing tasks",
-      "Respect low-light compatibility, field portability, and existing telescope workflows",
-      "Protect against cold without behaving like a bulky ski glove or mitten",
-      "Support controlled transitions into a higher-dexterity mode when precision tasks demand it",
+      "Preserve task performance during real winter telescope micro-tasks",
+      "Maintain usable hand warmth without breaking fingertip control",
+      "Respect low-light use, portability, and diverse existing telescope workflows",
+      "Support controlled switching into a higher-dexterity mode when precision tasks demand it",
     ],
     ctmfRefs: [
       "root-cause-analysis",
@@ -74,10 +74,10 @@ export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
       "biomimicry",
     ],
     process: {
-      refinement: "The project began as a broad winter-astronomy usability problem, but observation and stakeholder engagement narrowed it into a more precise mismatch between cold-impaired dexterity and the fine repetitive manipulations telescope use demands.",
-      generation: "Multiple concept families were explored, including environment systems, software guidance, hand attachments, and telescope-interface aids, before the project converged on preserving the user’s dexterity directly through a heated glove path.",
-      assessment: "Testing developed in stages because the initial cold-plunge setup did not hold the condition long enough to generate trustworthy evidence. Once dexterity and temperature were separated and recombined more carefully, the project justified finger-focused heating, dropped the knob-turner, and developed the final multi-dexterity glove logic.",
-      reflection: "Praxis II made one design lesson explicit: rigor can become overconstraint. The project became stronger once the team softened premature certainty, focused on the actual dexterity bottleneck, and accepted that some tasks would still require controlled shifts between warmth and precision.",
+      refinement: "The project started as a broad winter-astronomy usability problem, but stakeholder conversations and direct telescope interaction narrowed it toward a more precise mismatch between cold-impaired hands and the fine manipulations telescope use demands.",
+      generation: "Multiple intervention families were explored, including environment systems, software or error-mitigation ideas, telescope attachments, and glove concepts, before community fit and task logic pushed the project toward preserving user dexterity directly.",
+      assessment: "Testing had to develop in stages because the initial cold-plunge setup only produced 1 to 3 seconds of meaningful impairment. Once dexterity and thermal questions were separated and then recombined more carefully, the project justified finger-focused heating, dropped the knob-turner, and converged on the final multi-mode glove logic.",
+      reflection: "Praxis II made one design lesson explicit: rigor becomes harmful when it hardens the scope or the criteria too early. The project improved once the team reopened both framing and testing, focused on the real dexterity bottleneck, and accepted that some tasks would still require controlled shifts between warmth and precision.",
     }
   },
   "portfolio": {

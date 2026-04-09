@@ -14,7 +14,7 @@ import {
   type SceneSnapshot,
   readSceneSnapshot,
 } from "@/app/lib/navigationMemory";
-import { usePortalStore, useScrollStore } from "@stores";
+import { usePortalStore, useScrollStore, useTimelineOverlayStore } from "@stores";
 
 const SceneSnapshotRestorer = () => {
   const { camera } = useThree();
@@ -28,6 +28,9 @@ const SceneSnapshotRestorer = () => {
   const setSceneRestoring = usePortalStore((state) => state.setSceneRestoring);
   const setSceneCameraSnapshot = usePortalStore((state) => state.setSceneCameraSnapshot);
   const setScrollProgress = useScrollStore((state) => state.setScrollProgress);
+  const clearTimelineItems = useTimelineOverlayStore((state) => state.clearItems);
+  const setHoveredSlug = useTimelineOverlayStore((state) => state.setHoveredSlug);
+  const setSelectedSlug = useTimelineOverlayStore((state) => state.setSelectedSlug);
 
   useFrame(() => {
     if (isSceneRestoring) {
@@ -84,32 +87,37 @@ const SceneSnapshotRestorer = () => {
       const { root: rootScrollWrapper } = getPortalScrollLayers();
 
       if (!rootScrollWrapper) {
-        return;
+        return false;
       }
 
       const rootScrollableHeight = rootScrollWrapper.scrollHeight - rootScrollWrapper.clientHeight;
       rootScrollWrapper.scrollTop = Math.max(0, rootScrollableHeight * snapshot.rootScrollProgress);
       rootScrollWrapper.dispatchEvent(new Event("scroll"));
+      return true;
     };
     const applyWorkScrollSnapshot = () => {
       if (snapshot.activePortalId !== "work") {
-        return;
+        return true;
       }
 
       const { work: activeScrollWrapper } = getPortalScrollLayers();
 
       if (!activeScrollWrapper) {
-        return;
+        return false;
       }
 
       const scrollableHeight = activeScrollWrapper.scrollHeight - activeScrollWrapper.clientHeight;
       activeScrollWrapper.scrollTop = Math.max(0, scrollableHeight * snapshot.workScrollProgress);
       activeScrollWrapper.dispatchEvent(new Event("scroll"));
+      return true;
     };
 
     setSceneMotionPaused(true);
     setSceneRestoring(true);
     setActiveProjectSlug(null);
+    clearTimelineItems();
+    setHoveredSlug(null);
+    setSelectedSlug(null);
     setPortalReturnRootScrollProgress(snapshot.rootScrollProgress);
     setActivePortal(snapshot.activePortalId);
     if (snapshot.activePortalId === "projects") {
@@ -122,38 +130,45 @@ const SceneSnapshotRestorer = () => {
     }
     setScrollProgress(snapshot.rootScrollProgress);
     setWorkPortalScrollProgress(snapshot.workScrollProgress);
-    applyRootScrollSnapshot();
     applyCameraSnapshot();
-
-    let workScrollTimer: number | null = null;
-    let releaseFrame = 0;
-    const portalFrame = window.requestAnimationFrame(() => {
-      applyRootScrollSnapshot();
+    const retryTimers: number[] = [];
+    const retryFrames: number[] = [];
+    const restoreStep = () => {
       applyCameraSnapshot();
+      applyRootScrollSnapshot();
+      applyWorkScrollSnapshot();
+    };
 
-      if (snapshot.activePortalId === "work") {
-        workScrollTimer = window.setTimeout(() => {
-          applyWorkScrollSnapshot();
-          applyCameraSnapshot();
-        }, 80);
-      }
+    restoreStep();
 
-      releaseFrame = window.requestAnimationFrame(() => {
-        applyCameraSnapshot();
-        clearSceneSnapshot();
-        setSceneRestoring(false);
-        setSceneMotionPaused(false);
-      });
-    });
+    retryFrames.push(
+      window.requestAnimationFrame(() => {
+        restoreStep();
+        retryFrames.push(
+          window.requestAnimationFrame(() => {
+            restoreStep();
+          }),
+        );
+      }),
+    );
+
+    retryTimers.push(window.setTimeout(restoreStep, 60));
+    retryTimers.push(window.setTimeout(restoreStep, 140));
+    retryTimers.push(window.setTimeout(restoreStep, 260));
+
+    const releaseTimer = window.setTimeout(() => {
+      restoreStep();
+      clearSceneSnapshot();
+      setSceneRestoring(false);
+      setSceneMotionPaused(false);
+    }, snapshot.activePortalId === "work" ? 320 : 180);
+    retryTimers.push(releaseTimer);
 
     return () => {
-      window.cancelAnimationFrame(portalFrame);
-      window.cancelAnimationFrame(releaseFrame);
-      if (workScrollTimer !== null) {
-        window.clearTimeout(workScrollTimer);
-      }
+      retryFrames.forEach((frame) => window.cancelAnimationFrame(frame));
+      retryTimers.forEach((timer) => window.clearTimeout(timer));
     };
-  }, [camera, isMobile, searchParams, setActivePortal, setActiveProjectSlug, setPortalReturnRootScrollProgress, setSceneCameraSnapshot, setSceneMotionPaused, setSceneRestoring, setScrollProgress, setWorkPortalScrollProgress]);
+  }, [camera, clearTimelineItems, isMobile, searchParams, setActivePortal, setActiveProjectSlug, setHoveredSlug, setPortalReturnRootScrollProgress, setSceneCameraSnapshot, setSceneMotionPaused, setSceneRestoring, setScrollProgress, setSelectedSlug, setWorkPortalScrollProgress]);
 
   return null;
 };

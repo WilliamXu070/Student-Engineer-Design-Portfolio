@@ -37,6 +37,7 @@ const Experience = () => {
         (text as any).fillOpacity = e;
       });
     }
+
   });
 
   const getTitle = () => {
