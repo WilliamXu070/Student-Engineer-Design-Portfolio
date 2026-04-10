@@ -35,12 +35,14 @@ type VisibleTile = {
 const ProjectGroupIndicator = ({
   heading,
   position,
+  rotationY,
 }: {
   heading: string;
   position: [number, number, number];
+  rotationY: number;
 }) => {
   return (
-    <group position={position} rotation={[0, Math.PI / 36, 0]}>
+    <group position={position} rotation={[0, rotationY, 0]}>
       <mesh position={[0, 0, -0.02]}>
         <planeGeometry args={[4.8, 1.28, 1]} />
         <meshBasicMaterial color="#f5eddc" transparent opacity={0.95} />
@@ -130,10 +132,12 @@ const ProjectsCarousel = () => {
 
       const centerX = groupTiles.reduce((sum, tile) => sum + tile.position[0], 0) / groupTiles.length;
       const centerZ = groupTiles.reduce((sum, tile) => sum + tile.position[2], 0) / groupTiles.length;
+      const rotationY = groupTiles.reduce((sum, tile) => sum + tile.rotation[1], 0) / groupTiles.length;
 
       return {
         ...group,
         position: [centerX, 4.95, centerZ + 0.25] as [number, number, number],
+        rotationY,
       };
     }).filter((heading): heading is NonNullable<typeof heading> => heading !== null);
   }, [tileLayout]);
@@ -145,6 +149,7 @@ const ProjectsCarousel = () => {
           key={heading.slug}
           position={heading.position}
           heading={heading.heading}
+          rotationY={heading.rotationY}
         />
       ))}
 

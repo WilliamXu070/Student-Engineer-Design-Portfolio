@@ -2,10 +2,23 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
+import {
+	FigureReferenceText,
+	getFigureAnchorId,
+	type FigureReferenceMap,
+} from "@/app/components/common/FigureReferenceText";
 import HidePortalCloseButton from "@/app/components/common/HidePortalCloseButton";
 import RememberedBackLink from "@/app/components/common/RememberedBackLink";
 import RememberedLink from "@/app/components/common/RememberedLink";
-import { PROJECTS, PROJECT_DETAILS, WORK_TIMELINE } from "@constants";
+import ReferencesSection from "@/app/components/common/ReferencesSection";
+import {
+	getFdcrStageLabel,
+	getFdcrStageTheme,
+	PROJECTS,
+	PROJECT_DETAILS,
+	WORK_TIMELINE,
+} from "@constants";
+import type { CtmfDossierSection } from "@/app/types/projects";
 
 type CtmfPageProps = {
 	params: Promise<{
@@ -13,7 +26,7 @@ type CtmfPageProps = {
 	}>;
 };
 
-const stakeholderPraxisSections = [
+const stakeholderPraxisSections: CtmfDossierSection[] = [
 	{
 		title: "Core Claim",
 		bullets: [
@@ -43,15 +56,15 @@ const stakeholderPraxisSections = [
 					"Primary stakeholder contact is the reason this CTMF mattered. The project did not infer user concerns from the report after the fact; it gathered them directly from students using the product in context.",
 			},
 			{
-				src: "/context-evidence/raw/praxis1-p3-img2.png",
+				src: "/api/images/praxis1-annotated",
 				alt: "Praxis I slider concept render from the final concept direction.",
 				caption:
 					"The final recommendation became stronger because the slider did not only quiet the opening event. It also better protected the user-facing criteria that stakeholder conversations made visible.",
 			},
 		],
 		bullets: [
-			"This was collaborative early framing work rather than a solo artifact, and I used those stakeholder conversations to widen the problem beyond simply making the can quieter. The interviews made it clear that students were reacting not only to the sound itself, but to the whole opening event: spilling, fizz or contents on the hands, awkward finger interaction, and the opening action taking too long.",
-			"Those concerns then changed the engineering definition of success. The project added a beverage-integrity goal, meaning the drink should stay usable and should not spray or spill excessively during opening. In the report, that became Goal 2, along with a liquid-loss limit of no more than 1% of the drink and a carbonation-loss limit of no more than 1 g after 90 seconds. Ease of use also became more explicit: the opener should take less than 5 seconds, require no more than 3 separate hand actions, keep the peak force below 25 N, and keep concentrated hand pressure below 200 kPa. The related evaluation criteria later tracked these same ideas as spill control, force, pressure, and gesture burden.",
+			"This early framing was collaborative rather than individual, and those stakeholder conversations expanded the problem beyond simply making the can quieter. The interviews showed that students were responding not just to the sound, but to the entire opening experience: spills, fizz or liquid getting on their hands, awkward finger interaction, and an opening action that felt slow and inconvenient.",
+			"Those concerns then changed the engineering definition of success. The project added a beverage-integrity goal, meaning the drink should stay usable and should not spray or spill excessively during opening. In the report, this sentiment became Goal 2, along with a liquid-loss limit of no more than 1% of the drink and a carbonation-loss limit of no more than 1 g after 90 seconds. Ease of use also became more explicit: the opener should take less than 5 seconds, require no more than 3 separate hand actions, keep the peak force below 25 N, and keep concentrated hand pressure below 200 kPa. The related evaluation criteria later tracked these same ideas as spill control, force, pressure, and gesture burden.",
 			"This directly influenced convergence. The final recommendation was not justified only by acoustic performance. The slider remained stronger because it did a better job protecting beverage integrity and interaction quality as well: about 0.46% liquid loss, 0.4 g carbonation boil-off, about 80 kPa maximum hand pressure, and only 2 gestures. By contrast, the water opener looked much weaker once those user-facing criteria stayed visible, with about 1.80% liquid loss, 2.3 g carbonation boil-off, about 600 kPa pressure, and 5 gestures.",
 		],
 	},
@@ -59,8 +72,17 @@ const stakeholderPraxisSections = [
 		title: "Limitations Of The CTMF",
 		figures: [
 			{
-				src: "/context-evidence/raw/praxis1-p2-img1.png",
-				alt: "Praxis I acoustic testing setup showing a phone decibel meter beside a soda can during opening.",
+				kind: "video",
+				src: "/api/videos/praxis1-interview",
+				alt: "Praxis I stakeholder interview video showing students discussing spills, awkward finger interaction, and opening difficulty.",
+				caption:
+					"The interview video shows what stakeholder analysis could reveal well: the user-facing frustrations around spills, awkward finger interaction, and opening burden. It clarified what the project needed to protect, but not what physically caused the sharp sound event.",
+			},
+			{
+				kind: "video",
+				src: "/api/videos/praxis1",
+				posterSrc: "/context-evidence/raw/praxis1-p2-img1.png",
+				alt: "Praxis I acoustic testing video showing a phone decibel meter beside a soda can during opening.",
 				caption:
 					"Stakeholder analysis defined what the design needed to protect, but testing was still required to challenge the original explanation of what physically caused the sound event.",
 			},
@@ -140,6 +162,8 @@ export const generateMetadata = async ({ params }: CtmfPageProps): Promise<Metad
 	};
 };
 
+const getCtmfFigureRefKey = (index: number) => String(index + 1).padStart(2, "0");
+
 const CtmfPage = async ({ params }: CtmfPageProps) => {
 	const { slug } = await params;
 	const data = getCtmfData(slug);
@@ -149,6 +173,7 @@ const CtmfPage = async ({ params }: CtmfPageProps) => {
 	}
 
 	const { ctmf, relatedProjects } = data;
+	const ctmfStageTheme = getFdcrStageTheme(ctmf.stageCode, ctmf.stage);
 
 	return (
 		<main className="ctmf-brutalist relative min-h-screen overflow-hidden text-[#f8f3e8]">
@@ -174,9 +199,9 @@ const CtmfPage = async ({ params }: CtmfPageProps) => {
 				<section className="flex flex-col gap-6 border-b-[3px] border-black pb-10 md:pb-14">
 					<div>
 						<p
-							className="mb-4 inline-block border-[3px] border-black bg-[#31d7c4] px-3 py-2 text-sm uppercase tracking-[0.34em] text-black"
+							className={`mb-4 inline-block px-3 py-2 text-sm uppercase tracking-[0.34em] ${ctmfStageTheme.indicatorClassName}`}
 							style={{ fontFamily: "var(--font-vercetti)" }}>
-							{ctmf.stageCode ? `[${ctmf.stageCode}] ${ctmf.stage}` : ctmf.stage}
+							{getFdcrStageLabel(ctmf.stageCode, ctmf.stage)}
 						</p>
 						<h1
 							className="max-w-4xl text-4xl leading-[0.92] text-[#f8f3e8] md:text-6xl"
@@ -220,6 +245,44 @@ const CtmfPage = async ({ params }: CtmfPageProps) => {
 						ctmf.slug === "stakeholder-mapping" && dossier.project === "Praxis I";
 					const dossierSections =
 						isStakeholderPraxis ? stakeholderPraxisSections : dossier.sections;
+					const figureScopeKey = `${slug}-${dossier.project}`
+						.toLowerCase()
+						.replace(/[^a-z0-9]+/g, "-")
+						.replace(/^-+|-+$/g, "");
+					let figureIndex = 0;
+					const numberedSections = dossierSections.map((section) => ({
+						...section,
+						figures: section.figures?.map((figure) => {
+							const refKey = getCtmfFigureRefKey(figureIndex);
+							figureIndex += 1;
+
+							return {
+								...figure,
+								refKey,
+								label: `Fig. ${refKey}`,
+							};
+						}),
+					}));
+					const dossierFigureReferences: FigureReferenceMap = Object.fromEntries(
+						numberedSections.flatMap((section) =>
+							(section.figures ?? [])
+								.filter(
+									(
+										figure,
+									): figure is NonNullable<(typeof section.figures)>[number] & {
+										refKey: string;
+										label: string;
+									} => "refKey" in figure && "label" in figure,
+								)
+								.map((figure) => [
+									figure.refKey,
+									{
+										href: `#${getFigureAnchorId(figureScopeKey, figure.refKey)}`,
+										label: figure.label,
+									},
+								]),
+						),
+					);
 
 					return (
 						<section
@@ -233,7 +296,7 @@ const CtmfPage = async ({ params }: CtmfPageProps) => {
 								</p>
 								<div className="mt-4 flex items-center gap-3">
 									<span
-										className="neo-chip bg-[#ffd23c] px-3 py-1 text-[11px] uppercase tracking-[0.26em] text-black"
+										className={`px-3 py-1 text-[11px] uppercase tracking-[0.26em] ${getFdcrStageTheme(dossier.phaseCode).indicatorClassName}`}
 										style={{ fontFamily: "var(--font-vercetti)" }}>
 										[{dossier.phaseCode}]
 									</span>
@@ -251,7 +314,7 @@ const CtmfPage = async ({ params }: CtmfPageProps) => {
 								<p
 									className="mt-5 text-sm leading-7 text-[#f1eadc]"
 									style={{ fontFamily: "var(--font-vercetti)" }}>
-									{dossier.summary}
+									<FigureReferenceText text={dossier.summary} refs={dossierFigureReferences} />
 								</p>
 							</aside>
 
@@ -318,7 +381,7 @@ const CtmfPage = async ({ params }: CtmfPageProps) => {
 							) : null}
 
 							<div className="flex flex-col gap-4">
-								{dossierSections.map((section) => (
+								{numberedSections.map((section) => (
 									<article
 										key={section.title}
 										className="neo-panel bg-[#efe7d6] p-5 text-black md:p-6">
@@ -334,7 +397,7 @@ const CtmfPage = async ({ params }: CtmfPageProps) => {
 												<li
 													key={bullet}
 													className="border-t-[3px] border-black/15 pt-3 first:border-t-0 first:pt-0">
-													{bullet}
+													<FigureReferenceText text={bullet} refs={dossierFigureReferences} />
 												</li>
 											))}
 										</ul>
@@ -363,20 +426,53 @@ const CtmfPage = async ({ params }: CtmfPageProps) => {
 										{section.figures?.length ? (
 											<div className="mt-6 grid gap-4 xl:grid-cols-2">
 												{section.figures.map((figure) => (
-													<figure key={figure.src} className="space-y-3">
-														<div className="relative aspect-[16/10] overflow-hidden border-[3px] border-black bg-[#171a22]">
-															<Image
-																src={figure.src}
-																alt={figure.alt}
-																fill
-																sizes="(max-width: 1279px) 100vw, 40vw"
-																className="object-cover"
-															/>
+													<figure
+														key={`${figure.src}-${figure.caption}`}
+														id={
+															"refKey" in figure
+																? getFigureAnchorId(figureScopeKey, figure.refKey)
+																: undefined
+														}
+														className={["space-y-3", figure.figureClassName].filter(Boolean).join(" ")}>
+														{"label" in figure ? (
+															<p
+																className="inline-flex border-[3px] border-black bg-[#ffd23c] px-3 py-1 text-[11px] uppercase tracking-[0.24em] text-black"
+																style={{ fontFamily: "var(--font-vercetti)" }}>
+																{figure.label}
+															</p>
+														) : null}
+														<div
+															className={[
+																"relative aspect-[16/10] overflow-hidden border-[3px] border-black bg-[#171a22]",
+																figure.frameClassName,
+															]
+																.filter(Boolean)
+																.join(" ")}>
+															{figure.kind === "video" ? (
+																<video
+																	controls
+																	playsInline
+																	preload="metadata"
+																	poster={figure.posterSrc}
+																	aria-label={figure.alt}
+																	className="h-full w-full object-cover">
+																	<source src={figure.src} type="video/mp4" />
+																	Your browser does not support the video tag.
+																</video>
+															) : (
+																<Image
+																	src={figure.src}
+																	alt={figure.alt}
+																	fill
+																	sizes={figure.sizes ?? "(max-width: 1279px) 100vw, 40vw"}
+																	className={figure.imageClassName ?? "object-cover"}
+																/>
+															)}
 														</div>
 														<figcaption
 															className="text-xs leading-6 text-black/70"
 															style={{ fontFamily: "var(--font-vercetti)" }}>
-															{figure.caption}
+															<FigureReferenceText text={figure.caption} refs={dossierFigureReferences} />
 														</figcaption>
 													</figure>
 												))}
@@ -458,6 +554,8 @@ const CtmfPage = async ({ params }: CtmfPageProps) => {
 						))}
 					</div>
 				</section>
+
+				<ReferencesSection className="mt-6" />
 			</div>
 		</main>
 	);

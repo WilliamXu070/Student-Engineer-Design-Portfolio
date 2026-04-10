@@ -31,7 +31,7 @@ export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
     ],
     process: {
       refinement: "The project first looked like a quieting problem around depressurization and external damping, but stakeholder analysis translated the NGOs into requirements that made portability, accessibility, safety, and beverage integrity non-negotiable alongside noise reduction.",
-      generation: "Early design concepts included puncture vents, water damping, and tab attachments. The vented-versus-unvented result then weakened the original frame, which is why divergence only became genuinely useful after the team reopened what was actually causing the sound event.",
+      generation: "Early design concepts included puncture vents, water damping, and tab attachments. The vented-versus-unvented result then weakened the original frame, which is why divergence only became genuinely useful after our team reopened what was actually causing the sound event.",
       assessment: "The final concept was not chosen just because it was final. The slider-based can earned recommendation by performing best against the explicit criteria, including a drop from 102 dB to 61 dB, lower liquid loss, lower hand pressure, and fewer gestures than the main alternatives.",
       reflection: "Praxis I showed me that a design process can converge cleanly while still failing at the level of framing. The strongest lesson was that evidence can require a move backward in FDCR before further convergence becomes meaningful.",
     }
@@ -77,7 +77,7 @@ export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
       refinement: "The project started as a broad winter-astronomy usability problem, but stakeholder conversations and direct telescope interaction narrowed it toward a more precise mismatch between cold-impaired hands and the fine manipulations telescope use demands.",
       generation: "Multiple intervention families were explored, including environment systems, software or error-mitigation ideas, telescope attachments, and glove concepts, before community fit and task logic pushed the project toward preserving user dexterity directly.",
       assessment: "Testing had to develop in stages because the initial cold-plunge setup only produced 1 to 3 seconds of meaningful impairment. Once dexterity and thermal questions were separated and then recombined more carefully, the project justified finger-focused heating, dropped the knob-turner, and converged on the final multi-mode glove logic.",
-      reflection: "Praxis II made one design lesson explicit: rigor becomes harmful when it hardens the scope or the criteria too early. The project improved once the team reopened both framing and testing, focused on the real dexterity bottleneck, and accepted that some tasks would still require controlled shifts between warmth and precision.",
+      reflection: "Praxis II made one design lesson explicit: rigor becomes harmful when it hardens the scope or the criteria too early. The project improved once our team reopened both framing and testing, focused on the real dexterity bottleneck, and accepted that some tasks would still require controlled shifts between warmth and precision.",
     }
   },
   "portfolio": {

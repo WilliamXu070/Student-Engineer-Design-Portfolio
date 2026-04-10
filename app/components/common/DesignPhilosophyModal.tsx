@@ -5,6 +5,8 @@ import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
+import FloatingUtilityButton from './FloatingUtilityButton';
+
 type EvidenceFigure = {
   id: string;
   title: string;
@@ -53,11 +55,11 @@ const evidenceFigures: EvidenceFigure[] = [
   {
     id: 'praxis2',
     title: 'Praxis II',
-    project: 'Rigor can become overconstraint',
+    project: 'Scope and testing both had to reopen',
     caption:
-      'The Praxis II figure belongs with the discussion of scope narrowing and objective softening, because it shows where explicit structure had to be loosened so viable concepts could remain in play.',
+      'The Praxis II evidence belongs here because the project only became defensible once the early scope, requirements, and testing logic were rebuilt around the real dexterity problem rather than preserved as if the first structure were already sound.',
     src: '/context-evidence/praxis2-anchor.png',
-    alt: 'Praxis II evidence card summarizing scope narrowing and objective softening from the Beta release.',
+    alt: 'Praxis II evidence card showing the project\'s reframed scope, revised requirements, and rebuilt testing logic around winter telescope dexterity.',
     badgeClass: 'border-emerald-300/30 bg-emerald-300/10 text-emerald-100',
   },
 ];
@@ -66,8 +68,8 @@ const figureById = new Map(evidenceFigures.map((figure) => [figure.id, figure]))
 
 const openingParagraphs = [
   'My position as an engineering designer is that rigor matters only when it keeps the framing of the opportunity, the criteria for judgment, and the recommended concept responsive to evidence. Otherwise, rigor hardens into premature closure.',
-  'My earlier position statement presented engineering as a way of thinking before it is a way of building. I still believe that. I still see engineering design as a process of turning uncertainty into clarity through disciplined reasoning and experimentation. I still value questioning assumptions, working from first principles, reducing unnecessary complexity, and learning through iteration. What has changed over this year is not those values themselves, but my understanding of where they matter most in design practice.',
-  'Through Praxis I, CIV102, and Praxis II, I came to see that good engineering is not defined only by how efficiently a team solves a problem once a direction has been chosen. It depends just as much on whether the opportunity has been framed well, whether the criteria actually reflect the real constraints of the project, and whether the concept remains open to revision as representation, testing, and feedback produce new evidence. In other words, the quality of the final design depends on the quality of the reasoning that shapes it. That is the position that now organizes this portfolio.',
+  'My earlier position statement argued that engineering begins as a way of thinking before it becomes a way of building. I still believe that. I still see engineering design as a process of turning uncertainty into clarity through disciplined reasoning and experimentation. I still value questioning assumptions, working from first principles, reducing unnecessary complexity, and learning through iteration. What has changed over this year is not those values themselves, but my understanding of where they matter most in design practice.',
+  'Through Praxis I, CIV102, and Praxis II, I came to see that good engineering is not defined only by how efficiently a team solves a problem once a direction has been chosen. It depends just as much on whether the opportunity has been framed well, whether the criteria actually reflect the real constraints of the project, and whether the concept remains open to revision as representation, testing, and feedback produce new evidence. In other words, the quality of the final design depends on the quality of the reasoning that shapes it. That is the position that now organizes the following portfolio.',
 ];
 
 const evolutionParagraphs = [
@@ -97,10 +99,10 @@ const projectLessons: ProjectLesson[] = [
   },
   {
     id: 'praxis2',
-    title: 'Praxis II: rigor can become overconstraint',
+    title: 'Praxis II: scope and testing both had to reopen',
     paragraphs: [
-      'Praxis II turned my own strengths back on me. Early in the project, the goals, objectives, and criteria became too rigid too early. What initially felt like rigor later appeared as overconstraint, because viable concepts were being narrowed out before enough divergence and exploration had taken place. The later scope narrowing and objective softening were important not because they reduced standards, but because they restored room for better judgment.',
-      'This project made my main design risk visible: I can over-associate explicit structure, measurable criteria, and early precision with good thinking, even when the opportunity is still too unstable for those tools to be fixed.',
+      'Praxis II did not simply show that criteria can harden too early. The deeper problem was that the project initially had both an unstable scope and an unstable evidence model. It began as a broad winter-astronomy opportunity, opened multiple intervention paths, and then had to be reframed more sharply once direct telescope interaction made it clear that the real issue was preserving dexterity during fine winter tasks, not just improving warmth in general.',
+      'The later lesson was procedural as much as conceptual. The first cold-plunge test looked organized, but it produced only brief impairment, so the testing logic itself had to be rebuilt before convergence could be trusted. Once the requirements and testing questions were clarified, the team had a better basis for weakening the knob-turner path, justifying finger-focused heating, and defending the final multi-mode glove more honestly. Praxis II therefore made my main design risk visible in a sharper way: I can mistake early structure for strong thinking even when the project still needs reframing and better evidence before narrowing.',
     ],
     figureId: 'praxis2',
   },
@@ -114,14 +116,14 @@ const designPracticeQuestions = [
 ];
 
 const strengthsParagraphs = [
-  'This position has clear strengths. It helps me expose weak assumptions, build defensible criteria, and converge toward concepts that are feasible and justifiable rather than merely attractive. It also supports the values in my earlier position statement: clarity over unnecessary complexity, understanding over execution alone, and iteration as a route to insight rather than just output.',
-  'But this position also carries a bias. Because I trust explicit logic, measurable structure, and defensible criteria, ambiguity can start to feel like weak thinking even when ambiguity is still a necessary part of framing or divergence. That is why my main design risk is not lack of rigor, but premature closure. I can move too quickly toward structure, evaluation, and convergence before the opportunity has stabilized enough to support them.',
-  'The guardrail I need is not less rigor. It is better-timed rigor: revisiting assumptions when evidence shifts, treating criteria as revisable, allowing divergence to do real work before narrowing, and using representation and testing to challenge the frame rather than merely confirm it.',
+  'This position has real strengths. When a project is still loose, I am usually the one trying to make it concrete: turning vague goals into requirements, turning preferences into criteria, and turning opinions into tests. That helps me catch weak assumptions early. It also keeps me from choosing concepts just because they look elegant on paper or feel intuitive in the moment. In practice, this mindset has helped me move toward designs I can actually defend, because I am not only asking whether an idea is appealing, but whether it can be justified, tested, and carried through.',
+  'But this position also creates a bias. I am most comfortable once a design problem can be organized into criteria, comparisons, and testable requirements, so I tend to reach for those tools early. The risk is that I begin evaluating and narrowing ideas before I have understood the problem well enough, which can make the process look rigorous while quietly fixing the frame too soon.',
+  'What I need is not less rigor, but better judgment about when to apply it. Early in the process, that means resisting the urge to lock ideas into fixed criteria before the problem is fully understood. As new evidence appears, it means changing those criteria instead of defending the original frame. It also means using sketches, prototypes, and tests to find what I may have misunderstood, not just to validate the direction I already prefer. Rigor still matters, but only when it stays tied to what the work is actually showing.',
 ];
 
 const closingParagraphs = [
   'This position is why the rest of this portfolio does not only show what I designed. It focuses on how my framing changed, how criteria were formed and revised, how concepts were selected or rejected, and how representation and testing shaped later decisions. It is also why the CTMFs I selected are not included as isolated tools, but as parts of a design practice that I am trying to understand more critically. The portfolio brief asks for a position statement that frames the organization of the portfolio and the assessment of CTMFs, and that is the role this section is intended to play.',
-  'Across Praxis I, CIV102, and Praxis II, I came to see that my work is strongest not when I narrow fastest, but when I keep the design space open long enough for evidence to improve the frame before convergence begins. That does not mean delaying judgment indefinitely. It means sequencing judgment properly.',
+  'Across Praxis I, CIV102, and Praxis II, I came to see that my work is strongest not when I narrow fastest, but when I keep the frame, requirements, and testing logic revisable long enough for evidence to improve them before convergence begins. That does not mean delaying judgment indefinitely. It means sequencing judgment properly and making those revisions explicit enough that a team can realign around them.',
   'That is the engineer I am trying to become: one who values disciplined reasoning, but who knows that the point of rigor is not to close uncertainty quickly. It is to close it honestly.',
 ];
 
@@ -224,31 +226,11 @@ const DesignPhilosophyModal = () => {
 
   return (
     <>
-      <button
+      <FloatingUtilityButton
         onClick={() => setIsOpen((current) => !current)}
-        className="fixed bottom-8 right-8 z-[95] hidden h-14 min-w-[15.5rem] items-center justify-between rounded-full border border-slate-300/30 bg-[#101822] px-5 text-white shadow-[0_18px_50px_rgba(0,0,0,0.45)] transition-transform duration-300 hover:scale-[1.015] hover:bg-[#162231] md:flex"
-        style={{ fontFamily: 'var(--font-vercetti)' }}
-      >
-        <div className="relative z-10 flex items-center gap-3">
-          <span className="h-2.5 w-2.5 rounded-full bg-cyan-300" />
-          <span className="text-[0.72rem] uppercase tracking-[0.24em]">
-            Position + Values
-          </span>
-        </div>
-      </button>
-
-      <button
-        onClick={() => setIsOpen((current) => !current)}
-        className="fixed bottom-5 right-4 z-[95] flex h-14 w-[calc(100%-2rem)] max-w-[19rem] items-center justify-between rounded-full border border-slate-300/30 bg-[#101822] px-5 text-white shadow-[0_18px_50px_rgba(0,0,0,0.45)] transition-transform duration-300 hover:scale-[1.015] hover:bg-[#162231] md:hidden"
-        style={{ fontFamily: 'var(--font-vercetti)' }}
-      >
-        <div className="relative z-10 flex items-center gap-3">
-          <span className="h-2.5 w-2.5 rounded-full bg-cyan-300" />
-          <span className="text-[0.72rem] uppercase tracking-[0.24em]">
-            Position + Values
-          </span>
-        </div>
-      </button>
+        label="Position + Values"
+        accentClassName="bg-cyan-300"
+      />
 
       <div
         className={`fixed inset-0 z-[94] ${isOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
@@ -281,7 +263,7 @@ const DesignPhilosophyModal = () => {
                       className="max-w-[40rem] text-3xl font-light leading-[1.02] text-white md:text-[3.1rem]"
                       style={{ fontFamily: 'var(--font-soria)' }}
                     >
-                      Rigor only matters when it stays responsive to evidence
+                      Scientific rigor matters only if it stays answerable to the evidence.
                     </h2>
                   </div>
                   <button
@@ -294,7 +276,7 @@ const DesignPhilosophyModal = () => {
 
                 <p className="max-w-[50rem] text-sm leading-7 text-slate-200 md:text-[1rem]">
                   This statement explains how Praxis I, CIV102, and Praxis II changed the way I think about framing,
-                  criteria, convergence, and evidence. It is the argument that now organizes the projects and CTMFs in
+                  criteria, convergence, and evidence. It is the argument that organizes the projects and CTMFs in
                   the rest of the portfolio.
                 </p>
               </div>

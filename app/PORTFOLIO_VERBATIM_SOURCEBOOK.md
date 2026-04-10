@@ -25,13 +25,13 @@ My earlier position emphasized understanding over execution alone. I described e
 
 Praxis gave those habits sharper meaning. Questioning assumptions became, more specifically, a commitment to revisiting the frame of an opportunity when evidence weakens the original explanation. First-principles reasoning became a way of deciding which constraints are truly fundamental, which are inherited, and which should be challenged before being turned into fixed criteria. Simplicity became less of a general aesthetic preference and more of an engineering judgment: I now value concepts whose behavior can be explained, whose trade-offs can be justified, and whose construction and validation are feasible within the actual project conditions. Iteration also became more precise in my thinking. I no longer see it only as refining solutions. I now see it as testing whether the frame, assumptions, and criteria are still valid before convergence becomes too rigid.
 
-The main change, then, is this: I used to treat precision as a sign that the thinking was strong. Now I think strong engineering design depends on timing as much as precision. Criteria, structure, and convergence are useful, but only after the opportunity has been framed well enough. When they arrive too early, they can narrow the design space before the team understands what should actually be protected, optimized, or changed. That is the central lesson that emerged across the year.
+The main change, then, is this: I used to treat precision as a sign that the thinking was strong. Now I think strong engineering design depends on timing as much as precision. Criteria, structure, and convergence are useful, but only after the opportunity has been framed well enough. When they arrive too early, they can narrow the design space before our team understands what should actually be protected, optimized, or changed. That is the central lesson that emerged across the year.
 
 ### Project Lessons
 
 #### Praxis I: framing must change when the evidence changes
 
-Praxis I exposed the cost of staying inside a weakened frame. In the can-noise work, the most important lesson was not simply that a test result was disappointing. It was that contradictory evidence should have triggered reframing, but the team remained attached to the original explanation of the problem. That moment clarified something important about my own practice: when evidence breaks the logic of the original opportunity framing, I would rather reopen the problem than continue optimizing within an unstable explanation.
+Praxis I exposed the cost of staying inside a weakened frame. In the can-noise work, the most important lesson was not simply that a test result was disappointing. It was that contradictory evidence should have triggered reframing, but our team remained attached to the original explanation of the problem. That moment clarified something important about my own practice: when evidence breaks the logic of the original opportunity framing, I would rather reopen the problem than continue optimizing within an unstable explanation.
 
 Since then, I have become more alert to the difference between solving a problem well and solving the right problem.
 
@@ -45,17 +45,17 @@ When complexity improves performance and can be defended, I accept it. But when 
 
 Figure Reference: civ102
 
-#### Praxis II: rigor can become overconstraint
+#### Praxis II: scope and testing both had to reopen
 
-Praxis II turned my own strengths back on me. Early in the project, the goals, objectives, and criteria became too rigid too early. What initially felt like rigor later appeared as overconstraint, because viable concepts were being narrowed out before enough divergence and exploration had taken place. The later scope narrowing and objective softening were important not because they reduced standards, but because they restored room for better judgment.
+Praxis II did not simply show that criteria can harden too early. The deeper problem was that the project initially had both an unstable scope and an unstable evidence model. It began as a broad winter-astronomy opportunity, opened multiple intervention paths, and then had to be reframed more sharply once direct telescope interaction made it clear that the real issue was preserving dexterity during fine winter tasks, not just improving warmth in general.
 
-This project made my main design risk visible: I can over-associate explicit structure, measurable criteria, and early precision with good thinking, even when the opportunity is still too unstable for those tools to be fixed.
+The later lesson was procedural as much as conceptual. The first cold-plunge test looked organized, but it produced only brief impairment, so the testing logic itself had to be rebuilt before convergence could be trusted. Once the requirements and testing questions were clarified, our team had a better basis for weakening the knob-turner path, justifying finger-focused heating, and defending the final multi-mode glove more honestly. Praxis II therefore made my main design risk visible in a sharper way: I can mistake early structure for strong thinking even when the project still needs reframing and better evidence before narrowing.
 
 Figure Reference: praxis2
 
 ### Design Practice Questions
 
-- Is the opportunity framing sound, or is the team solving inside assumptions that should still be challenged?
+- Is the opportunity framing sound, or is our team solving inside assumptions that should still be challenged?
 - Are the criteria grounded in actual stakeholder needs and project constraints, or have they hardened too early?
 - Is the concept strong enough to be represented, constructed, and explained clearly?
 - Can the concept be tested and validated in a way that produces meaningful evidence rather than only confirmation?
@@ -72,7 +72,7 @@ The guardrail I need is not less rigor. It is better-timed rigor: revisiting ass
 
 This position is why the rest of this portfolio does not only show what I designed. It focuses on how my framing changed, how criteria were formed and revised, how concepts were selected or rejected, and how representation and testing shaped later decisions. It is also why the CTMFs I selected are not included as isolated tools, but as parts of a design practice that I am trying to understand more critically. The portfolio brief asks for a position statement that frames the organization of the portfolio and the assessment of CTMFs, and that is the role this section is intended to play.
 
-Across Praxis I, CIV102, and Praxis II, I came to see that my work is strongest not when I narrow fastest, but when I keep the design space open long enough for evidence to improve the frame before convergence begins. That does not mean delaying judgment indefinitely. It means sequencing judgment properly.
+Across Praxis I, CIV102, and Praxis II, I came to see that my work is strongest not when I narrow fastest, but when I keep the frame, requirements, and testing logic revisable long enough for evidence to improve them before convergence begins. That does not mean delaying judgment indefinitely. It means sequencing judgment properly and making those revisions explicit enough that a team can realign around them.
 
 That is the engineer I am trying to become: one who values disciplined reasoning, but who knows that the point of rigor is not to close uncertainty quickly. It is to close it honestly.
 
@@ -88,8 +88,8 @@ That is the engineer I am trying to become: one who values disciplined reasoning
   - Caption: The bridge figure supports the argument that simpler geometry was not chosen for appearance alone, but because it was easier to analyze, build, and justify.
 - Figure
   - Source: /context-evidence/praxis2-anchor.png
-  - Alt: Praxis II evidence card summarizing scope narrowing and objective softening from the Beta release.
-  - Caption: The Praxis II figure belongs with the discussion of scope narrowing and objective softening, because it shows where explicit structure had to be loosened so viable concepts could remain in play.
+  - Alt: Praxis II evidence card showing the project's reframed scope, revised requirements, and rebuilt testing logic around winter telescope dexterity.
+  - Caption: The Praxis II evidence belongs here because the project only became defensible once the early scope, requirements, and testing logic were rebuilt around the real dexterity problem rather than preserved as if the first structure were already sound.
 
 ## Praxis I
 
@@ -113,7 +113,7 @@ The project first looked like a quieting problem around depressurization and ext
 
 Process - Generation
 
-Early design concepts included puncture vents, water damping, and tab attachments. The vented-versus-unvented result then weakened the original frame, which is why divergence only became genuinely useful after the team reopened what was actually causing the sound event.
+Early design concepts included puncture vents, water damping, and tab attachments. The vented-versus-unvented result then weakened the original frame, which is why divergence only became genuinely useful after our team reopened what was actually causing the sound event.
 
 Process - Assessment
 
@@ -133,7 +133,7 @@ CTMF References:
 
 Praxis I addressed a simple but easily underestimated design problem: opening a carbonated beverage can in a quiet shared environment creates a sharp, disruptive acoustic impulse. In lecture halls, libraries, and study spaces, that opening event can momentarily dominate the room, turning an ordinary action into a social and practical disruption. The project therefore began with a clear need: reduce the noise of can opening without making the product harder to use, less safe, or less believable as an everyday object.
 
-What made the project more than a straightforward noise-reduction exercise was that the team's first understanding of the problem did not fully hold. Early on, the challenge appeared to be about controlling depressurization. As testing progressed, however, the project became less about softening an existing opening event and more about understanding what actually caused the sharp impulse in the first place. That shift changed not just the ranking of concepts, but the logic of the design problem itself.
+What made the project more than a straightforward noise-reduction exercise was that our team's first understanding of the problem did not fully hold. Early on, the challenge appeared to be about controlling depressurization. As testing progressed, however, the project became less about softening an existing opening event and more about understanding what actually caused the sharp impulse in the first place. That shift changed not just the ranking of concepts, but the logic of the design problem itself.
 
 ### ObjectivesParagraphs
 
@@ -152,7 +152,7 @@ Students and educators needed a solution that could reduce a disruptive opening 
 
 ### RequirementsParagraphs
 
-From those stakeholder pressures, the team developed a requirement set that defined what a viable solution had to protect while reducing noise. The design needed to produce strong peak-noise reduction during opening, minimize liquid loss, control CO2 boil-off, remain portable for everyday use, allow accessible low-force interaction, and maintain safe, clean contact around the drinking surface. These were not secondary checks added after concept generation. They were the conditions that kept the design effort grounded in actual use.
+From those stakeholder pressures, our team developed a requirement set that defined what a viable solution had to protect while reducing noise. The design needed to produce strong peak-noise reduction during opening, minimize liquid loss, control CO2 boil-off, remain portable for everyday use, allow accessible low-force interaction, and maintain safe, clean contact around the drinking surface. These were not secondary checks added after concept generation. They were the conditions that kept the design effort grounded in actual use.
 
 The concepts were therefore evaluated not just by whether they were quieter, but by whether they balanced the broader problem well. Peak noise, liquid loss, CO2 retention, hand pressure, and gesture count became the most useful comparative criteria because together they captured both technical performance and user practicality. This structure also fits the portfolio rubric, which rewards project summaries and annotations that clearly identify the project context, key design considerations, and the final design solution rather than treating the artifact in isolation.
 
@@ -178,7 +178,7 @@ The final concept also included a raised tab to reduce required hand pressure an
 
 ### SelectionParagraph
 
-The slider was selected because it performed best against the measured criteria while also matching the revised understanding of the problem. Compared with the control can, it reduced peak noise from 102 dB to 61 dB, cut liquid loss from 0.70% to 0.46%, limited CO2 boil-off over 90 seconds to 0.4 g compared with 1.3 g for the control and 1.2 g for the rubber-tab concept, lowered maximum hand pressure to 80 kPa compared with 135 kPa for the rubber tab and 600 kPa for the water opener, and required only two gestures instead of three or five. These results made it the strongest overall concept not because it optimized one metric in isolation, but because it improved the acoustic outcome without quietly breaking the others.
+The slider was selected because it performed best against the measured criteria while also matching the revised understanding of the problem (see [[fig:04|Figs. 04-06]]). Compared with the control can, it reduced peak noise from 102 dB to 61 dB, cut liquid loss from 0.70% to 0.46%, limited CO2 boil-off over 90 seconds to 0.4 g compared with 1.3 g for the control and 1.2 g for the rubber-tab concept (see [[fig:10]]), lowered maximum hand pressure to 80 kPa compared with 135 kPa for the rubber tab and 600 kPa for the water opener (see [[fig:09]]), and required only two gestures instead of three or five. These results made it the strongest overall concept because it improved the acoustic outcome without breaking the other evaluation criteria.
 
 ### Metrics
 
@@ -210,17 +210,17 @@ Three engineering decisions shaped the project most strongly.
 ### Decisions
 
 - Treating the original frame as provisional
-  - body: The first was the decision to treat the original problem frame as provisional rather than fixed. The team initially approached the challenge as finding a quieter way to open a standard can, which naturally produced concepts like puncture vents, water damping, and tab attachments. That direction was reasonable under the original assumptions, but it depended on the belief that rapid depressurization was the dominant noise source.
+  - body: The first was the decision to treat the original problem frame as provisional rather than fixed. Our team initially approached the challenge as finding a quieter way to open a standard can, which naturally produced concepts like puncture vents, water damping, and tab attachments. That direction was reasonable under the original assumptions, but it depended on the belief that rapid depressurization was the dominant noise source.
 - Letting contradictory evidence reopen the problem
   - body: The second was the decision to let contradictory test evidence reopen the problem. Vented and unvented openings produced similar dB levels, which suggested that the loudest part of the event was not simply gas escape, but the fracture of the scored aluminum tear strip. The important engineering decision was not just to record that result, but to treat it as a reason to revise the mechanism-level explanation behind the project.
 - Accepting a more radical redesign
-  - body: The third was the decision to accept a more radical redesign once the old frame weakened. Once the team recognized that the fracture event itself was central, easier retrofit concepts became less convincing. The slider was worth the extra complexity because it directly removed the abrupt tear-strip event while still performing best against the explicit criteria.
+  - body: The third was the decision to accept a more radical redesign once the old frame weakened. Once our team recognized that the fracture event itself was central, easier retrofit concepts became less convincing. The slider was worth the extra complexity because it directly removed the abrupt tear-strip event while still performing best against the explicit criteria.
 
 ### ProcessParagraphs
 
 The design process was iterative not just because multiple concepts were generated, but because the project looped back to framing after evidence weakened the initial explanation. The project began with a relatively stable opportunity statement and a set of early concepts shaped by that frame. Initial divergence explored ways to soften the opening event through vents, damping, and tab-based attachments. That work was useful, but in retrospect it was built on an assumption that had not been adequately challenged.
 
-Testing then acted less as a validator of chosen concepts and more as a diagnostic tool for the problem definition itself. Once the vented-versus-unvented result suggested the tear-strip fracture mattered more than expected, the team had to return to the opportunity statement and reframe the project. That reframing produced a different concept space, one in which mechanism redesign became newly reasonable. Convergence only became meaningful after that reframing, because only then did the evaluation criteria line up with the real structure of the problem.
+Testing then acted less as a validator of chosen concepts and more as a diagnostic tool for the problem definition itself. Once the vented-versus-unvented result suggested the tear-strip fracture mattered more than expected, our team had to return to the opportunity statement and reframe the project. That reframing produced a different concept space, one in which mechanism redesign became newly reasonable. Convergence only became meaningful after that reframing, because only then did the evaluation criteria line up with the real structure of the problem.
 
 ### Phases
 
@@ -247,7 +247,7 @@ The project also strengthened my understanding that concept comparison only beco
 
 This project matters in my portfolio because it was the first time I saw clearly that engineering can fail at the level of framing, not only at the level of solution quality. That insight now sits near the center of my position on engineering design: good engineering depends on framing, not just solving. When evidence breaks the logic of a design, I would rather reopen the problem than defend a polished answer to the wrong question.
 
-At the same time, Praxis I exposed a tension in how I work. My drive for rigor helped me notice when the original logic had weakened, but it also made me less patient with continued work inside a frame that no longer felt defensible. That is both a strength and a risk. It helps me question assumptions early, but it can also create friction if I do not communicate that concern carefully within a team. The project therefore shaped not only the product I value, but the kind of engineering judgment I am trying to develop: one that is evidence-driven, willing to reframe, and aware that technical rigor also affects collaboration.
+At the same time, Praxis I exposed a tension in how I work. My drive for rigor helped me notice when the original logic had weakened, but it also made me less patient with continued work inside a frame that no longer felt defensible. That is both a strength and a risk. It helps me question assumptions early, but it can also create friction if I do not communicate that concern carefully within a team. In practice, that meant the collaborative task was not only recognizing that the depressurization story had weakened, but turning that concern into a shared reason to reopen the criteria and concept logic instead of continuing to compare retrofit ideas as if the frame were still stable. The project therefore shaped not only the product I value, but the kind of engineering judgment I am trying to develop: one that is evidence-driven, willing to reframe, and aware that technical rigor also affects collaboration.
 
 ### CtmfSynthesis
 
@@ -258,80 +258,93 @@ Praxis I only became intellectually coherent once three CTMFs started doing diff
 - Stakeholder analysis changed what the project had to protect
   - Primary student conversations widened the project beyond noise alone by surfacing spill control, beverage disturbance, awkward finger interaction, and opening burden. That changed the requirement structure early, which is why the final recommendation had to protect usability, beverage integrity, and accessibility rather than only reduce dB.
 - The morph chart changed what kinds of concepts could be compared
-  - The morph chart made divergence more systematic by producing the concept families the team later carried into convergence: needle-straw, water opener, rubber tab, and slider. Its limit was equally important: much of that early space still assumed the problem could be solved through venting, damping, or managing the existing opening event, so the chart widened implementation diversity more than explanatory diversity.
+  - The morph chart made divergence more systematic by producing the concept families our team later carried into convergence: needle-straw, water opener, rubber tab, and slider. Its limit was equally important: much of that early space still assumed the problem could be solved through venting, damping, or managing the existing opening event, so the chart widened implementation diversity more than explanatory diversity.
 - Convergence tools only became trustworthy once the frame improved
-  - The Pugh-style comparison and measured criteria helped the team defend the slider against the remaining alternatives, but only after vented-versus-unvented testing weakened the original depressurization story. In other words, convergence did not rescue the project on its own; it became meaningful only once the criteria were aligned with a better explanation of the noise event.
+  - The Pugh-style comparison and measured criteria helped our team defend the slider against the remaining alternatives, but only after vented-versus-unvented testing weakened the original depressurization story. In other words, convergence did not rescue the project on its own; it became meaningful only once the criteria were aligned with a better explanation of the noise event.
 
 Taken together, these CTMFs taught me that a project can look systematic while still being wrong at the level of framing. Praxis I changed my process by making me treat framing, divergence, and convergence as moves that must remain responsive to evidence rather than as fixed steps that automatically build on one another.
 
 ### TeamCredit
 
-Praxis I was completed collaboratively within the course context. Shared design, testing, evaluation, and presentation work was completed by Katherine Chen, Shupeng Liu, Issac Ng, and William Xu.
+Praxis I was completed collaboratively within the course context, but different members carried different parts of the work. Katherine Chen and Issac Ng carried out prototype testing, with Ng also contributing to interviews and stakeholder analysis. Shupeng Liu developed the morph chart used to structure concept generation. I developed the Pugh chart and produced the CAD for all prototypes.
 
 ### Team
 
 Katherine Chen
 
+Performed prototype testing across the concept set.
+
 Shupeng Liu
+
+Developed the morph chart used to structure early concept generation.
 
 Issac Ng
 
+Performed prototype testing and contributed to interviews and stakeholder analysis.
+
 William Xu
+
+Developed the Pugh chart and produced the CAD for all prototypes.
 
 ### Figures
 
 - Figure: testing
-  - Label: Fig. 02
-  - Source: /context-evidence/raw/praxis1-p2-img1.png
-  - Alt: Praxis I noise-testing setup with a phone-based decibel recording beside a soda can.
-  - Caption: Noise-testing setup with phone-based dB recording beside a soda can. The project stopped being a simple noise-muffling exercise once this evidence began to contradict the original explanation.
+  - Label: Fig. 01
+  - Source: /api/videos/praxis1
+  - Alt: Praxis I noise-testing video showing the phone-based decibel recording beside a soda can during opening.
+  - Caption: Noise-testing video with phone-based dB recording beside a soda can. The project stopped being a simple noise-muffling exercise once this evidence began to contradict the original explanation.
 - Figure: slider
-  - Label: Fig. 05
-  - Source: /context-evidence/raw/praxis1-p3-img2.png
+  - Label: Fig. 02
+  - Source: /api/images/praxis1-annotated
   - Alt: Annotated CAD view of the Praxis I slider-based silent can concept.
   - Caption: Annotated CAD of the slider-based lid showing the slider, pre-formed opening, raised tab, and gasket.
+- Figure: sliderAnimation
+  - Label: Fig. 03
+  - Source: /api/videos/praxis1-slider-animation
+  - Alt: Praxis I slider animation showing the silent-can opening mechanism in motion.
+  - Caption: Slider animation showing the opening mechanism in motion during the final solution stage.
 - Figure: anchor
-  - Label: Fig. 12
-  - Source: /context-evidence/praxis1-anchor.png
-  - Alt: Composite Praxis I evidence pairing the noise-testing setup with the later written reflection on anchoring bias.
-  - Caption: Integrated figure combining the test setup, conflicting result, and the later reflection on why the original frame held on too long.
+  - Label: Fig. 11
+  - Source: /api/videos/praxis1
+  - Alt: Praxis I noise-testing video showing the contradictory result that later grounded the anchoring-bias reflection.
+  - Caption: The contradictory test result belongs beside the later reflection because it is the evidence that forced the original framing to weaken before the team could re-understand the problem.
 - Figure: reflection
-  - Label: Fig. 13
+  - Label: Fig. 12
   - Source: /context-evidence/raw/praxis1-p3-img1.png
   - Alt: Praxis I written reflection on anchoring bias and reframing during the diverging stage.
-  - Caption: Reflection excerpt pairing the key test result with a note on reframing and anchoring bias.
+  - Caption: This reflection excerpt records the process lesson that followed the conflicting test evidence: our team had stayed anchored to the original framing for too long, and the project only improved once that assumption was explicitly reconsidered.
 - Figure: morph
-  - Label: Fig. 10
+  - Label: Fig. 07
   - Source: @/app/projects/praxis1-media/morph-chart.jpg
   - Alt: Praxis I morph chart used during the diverging stage to explore alternative concepts for noise reduction.
   - Caption: Morphological chart showing the retrofit concept space that grew out of the original depressurization frame.
 - Figure: acoustic
-  - Label: Fig. 06A
+  - Label: Fig. 04
   - Source: @/app/projects/praxis1-media/acoustic-impulse-chart.png
   - Alt: Acoustic impulse comparison over time for the control can and the slider concepts.
   - Caption: Acoustic impulse comparison showing how the slider concept spread the opening event over time instead of preserving the sharp control-can spike.
 - Figure: pressure
-  - Label: Fig. 06B
+  - Label: Fig. 05
   - Source: @/app/projects/praxis1-media/contact-pressure-chart.png
   - Alt: Opening contact pressure comparison for the control can and the slider concepts.
   - Caption: Opening contact pressure comparison showing why the slider also improved accessibility and hand pressure.
 - Figure: co2
-  - Label: Fig. 06C
+  - Label: Fig. 06
   - Source: @/app/projects/praxis1-media/co2-chart.png
   - Alt: CO2 boil-off comparison between the control can and slider designs.
   - Caption: CO2 boil-off comparison. Slider V2 approached the control in retention while remaining quieter.
 - Figure: needle
-  - Label: Fig. 07A
+  - Label: Fig. 08
   - Source: @/app/projects/praxis1-media/needle-vent-concept.png
   - Alt: Praxis I puncture vent concept sketch from the early retrofit concept space.
   - Caption: Early puncture vent concept produced under the original frame.
 - Figure: water
-  - Label: Fig. 07B
+  - Label: Fig. 09
   - Source: @/app/projects/praxis1-media/water-opener-concept.png
   - Alt: Praxis I water-opener concept render from the early retrofit concept space.
   - Caption: Water-damping concept aimed at softening the opening event without changing the can itself.
 - Figure: rubber
-  - Label: Fig. 07C
+  - Label: Fig. 10
   - Source: @/app/projects/praxis1-media/rubber-tab-concept.png
   - Alt: Praxis I rubber-tab concept render from the early retrofit concept space.
   - Caption: Rubber-tab attachment concept that stayed closer to the original opening mechanism.
@@ -410,7 +423,7 @@ Within the project itself, three stakeholder pressures mattered most. First, the
 
 ### RequirementsParagraphs
 
-The bridge had to satisfy both explicit project constraints and performance-based evaluation criteria. At the requirement level, the bridge had to span 1200 mm between supports, be at least 1250 mm long overall, keep the track horizontal and unobstructed, maintain a deck width of at least 100 mm, stay within the allowable height envelope, and rest on 60 mm flat support regions at both ends. It also had to be made only from the provided matboard and contact cement, with the material properties fixed by the handout rather than chosen by the team.
+The bridge had to satisfy both explicit project constraints and performance-based evaluation criteria. At the requirement level, the bridge had to span 1200 mm between supports, be at least 1250 mm long overall, keep the track horizontal and unobstructed, maintain a deck width of at least 100 mm, stay within the allowable height envelope, and rest on 60 mm flat support regions at both ends. It also had to be made only from the provided matboard and contact cement, with the material properties fixed by the handout rather than chosen by our team.
 
 The loading requirements made the project structurally richer than a single static calculation. The bridge first had to survive Load Case 1, a moving 400 N train distributed across six axles, and then, if successful, withstand progressively heavier passes under Load Case 2, where the locomotive and freight cars increased in prescribed ratios. The first pass of Load Case 2 already raised the total train weight to 452 N, and the later loading sequence remained intentionally undisclosed to force robust design rather than overfitting to one exact case.
 
@@ -432,9 +445,9 @@ Balance construction quality, tested strength, and prediction accuracy rather th
 
 ### FinalSolutionParagraphs
 
-The final bridge was a simple pi-beam / box-girder style design built around structural clarity and constructability rather than geometric flourish. It used a 100 mm double-layer top flange, two centered webs spaced 60 mm apart, and an unequal diaphragm arrangement concentrated where buckling risk was highest. The final form was deliberately cleaner and simpler than visually more ambitious alternatives because the team prioritized a geometry that could be analyzed, fit onto the sheet, and built with enough consistency that the calculations still meant something.
+The final bridge was a simple pi-beam / box-girder style design built around structural clarity and constructability rather than geometric flourish. It used a 100 mm double-layer top flange, two centered webs spaced 60 mm apart, and an unequal diaphragm arrangement concentrated where buckling risk was highest. The final form was deliberately cleaner and simpler than visually more ambitious alternatives because our team prioritized a geometry that could be analyzed, fit onto the sheet, and built with enough consistency that the calculations still meant something.
 
-This design was selected not because it produced the highest theoretical number the team ever saw, but because it was the strongest design that remained structurally credible, materially efficient, and manufacturable. That distinction mattered. A more aggressive evenly spaced diaphragm design reached 2.12 kN in analysis, but it could not fit on one matboard sheet and therefore was not a serious final candidate. The chosen bridge accepted some reduction in predicted capacity in exchange for a design that could actually be cut, assembled, and tested under real fabrication limits.
+This design was selected not because it produced the highest theoretical number our team ever saw, but because it was the strongest design that remained structurally credible, materially efficient, and manufacturable. That distinction mattered. A more aggressive evenly spaced diaphragm design reached 2.12 kN in analysis, but it could not fit on one matboard sheet and therefore was not a serious final candidate. The chosen bridge accepted some reduction in predicted capacity in exchange for a design that could actually be cut, assembled, and tested under real fabrication limits.
 
 ### SelectionParagraphs
 
@@ -470,7 +483,7 @@ Four engineering decisions shaped the bridge more than any single dimension.
 ### Decisions
 
 - Choose a simple bridge form
-  - body: The team selected a pi-beam / box-girder style section over truss or trapezoidal alternatives because it was easier to analyze systematically, easier to construct accurately from matboard, and easier to strengthen in response to a known governing mode. The point was not that simpler shapes are always stronger, but that in this project a structurally legible geometry gave the team better control over iteration.
+  - body: Our team selected a pi-beam / box-girder style section over truss or trapezoidal alternatives because it was easier to analyze systematically, easier to construct accurately from matboard, and easier to strengthen in response to a known governing mode. The point was not that simpler shapes are always stronger, but that in this project a structurally legible geometry gave our team better control over iteration.
 - Let governing failure modes drive iteration
   - body: Design 0 made the first real weakness visible: the bridge was badly understrength, with thin-plate buckling case 1 controlling at a factor of safety of 0.597. From that point onward, major changes were made in response to whichever failure mode currently governed, not to whatever geometry looked stronger in isolation.
 - Sacrifice theoretical strength for manufacturability
@@ -482,7 +495,7 @@ Four engineering decisions shaped the bridge more than any single dimension.
 
 The handout framed the project as an iterative process beginning from Design 0. Teams were expected to compute the factor of safety for that initial bridge, identify the critical train positions for shear and bending, calculate applied stresses and capacities, determine the minimum factor of safety, then change geometric parameters and repeat. Each major iteration had to record design decisions, justifications, and results, while balancing material constraints and feasibility constraints rather than optimizing blindly.
 
-That structure matched how the bridge actually evolved. The project did not improve through one smooth optimization path. It moved from a clearly understrength baseline, to stronger flange logic, to more aggressive diaphragm-based analytical concepts, and then back toward a simpler but buildable final bridge. Each stage solved one problem while often creating another: improving compression resistance increased material use, improving buckling control complicated fitting, and improving theoretical capacity raised fabrication sensitivity.
+That structure matched how the bridge actually evolved. The project did not improve through one smooth optimization path. It moved from a clearly understrength baseline, to stronger flange logic, to more aggressive diaphragm-based analytical concepts, and then back toward a simpler but buildable final bridge. Keeping the bridge logic structurally legible mattered here because it gave our team a shared basis for convergence: each revision could be judged against the current governing weakness, fitting limits, and buildability without losing track of why one bridge state should survive over another. Each stage solved one problem while often creating another: improving compression resistance increased material use, improving buckling control complicated fitting, and improving theoretical capacity raised fabrication sensitivity.
 
 The most important iterative turn came at the end, when the physical test overruled the final analytical story. Up to failure, there were no obvious global distress signs elsewhere in the bridge; instead, the front splice failed first and dominated the outcome. That made the final iteration retrospective rather than geometric: the project had to be re-understood not as a bridge that was analytically weak, but as a bridge whose local manufacturing vulnerability had been underestimated.
 
@@ -520,7 +533,7 @@ Title: How The CTMFs Changed This Project
 CIV102 improved through a sequence of CTMFs that each did a different kind of engineering work. One clarified what kind of bridge was worth building, one generated the next bridge state from the current governing weakness, and one made convergence traceable across successive revisions.
 
 - Challenge assumptions changed what kind of bridge was worth optimizing
-  - This CTMF mattered early because it helped the team reject unnecessary structural complexity and visible overdesign before calculations hardened around them. Choosing the simpler pi-beam direction and later removing the bottom flange were both consequences of questioning whether extra geometry or material was actually doing useful structural work.
+  - This CTMF mattered early because it helped our team reject unnecessary structural complexity and visible overdesign before calculations hardened around them. Choosing the simpler pi-beam direction and later removing the bottom flange were both consequences of questioning whether extra geometry or material was actually doing useful structural work.
 - Calculations and simulation changed how the bridge evolved
   - The scripts and section calculations turned each iteration into a response to the current governing weakness instead of a guess about what might be stronger. That is why the bridge progressed through a legible path of flange thickening, height optimization, diaphragm revision, and fitting-driven redesign rather than through ad hoc trial and error.
 - The FOS comparison tables changed how convergence was justified
@@ -535,42 +548,52 @@ CIV102 was completed collaboratively within the course context. Shared design, c
 ### Figures
 
 - Figure: bridge
-  - Label: Source 01
+  - Label: Fig. 01
   - Source: /context-evidence/raw/civ102-p3-img2.png
   - Alt: Built CIV102 bridge on a worktable before testing.
   - Caption: Built bridge photographed after fabrication. This is the physical object the analysis was trying to describe.
 - Figure: crossSection
-  - Label: Source 02
-  - Source: /context-evidence/raw/civ102-p6-img3.png
-  - Alt: CIV102 bridge cross-section drawing with the top flange and web dimensions.
-  - Caption: Cross-section drawing of the final bridge geometry, showing the top flange, web spacing, and overall section depth.
+  - Label: Fig. 02
+  - Source: /api/images/civ102-cross-section
+  - Alt: Photo of the final CIV102 bridge cross-section showing the top flange, web spacing, and overall section depth.
+  - Caption: Photo of the final bridge cross-section showing the top flange, web spacing, and overall section depth.
+- Figure: loadingConfiguration
+  - Label: Fig. 03
+  - Source: /api/images/civ102-loading-configuration
+  - Alt: Train dimensions and loading schematic showing the three-carriage 400 N train, axle spacing, and left-to-right movement across the bridge.
+  - Caption: Train dimensions and loading schematic showing the three-carriage 400 N train, axle spacing, and left-to-right movement that governed the bridge loading constraints.
 - Figure: loadEnvelope
-  - Label: Source 03
+  - Label: Fig. 04
   - Source: /context-evidence/raw/civ102-p7-img1.png
   - Alt: Shear-force and bending-moment envelopes for the CIV102 bridge load case.
   - Caption: Shear-force and bending-moment envelopes used to locate the critical loading logic along the span.
-- Figure: designZero
-  - Label: Source 04
-  - Source: /context-evidence/raw/civ102-p5-img1.png
-  - Alt: Design 0 factor-of-safety output showing thin-plate buckling case 1 governing at 0.597.
-  - Caption: Design 0 factor-of-safety output. Thin-plate buckling case 1 governed early and made the first real weakness visible.
 - Figure: diaphragm
-  - Label: Source 05
+  - Label: Fig. 05
   - Source: /context-evidence/raw/civ102-p19-img1.png
   - Alt: Final bridge cross-section and diaphragm-location diagram.
   - Caption: Final cross-section and diaphragm placement diagram for the selected bridge configuration.
+- Figure: buildReview
+  - Label: Fig. 06
+  - Source: /api/videos/civ102-build-review
+  - Alt: CIV102 build review video showing the completed bridge in hand and from multiple viewing angles.
+  - Caption: Build review video of the completed bridge. It belongs in the final solution section because it shows the built object as the real outcome of the final geometry and fabrication decisions.
+- Figure: designZero
+  - Label: Fig. 07
+  - Source: /context-evidence/raw/civ102-p5-img1.png
+  - Alt: Design 0 factor-of-safety output showing thin-plate buckling case 1 governing at 0.597.
+  - Caption: Design 0 factor-of-safety output. Thin-plate buckling case 1 governed early and made the first real weakness visible.
 - Figure: layout
-  - Label: Source 06
+  - Label: Fig. 08
   - Source: /context-evidence/raw/civ102-p3-img1.png
   - Alt: Matboard layout showing how the bridge parts fit onto a single sheet.
   - Caption: Matboard layout showing how the bridge parts were nested onto a single sheet, making buildability a real design constraint.
 - Figure: splice
-  - Label: Source 07
+  - Label: Fig. 09
   - Source: /context-evidence/raw/civ102-splice-failure.jpg
   - Alt: Bridge during testing with the front splice circled where failure initiated.
   - Caption: Testing photo with the front splice circled. This was the local detail that overruled the predicted global failure mode.
 - Figure: failure
-  - Label: Source 08
+  - Label: Fig. 10
   - Source: /context-evidence/raw/civ102-failure.png
   - Alt: Bridge collapsed during testing under moving-train loading.
   - Caption: Failure during testing. The bridge underperformed not because the calculations were useless, but because the built artifact was more splice-sensitive than the model represented.
@@ -618,7 +641,7 @@ Testing had to develop in stages because the initial cold-plunge setup only prod
 
 Process - Reflection
 
-Praxis II made one design lesson explicit: rigor becomes harmful when it hardens the scope or the criteria too early. The project improved once the team reopened both framing and testing, focused on the real dexterity bottleneck, and accepted that some tasks would still require controlled shifts between warmth and precision.
+Praxis II made one design lesson explicit: rigor becomes harmful when it hardens the scope or the criteria too early. The project improved once our team reopened both framing and testing, focused on the real dexterity bottleneck, and accepted that some tasks would still require controlled shifts between warmth and precision.
 
 CTMF References:
 
@@ -652,26 +675,30 @@ That reframing also clarified the two main project paths. One path was to redesi
   - body: Needed a solution that preserved fine control during focusing, accessory changes, and small adjustments in real winter observing sessions.
 - Community equipment diversity
   - body: Commercial and DIY telescope variation made permanent telescope-specific redesign less inclusive and less generalizable across the RASC community.
+- Adjacent cold-weather dexterity users
+  - body: Food delivery drivers, hunters, sailors, and similar users reinforced that the underlying challenge was broader than astronomy alone: some cold-weather tasks still demand fine control, quick access, and reliable hand function outdoors.
 - Winter field conditions
   - body: Cold, moisture, dim red-light use, portability, and setup burden all constrained what a credible astronomy solution could be.
 
 ### RequirementsParagraphs
 
-Once the project was reframed around manipulability rather than generic warmth, the requirements became more honest. The strongest ones were no longer just thermal. They focused on preserving winter task performance, maintaining safe and usable hand temperature, staying reliable under cold and moisture, remaining compatible with dim red-light observing, and avoiding telescope-specific modification across a diverse community.
+By the final showcase stage, the requirement structure was no longer a broad winter-use summary. It was organized as a final constraint set with explicit requirement and evaluation-code logic around functionality, safety and comfort, reliability, portability, and astronomical-context compatibility.
 
-The showcase logic sharpened that further: a better design was one that improved dexterity-sensitive performance without quietly adding setup burden or depending on one telescope geometry. This is also where the no-telescope-modification requirement became more important and where an earlier observational-quality constraint weakened, because the glove path was no longer acting on the telescope itself.
+That final showcase structure also made one design consequence explicit: observational quality was removed as its own constraint set because the glove did not modify the telescope. The end-state requirements therefore focused on what the glove itself had to do well, how it would be measured, and which earlier criteria were no longer relevant once the concept path had stabilized.
 
 ### Requirements
 
-Preserve task performance during representative winter telescope micro-tasks rather than only making the user feel warmer.
+Constraint Set 1, Functionality: R1.1 improve general dexterity relative to the heavy-glove concept; EC1.1 maximize general dexterity using the building test; EC1.2 maximize task-specific dexterity using the microscope test.
 
-Maintain a safe, usable hand thermal condition without introducing bulky ski-glove behavior.
+Constraint Set 2, Safety and Comfort: R2.1 maintain a safe contact temperature range consistent with the RFP; EC2.1 minimize overall temperature range; EC2.2 minimize temperature gradient.
 
-Remain reliable under cold, moisture, and dim red-light observing conditions.
+Conditional Constraint Set 3, Reliability: R3.1 meet the functional-retention requirement; R3.2 meet the IP54 water-resistance standard; R3.3 allow no open circuits; EC3.1 maximize functional retention.
 
-Avoid permanent telescope-specific redesign so the solution stays defensible across a diverse community.
+Constraint Set 4, Observational Quality: removed at the showcase stage because the glove made no telescope modifications or attachments.
 
-Minimize setup and interaction burden while remaining portable for real field use.
+Constraint Set 5, Portability: EC5.1 minimize action count; EC5.2 minimize mass; EC5.3 minimize volume.
+
+Constraint Set 6, Astronomical Context Compatibility: R6.1 permit no telescope modifications or attachments; EC6.1 minimize the actuation force required to perform dexterous tasks while wearing the glove.
 
 ### FinalSolutionParagraphs
 
@@ -681,26 +708,26 @@ The glove also became explicitly multi-modal. A flip-back outer section allowed 
 
 ### SelectionParagraphs
 
-The final concept was selected because it responded most directly to the reframed issue while respecting community-fit constraints. Early on, the team explored environment systems, software or error-mitigation ideas, telescope attachments, knob-turner concepts, and glove-based concepts. Several of those weakened once portability, setup burden, and telescope diversity were treated as real constraints rather than decorative considerations. A solution that depended on one telescope geometry or added too much interaction burden stopped being persuasive even if it looked clever in isolation.
+The final concept was selected because it responded most directly to the reframed issue while respecting community-fit constraints. Early on, our team explored environment systems, software or error-mitigation ideas, telescope attachments, knob-turner concepts, and glove-based concepts. Several of those weakened once portability, setup burden, and telescope diversity were treated as real constraints rather than decorative considerations. A solution that depended on one telescope geometry or added too much interaction burden stopped being persuasive even if it looked clever in isolation.
 
 The strongest showcase improvement is that convergence now has a clearer logic. Stage 1 revealed that the original cold-plunge procedure could not hold the cold condition long enough to generate trustworthy evidence, so the testing procedure itself had to change. Later observation and validation then weakened the knob-turner more decisively: only about 27.3% of observed actions were rotational, telescope operation involved many non-rotational hand tasks, and a turning aid added its own equip/unequip burden. The glove remained strongest because it preserved dexterity directly, stayed more generalizable across telescope setups, and later evolved into a convertible design that matched the real warmth-versus-precision tradeoff more honestly.
 
 ### Decisions
 
 - Frame the issue as manipulability failure, not just warmth loss
-  - body: The project became stronger once it stopped treating winter astronomy as a generic comfort problem and instead focused on the task-level mismatch between cold-impaired hands and dexterity-sensitive telescope operation. That move made later decisions more defensible because the team could judge concepts by whether they preserved micro-task performance rather than by whether they simply sounded warm or protective.
+  - body: The project became stronger once it stopped treating winter astronomy as a generic comfort problem and instead focused on the task-level mismatch between cold-impaired hands and dexterity-sensitive telescope operation. That move made later decisions more defensible because our team could judge concepts by whether they preserved micro-task performance rather than by whether they simply sounded warm or protective.
 - Redesign the testing procedure before trusting convergence
   - body: The first cold-plunge setup looked rigorous, but it only produced 1 to 3 seconds of meaningful impairment before the body reheated the hands. That meant the procedure itself was too weak to compare concepts honestly. Stage 2 improved the project by separating dexterity and thermal questions before recombining them later, which made the evidence behind convergence much stronger.
 - Use workflow evidence to eliminate the knob-turner path
   - body: The knob-turner did not weaken only because the glove improved. It weakened because the project learned more about telescope use itself. Only about 27.3% of observed actions were rotational, many critical tasks involved broader hand dexterity, and a turning aid was not generalizable across different telescope mechanisms. The project therefore shifted away from redesigning one action and toward preserving hand capability across the workflow.
 - Accept controlled mode changes as part of the final solution
-  - body: The final glove improved when the team stopped treating glove removal as a failure to eliminate completely and instead treated it as a real use condition to manage. The multi-mode glove was stronger because it supported controlled transitions between warmth and precision rather than denying that the tradeoff existed. Finger-focused heating, wrist battery placement, and the flip-back outer layer all became more persuasive once they were tied to that reality.
+  - body: The final glove improved when our team stopped treating glove removal as a failure to eliminate completely and instead treated it as a real use condition to manage. The multi-mode glove was stronger because it supported controlled transitions between warmth and precision rather than denying that the tradeoff existed. Finger-focused heating, wrist battery placement, and the flip-back outer layer all became more persuasive once they were tied to that reality.
 
 ### ProcessParagraphs
 
-The Praxis II process did not move cleanly from problem statement to final glove. It began with a broad winter-astronomy usability opportunity, then expanded into multiple intervention levels including environment concepts, software or error-mitigation ideas, telescope attachments, knob-turner concepts, and direct handwear solutions. Early scoping and Beta preparation show that the team was still negotiating what the real issue was and what kind of solution space was actually defensible.
+The Praxis II process did not move cleanly from problem statement to final glove. It began with a broad winter-astronomy usability opportunity, then expanded into multiple intervention levels including environment concepts, software or error-mitigation ideas, telescope attachments, knob-turner concepts, and direct handwear solutions. Early scoping and Beta preparation show that our team was still negotiating what the real issue was and what kind of solution space was actually defensible.
 
-The strongest turn in the project came when both framing and testing were reopened. Stakeholder evidence and direct telescope interaction narrowed the issue toward preserving dexterity directly. Stage 1 testing then exposed that the cold-plunge method produced only 1 to 3 seconds of meaningful impairment, so the procedure itself had to change before concepts could be judged fairly. Once thermal and dexterity evidence were separated and later recombined, the team could weaken the knob-turner path more honestly, justify finger-focused heating, and converge on the final multi-mode glove with stronger evidence behind it.
+The strongest turn in the project came when both framing and testing were reopened. Stakeholder evidence and direct telescope interaction narrowed the issue toward preserving dexterity directly. Stage 1 testing then exposed that the cold-plunge method produced only 1 to 3 seconds of meaningful impairment, so the procedure itself had to change before concepts could be judged fairly. Once the requirements and testing questions were stated more clearly, our team had a firmer basis for comparing concept paths, weakening the knob-turner more honestly, and explaining why the glove remained the stronger direction. Once thermal and dexterity evidence were separated and later recombined, our team could weaken the knob-turner path more honestly, justify finger-focused heating, and converge on the final multi-mode glove with stronger evidence behind it.
 
 ### Phases
 
@@ -721,7 +748,7 @@ The strongest turn in the project came when both framing and testing were reopen
 
 Praxis II taught me that winter-use engineering here was really a manipulability problem, not just a warmth problem. The strongest design move was not adding more heat everywhere. It was identifying which part of the workflow was failing, then preserving that capability as directly as possible. That changed how I think about user-centered engineering: the best intervention often targets the exact function being lost, not the broadest symptom surrounding it.
 
-The project also made clear that testing procedures are themselves engineering decisions. The first test setup looked rigorous, but it produced unstable evidence because the cold condition disappeared too quickly. The project improved only after the team treated that procedural weakness as real, separated confounded variables, and redesigned the testing logic before defending the concepts too confidently.
+The project also made clear that testing procedures are themselves engineering decisions. The first test setup looked rigorous, but it produced unstable evidence because the cold condition disappeared too quickly. The project improved only after our team treated that procedural weakness as real, separated confounded variables, and redesigned the testing logic before defending the concepts too confidently.
 
 ### ReflectionParagraphs
 
@@ -736,11 +763,11 @@ Title: How The CTMFs Changed This Project
 Praxis II became much stronger once its main CTMFs stopped acting like separate exercises and started changing the project in sequence. One identified the real mismatch, one rebuilt the evidence model, and one widened early thermal logic without being mistaken for proof of the final answer.
 
 - Root cause analysis changed what the project was actually about
-  - This CTMF stopped the team from treating winter astronomy as a generic warmth problem and instead exposed a dexterity-manipulability breakdown during telescope micro-tasks. That reframing mattered because it opened two real intervention paths at the start: reduce the dexterity demand of telescope use or preserve user dexterity directly under winter conditions.
+  - This CTMF stopped our team from treating winter astronomy as a generic warmth problem and instead exposed a dexterity-manipulability breakdown during telescope micro-tasks. That reframing mattered because it opened two real intervention paths at the start: reduce the dexterity demand of telescope use or preserve user dexterity directly under winter conditions.
 - Verification and validation changed which evidence could be trusted
-  - The project improved once the team recognized that the first cold-plunge setup was too weak to stand in for sustained winter use. Separating dexterity and thermal testing made the comparison more honest, weakened the knob-turner path, and made the glove path defensible for the right reasons rather than because one weak procedure made it look promising.
+  - The project improved once our team recognized that the first cold-plunge setup was too weak to stand in for sustained winter use. Separating dexterity and thermal testing made the comparison more honest, weakened the knob-turner path, and made the glove path defensible for the right reasons rather than because one weak procedure made it look promising.
 - Biomimicry changed the early divergence logic, not the final proof
-  - Biomimicry helped the team generate non-default ideas such as selective insulation, protected warm zones, and modal dexterity instead of defaulting immediately to a standard heated glove. Its real value was early: it widened the design space and seeded thermal-zoning logic, but later validation still had to decide which of those ideas could survive in a real astronomy workflow.
+  - Biomimicry helped our team generate non-default ideas such as selective insulation, protected warm zones, and modal dexterity instead of defaulting immediately to a standard heated glove. Its real value was early: it widened the design space and seeded thermal-zoning logic, but later validation still had to decide which of those ideas could survive in a real astronomy workflow.
 
 Together, these CTMFs taught me that this project was not mainly about inventing a glove. Praxis II changed my process by showing that good engineering sometimes means redesigning the problem definition and the evidence model before the final concept deserves to be trusted.
 
@@ -751,57 +778,57 @@ Praxis II was completed collaboratively within the course context. Framing, rese
 ### Figures
 
 - Figure: problem
-  - Label: Source 01
+  - Label: Fig. 01
   - Source: /context-evidence/raw/praxis2-fig1-problem.png
   - Alt: Former RASC member removing a glove to make a telescope adjustment.
   - Caption: Former RASC member removing a glove to make a telescope adjustment. This behavior grounded the project in a dexterity failure rather than a generic comfort complaint.
 - Figure: workflow
-  - Label: Source 02
+  - Label: Fig. 02
   - Source: /context-evidence/raw/praxis2-fig2-workflow.png
   - Alt: Workflow diagram showing dexterity-sensitive failure points during telescope use.
   - Caption: Workflow diagram highlighting where cold hands and low-light conditions turn small astronomy tasks into repeated failure points and rework.
 - Figure: framing
-  - Label: Source 03
+  - Label: Fig. 03
   - Source: /context-evidence/raw/praxis2-fig3-framing.png
   - Alt: Framing diagram comparing redesigning the telescope with preserving user dexterity.
   - Caption: Early framing diagram contrasting the two main paths: redesign the telescope interface or preserve the user's dexterity directly.
 - Figure: stakeholderMap
-  - Label: Source 04
+  - Label: Fig. 04
   - Source: /context-evidence/raw/praxis2-fig4-stakeholders.png
   - Alt: Stakeholder map for the Praxis II winter astronomy project.
   - Caption: Stakeholder map showing that the project was constrained not only by users, but also by community fit, equipment diversity, and observing conditions.
 - Figure: performance
-  - Label: Source 05
+  - Label: Fig. 05
   - Source: /context-evidence/raw/praxis2-graph-time.png
   - Alt: Average performance index or completion-time comparison across Praxis II prototype trials.
   - Caption: Performance comparison across prototype trials. The project only became trustworthy once concept comparison was tied to task performance rather than to general warmth claims or feature count.
 - Figure: modes
-  - Label: Source 06
+  - Label: Fig. 06
   - Source: /context-evidence/raw/praxis2-high-low-modes.png
   - Alt: Diagram of the Praxis II glove in high- and low-dexterity modes.
   - Caption: High- and low-dexterity glove modes. The final design accepted controlled switching between protection and precision instead of forcing one state to do everything.
 - Figure: schematic
-  - Label: Source 07
+  - Label: Fig. 07
   - Source: /context-evidence/raw/praxis2-internal-schematic.png
   - Alt: Internal schematic of the GRIPPy glove concept showing the heating layout and major components.
   - Caption: Internal schematic of the final glove, showing finger-focused heating, routing logic, and the system architecture behind the final concept.
 - Figure: folding
-  - Label: Source 08
+  - Label: Fig. 09
   - Source: /context-evidence/raw/praxis2-folding-configuration.webp
   - Alt: Folding configuration of the Praxis II physical prototype.
   - Caption: Folding configuration of the physical prototype. The convertible structure became necessary once validation showed that some astronomy tasks still required a higher-dexterity mode.
 - Figure: temp
-  - Label: Source 09
+  - Label: Fig. 10
   - Source: /context-evidence/raw/praxis2-graph-temp.png
   - Alt: Temperature-loss comparison graph used in Praxis II testing.
   - Caption: Temperature testing supported the glove's thermal logic, but the project only became trustworthy once thermal and dexterity questions were separated and then recombined carefully.
 - Figure: dexterity
-  - Label: Source 10
+  - Label: Fig. 11
   - Source: /context-evidence/raw/praxis2-graph-dexterity.png
   - Alt: Dexterity versus temperature graph from Praxis II testing.
   - Caption: Dexterity versus temperature evidence showed why preserving usable fingertip performance mattered more than solving cold discomfort abstractly.
 - Figure: wireOptimization
-  - Label: Source 11
+  - Label: Fig. 08
   - Source: /context-evidence/raw/praxis2-wire-optimization.webp
   - Alt: Optimization study relating wire length to generated heat in the Praxis II glove system.
   - Caption: Wire-length optimization study. Limited electrical power made localized finger heating more defensible than trying to heat the entire glove uniformly.
@@ -830,7 +857,7 @@ Stage: Frame
 Stage Code: F
 Subtext: Questioned whether complexity, extra material, and analytical neatness were actually the right structural commitments before optimization hardened.
 Overview: Challenge assumptions is a framing CTMF that asks which starting beliefs are justified, which are only convenient simplifications, and which are quietly steering the project toward a weaker definition of success.
-Why It Matters: In CIV102, it mattered because the team first had to decide what kind of bridge was worth optimizing before calculations and convergence could mean anything.
+Why It Matters: In CIV102, it mattered because our team first had to decide what kind of bridge was worth optimizing before calculations and convergence could mean anything.
 
 Evidence:
 
@@ -843,13 +870,13 @@ Application: I use this CTMF early to test whether the project is leaning on inh
 
 Phase Code: F
 Claim Headline: Challenge Assumptions Should Decide What Kind Of Bridge Is Worth Optimizing Before The Model Takes Over.
-Summary: In CIV102, challenging assumptions mattered because it shaped the bridge logic before optimization hardened. It helped the team reject unnecessary complexity and visible overdesign early, but the built bridge later showed that local splice reliability had not been challenged with the same seriousness as global section behavior.
+Summary: In CIV102, challenging assumptions mattered because it shaped the bridge logic before optimization hardened. It helped our team reject unnecessary complexity and visible overdesign early, but the built bridge later showed that local splice reliability had not been challenged with the same seriousness as global section behavior.
 
 ##### Core Claim
 
 Bullets:
 
-- In CIV102, challenging assumptions mattered because it helped decide what kind of bridge was worth committing to before calculations began to drive the project. The team challenged complexity and overdesign early, but the built bridge later showed that splice reliability had not been framed strongly enough as a structural issue.
+- In CIV102, challenging assumptions mattered because it helped decide what kind of bridge was worth committing to before calculations began to drive the project. Our team challenged complexity and overdesign early, but the built bridge later showed that splice reliability had not been framed strongly enough as a structural issue.
 
 Figures:
 
@@ -864,22 +891,22 @@ Bullets:
 
 - Challenge assumptions is a framing CTMF that asks which starting beliefs are justified, which are only convenient shortcuts, and which are quietly shaping the project in misleading ways.
 - In CIV102, it was needed because optimization could have started too early around assumptions like more complexity means more strength, more material means more safety, or analytically clean means structurally trustworthy.
-- Before the bridge could be generated and converged well, the team first had to decide what counted as a credible structural direction under the real assignment constraints.
+- Before the bridge could be generated and converged well, our team first had to decide what counted as a credible structural direction under the real assignment constraints.
 
 ##### How I Used It In CIV102
 
 Bullets:
 
-- I first used this CTMF when the team chose the simpler pi-beam or box-girder direction over more complex bridge forms, because we judged that analytical clarity and constructability mattered more than structural flourish. That was a framing decision, not just a style preference.
+- I first used this CTMF when our team chose the simpler pi-beam or box-girder direction over more complex bridge forms, because we judged that analytical clarity and constructability mattered more than structural flourish. That was a framing decision, not just a style preference.
 - I used it again when the FOS outputs showed that parts of the section, especially the bottom flange, were carrying more material than the governing weakness justified. That made overdesign visible as an assumption rather than as harmless insurance.
-- In that sense, this CTMF shaped both the bridge family and the bridge logic. It helped the team commit to a structurally legible form and avoid preserving material simply because it felt safer to leave it in.
+- In that sense, this CTMF shaped both the bridge family and the bridge logic. It helped our team commit to a structurally legible form and avoid preserving material simply because it felt safer to leave it in.
 
 Figures:
 
 - Figure
-  - Source: /context-evidence/raw/civ102-p6-img3.png
-  - Alt: CIV102 cross-section sketch of the chosen pi-beam geometry.
-  - Caption: This section sketch supports the first major use of the CTMF: the team challenged the assumption that a more complicated bridge family was necessary and instead committed to a simpler geometry that could be analyzed and built more reliably.
+  - Source: /api/images/civ102-cross-section
+  - Alt: Photo of the final CIV102 bridge cross-section for the chosen pi-beam geometry.
+  - Caption: This cross-section photo supports the first major use of the CTMF: our team challenged the assumption that a more complicated bridge family was necessary and instead committed to a simpler geometry that could be analyzed and built more reliably.
 - Figure
   - Source: /context-evidence/raw/civ102-p5-img1.png
   - Alt: CIV102 Design 0 factor-of-safety output showing thin-plate buckling as the governing weakness.
@@ -964,6 +991,17 @@ Bullets:
 - It could not determine whether the dominant issue was depressurization, tear-line fracture, or something else.
 - In Praxis I, that meant stakeholder analysis gave the project a better frame, but mechanism-level testing was still needed to challenge the original physical explanation.
 
+Figures:
+
+- Figure
+  - Source: /api/videos/praxis1-interview
+  - Alt: Praxis I stakeholder interview video showing students discussing spills, awkward finger interaction, and opening difficulty.
+  - Caption: The interview video shows what stakeholder analysis could reveal well: the user-facing frustrations around spills, awkward finger interaction, and opening burden. It clarified what the project needed to protect, but not what physically caused the sharp sound event.
+- Figure
+  - Source: /api/videos/praxis1
+  - Alt: Praxis I acoustic testing video showing a phone decibel meter beside a soda can during opening.
+  - Caption: Stakeholder analysis defined what the design needed to protect, but testing was still required to challenge the original explanation of what physically caused the sound event.
+
 ##### Impact On My Position In Context
 
 Bullets:
@@ -993,7 +1031,7 @@ Evidence:
 - CIV102: aligned bridge decisions with mass, span, and load constraints that could not be negotiated away.
 - Portfolio work: filtered content and layout choices against clarity, continuity, and reflection goals.
 
-Application: I use requirement matrices to keep decisions traceable, especially when multiple criteria compete and the team needs a clear basis for tradeoffs.
+Application: I use requirement matrices to keep decisions traceable, especially when multiple criteria compete and our team needs a clear basis for tradeoffs.
 
 ### Systems Thinking (systems-thinking)
 
@@ -1029,14 +1067,14 @@ Application: I use root cause analysis when a problem seems broad, ambiguous, or
 
 Phase Code: F
 Claim Headline: Root Cause Analysis Should Expose The Winter Human-Interface Breakdown Before The Project Collapses Into Generic Cold Discomfort.
-Summary: In Praxis II, root cause analysis mattered because it stopped the team from treating winter discomfort as the problem and instead identified a more actionable breakdown: cold-weather telescope use repeatedly forces astronomers into a tradeoff where warmth, fine manipulation, and observing continuity cannot all be preserved at once.
+Summary: In Praxis II, root cause analysis mattered because it stopped our team from treating winter discomfort as the problem and instead identified a more actionable breakdown: cold-weather telescope use repeatedly forces astronomers into a tradeoff where warmth, fine manipulation, and observing continuity cannot all be preserved at once.
 
 ##### Core Claim
 
 Bullets:
 
-- In Praxis II, root cause analysis mattered because it stopped the team from treating winter discomfort as the real problem and instead exposed a more actionable breakdown: telescope observing in the cold repeatedly forces users to trade away either warmth or fine hand control.
-- The strongest result of this CTMF was not the glove itself. It was the reframing that revealed two real intervention pathways: reduce the dexterity demand of telescope operation, or preserve the userï¿½s dexterity under winter conditions.
+- In Praxis II, root cause analysis mattered because it stopped our team from treating winter discomfort as the real problem and instead exposed a more actionable breakdown: telescope observing in the cold repeatedly forces users to trade away either warmth or fine hand control.
+- The strongest result of this CTMF was not the glove itself. It was the reframing that revealed two real intervention pathways: reduce the dexterity demand of telescope operation, or preserve the user's dexterity under winter conditions.
 
 Figures:
 
@@ -1054,8 +1092,8 @@ Figures:
 Bullets:
 
 - Root cause analysis is a framing CTMF used to move past surface symptoms and identify the interacting causes that a design should actually respond to.
-- In Praxis II, it was needed because ï¿½astronomers are uncomfortable in winterï¿½ was too broad to guide engineering work. That description mixed together temperature, dexterity, workflow, equipment interaction, and general field discomfort without showing which of those was actually breaking telescope use.
-- The CTMF therefore forced the team to ask more specific questions: why do hands get cold during observation, which tasks actually fail first, whether cold alone is enough to explain that failure, and whether the better intervention is on the telescope side or on the user side.
+- In Praxis II, it was needed because astronomers are uncomfortable in winter was too broad to guide engineering work. That description mixed together temperature, dexterity, workflow, equipment interaction, and general field discomfort without showing which of those was actually breaking telescope use.
+- The CTMF therefore forced our team to ask more specific questions: why do hands get cold during observation, which tasks actually fail first, whether cold alone is enough to explain that failure, and whether the better intervention is on the telescope side or on the user side.
 
 Figures:
 
@@ -1070,15 +1108,15 @@ Callout Title: Primary evidence that changed the frame
 
 Callouts:
 
-- RASC interview: existing heated gloves were described as ï¿½big thick thingsï¿½ that remove the dexterity needed for astronomy.
-- RASC interview: users wanted fingertips free for ï¿½little fiddlyï¿½ controls and detailed adjustments such as focus and eyepiece handling.
+- RASC interview: existing heated gloves were described as big thick things that remove the dexterity needed for astronomy.
+- RASC interview: users wanted fingertips free for little fiddly controls and detailed adjustments such as focus and eyepiece handling.
 - Preliminary proxy testing: glove use slowed the task much more than brief cold exposure alone, suggesting the bottleneck was a winter human-interface breakdown rather than temperature in isolation.
 
 Bullets:
 
-- I used root cause analysis to break the broad winter-astronomy issue into interacting causes instead of accepting ï¿½cold weather is uncomfortableï¿½ as a sufficient explanation. The primary research showed that the problem was concentrated around fine telescope tasks such as focusing, tightening, eyepiece changes, and handling small components under dim red-light conditions.
-- The RASC interview was especially important here. It showed that users often expose their fingertips because ordinary heated gloves are too bulky for the ï¿½little fiddlyï¿½ controls of telescope operation, and that dropped parts or poor tactile feedback can create extra frustration, delay, and rework. Our own field observation and glove-use videos supported the same claim: the problem was not just that astronomers were cold, but that winter conditions repeatedly broke the hand-interface relationship that telescope work depends on.
-- This CTMF directly shaped divergence. Once the root causes were clearer, the team could justify two distinct intervention pathways: reduce the dexterity requirement itself through knob-turning aids, autonomous control, or other telescope-side changes; or increase and preserve user dexterity through hand heating, thermal zoning, or related human-centered support. That widened the design space in a disciplined way and kept the project from collapsing too early into one favorite concept.
+- I used root cause analysis to break the broad winter-astronomy issue into interacting causes instead of accepting cold weather is uncomfortable as a sufficient explanation. The primary research showed that the problem was concentrated around fine telescope tasks such as focusing, tightening, eyepiece changes, and handling small components under dim red-light conditions.
+- The RASC interview was especially important here. It showed that users often expose their fingertips because ordinary heated gloves are too bulky for the little fiddly controls of telescope operation, and that dropped parts or poor tactile feedback can create extra frustration, delay, and rework. Our own field observation and glove-use videos supported the same claim: the problem was not just that astronomers were cold, but that winter conditions repeatedly broke the hand-interface relationship that telescope work depends on.
+- This CTMF directly shaped divergence. Once the root causes were clearer, our team could justify two distinct intervention pathways: reduce the dexterity requirement itself through knob-turning aids, autonomous control, or other telescope-side changes; or increase and preserve user dexterity through hand heating, thermal zoning, or related human-centered support. That widened the design space in a disciplined way and kept the project from collapsing too early into one favorite concept.
 
 Figures:
 
@@ -1096,7 +1134,7 @@ Figures:
 Bullets:
 
 - Root cause analysis clarified what kind of failure the project needed to address, but it did not by itself prove which pathway would be best. It could show that cold exposure, glove bulk, fine controls, repeated rework, and equipment diversity interacted. It could not determine on its own whether the best response was telescope-side redesign, hand-centered thermal support, or environmental intervention.
-- It also initially grouped several effects together under ï¿½dexterity lossï¿½ before later testing separated them more carefully. Early on, that meant the team still risked compressing numbness, reduced tactile feedback, increased completion time, and increased error into one broad category.
+- It also initially grouped several effects together under dexterity loss before later testing separated them more carefully. Early on, that meant our team still risked compressing numbness, reduced tactile feedback, increased completion time, and increased error into one broad category.
 - In other words, root cause analysis was strong enough to improve framing, but it was not strong enough to replace testing, prototyping, and later rescoping. The fishbone could reveal the system of causes; it could not close the design argument by itself.
 
 Figures:
@@ -1162,7 +1200,7 @@ Evidence:
 - CIV102: MATLAB and Python scripts generated moving-load envelopes, sectional properties, fitting logic, and failure-mode comparisons across successive bridge iterations.
 - Praxis I: the same mindset later appeared in using measured criteria and proxy testing to compare can-opening concepts more rigorously.
 
-Application: I use calculations and simulation when a project has many tunable variables and the team needs a disciplined way to generate and compare design states before settling on one of them.
+Application: I use calculations and simulation when a project has many tunable variables and our team needs a disciplined way to generate and compare design states before settling on one of them.
 
 #### CIV102 Dossier
 
@@ -1189,14 +1227,14 @@ Bullets:
 
 - Calculations and simulation acted as a diverging CTMF because they were used to vary bridge parameters and generate multiple design states before fabrication.
 - In CIV102, they were not just used to check a final bridge. They were used to explore height, top-flange layering, diaphragm spacing, web spacing, fitting feasibility, and material usage in order to decide what the next bridge iteration should be.
-- That is the distinctive role of this CTMF in the project: it generated the evolution of the bridge rather than merely evaluating the state the team already had.
+- That is the distinctive role of this CTMF in the project: it generated the evolution of the bridge rather than merely evaluating the state our team already had.
 
 ##### What I Used The CTMF For In CIV102 / How It Actually Influenced The Project
 
 Bullets:
 
 - I used calculations and simulation to turn each bridge iteration into a response to a visible governing weakness rather than a guess about what geometry might be stronger. The scripts generated the moving-load shear and bending envelopes, updated sectional properties, and factors of safety for all major failure modes, which directly shaped the progression from Design 0 through later bridge states.
-- This was collaborative technical work, but it fits my own design tendency strongly because it made the bridge evolve through explicit structural logic instead of intuition alone. More importantly, it gave the team a disciplined way to ask not just "is this bridge safe?" but "what should the next bridge look like?"
+- This was collaborative technical work, but it fits my own design tendency strongly because it made the bridge evolve through explicit structural logic instead of intuition alone. More importantly, it gave our team a disciplined way to ask not just "is this bridge safe?" but "what should the next bridge look like?"
 
 Figures:
 
@@ -1230,9 +1268,9 @@ Figures:
 
 Bullets:
 
-- The calculations changed the bridge by making the next design move legible after each iteration. Instead of changing geometry arbitrarily, the team could point to the current governing weakness and respond to it.
+- The calculations changed the bridge by making the next design move legible after each iteration. Instead of changing geometry arbitrarily, our team could point to the current governing weakness and respond to it.
 - The Python fitting code also made manufacturability part of divergence: it checked whether bridge components could actually fit on one sheet of matboard, tested splice options, and produced the final cutout layout used during assembly.
-- The assembly document shows the team numbering pieces according to the Python-generated matboard layout, which is strong evidence that the code shaped fabrication directly and not just analytical exploration.
+- The assembly document shows our team numbering pieces according to the Python-generated matboard layout, which is strong evidence that the code shaped fabrication directly and not just analytical exploration.
 
 Figures:
 
@@ -1289,25 +1327,19 @@ Application: I use morphological charts when a problem can be decomposed into su
 
 Phase Code: D
 Claim Headline: Morph Charts Should Generate Distinct Mechanism Families, Then Be Rebuilt When Evidence Changes The Frame.
-Summary: In Praxis I, the morphological chart mattered because it generated the exact mechanism families that later moved into convergence, testing, and elimination. Its value became visible in the real project path, but its limit became visible once later evidence showed that several of those families were diverse in implementation while still sharing the same weakening causal story about the sound event.
-
-##### Core Claim
-
-Bullets:
-
-- In Praxis I, the morphological chart mattered because it generated the exact concept families the team later compared, eliminated, and tested; its value became visible in the project's actual convergence path, and its limit became visible once later testing weakened the original causal frame.
+Summary: In Praxis I, the morphological chart mattered because it generated the mechanism families our team later compared and eliminated. Its main limit was not lack of breadth, but that many early branches still depended on the same weakening causal story about the sound event. Once testing challenged that story, the chart should have been rebuilt.
 
 ##### CTMF Description / What It Is
 
 Bullets:
 
 - A morphological chart is a diverging CTMF that breaks a design problem into functions or sub-functions, then generates multiple candidate means under each so concept combinations can be explored systematically rather than through vague whole-object brainstorming.
-- In Praxis I, it was needed because the project risk was premature fixation on one intuitive "quiet opener" idea before the team had compared materially different mechanism directions.
-- In practice, the chart decomposed the opening event into functions such as opening the can, depressurizing the can, gripping or handling, and silencing or muffling the event, which gave the team a structured basis for divergence before formal convergence began.
+- In Praxis I, it was needed because the project risk was premature fixation on one intuitive "quiet opener" idea before our team had compared materially different mechanism directions.
+- In practice, it decomposed the opening event into rows like opening, depressurizing, handling, and silencing so divergence could happen at the level of mechanism logic rather than cosmetic variation.
 
-##### What I Used The CTMF For In Praxis I / How It Influenced The Project
+##### How I Used It In Praxis I
 
-Callout Title: The concept families it generated
+Callout Title: Mechanism families carried forward
 
 Callouts:
 
@@ -1318,36 +1350,35 @@ Callouts:
 
 Bullets:
 
-- I used the morph chart to make divergence structured, visible, and traceable so that later convergence would compare mechanism families rather than defend favorite sketches. The chart did not remain a brainstorming artifact. It produced the actual families the team carried forward: needle-straw vent, water opener, rubber tab, and slider.
-- That mattered because the chart changed the level at which the project diverged. Instead of comparing cosmetic variants of one opener, the team had to compare fundamentally different intervention strategies: puncture venting, external damping, interface modification, and mechanism replacement. In other words, the chart gave Praxis I real implementation breadth.
-- Those chart-generated families then became the real convergence path. The team explicitly removed needle-straw, then removed water opener, and the final comparison became slider versus rubber tab. Later testing made the downstream consequence visible: the water opener achieved about a 13 dB reduction but performed poorly on portability and on user-facing measures like liquid loss, carbonation boil-off, gesture burden, and hand pressure. The rubber tab achieved about a 25 dB reduction but still preserved the standard tear-line event. The slider achieved about a 41 dB reduction while also keeping liquid loss to about 0.46%, carbonation boil-off to about 0.4 g, hand pressure to about 80 kPa, and gesture count to 2. The morph chart therefore shaped convergence indirectly by deciding which classes of mechanism had to be screened, measured, and eliminated later.
+- I used the morph chart to make divergence structured, visible, and traceable so later convergence would compare mechanism families rather than defend favorite sketches.
+- That changed the level at which the project diverged. Instead of comparing variants of one opener, our team had to compare puncture venting, external damping, interface modification, and mechanism replacement as different intervention logics.
 
 Figures:
 
 - Figure
+  - Source: /api/images/praxis1-morph-chart
+  - Alt: Praxis I morphological chart showing rows for opening, depressurizing, handling, and silencing with alternative means under each.
+  - Caption: The actual morph chart is the key CTMF evidence. It shows how the project moved from a vague "quiet opener" idea to a structured mechanism space built from explicit sub-functions.
+- Figure
   - Source: /context-evidence/raw/praxis1-alpha-brainstorming.png
   - Alt: Praxis I Alpha release brainstorming page listing early mechanism directions for quieter can opening.
-  - Caption: This early Alpha release page shows the shift from vague "quiet opener" thinking toward a set of materially different mechanism directions. The morph chart made that divergence structured and traceable.
-- Figure
-  - Source: /context-evidence/raw/praxis1-alpha-needle-straw.png
-  - Alt: Praxis I early puncture-vent concept from the Alpha release.
-  - Caption: The puncture-vent branch is useful because it shows one of the chart-generated families that later entered convergence and was then removed rather than kept alive by attachment to the initial idea.
-- Figure
-  - Source: /context-evidence/raw/praxis1-alpha-water-opener.png
-  - Alt: Praxis I early enclosure or water-opener style concept from the Alpha release.
-  - Caption: This branch represents external damping or muffling rather than mechanism replacement. It matters because later comparison showed that this family looked broader in divergence than it remained in real convergence.
-- Figure
-  - Source: /context-evidence/raw/praxis1-alpha-rubber-tab.png
-  - Alt: Praxis I early rubber-tab or interface-modification concept from the Alpha release.
-  - Caption: The rubber-tab family survived much longer because it improved the opening interaction without fully replacing the standard can event, which made it an important intermediate comparator against the slider.
+  - Caption: This Alpha release page shows the downstream effect of the chart: the generated rows turned into distinct concept families that the team could carry into later comparison.
+
+##### What It Generated
+
+Bullets:
+
+- The chart generated the four families that actually stayed alive in the project: needle-straw vent, water opener, rubber tab, and slider.
+- Those families then became the real convergence path. Needle-straw was removed first, then water opener, and the final comparison became slider versus rubber tab.
+- Its downstream effect was visible in testing: the slider was eventually strongest overall because it improved noise reduction without the spill, boil-off, pressure, and gesture penalties that weakened the other families.
 
 ##### Limitations Of The CTMF
 
 Bullets:
 
-- The main limitation was not lack of breadth. The limitation was that the first chart still carried a hidden causal assumption about the source of the sound event.
-- Several branches were built around the idea that the sound could be solved mainly by depressurizing the can, damping the release, or muffling the opening event. Because of that, concepts like the needle-straw, water opener, and rubber tab looked diverse as objects, but still operated inside the same broader logic: they modified or managed the standard tear-line event rather than fully replacing it.
-- Later vented-versus-unvented testing showed essentially unchanged dB levels, which weakened that depressurization-first explanation. That is the most important limit of the CTMF in Praxis I: the chart widened the space convincingly at the level of artifacts, but not enough at the level of explanation. In hindsight, it increased implementation diversity more than explanatory diversity.
+- The main limitation was not lack of breadth. The first chart still carried a hidden causal assumption about the sound event.
+- Several branches assumed the problem could be solved by depressurizing, damping, or muffling the standard opening event. That made concepts like the needle-straw, water opener, and rubber tab look diverse as artifacts while still sharing the same broader logic.
+- Later vented-versus-unvented testing weakened that explanation. The deeper issue was that the chart widened implementation diversity more than explanatory diversity.
 
 Figures:
 
@@ -1356,23 +1387,13 @@ Figures:
   - Alt: Praxis I reflection sheet about divergence and anchoring during the project.
   - Caption: This reflection captures the real limit of the chart: it widened the concept space, but many branches still inherited the same underlying explanation of the sound event.
 
-##### Impact On My Position In Context
+##### What I Learned / How I Would Use It Next Time
 
 Bullets:
 
-- This CTMF fits my preference for explicit, structured divergence instead of vague ideation, because it made alternatives visible and gave later convergence a defensible origin.
-- It also supported one of my strengths: resisting premature fixation on a single concept by keeping multiple mechanism families alive long enough to compare.
-- At the same time, Praxis I showed me that structured divergence is only as good as the honesty of the function breakdown underneath it. That directly reinforced my broader position that good engineering depends not only on rigor, but on whether the framing, logic, and constraints remain honest as evidence changes. More specifically, the morph chart helped me resist fixation on one idea, but it did not fully protect me from fixation on one causal story. That is the deeper lesson I carried into my position statement.
-
-##### Future Steps
-
-Bullets:
-
-- Use a morph chart early to widen the option space, but mark which functional rows are assumed rather than proven.
-- Treat the chart as a revisable divergence artifact, not a final map of the concept space.
-- Rebuild the chart after any major test result that changes the explanation of the problem. In Praxis I, the vented-versus-unvented result should have triggered a second-pass chart.
-- A rebuilt chart for Praxis I would have shifted from "how do we vent or muffle the event?" toward "how do we eliminate tear-line fracture, control aperture growth, manage sealing, and preserve accessibility?"
-- My future rule is: use morph charts to generate testable mechanism families, but never treat them as proof that the frame is already correct.
+- This CTMF still fits my preference for explicit, structured divergence because it kept multiple mechanism families visible long enough to compare.
+- The deeper lesson from Praxis I is that a morph chart can protect against fixation on one concept without protecting against fixation on one causal story.
+- My future rule is to mark assumed rows clearly and rebuild the chart after any major test result that changes the explanation of the problem. In Praxis I, the vented-versus-unvented result should have triggered that second pass.
 
 ### Brainstorming (brainstorming)
 
@@ -1387,7 +1408,7 @@ Evidence:
 - Praxis II: discussions across multiple intervention directions helped compare different stakeholder and system responses.
 - Portfolio work: opened up visual and narrative directions before settling on the current site structure.
 
-Application: I use structured brainstorming when the team needs shared ownership of concept generation and when rapid idea quantity is more valuable than immediate polish.
+Application: I use structured brainstorming when our team needs shared ownership of concept generation and when rapid idea quantity is more valuable than immediate polish.
 
 ### Biomimicry (biomimicry)
 
@@ -1408,8 +1429,8 @@ Summary: In Praxis II, biomimicry mattered because it widened divergence through
 
 Bullets:
 
-- In Praxis II, biomimicry mattered because it gave the team a way to generate concept families from biological cold-survival strategies rather than from conventional winter-product assumptions, and that widened the design space before convergence narrowed it.
-- The strongest project consequence was not that the final glove looked biomimetic. It was that biomimicry helped the team imagine selective thermal protection, local warm zones, and modal dexterity in engineering terms before later testing decided which of those ideas could survive.
+- In Praxis II, biomimicry mattered because it gave our team a way to generate concept families from biological cold-survival strategies rather than from conventional winter-product assumptions, and that widened the design space before convergence narrowed it.
+- The strongest project consequence was not that the final glove looked biomimetic. It was that biomimicry helped our team imagine selective thermal protection, local warm zones, and modal dexterity in engineering terms before later testing decided which of those ideas could survive.
 
 ##### CTMF Description / What It Is
 
@@ -1435,13 +1456,13 @@ Callouts:
 - Beta Release: "Polar bear fur solution" and "hollow hairs that trap warm air."
 - Beta Release: "Penguin huddle" and "we can create a small bubble."
 - Beta Preparation: thermal zoning was explicitly broken into "Zone 1: Fingertips, Zone 2: Knuckle Zone, Zone 3: Wrist."
-- Beta Preparation: the team linked this divergence directly to "our focus on sustainability," "value of appreciation of nature," and "passion for animals."
+- Beta Preparation: our team linked this divergence directly to "our focus on sustainability," "value of appreciation of nature," and "passion for animals."
 
 Bullets:
 
-- I used biomimicry to widen divergence in a way that was both imaginative and structured. Instead of beginning only from existing heated gloves, the team used biological references to ask what kind of thermal logic might preserve function more intelligently. That made the diverging question less like "what product should we copy?" and more like "what survival strategy should we translate?"
+- I used biomimicry to widen divergence in a way that was both imaginative and structured. Instead of beginning only from existing heated gloves, our team used biological references to ask what kind of thermal logic might preserve function more intelligently. That made the diverging question less like "what product should we copy?" and more like "what survival strategy should we translate?"
 - The strongest project evidence for this appears in the Beta ideation material. Polar bear fur was used as a reference for efficient insulation through structure and trapped air, which pushed the glove stream away from "heat the whole hand the same way" and toward more selective thermal management. Penguin huddling and igloo logic widened the environmental stream by suggesting temporary protective microclimates rather than only hand-mounted hardware.
-- This CTMF also influenced the way the glove itself was imagined. Thermal zoning across fingertips, knuckles, and wrist is one of the clearest places where biological analogy became an engineering idea. Instead of assuming that all parts of the hand should be heated equally, the team explored whether heat should be concentrated where it most affected dexterity or blood flow. That later aligned naturally with the project’s finger-focused thermal direction.
+- This CTMF also influenced the way the glove itself was imagined. Thermal zoning across fingertips, knuckles, and wrist is one of the clearest places where biological analogy became an engineering idea. Instead of assuming that all parts of the hand should be heated equally, our team explored whether heat should be concentrated where it most affected dexterity or blood flow. That later aligned naturally with the project’s finger-focused thermal direction.
 - The deeper project consequence was that biomimicry kept several intervention families alive at once: direct hand heating, environmental buffering, and selective thermal zoning. That breadth mattered because it prevented the project from collapsing immediately into a single off-the-shelf heated-glove logic.
 
 Figures:
@@ -1483,7 +1504,7 @@ Figures:
 Bullets:
 
 - This CTMF matters to my position because it shows a different side of my design process than the more analytical Praxis II tools. Root cause analysis and verification explain how I refine a problem and challenge evidence. Biomimicry shows how I keep the early design space alive long enough for better concepts to appear.
-- It also connected directly to my values. In Praxis II, nature appreciation, sustainability, and care for animals were not decorative beliefs attached after the design work. They actively shaped divergence by giving the team a source of functional reasoning outside default product assumptions.
+- It also connected directly to my values. In Praxis II, nature appreciation, sustainability, and care for animals were not decorative beliefs attached after the design work. They actively shaped divergence by giving our team a source of functional reasoning outside default product assumptions.
 - For me personally, biomimicry helps counter one of my recurring tendencies: moving too quickly toward tightly specified, highly rational solution logic. It keeps me in multiplicity longer. At the same time, Praxis II also showed me that I only trust biomimicry once it has been translated into engineering terms and then tested.
 
 ##### Future Steps
@@ -1508,7 +1529,7 @@ Evidence:
 - Praxis II: applied the same comparative logic to weigh intervention options against stakeholder fit and feasibility.
 - Portfolio work: evaluated structural directions by coherence, readability, and evidence of growth.
 
-Application: I use Pugh charts once there are several credible concepts and the team needs a transparent method for narrowing choices without relying on preference alone.
+Application: I use Pugh charts once there are several credible concepts and our team needs a transparent method for narrowing choices without relying on preference alone.
 
 #### Praxis I Dossier
 
@@ -1530,7 +1551,7 @@ Bullets:
 
 - A Pugh chart is a converging CTMF that compares concepts against a datum using explicit criteria so tradeoffs can be discussed rather than implied.
 - Within FDCR, it belongs in Converging because it helps a team move from many plausible concepts toward a smaller number of defendable directions.
-- It is most useful when the team needs a structured argument for why one concept class should keep moving and another should stop.
+- It is most useful when our team needs a structured argument for why one concept class should keep moving and another should stop.
 
 ##### How I Used It
 
@@ -1544,7 +1565,7 @@ Bullets:
 
 Bullets:
 
-- What worked was that the Pugh chart made the teamâ€™s convergence discussable and traceable rather than purely preference-driven.
+- What worked was that the Pugh chart made our teamâ€™s convergence discussable and traceable rather than purely preference-driven.
 - What did not work, or at least what should not be overstated, is the idea that the chart itself proved the slider was correct. The chart only narrowed the field; later proxy testing and measurement gave the recommendation stronger backing.
 - The main failure risk in this CTMF was frame dependence: if we had kept the wrong explanation of the sound event, the Pugh chart would still have converged cleanly on a weaker class of solutions.
 
@@ -1625,7 +1646,7 @@ Stage Code: C
 Subtext: Used the Pugh chart in Praxis I to make concept narrowing legible and revisable once stakeholder criteria and mechanism families were already clearer.
 Overview: A Pugh chart compares alternatives against a datum using explicit criteria so concept narrowing can be discussed, defended, and reopened rather than driven by intuition alone.
 Why It Matters: In Praxis I, it mattered because it changed which concepts deserved more testing, but it also showed that a clean matrix can narrow the field long before it proves the frame or the final concept is correct.
-Application: I use Pugh charts once there are several credible concepts and the team needs a transparent way to narrow options, but I treat the matrix as a convergence tool rather than proof that the frame or final concept is already correct.
+Application: I use Pugh charts once there are several credible concepts and our team needs a transparent way to narrow options, but I treat the matrix as a convergence tool rather than proof that the frame or final concept is already correct.
 
 #### Praxis I Dossier
 
@@ -1644,7 +1665,7 @@ Bullets:
 Bullets:
 
 - A Pugh chart is a converging CTMF that compares concepts against a datum using explicit criteria so tradeoffs can be discussed and weaker directions can be narrowed out systematically.
-- In Praxis I, it was needed after stakeholder analysis had widened the criteria and the morph chart had generated distinct mechanism families. At that point the team had multiple viable concepts, including the needle-straw, water opener, rubber tab, and slider, and needed a more defensible way to narrow them than intuition alone.
+- In Praxis I, it was needed after stakeholder analysis had widened the criteria and the morph chart had generated distinct mechanism families. At that point our team had multiple viable concepts, including the needle-straw, water opener, rubber tab, and slider, and needed a more defensible way to narrow them than intuition alone.
 - Within FDCR, it belongs in Converging because it sits after divergence has created credible options and before later measurement can confirm, weaken, or overturn the narrowing decision.
 
 ##### What I Used The CTMF For In Praxis I / How It Actually Influenced The Project
@@ -1703,7 +1724,7 @@ Bullets:
 Bullets:
 
 - Use a Pugh chart only after the framed opportunity and criteria are clear enough that disagreement about the matrix is not really hidden disagreement about the problem.
-- Pair the chart with an explicit rebuttal check: what later result would make the team reopen the matrix instead of defending it.
+- Pair the chart with an explicit rebuttal check: what later result would make our team reopen the matrix instead of defending it.
 - Treat the Pugh chart as a tool for narrowing concepts, not as proof that the argument is closed.
 - My practical rule going forward is to let the matrix generate a stronger next step, but never to let it substitute for later testing or reframing when the evidence starts to move.
 
@@ -1747,7 +1768,7 @@ Bullets:
 
 - In this project, the role of a Pugh chart was carried by FOS comparison tables that compared bridge iterations against visible failure criteria rather than against vague impressions of what looked stronger.
 - They belong in Converging because they were used to decide whether the next bridge state should be kept, modified, or abandoned.
-- In CIV102, they mattered because the team was not choosing between unrelated concepts; it was converging through a sequence of structural revisions, and each revision needed a traceable reason to survive or stop.
+- In CIV102, they mattered because our team was not choosing between unrelated concepts; it was converging through a sequence of structural revisions, and each revision needed a traceable reason to survive or stop.
 
 ##### What I Used The CTMF For In CIV102 / How It Actually Influenced The Project
 
@@ -1762,7 +1783,7 @@ Figures:
 - Figure
   - Source: /context-evidence/raw/civ102-p13-img1.png
   - Alt: CIV102 bridge elevation showing a diaphragm-spacing state with 400 mm intervals.
-  - Caption: This diaphragm-spacing figure helps show what convergence was actually comparing. Spacing was not treated as a background detail; it became a variable the team could revise when deciding which bridge state should survive.
+  - Caption: This diaphragm-spacing figure helps show what convergence was actually comparing. Spacing was not treated as a background detail; it became a variable our team could revise when deciding which bridge state should survive.
 - Figure
   - Source: /context-evidence/raw/civ102-p15-img1.png
   - Alt: CIV102 terminal output showing that a splice position could not satisfy sheet constraints.
@@ -1853,14 +1874,14 @@ Figures:
 - Figure
   - Source: /context-evidence/raw/praxis2-graph-dexterity.png
   - Alt: Praxis II dexterity-performance graph comparing cold-weather task effects across conditions.
-  - Caption: This figure supports the core claim because dexterity had to become a distinct measured variable. The project improved once the team stopped assuming that any change in hand warmth automatically described usable telescope manipulation.
+  - Caption: This figure supports the core claim because dexterity had to become a distinct measured variable. The project improved once our team stopped assuming that any change in hand warmth automatically described usable telescope manipulation.
 
 ##### CTMF Description / What It Is
 
 Bullets:
 
 - Verification in Praxis II meant checking whether a concept or subsystem actually achieved measurable task or thermal performance. Validation meant checking whether that performance corresponded to the real use pattern of winter telescope operation.
-- This CTMF belonged in both Representing and Converging because the tests were not only checking prototypes. They were also deciding whether the team was even using the right success criteria and whether one procedure could honestly support two different claims.
+- This CTMF belonged in both Representing and Converging because the tests were not only checking prototypes. They were also deciding whether our team was even using the right success criteria and whether one procedure could honestly support two different claims.
 - The project became stronger only once warmth and usable dexterity were no longer treated as one blended outcome. That distinction is the main reason this CTMF mattered here.
 
 Figures:
@@ -1877,13 +1898,13 @@ Callout Title: Where the procedure changed the argument
 Callouts:
 
 - The cold-plunge setup did not hold the cold effect long enough, so the resulting dexterity data could not credibly stand in for prolonged outdoor winter use.
-- Because that procedure was weak, the team had to split thermal retention from dexterity performance instead of claiming that one test captured both.
+- Because that procedure was weak, our team had to split thermal retention from dexterity performance instead of claiming that one test captured both.
 - That split changed convergence: the knob-turner weakened as a narrow manipulation solution, while the glove path strengthened because it could now be judged on both warmth and task performance more honestly.
 
 Bullets:
 
 - I used this CTMF to decide whether the project’s testing logic deserved trust before letting the results shape convergence. The first cold-plunge procedure produced numbers, but those numbers were not yet good evidence because the cold condition only lasted briefly and therefore did not represent the sustained exposure that actually matters in outdoor astronomy. The issue was not just that the concepts were immature; the procedure itself was misrepresenting the problem.
-- That procedural failure changed the design method. Instead of continuing to let one test stand in for both thermal and dexterity claims, the team separated those questions. Dexterity performance was assessed through task-based measures, while temperature retention was checked separately. This created a more honest basis for comparison because it stopped blending two different phenomena into one result.
+- That procedural failure changed the design method. Instead of continuing to let one test stand in for both thermal and dexterity claims, our team separated those questions. Dexterity performance was assessed through task-based measures, while temperature retention was checked separately. This created a more honest basis for comparison because it stopped blending two different phenomena into one result.
 - That change then affected convergence. Once testing was split, the knob-turner became less compelling because its value depended more heavily on one narrow manipulation task, while the glove concept became more defensible because it could be evaluated against the full winter-use tradeoff between warmth, task performance, and usability. The project therefore did not simply move toward “more heat.” It moved toward a multi-mode glove logic in which warmth could be maintained by default while dexterity could be recovered when needed.
 - Validation also expanded beyond the immediate telescope context in a bounded way. Secondary examples such as delivery riders using handlebar muffs reinforced the broader design principle that high protection and high dexterity do not have to exist in the same state at the same time. That did not validate telescope use directly, but it did strengthen the modal tradeoff logic behind the final design.
 
@@ -1892,7 +1913,7 @@ Figures:
 - Figure
   - Source: /context-evidence/raw/praxis2-testing-heating-wires.webp
   - Alt: Praxis II prototype testing of the glove heating wires during development.
-  - Caption: Verification happened at the subsystem level as well. The team was not only judging ideas in the abstract; it was checking whether wire placement, heat delivery, and construction details could support the larger claim being made about the glove.
+  - Caption: Verification happened at the subsystem level as well. Our team was not only judging ideas in the abstract; it was checking whether wire placement, heat delivery, and construction details could support the larger claim being made about the glove.
 - Figure
   - Source: /context-evidence/raw/praxis2-internal-schematic.png
   - Alt: Praxis II internal schematic of the final GRIPPy glove architecture.
@@ -1938,7 +1959,7 @@ Bullets:
 
 - Define verification and validation separately before testing begins whenever one procedure is at risk of being used to justify two different claims.
 - Label evidence as in-scope, analog, or convenience evidence before using it to support convergence, so adjacent examples like delivery riders are used honestly rather than overstated.
-- State in advance what result would force the team to reopen the test logic. In Praxis II, the short-lived cold effect should have triggered that rule immediately.
+- State in advance what result would force our team to reopen the test logic. In Praxis II, the short-lived cold effect should have triggered that rule immediately.
 - My practical rule is: if one procedure is being used to justify two different claims, the procedure should be split before the results are trusted.
 
 Figures:

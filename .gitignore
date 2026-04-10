@@ -27,6 +27,7 @@
 .codex-next-dev.*.log
 .vscode/
 test-results/
+app/.playwright-mcp/
 
 # debug
 npm-debug.log*

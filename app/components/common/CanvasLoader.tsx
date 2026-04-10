@@ -9,7 +9,6 @@ import { isMobile } from "react-device-detect";
 
 import { useThemeStore } from "@stores";
 
-import DesignPhilosophyModal from "./DesignPhilosophyModal";
 import PointerTracker from "./PointerTracker";
 import ProjectDetailsOverlay from "../experience/work/ProjectDetailsOverlay";
 import SceneSnapshotRestorer from "./SceneSnapshotRestorer";
@@ -100,7 +99,6 @@ const CanvasLoader = (props: { children: React.ReactNode }) => {
       </div>
       <TimelineOverlay />
       <ProjectDetailsOverlay />
-      <DesignPhilosophyModal />
       <ThemeSwitcher />
       <ScrollHint />
     </div>

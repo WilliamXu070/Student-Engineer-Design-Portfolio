@@ -446,6 +446,36 @@ body {
   background: linear-gradient(90deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.06));
 }
 
+.fdcr-indicator {
+  border: 3px solid #000;
+  box-shadow: 5px 5px 0 #000;
+  color: #000;
+}
+
+.fdcr-indicator--frame {
+  background: #31d7c4;
+}
+
+.fdcr-indicator--diverge {
+  background: #ffd23c;
+}
+
+.fdcr-indicator--converge {
+  background: #ff8a5b;
+}
+
+.fdcr-indicator--represent {
+  background: #7ab8ff;
+}
+
+.fdcr-indicator--frame-represent {
+  background: linear-gradient(90deg, #31d7c4 0%, #31d7c4 48%, #7ab8ff 52%, #7ab8ff 100%);
+}
+
+.fdcr-indicator--represent-converge {
+  background: linear-gradient(90deg, #7ab8ff 0%, #7ab8ff 48%, #ff8a5b 52%, #ff8a5b 100%);
+}
+
 @keyframes projectSkyFloat {
   0%,
   100% {
@@ -529,5 +559,16 @@ body {
 
   .project-annotation-card {
     display: none;
+  }
+}
+
+@media print {
+  .references-dock {
+    display: none !important;
+  }
+
+  .references-print-section {
+    break-inside: avoid;
+    box-shadow: none !important;
   }
 }

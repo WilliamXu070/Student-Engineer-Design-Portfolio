@@ -25,6 +25,12 @@ const TimelinePoint = ({ point, diff, progress }: { point: WorkTimelinePoint; di
   const hovered = hoveredSlug === point.slug;
   const selected = selectedSlug === point.slug;
   const showFocusFrame = isFocused || hovered || selected;
+  const hasLongTitle = point.title.length > 12;
+  const hasLongSubtitle = (point.subtitle?.length ?? 0) > 18;
+  const textRevealWindow = Math.max(point.focusWidth, 0.12);
+  const textRevealStart = Math.max(0, point.focusProgress - textRevealWindow);
+  const textDiff = 1 - THREE.MathUtils.clamp((progress - textRevealStart) / textRevealWindow, 0, 1);
+  const activeTextDiff = point.slug === "praxis-ii" ? textDiff : diff;
 
   const getPoint = useMemo(() => {
     switch (point.position) {
@@ -47,20 +53,21 @@ const TimelinePoint = ({ point, diff, progress }: { point: WorkTimelinePoint; di
       font: "/Vercetti-Regular.woff",
       color: "white",
       anchorX: textAlign,
-      fillOpacity: 2 - 2 * diff,
+      fillOpacity: 2 - 2 * activeTextDiff,
     }),
-    [diff, textAlign]
+    [activeTextDiff, textAlign]
   );
 
   const titleProps = useMemo(
     () => ({
       ...textProps,
       font: "/soria-font.ttf",
-      fontSize: 0.6,
-      maxWidth: 3,
+      fontSize: hasLongTitle ? 0.48 : 0.6,
+      maxWidth: hasLongTitle ? 3.25 : 3,
     }),
-    [textProps]
+    [hasLongTitle, textProps]
   );
+  const subtitleFontSize = hasLongSubtitle ? 0.17 : 0.2;
   const { camera, gl } = useThree();
 
   useFrame(() => {
@@ -110,14 +117,14 @@ const TimelinePoint = ({ point, diff, progress }: { point: WorkTimelinePoint; di
         </Box>
         <group>
           <group position={getPoint}>
-            <Text {...textProps} fontSize={0.3} position={[-diff / 2, 0, 0]}>
+            <Text {...textProps} fontSize={0.3} position={[-activeTextDiff / 2, 0, 0]}>
               {point.year}
             </Text>
             <group position={[0, -0.5, 0]}>
-              <Text {...titleProps} fontSize={0.6} maxWidth={3} position={[0, -diff / 2, 0]}>
+              <Text {...titleProps} position={[0, -activeTextDiff / 2, 0]}>
                 {point.title}
               </Text>
-              <Text {...textProps} fontSize={0.2} position={[0, -0.4 - diff, 0]}>
+              <Text {...textProps} fontSize={subtitleFontSize} position={[0, -0.4 - activeTextDiff, 0]}>
                 {point.subtitle}
               </Text>
             </group>

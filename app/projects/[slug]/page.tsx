@@ -1,12 +1,22 @@
 import type { CSSProperties } from "react";
 import type { Metadata } from "next";
+import Link from "next/link";
 import Image, { type StaticImageData } from "next/image";
 import { notFound } from "next/navigation";
 
+import CitationText from "@/app/components/common/CitationText";
+import { FigureReferenceText, getFigureAnchorId, type FigureReferenceMap } from "@/app/components/common/FigureReferenceText";
 import HidePortalCloseButton from "@/app/components/common/HidePortalCloseButton";
 import RememberedBackLink from "@/app/components/common/RememberedBackLink";
 import RememberedLink from "@/app/components/common/RememberedLink";
-import { PROJECT_DETAILS, PROJECTS, WORK_TIMELINE } from "@constants";
+import ReferencesSection from "@/app/components/common/ReferencesSection";
+import {
+  getFdcrStageLabel,
+  getFdcrStageTheme,
+  PROJECT_DETAILS,
+  PROJECTS,
+  WORK_TIMELINE,
+} from "@constants";
 import acousticImpulseChart from "@/app/projects/praxis1-media/acoustic-impulse-chart.png";
 import co2Chart from "@/app/projects/praxis1-media/co2-chart.png";
 import contactPressureChart from "@/app/projects/praxis1-media/contact-pressure-chart.png";
@@ -33,11 +43,14 @@ type ProjectAnnotation = {
 };
 
 type PraxisIFigure = {
+  kind?: "image" | "video";
+  refKey?: string;
   src: string | StaticImageData;
   alt: string;
   caption: string;
   label: string;
   imageClassName?: string;
+  posterSrc?: string;
 };
 
 type PraxisIMetricCard = {
@@ -112,7 +125,7 @@ const lightPanelClass =
 
 const praxisIOverviewParagraphs = [
   "Praxis I addressed a simple but easily underestimated design problem: opening a carbonated beverage can in a quiet shared environment creates a sharp, disruptive acoustic impulse. In lecture halls, libraries, and study spaces, that opening event can momentarily dominate the room, turning an ordinary action into a social and practical disruption. The project therefore began with a clear need: reduce the noise of can opening without making the product harder to use, less safe, or less believable as an everyday object.",
-  "What made the project more than a straightforward noise-reduction exercise was that the team's first understanding of the problem did not fully hold. Early on, the challenge appeared to be about controlling depressurization. As testing progressed, however, the project became less about softening an existing opening event and more about understanding what actually caused the sharp impulse in the first place. That shift changed not just the ranking of concepts, but the logic of the design problem itself.",
+  "The project became more than a straightforward noise-reduction exercise once it became clear that our initial understanding of the problem was incomplete. Early on, the challenge appeared to be about controlling depressurization. As testing progressed, however, the project became less about softening an existing opening event and more about understanding what actually caused the sharp impulse in the first place. That shift changed not just the ranking of concepts, but the logic of the design problem itself.",
 ];
 
 const praxisIObjectivesParagraphs = [
@@ -136,7 +149,7 @@ const praxisIStakeholders = [
 ];
 
 const praxisIRequirementsParagraphs = [
-  "From those stakeholder pressures, the team developed a requirement set that defined what a viable solution had to protect while reducing noise. The design needed to produce strong peak-noise reduction during opening, minimize liquid loss, control CO2 boil-off, remain portable for everyday use, allow accessible low-force interaction, and maintain safe, clean contact around the drinking surface. These were not secondary checks added after concept generation. They were the conditions that kept the design effort grounded in actual use.",
+  "From those stakeholder pressures, our team developed a requirement set that defined what a viable solution had to protect while reducing noise. The design needed to produce strong peak-noise reduction during opening, minimize liquid loss, control CO2 boil-off, remain portable for everyday use, allow accessible low-force interaction, and maintain safe, clean contact around the drinking surface. These were not secondary checks added after concept generation. They were the conditions that kept the design effort grounded in actual use.",
   "The concepts were therefore evaluated not just by whether they were quieter, but by whether they balanced the broader problem well. Peak noise, liquid loss, CO2 retention, hand pressure, and gesture count became the most useful comparative criteria because together they captured both technical performance and user practicality. This structure also fits the portfolio rubric, which rewards project summaries and annotations that clearly identify the project context, key design considerations, and the final design solution rather than treating the artifact in isolation.",
 ];
 
@@ -155,7 +168,7 @@ const praxisIFinalSolutionParagraphs = [
 ];
 
 const praxisISelectionParagraph =
-  "The slider was selected because it performed best against the measured criteria while also matching the revised understanding of the problem. Compared with the control can, it reduced peak noise from 102 dB to 61 dB, cut liquid loss from 0.70% to 0.46%, limited CO2 boil-off over 90 seconds to 0.4 g compared with 1.3 g for the control and 1.2 g for the rubber-tab concept, lowered maximum hand pressure to 80 kPa compared with 135 kPa for the rubber tab and 600 kPa for the water opener, and required only two gestures instead of three or five. These results made it the strongest overall concept not because it optimized one metric in isolation, but because it improved the acoustic outcome without quietly breaking the others.";
+  "The slider was selected because it performed best against the measured criteria while also matching the revised understanding of the problem (see [[fig:04|Figs. 04-06]]). Compared with the control can, it reduced peak noise from 102 dB to 61 dB, cut liquid loss from 0.70% to 0.46%, limited CO2 boil-off over 90 seconds to 0.4 g compared with 1.3 g for the control and 1.2 g for the rubber-tab concept (see [[fig:10]]), lowered maximum hand pressure to 80 kPa compared with 135 kPa for the rubber tab and 600 kPa for the water opener (see [[fig:09]]), and required only two gestures instead of three or five. These results made it the strongest overall concept because it improved the acoustic outcome without breaking the other evaluation criteria.";
 
 const praxisIMetrics: PraxisIMetricCard[] = [
   {
@@ -196,7 +209,7 @@ const praxisIDecisions = [
   {
     title: "Treating the original frame as provisional",
     body:
-      "The first was the decision to treat the original problem frame as provisional rather than fixed. The team initially approached the challenge as finding a quieter way to open a standard can, which naturally produced concepts like puncture vents, water damping, and tab attachments. That direction was reasonable under the original assumptions, but it depended on the belief that rapid depressurization was the dominant noise source.",
+      "The first was the decision to treat the original problem frame as provisional rather than fixed. Our team initially approached the challenge as finding a quieter way to open a standard can, which naturally produced concepts like puncture vents, water damping, and tab attachments. That direction was reasonable under the original assumptions, but it depended on the belief that rapid depressurization was the dominant noise source.",
   },
   {
     title: "Letting contradictory evidence reopen the problem",
@@ -206,13 +219,13 @@ const praxisIDecisions = [
   {
     title: "Accepting a more radical redesign",
     body:
-      "The third was the decision to accept a more radical redesign once the old frame weakened. Once the team recognized that the fracture event itself was central, easier retrofit concepts became less convincing. The slider was worth the extra complexity because it directly removed the abrupt tear-strip event while still performing best against the explicit criteria.",
+      "The third was the decision to accept a more radical redesign once the old frame weakened. Once our team recognized that the fracture event itself was central, easier retrofit concepts became less convincing. The slider was worth the extra complexity because it directly removed the abrupt tear-strip event while still performing best against the explicit criteria.",
   },
 ];
 
 const praxisIProcessParagraphs = [
   "The design process was iterative not just because multiple concepts were generated, but because the project looped back to framing after evidence weakened the initial explanation. The project began with a relatively stable opportunity statement and a set of early concepts shaped by that frame. Initial divergence explored ways to soften the opening event through vents, damping, and tab-based attachments. That work was useful, but in retrospect it was built on an assumption that had not been adequately challenged.",
-  "Testing then acted less as a validator of chosen concepts and more as a diagnostic tool for the problem definition itself. Once the vented-versus-unvented result suggested the tear-strip fracture mattered more than expected, the team had to return to the opportunity statement and reframe the project. That reframing produced a different concept space, one in which mechanism redesign became newly reasonable. Convergence only became meaningful after that reframing, because only then did the evaluation criteria line up with the real structure of the problem.",
+  "Testing then acted less as a validator of chosen concepts and more as a diagnostic tool for the problem definition itself. Once the vented-versus-unvented result suggested the tear-strip fracture mattered more than expected, our team had to return to the opportunity statement and reframe the project. That reframing produced a different concept space, one in which mechanism redesign became newly reasonable. Convergence only became meaningful after that reframing, because only then did the evaluation criteria line up with the real structure of the problem.",
 ];
 
 const praxisIPhases: PraxisIPhase[] = [
@@ -251,12 +264,12 @@ const praxisICtmfSynthesis: ProjectCtmfSynthesis = {
 		{
 			title: "The morph chart changed what kinds of concepts could be compared",
 			body:
-				"The morph chart made divergence more systematic by producing the concept families the team later carried into convergence: needle-straw, water opener, rubber tab, and slider. Its limit was equally important: much of that early space still assumed the problem could be solved through venting, damping, or managing the existing opening event, so the chart widened implementation diversity more than explanatory diversity.",
+				"The morph chart made divergence more systematic by producing the concept families our team later carried into convergence: needle-straw, water opener, rubber tab, and slider. Its limit was equally important: much of that early space still assumed the problem could be solved through venting, damping, or managing the existing opening event, so the chart widened implementation diversity more than explanatory diversity.",
 		},
 		{
 			title: "Convergence tools only became trustworthy once the frame improved",
 			body:
-				"The Pugh-style comparison and measured criteria helped the team defend the slider against the remaining alternatives, but only after vented-versus-unvented testing weakened the original depressurization story. In other words, convergence did not rescue the project on its own; it became meaningful only once the criteria were aligned with a better explanation of the noise event.",
+				"The Pugh-style comparison and measured criteria helped our team defend the slider against the remaining alternatives, but only after vented-versus-unvented testing weakened the original depressurization story. In other words, convergence did not rescue the project on its own; it became meaningful only once the criteria were aligned with a better explanation of the noise event.",
 		},
 	],
 	closing:
@@ -270,90 +283,131 @@ const praxisILearningParagraphs = [
 
 const praxisIReflectionParagraphs = [
   "This project matters in my portfolio because it was the first time I saw clearly that engineering can fail at the level of framing, not only at the level of solution quality. That insight now sits near the center of my position on engineering design: good engineering depends on framing, not just solving. When evidence breaks the logic of a design, I would rather reopen the problem than defend a polished answer to the wrong question.",
-  "At the same time, Praxis I exposed a tension in how I work. My drive for rigor helped me notice when the original logic had weakened, but it also made me less patient with continued work inside a frame that no longer felt defensible. That is both a strength and a risk. It helps me question assumptions early, but it can also create friction if I do not communicate that concern carefully within a team. The project therefore shaped not only the product I value, but the kind of engineering judgment I am trying to develop: one that is evidence-driven, willing to reframe, and aware that technical rigor also affects collaboration.",
+  "At the same time, Praxis I exposed a tension in how I work. My drive for rigor helped me notice when the original logic had weakened, but it also made me less patient with continued work inside a frame that no longer felt defensible. That is both a strength and a risk. It helps me question assumptions early, but it can also create friction if I do not communicate that concern carefully within a team. In practice, that meant the collaborative task was not only recognizing that the depressurization story had weakened, but turning that concern into a shared reason to reopen the criteria and concept logic instead of continuing to compare retrofit ideas as if the frame were still stable. The project therefore shaped not only the product I value, but the kind of engineering judgment I am trying to develop: one that is evidence-driven, willing to reframe, and aware that technical rigor also affects collaboration.",
 ];
 
 const praxisITeamCredit =
-  "Praxis I was completed collaboratively within the course context. Shared design, testing, evaluation, and presentation work was completed by Katherine Chen, Shupeng Liu, Issac Ng, and William Xu.";
+  "Praxis I was completed collaboratively within the course context, but different members carried different parts of the work. Katherine Chen and Issac Ng carried out prototype testing, with Ng also contributing to interviews and stakeholder analysis. Shupeng Liu developed the morph chart used to structure concept generation. I developed the Pugh chart and produced the CAD for all prototypes.";
 
-const praxisITeam = ["Katherine Chen", "Shupeng Liu", "Issac Ng", "William Xu"];
+const praxisITeam = [
+  {
+    name: "Katherine Chen",
+    role: "Performed prototype testing across the concept set.",
+  },
+  {
+    name: "Shupeng Liu",
+    role: "Developed the morph chart used to structure early concept generation.",
+  },
+  {
+    name: "Issac Ng",
+    role: "Performed prototype testing and contributed to interviews and stakeholder analysis.",
+  },
+  {
+    name: "William Xu",
+    role: "Developed the Pugh chart and produced the CAD for all prototypes.",
+  },
+];
 
 const praxisIFigures: Record<string, PraxisIFigure> = {
   testing: {
-    src: "/context-evidence/raw/praxis1-p2-img1.png",
-    alt: "Praxis I noise-testing setup with a phone-based decibel recording beside a soda can.",
-    caption: "Noise-testing setup with phone-based dB recording beside a soda can. The project stopped being a simple noise-muffling exercise once this evidence began to contradict the original explanation.",
-    label: "Fig. 02",
+    kind: "video",
+    refKey: "01",
+    src: "/api/videos/praxis1",
+    posterSrc: "/context-evidence/raw/praxis1-p2-img1.png",
+    alt: "Praxis I noise-testing video showing the phone-based decibel recording beside a soda can during opening.",
+    caption: "Noise-testing video with phone-based dB recording beside a soda can. The project stopped being a simple noise-muffling exercise once this evidence began to contradict the original explanation.",
+    label: "Fig. 01",
     imageClassName: "object-cover",
   },
   slider: {
-    src: "/context-evidence/raw/praxis1-p3-img2.png",
+    refKey: "02",
+    src: "/api/images/praxis1-annotated",
     alt: "Annotated CAD view of the Praxis I slider-based silent can concept.",
     caption: "Annotated CAD of the slider-based lid showing the slider, pre-formed opening, raised tab, and gasket.",
-    label: "Fig. 05",
+    label: "Fig. 02",
+    imageClassName: "object-contain p-4",
+  },
+  sliderAnimation: {
+    kind: "video",
+    refKey: "03",
+    src: "/api/videos/praxis1-slider-animation",
+    alt: "Praxis I slider animation showing the silent-can opening mechanism in motion.",
+    caption: "Slider animation showing the opening mechanism in motion during the final solution stage.",
+    label: "Fig. 03",
     imageClassName: "object-contain p-4",
   },
   anchor: {
-    src: "/context-evidence/praxis1-anchor.png",
-    alt: "Composite Praxis I evidence pairing the noise-testing setup with the later written reflection on anchoring bias.",
-    caption: "Integrated figure combining the test setup, conflicting result, and the later reflection on why the original frame held on too long.",
-    label: "Fig. 12",
+    kind: "video",
+    refKey: "11",
+    src: "/api/videos/praxis1",
+    posterSrc: "/context-evidence/raw/praxis1-p2-img1.png",
+    alt: "Praxis I noise-testing video showing the contradictory result that later grounded the anchoring-bias reflection.",
+    caption: "The contradictory test result belongs beside the later reflection because it is the evidence that forced the original framing to weaken before the team could re-understand the problem.",
+    label: "Fig. 11",
     imageClassName: "object-cover",
   },
   reflection: {
+    refKey: "12",
     src: "/context-evidence/raw/praxis1-p3-img1.png",
     alt: "Praxis I written reflection on anchoring bias and reframing during the diverging stage.",
-    caption: "Reflection excerpt pairing the key test result with a note on reframing and anchoring bias.",
-    label: "Fig. 13",
+    caption: "This reflection excerpt records the process lesson that followed the conflicting test evidence: our team had stayed anchored to the original framing for too long, and the project only improved once that assumption was explicitly reconsidered.",
+    label: "Fig. 12",
     imageClassName: "object-cover",
   },
   morph: {
+    refKey: "07",
     src: morphChart,
     alt: "Praxis I morph chart used during the diverging stage to explore alternative concepts for noise reduction.",
     caption: "Morphological chart showing the retrofit concept space that grew out of the original depressurization frame.",
-    label: "Fig. 10",
+    label: "Fig. 07",
     imageClassName: "object-cover",
   },
   acoustic: {
+    refKey: "04",
     src: acousticImpulseChart,
     alt: "Acoustic impulse comparison over time for the control can and the slider concepts.",
     caption: "Acoustic impulse comparison showing how the slider concept spread the opening event over time instead of preserving the sharp control-can spike.",
-    label: "Fig. 06A",
+    label: "Fig. 04",
     imageClassName: "object-contain bg-white p-3",
   },
   pressure: {
+    refKey: "05",
     src: contactPressureChart,
     alt: "Opening contact pressure comparison for the control can and the slider concepts.",
     caption: "Opening contact pressure comparison showing why the slider also improved accessibility and hand pressure.",
-    label: "Fig. 06B",
+    label: "Fig. 05",
     imageClassName: "object-contain bg-white p-3",
   },
   co2: {
+    refKey: "06",
     src: co2Chart,
     alt: "CO2 boil-off comparison between the control can and slider designs.",
     caption: "CO2 boil-off comparison. Slider V2 approached the control in retention while remaining quieter.",
-    label: "Fig. 06C",
+    label: "Fig. 06",
     imageClassName: "object-contain bg-white p-3",
   },
   needle: {
+    refKey: "08",
     src: needleVentConcept,
     alt: "Praxis I puncture vent concept sketch from the early retrofit concept space.",
     caption: "Early puncture vent concept produced under the original frame.",
-    label: "Fig. 07A",
+    label: "Fig. 08",
     imageClassName: "object-contain bg-white p-3",
   },
   water: {
+    refKey: "09",
     src: waterOpenerConcept,
     alt: "Praxis I water-opener concept render from the early retrofit concept space.",
     caption: "Water-damping concept aimed at softening the opening event without changing the can itself.",
-    label: "Fig. 07B",
+    label: "Fig. 09",
     imageClassName: "object-contain bg-white p-3",
   },
   rubber: {
+    refKey: "10",
     src: rubberTabConcept,
     alt: "Praxis I rubber-tab concept render from the early retrofit concept space.",
     caption: "Rubber-tab attachment concept that stayed closer to the original opening mechanism.",
-    label: "Fig. 07C",
+    label: "Fig. 10",
     imageClassName: "object-contain bg-white p-3",
   },
 };
@@ -366,6 +420,44 @@ const praxisICtmfLessons: Record<string, string> = {
   "pugh-chart-praxis-i":
     "Made convergence discussable, but only after the frame and criteria were strong enough that the matrix meant more than neat scoring.",
 };
+const praxisIFigureReferences: FigureReferenceMap = Object.fromEntries(
+  Object.values(praxisIFigures)
+    .filter((figure): figure is PraxisIFigure & { refKey: string } => Boolean(figure.refKey))
+    .map((figure) => [
+      figure.refKey,
+      {
+        href: `#${getFigureAnchorId("praxis-i", figure.refKey)}`,
+        label: figure.label,
+      },
+    ]),
+);
+
+const renderProjectFigureMedia = (figure: PraxisIFigure, videoLabel: string) => {
+  if (figure.kind === "video" && typeof figure.src === "string") {
+    return (
+      <video
+        controls
+        playsInline
+        preload="metadata"
+        poster={figure.posterSrc}
+        aria-label={videoLabel}
+        className={`h-full w-full ${figure.imageClassName ?? "object-cover"}`}>
+        <source src={figure.src} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    );
+  }
+
+  return (
+    <Image
+      src={figure.src}
+      alt={figure.alt}
+      fill
+      sizes="(max-width: 1279px) 100vw, 40vw"
+      className={figure.imageClassName}
+    />
+  );
+};
 
 const civ102Claims = [
   "1200 mm span, moving-train loading, and failure-load prediction made this a structural system problem rather than a single optimization exercise.",
@@ -374,8 +466,8 @@ const civ102Claims = [
 ];
 
 const civ102OverviewParagraphs = [
-  "The CIV102 bridge project asked teams to design and build a small-scale matboard box-girder bridge that could carry a moving train across a 1200 mm span, then survive increasing loads until failure while also predicting that failure load as accurately as possible. What looked at first like a pure structural optimization problem was actually a constrained engineering problem in which analysis, geometry, material limits, and fabrication all interacted.",
-  "The bridge problem became harder as soon as the constraints were treated as real rather than decorative. Every increase in strength competed with something else: material usage, sheet fitting, assembly difficulty, splice reliability, or buckling risk. Increasing height improved bending resistance but made fitting the bridge onto one matboard sheet harder; adding reinforcement improved capacity but consumed material and complicated construction. The project therefore became less about maximizing one number and more about building the strongest bridge that remained structurally credible and manufacturable under the actual rules of the assignment.",
+  "The CIV102 bridge project asked teams to design and build a small-scale matboard box-girder bridge that could carry a moving train across a 1200 mm span, then survive increasing loads until failure while also predicting that failure load as accurately as possible [[cite:civ102-handout-2025]]. At first, what looked like a pure structural optimization problem was actually a constrained engineering problem in which analysis, geometry, material limits, and fabrication all interacted.",
+  "The bridge problem got harder once our team had to actually design the geometry and figure out how the bridge would be cut. Every increase in strength competed with something else: material usage, sheet fitting, assembly difficulty, splice reliability, or buckling risk. Increasing height improved bending resistance but made fitting the bridge onto one matboard sheet harder; adding reinforcement improved capacity but consumed material and complicated construction. The project therefore became less about maximizing one number and more about building the strongest bridge that remained structurally credible and manufacturable under the actual rules of the assignment.",
 ];
 
 const civ102ObjectivesParagraphs = [
@@ -399,8 +491,8 @@ const civ102Stakeholders = [
 ];
 
 const civ102RequirementsParagraphs = [
-  "The bridge had to satisfy both explicit project constraints and performance-based evaluation criteria. At the requirement level, the bridge had to span 1200 mm between supports, be at least 1250 mm long overall, keep the track horizontal and unobstructed, maintain a deck width of at least 100 mm, stay within the allowable height envelope, and rest on 60 mm flat support regions at both ends. It also had to be made only from the provided matboard and contact cement, with the material properties fixed by the handout rather than chosen by the team.",
-  "The loading requirements made the project structurally richer than a single static calculation. The bridge first had to survive Load Case 1, a moving 400 N train distributed across six axles, and then, if successful, withstand progressively heavier passes under Load Case 2, where the locomotive and freight cars increased in prescribed ratios. The first pass of Load Case 2 already raised the total train weight to 452 N, and the later loading sequence remained intentionally undisclosed to force robust design rather than overfitting to one exact case.",
+  "The bridge had to satisfy both explicit project constraints and performance-based evaluation criteria. At the requirement level, the bridge had to span 1200 mm between supports, be at least 1250 mm long overall, keep the track horizontal and unobstructed, maintain a deck width of at least 100 mm, stay within the allowable height envelope, and rest on 60 mm flat support regions at both ends. It also had to be made only from the provided matboard and contact cement, with the material properties fixed by the handout rather than chosen by our team.",
+  "The loading requirements made the project structurally richer than a single static calculation. The bridge first had to survive Load Case 1, a moving 400 N train distributed across six axles, and then, if successful, withstand progressively heavier passes under Load Case 2, where the locomotive and freight cars increased in prescribed ratios [[cite:civ102-handout-2025]]. The first pass of Load Case 2 already raised the total train weight to 452 N, and the later loading sequence remained intentionally undisclosed to force robust design rather than overfitting to one exact case.",
   "The official grading structure also mattered because it clarified what 'good' meant in this project. Beyond the written deliverables, bridge testing awarded marks for construction quality, bridge performance, and accuracy of failure-load estimation. Construction quality rewarded clean assembly and material handling; bridge performance rewarded actual tested strength, adjusted through a strength-to-weight based scoring method; and prediction accuracy rewarded how well the analytical model anticipated the final failure load.",
 ];
 
@@ -414,13 +506,13 @@ const civ102Requirements = [
 ];
 
 const civ102FinalSolutionParagraphs = [
-  "The final bridge was a simple pi-beam / box-girder style design built around structural clarity and constructability rather than geometric flourish. It used a 100 mm double-layer top flange, two centered webs spaced 60 mm apart, and an unequal diaphragm arrangement concentrated where buckling risk was highest. The final form was deliberately cleaner and simpler than visually more ambitious alternatives because the team prioritized a geometry that could be analyzed, fit onto the sheet, and built with enough consistency that the calculations still meant something.",
-  "This design was selected not because it produced the highest theoretical number the team ever saw, but because it was the strongest design that remained structurally credible, materially efficient, and manufacturable. That distinction mattered. A more aggressive evenly spaced diaphragm design reached 2.12 kN in analysis, but it could not fit on one matboard sheet and therefore was not a serious final candidate. The chosen bridge accepted some reduction in predicted capacity in exchange for a design that could actually be cut, assembled, and tested under real fabrication limits.",
+  "The final bridge was a simple pi-beam / box-girder style design built around structural clarity and constructability rather than geometric flourish. It used a 100 mm double-layer top flange, two centered webs spaced 60 mm apart, and an unequal diaphragm arrangement concentrated where buckling risk was highest. The final form was deliberately cleaner and simpler than visually more ambitious alternatives because our team prioritized a geometry that could be analyzed, fit onto the sheet, and built with enough consistency that the calculations still meant something.",
+  "This design was selected not because it produced the highest theoretical number our team ever saw, but because it was the strongest design that remained structurally credible, materially efficient, and manufacturable. That distinction mattered. A more aggressive evenly spaced diaphragm design reached 2.12 kN in analysis, but it could not fit on one matboard sheet and therefore was not a serious final candidate. The chosen bridge accepted some reduction in predicted capacity in exchange for a design that could actually be cut, assembled, and tested under real fabrication limits.",
 ];
 
 const civ102SelectionParagraphs = [
-  "The bridge's quantitative progression explains why the final design became compelling. Design 0 was predicted to fail at 260 N, well below the required train case, because thin-plate buckling case 1 governed early. Design 1 improved to 668 N after doubling the top flange. A later evenly spaced diaphragm concept reached 2.12 kN in analysis but failed the fitting and buildability test. The final bridge settled at a predicted failure load of 1.367 kN, with a final mass of 704 g, corresponding to 0.824 N/g and a strength-to-self-weight ratio of 83.98.",
-  "The measured outcome complicated that success in the most useful way. The physical bridge failed at 580 N, only 42.4% of the predicted 1.367 kN capacity, and it failed not in the anticipated global compression mode but at the front splice. That gap did not erase the analytical progress; it revealed that the project's real governing weakness had shifted from global section behavior to local fabrication sensitivity.",
+  "The final bridge performed as a mixed but very informative result when compared against the analytical prediction. On paper, the completed pi-beam was expected to fail at 1.367 kN with a final mass of 704 g, corresponding to 0.824 N/g and a strength-to-self-weight ratio of 83.98. Those values showed that the final geometry remained structurally efficient relative to its own weight while still satisfying the fitting and manufacturability limits that had ruled out stronger but unbuildable earlier concepts.",
+  "Physical testing revealed where that analytical story stopped being reliable. The bridge failed at 580 N, which is 42.4% of the predicted 1.367 kN capacity, and it failed at the front splice rather than in the expected global compression mode. That mismatch is the most important result of the final review because it shows that the bridge was no longer primarily limited by the global section calculations. It was limited by local fabrication sensitivity, especially splice behavior, which the analytical model did not capture strongly enough.",
 ];
 
 const civ102Metrics = [
@@ -463,7 +555,7 @@ const civ102Decisions = [
   {
     title: "Choose a simple bridge form",
     body:
-      "The team selected a pi-beam / box-girder style section over truss or trapezoidal alternatives because it was easier to analyze systematically, easier to construct accurately from matboard, and easier to strengthen in response to a known governing mode. The point was not that simpler shapes are always stronger, but that in this project a structurally legible geometry gave the team better control over iteration.",
+      "Our team selected a pi-beam / box-girder style section over truss or trapezoidal alternatives because it was easier to analyze systematically, easier to construct accurately from matboard, and easier to strengthen in response to a known governing mode. The point was not that simpler shapes are always stronger, but that in this project a structurally legible geometry gave our team better control over iteration.",
   },
   {
     title: "Let governing failure modes drive iteration",
@@ -484,7 +576,7 @@ const civ102Decisions = [
 
 const civ102ProcessParagraphs = [
   "The handout framed the project as an iterative process beginning from Design 0. Teams were expected to compute the factor of safety for that initial bridge, identify the critical train positions for shear and bending, calculate applied stresses and capacities, determine the minimum factor of safety, then change geometric parameters and repeat. Each major iteration had to record design decisions, justifications, and results, while balancing material constraints and feasibility constraints rather than optimizing blindly.",
-  "That structure matched how the bridge actually evolved. The project did not improve through one smooth optimization path. It moved from a clearly understrength baseline, to stronger flange logic, to more aggressive diaphragm-based analytical concepts, and then back toward a simpler but buildable final bridge. Each stage solved one problem while often creating another: improving compression resistance increased material use, improving buckling control complicated fitting, and improving theoretical capacity raised fabrication sensitivity.",
+  "That structure matched how the bridge actually evolved. The project did not improve through one smooth optimization path. It moved from a clearly understrength baseline, to stronger flange logic, to more aggressive diaphragm-based analytical concepts, and then back toward a simpler but buildable final bridge. Keeping the bridge logic structurally legible mattered here because it gave our team a shared basis for convergence: each revision could be judged against the current governing weakness, fitting limits, and buildability without losing track of why one bridge state should survive over another. Each stage solved one problem while often creating another: improving compression resistance increased material use, improving buckling control complicated fitting, and improving theoretical capacity raised fabrication sensitivity.",
   "The most important iterative turn came at the end, when the physical test overruled the final analytical story. Up to failure, there were no obvious global distress signs elsewhere in the bridge; instead, the front splice failed first and dominated the outcome. That made the final iteration retrospective rather than geometric: the project had to be re-understood not as a bridge that was analytically weak, but as a bridge whose local manufacturing vulnerability had been underestimated.",
 ];
 
@@ -535,7 +627,7 @@ const civ102CtmfSynthesis: ProjectCtmfSynthesis = {
 		{
 			title: "Challenge assumptions changed what kind of bridge was worth optimizing",
 			body:
-				"This CTMF mattered early because it helped the team reject unnecessary structural complexity and visible overdesign before calculations hardened around them. Choosing the simpler pi-beam direction and later removing the bottom flange were both consequences of questioning whether extra geometry or material was actually doing useful structural work.",
+				"This CTMF mattered early because it helped our team reject unnecessary structural complexity and visible overdesign before calculations hardened around them. Choosing the simpler pi-beam direction and later removing the bottom flange were both consequences of questioning whether extra geometry or material was actually doing useful structural work.",
 		},
 		{
 			title: "Calculations and simulation changed how the bridge evolved",
@@ -543,9 +635,9 @@ const civ102CtmfSynthesis: ProjectCtmfSynthesis = {
 				"The scripts and section calculations turned each iteration into a response to the current governing weakness instead of a guess about what might be stronger. That is why the bridge progressed through a legible path of flange thickening, height optimization, diaphragm revision, and fitting-driven redesign rather than through ad hoc trial and error.",
 		},
 		{
-			title: "The FOS comparison tables changed how convergence was justified",
+			title: "The six Pugh charts changed how convergence was justified",
 			body:
-				"The comparison tables acted as the project's Pugh-like convergence structure by showing whether a new bridge state actually solved the current limiting mode and whether the tradeoff was worth keeping. Their limit was visible in the final failure: they converged the analytical bridge more completely than the built one, because splice reliability and fabrication sensitivity never entered the structure with equal force.",
+				"The six bridge comparison charts made convergence traceable by showing what each major revision actually changed: which failure mode improved, which one became governing next, and when strength had to be traded away for buildability. Their limit was visible in the final failure: they converged the analytical bridge more completely than the built one, because splice reliability and fabrication sensitivity never entered the structure with equal force.",
 		},
 	],
 	closing:
@@ -553,64 +645,126 @@ const civ102CtmfSynthesis: ProjectCtmfSynthesis = {
 };
 
 const civ102TeamCredit =
-  "CIV102 was completed collaboratively within the course context. Shared design, calculation, fabrication, testing, and reporting work should be credited to the full bridge team on the final page.";
+  "CIV102 was completed collaboratively, but the project work was not evenly identical across every task. The contribution split below reflects the clearest ownership in code, calculations, figures, analysis, and documentation, while fabrication remained shared across the full bridge team.";
+
+const civ102TeamContributions = [
+  {
+    name: "William Xu",
+    role: "Developed the code used in the bridge-design workflow and iteration process.",
+  },
+  {
+    name: "Michael (Mao) Li",
+    role: "Developed code and completed the hand calculations supporting the bridge analysis.",
+  },
+  {
+    name: "Beckett Deschamps",
+    role: "Developed the figures and analyzed the resulting bridge data.",
+  },
+  {
+    name: "Jeffrey Hu",
+    role: "Handled documentation work and contributed code.",
+  },
+];
+
+const civ102FabricationCredit =
+  "Everyone helped build the bridge, including outlining, cutting, gluing, and finishing during construction.";
+
+const civ102TimeLogHighlights = [
+  { name: "William", total: "25.5 h" },
+  { name: "Michael", total: "24 h" },
+  { name: "Beckett", total: "23 h" },
+  { name: "Jeffrey", total: "23.5 h" },
+];
 
 const civ102Figures: Record<string, PraxisIFigure> = {
   bridge: {
+    refKey: "01",
     src: "/context-evidence/raw/civ102-p3-img2.png",
     alt: "Built CIV102 bridge on a worktable before testing.",
     caption: "Built bridge photographed after fabrication. This is the physical object the analysis was trying to describe.",
-    label: "Source 01",
+    label: "Fig. 01",
     imageClassName: "object-cover",
   },
   crossSection: {
-    src: "/context-evidence/raw/civ102-p6-img3.png",
-    alt: "CIV102 bridge cross-section drawing with the top flange and web dimensions.",
-    caption: "Cross-section drawing of the final bridge geometry, showing the top flange, web spacing, and overall section depth.",
-    label: "Source 02",
+    refKey: "02",
+    src: "/api/images/civ102-cross-section",
+    alt: "Photo of the final CIV102 bridge cross-section showing the top flange, web spacing, and overall section depth.",
+    caption: "Photo of the final bridge cross-section showing the top flange, web spacing, and overall section depth.",
+    label: "Fig. 02",
     imageClassName: "object-contain bg-white p-3",
   },
   loadEnvelope: {
+    refKey: "04",
     src: "/context-evidence/raw/civ102-p7-img1.png",
     alt: "Shear-force and bending-moment envelopes for the CIV102 bridge load case.",
     caption: "Shear-force and bending-moment envelopes used to locate the critical loading logic along the span.",
-    label: "Source 03",
+    label: "Fig. 04",
+    imageClassName: "object-contain bg-white p-3",
+  },
+  loadingConfiguration: {
+    refKey: "03",
+    src: "/api/images/civ102-loading-configuration",
+    alt: "Train dimensions and loading schematic showing the three-carriage 400 N train, axle spacing, and left-to-right movement across the bridge.",
+    caption: "Train dimensions and loading schematic showing the three-carriage 400 N train, axle spacing, and left-to-right movement that governed the bridge loading constraints.",
+    label: "Fig. 03",
     imageClassName: "object-contain bg-white p-3",
   },
   designZero: {
+    refKey: "07",
     src: "/context-evidence/raw/civ102-p5-img1.png",
     alt: "Design 0 factor-of-safety output showing thin-plate buckling case 1 governing at 0.597.",
     caption: "Design 0 factor-of-safety output. Thin-plate buckling case 1 governed early and made the first real weakness visible.",
-    label: "Source 04",
+    label: "Fig. 07",
     imageClassName: "object-contain bg-[#0b131d] p-3",
   },
   diaphragm: {
+    refKey: "05",
     src: "/context-evidence/raw/civ102-p19-img1.png",
     alt: "Final bridge cross-section and diaphragm-location diagram.",
     caption: "Final cross-section and diaphragm placement diagram for the selected bridge configuration.",
-    label: "Source 05",
+    label: "Fig. 05",
+    imageClassName: "object-contain bg-white p-3",
+  },
+  buildReview: {
+    kind: "video",
+    refKey: "06",
+    src: "/api/videos/civ102-build-review",
+    alt: "CIV102 build review video showing the completed bridge in hand and from multiple viewing angles.",
+    caption: "Build review video of the completed bridge. It belongs in the final solution section because it shows the built object as the real outcome of the final geometry and fabrication decisions.",
+    label: "Fig. 06",
     imageClassName: "object-contain bg-white p-3",
   },
   layout: {
+    refKey: "08",
     src: "/context-evidence/raw/civ102-p3-img1.png",
     alt: "Matboard layout showing how the bridge parts fit onto a single sheet.",
     caption: "Matboard layout showing how the bridge parts were nested onto a single sheet, making buildability a real design constraint.",
-    label: "Source 06",
+    label: "Fig. 08",
     imageClassName: "object-contain bg-white p-3",
   },
   splice: {
+    refKey: "09",
     src: "/context-evidence/raw/civ102-splice-failure.jpg",
     alt: "Bridge during testing with the front splice circled where failure initiated.",
     caption: "Testing photo with the front splice circled. This was the local detail that overruled the predicted global failure mode.",
-    label: "Source 07",
+    label: "Fig. 09",
     imageClassName: "object-cover",
   },
   failure: {
+    refKey: "10",
     src: "/context-evidence/raw/civ102-failure.png",
     alt: "Bridge collapsed during testing under moving-train loading.",
     caption: "Failure during testing. The bridge underperformed not because the calculations were useless, but because the built artifact was more splice-sensitive than the model represented.",
-    label: "Source 08",
+    label: "Fig. 10",
     imageClassName: "object-cover",
+  },
+  timeLog: {
+    refKey: "11",
+    src: "/api/images/civ102-time-log",
+    alt: "CIV102 team time log showing task-by-task hours for William, Michael, Beckett, and Jeffrey across design calculations, drawings, construction, and report work.",
+    caption: "Team time log showing how effort was distributed across design calculations, drawings, construction, and report work. It supports the contribution split by making the labor record visible rather than implied.",
+    label: "Fig. 11",
+    imageClassName: "object-contain bg-white p-3",
   },
 };
 
@@ -620,7 +774,7 @@ const civ102CtmfLessons: Record<string, string> = {
   "calculations-simulation":
     "Turned bridge iteration into a structured search through height, flange, web, diaphragm, and fitting tradeoffs, while the test later exposed what the model still missed.",
   "pugh-chart-civ102":
-    "Showed how convergence only became meaningful when performance, buildability, and fabrication credibility were being judged together.",
+    "Showed how six explicit comparison charts narrowed the bridge by judging strength, buildability, and fabrication credibility together instead of by intuition.",
 };
 
 const civ102Annotations: ProjectAnnotation[] = [
@@ -628,7 +782,7 @@ const civ102Annotations: ProjectAnnotation[] = [
     id: "civ102-form",
     kicker: "Engineering Decision",
     title: "Simple geometry was the stronger choice.",
-    body: "The pi-beam form was not a stylistic preference. It was the section the team could analyze, fit, and build with enough consistency that the calculations still meant something.",
+    body: "The pi-beam form was not a stylistic preference. It was the section our team could analyze, fit, and build with enough consistency that the calculations still meant something.",
     accent: "#ffd23c",
     depth: "back",
     positionClassName: "left-[2.25%] top-[10rem] hidden xl:block",
@@ -692,100 +846,116 @@ const praxisIIStakeholders = [
     body: "Commercial and DIY telescope variation made permanent telescope-specific redesign less inclusive and less generalizable across the RASC community.",
   },
   {
+    title: "Adjacent cold-weather dexterity users",
+    body: "Food delivery drivers, hunters, sailors, and similar users reinforced that the underlying challenge was broader than astronomy alone: some cold-weather tasks still demand fine control, quick access, and reliable hand function outdoors.",
+  },
+  {
     title: "Winter field conditions",
     body: "Cold, moisture, dim red-light use, portability, and setup burden all constrained what a credible astronomy solution could be.",
   },
 ];
 
 const praxisIIRequirementsParagraphs = [
-  "Once the project was reframed around manipulability rather than generic warmth, the requirements became more honest. The strongest ones were no longer just thermal. They focused on preserving winter task performance, maintaining safe and usable hand temperature, staying reliable under cold and moisture, remaining compatible with dim red-light observing, and avoiding telescope-specific modification across a diverse community.",
-  "The showcase logic sharpened that further: a better design was one that improved dexterity-sensitive performance without quietly adding setup burden or depending on one telescope geometry. This is also where the no-telescope-modification requirement became more important and where an earlier observational-quality constraint weakened, because the glove path was no longer acting on the telescope itself.",
+  "By the final showcase stage, the requirement structure was no longer a broad winter-use summary. It was organized as a final constraint set with explicit requirement and evaluation-code logic around functionality, safety and comfort, reliability, portability, and astronomical-context compatibility.",
+  "That final showcase structure also made one design consequence explicit: observational quality was removed as its own constraint set because the glove did not modify the telescope. The end-state requirements therefore focused on what the glove itself had to do well, how it would be measured, and which earlier criteria were no longer relevant once the concept path had stabilized.",
 ];
 
 const praxisIIRequirements = [
-  "Preserve task performance during representative winter telescope micro-tasks rather than only making the user feel warmer.",
-  "Maintain a safe, usable hand thermal condition without introducing bulky ski-glove behavior.",
-  "Remain reliable under cold, moisture, and dim red-light observing conditions.",
-  "Avoid permanent telescope-specific redesign so the solution stays defensible across a diverse community.",
-  "Minimize setup and interaction burden while remaining portable for real field use.",
+  "Constraint Set 1, Functionality: R1.1 improve general dexterity relative to the heavy-glove concept; EC1.1 maximize general dexterity using the building test; EC1.2 maximize task-specific dexterity using the microscope test.",
+  "Constraint Set 2, Safety and Comfort: R2.1 maintain a safe contact temperature range consistent with the RFP; EC2.1 minimize overall temperature range; EC2.2 minimize temperature gradient.",
+  "Conditional Constraint Set 3, Reliability: R3.1 meet the functional-retention requirement; R3.2 meet the IP54 water-resistance standard; R3.3 allow no open circuits; EC3.1 maximize functional retention.",
+  "Constraint Set 4, Observational Quality: removed at the showcase stage because the glove made no telescope modifications or attachments.",
+  "Constraint Set 5, Portability: EC5.1 minimize action count; EC5.2 minimize mass; EC5.3 minimize volume.",
+  "Constraint Set 6, Astronomical Context Compatibility: R6.1 permit no telescope modifications or attachments; EC6.1 minimize the actuation force required to perform dexterous tasks while wearing the glove.",
 ];
 
 const praxisIIFigures: Record<string, PraxisIFigure> = {
   problem: {
+    refKey: "01",
     src: "/context-evidence/raw/praxis2-fig1-problem.png",
     alt: "Former RASC member removing a glove to make a telescope adjustment.",
     caption: "Former RASC member removing a glove to make a telescope adjustment. This behavior grounded the project in a dexterity failure rather than a generic comfort complaint.",
-    label: "Source 01",
+    label: "Fig. 01",
     imageClassName: "object-cover",
   },
   workflow: {
+    refKey: "02",
     src: "/context-evidence/raw/praxis2-fig2-workflow.png",
     alt: "Workflow diagram showing dexterity-sensitive failure points during telescope use.",
     caption: "Workflow diagram highlighting where cold hands and low-light conditions turn small astronomy tasks into repeated failure points and rework.",
-    label: "Source 02",
+    label: "Fig. 02",
     imageClassName: "object-contain bg-white p-3",
   },
   framing: {
+    refKey: "03",
     src: "/context-evidence/raw/praxis2-fig3-framing.png",
     alt: "Framing diagram comparing redesigning the telescope with preserving user dexterity.",
     caption: "Early framing diagram contrasting the two main paths: redesign the telescope interface or preserve the user's dexterity directly.",
-    label: "Source 03",
+    label: "Fig. 03",
     imageClassName: "object-contain bg-white p-3",
   },
   stakeholderMap: {
+    refKey: "04",
     src: "/context-evidence/raw/praxis2-fig4-stakeholders.png",
     alt: "Stakeholder map for the Praxis II winter astronomy project.",
     caption: "Stakeholder map showing that the project was constrained not only by users, but also by community fit, equipment diversity, and observing conditions.",
-    label: "Source 04",
+    label: "Fig. 04",
     imageClassName: "object-contain bg-white p-3",
   },
   performance: {
+    refKey: "05",
     src: "/context-evidence/raw/praxis2-graph-time.png",
     alt: "Average performance index or completion-time comparison across Praxis II prototype trials.",
     caption: "Performance comparison across prototype trials. The project only became trustworthy once concept comparison was tied to task performance rather than to general warmth claims or feature count.",
-    label: "Source 05",
+    label: "Fig. 05",
     imageClassName: "object-contain bg-white p-3",
   },
   modes: {
+    refKey: "06",
     src: "/context-evidence/raw/praxis2-high-low-modes.png",
     alt: "Diagram of the Praxis II glove in high- and low-dexterity modes.",
     caption: "High- and low-dexterity glove modes. The final design accepted controlled switching between protection and precision instead of forcing one state to do everything.",
-    label: "Source 06",
+    label: "Fig. 06",
     imageClassName: "object-contain bg-white p-3",
   },
   schematic: {
+    refKey: "07",
     src: "/context-evidence/raw/praxis2-internal-schematic.png",
     alt: "Internal schematic of the GRIPPy glove concept showing the heating layout and major components.",
     caption: "Internal schematic of the final glove, showing finger-focused heating, routing logic, and the system architecture behind the final concept.",
-    label: "Source 07",
+    label: "Fig. 07",
     imageClassName: "object-contain bg-white p-3",
   },
   folding: {
+    refKey: "09",
     src: "/context-evidence/raw/praxis2-folding-configuration.webp",
     alt: "Folding configuration of the Praxis II physical prototype.",
     caption: "Folding configuration of the physical prototype. The convertible structure became necessary once validation showed that some astronomy tasks still required a higher-dexterity mode.",
-    label: "Source 08",
+    label: "Fig. 09",
     imageClassName: "object-contain bg-white p-3",
   },
   temp: {
+    refKey: "10",
     src: "/context-evidence/raw/praxis2-graph-temp.png",
     alt: "Temperature-loss comparison graph used in Praxis II testing.",
     caption: "Temperature testing supported the glove's thermal logic, but the project only became trustworthy once thermal and dexterity questions were separated and then recombined carefully.",
-    label: "Source 09",
+    label: "Fig. 10",
     imageClassName: "object-contain bg-white p-3",
   },
   dexterity: {
+    refKey: "11",
     src: "/context-evidence/raw/praxis2-graph-dexterity.png",
     alt: "Dexterity versus temperature graph from Praxis II testing.",
     caption: "Dexterity versus temperature evidence showed why preserving usable fingertip performance mattered more than solving cold discomfort abstractly.",
-    label: "Source 10",
+    label: "Fig. 11",
     imageClassName: "object-contain bg-white p-3",
   },
   wireOptimization: {
+    refKey: "08",
     src: "/context-evidence/raw/praxis2-wire-optimization.webp",
     alt: "Optimization study relating wire length to generated heat in the Praxis II glove system.",
     caption: "Wire-length optimization study. Limited electrical power made localized finger heating more defensible than trying to heat the entire glove uniformly.",
-    label: "Source 11",
+    label: "Fig. 08",
     imageClassName: "object-contain bg-white p-3",
   },
 };
@@ -796,7 +966,7 @@ const praxisIIFinalSolutionParagraphs = [
 ];
 
 const praxisIISelectionParagraphs = [
-  "The final concept was selected because it responded most directly to the reframed issue while respecting community-fit constraints. Early on, the team explored environment systems, software or error-mitigation ideas, telescope attachments, knob-turner concepts, and glove-based concepts. Several of those weakened once portability, setup burden, and telescope diversity were treated as real constraints rather than decorative considerations. A solution that depended on one telescope geometry or added too much interaction burden stopped being persuasive even if it looked clever in isolation.",
+  "The final concept was selected because it responded most directly to the reframed issue while respecting community-fit constraints. Early on, our team explored environment systems, software or error-mitigation ideas, telescope attachments, knob-turner concepts, and glove-based concepts. Several of those weakened once portability, setup burden, and telescope diversity were treated as real constraints rather than decorative considerations. A solution that depended on one telescope geometry or added too much interaction burden stopped being persuasive even if it looked clever in isolation.",
   "The strongest showcase improvement is that convergence now has a clearer logic. Stage 1 revealed that the original cold-plunge procedure could not hold the cold condition long enough to generate trustworthy evidence, so the testing procedure itself had to change. Later observation and validation then weakened the knob-turner more decisively: only about 27.3% of observed actions were rotational, telescope operation involved many non-rotational hand tasks, and a turning aid added its own equip/unequip burden. The glove remained strongest because it preserved dexterity directly, stayed more generalizable across telescope setups, and later evolved into a convertible design that matched the real warmth-versus-precision tradeoff more honestly.",
 ];
 
@@ -842,7 +1012,7 @@ const praxisIIDecisions = [
   {
     title: "Frame the issue as manipulability failure, not just warmth loss",
     body:
-      "The project became stronger once it stopped treating winter astronomy as a generic comfort problem and instead focused on the task-level mismatch between cold-impaired hands and dexterity-sensitive telescope operation. That move made later decisions more defensible because the team could judge concepts by whether they preserved micro-task performance rather than by whether they simply sounded warm or protective.",
+      "The project became stronger once it stopped treating winter astronomy as a generic comfort problem and instead focused on the task-level mismatch between cold-impaired hands and dexterity-sensitive telescope operation. That move made later decisions more defensible because our team could judge concepts by whether they preserved micro-task performance rather than by whether they simply sounded warm or protective.",
   },
   {
     title: "Redesign the testing procedure before trusting convergence",
@@ -857,13 +1027,13 @@ const praxisIIDecisions = [
   {
     title: "Accept controlled mode changes as part of the final solution",
     body:
-      "The final glove improved when the team stopped treating glove removal as a failure to eliminate completely and instead treated it as a real use condition to manage. The multi-mode glove was stronger because it supported controlled transitions between warmth and precision rather than denying that the tradeoff existed. Finger-focused heating, wrist battery placement, and the flip-back outer layer all became more persuasive once they were tied to that reality.",
+      "The final glove improved when our team stopped treating glove removal as a failure to eliminate completely and instead treated it as a real use condition to manage. The multi-mode glove was stronger because it supported controlled transitions between warmth and precision rather than denying that the tradeoff existed. Finger-focused heating, wrist battery placement, and the flip-back outer layer all became more persuasive once they were tied to that reality.",
   },
 ];
 
 const praxisIIProcessParagraphs = [
-  "The Praxis II process did not move cleanly from problem statement to final glove. It began with a broad winter-astronomy usability opportunity, then expanded into multiple intervention levels including environment concepts, software or error-mitigation ideas, telescope attachments, knob-turner concepts, and direct handwear solutions. Early scoping and Beta preparation show that the team was still negotiating what the real issue was and what kind of solution space was actually defensible.",
-  "The strongest turn in the project came when both framing and testing were reopened. Stakeholder evidence and direct telescope interaction narrowed the issue toward preserving dexterity directly. Stage 1 testing then exposed that the cold-plunge method produced only 1 to 3 seconds of meaningful impairment, so the procedure itself had to change before concepts could be judged fairly. Once thermal and dexterity evidence were separated and later recombined, the team could weaken the knob-turner path more honestly, justify finger-focused heating, and converge on the final multi-mode glove with stronger evidence behind it.",
+  "The Praxis II process did not move cleanly from problem statement to final glove. It began with a broad winter-astronomy usability opportunity, then expanded into multiple intervention levels including environment concepts, software or error-mitigation ideas, telescope attachments, knob-turner concepts, and direct handwear solutions. Early scoping and Beta preparation show that our team was still negotiating what the real issue was and what kind of solution space was actually defensible.",
+  "The strongest turn in the project came when both framing and testing were reopened. Stakeholder evidence and direct telescope interaction narrowed the issue toward preserving dexterity directly. Stage 1 testing then exposed that the cold-plunge method produced only 1 to 3 seconds of meaningful impairment, so the procedure itself had to change before concepts could be judged fairly. Once the requirements and testing questions were stated more clearly, our team had a firmer basis for comparing concept paths, weakening the knob-turner more honestly, and explaining why the glove remained the stronger direction. Once thermal and dexterity evidence were separated and later recombined, our team could weaken the knob-turner path more honestly, justify finger-focused heating, and converge on the final multi-mode glove with stronger evidence behind it.",
 ];
 
 const praxisIIPhases: PraxisIPhase[] = [
@@ -891,7 +1061,7 @@ const praxisIIPhases: PraxisIPhase[] = [
 
 const praxisIILearningParagraphs = [
   "Praxis II taught me that winter-use engineering here was really a manipulability problem, not just a warmth problem. The strongest design move was not adding more heat everywhere. It was identifying which part of the workflow was failing, then preserving that capability as directly as possible. That changed how I think about user-centered engineering: the best intervention often targets the exact function being lost, not the broadest symptom surrounding it.",
-  "The project also made clear that testing procedures are themselves engineering decisions. The first test setup looked rigorous, but it produced unstable evidence because the cold condition disappeared too quickly. The project improved only after the team treated that procedural weakness as real, separated confounded variables, and redesigned the testing logic before defending the concepts too confidently.",
+  "The project also made clear that testing procedures are themselves engineering decisions. The first test setup looked rigorous, but it produced unstable evidence because the cold condition disappeared too quickly. The project improved only after our team treated that procedural weakness as real, separated confounded variables, and redesigned the testing logic before defending the concepts too confidently.",
 ];
 
 const praxisIIReflectionParagraphs = [
@@ -907,17 +1077,17 @@ const praxisIICtmfSynthesis: ProjectCtmfSynthesis = {
 		{
 			title: "Root cause analysis changed what the project was actually about",
 			body:
-				"This CTMF stopped the team from treating winter astronomy as a generic warmth problem and instead exposed a dexterity-manipulability breakdown during telescope micro-tasks. That reframing mattered because it opened two real intervention paths at the start: reduce the dexterity demand of telescope use or preserve user dexterity directly under winter conditions.",
+				"This CTMF stopped our team from treating winter astronomy as a generic warmth problem and instead exposed a dexterity-manipulability breakdown during telescope micro-tasks. That reframing mattered because it opened two real intervention paths at the start: reduce the dexterity demand of telescope use or preserve user dexterity directly under winter conditions.",
 		},
 		{
 			title: "Verification and validation changed which evidence could be trusted",
 			body:
-				"The project improved once the team recognized that the first cold-plunge setup was too weak to stand in for sustained winter use. Separating dexterity and thermal testing made the comparison more honest, weakened the knob-turner path, and made the glove path defensible for the right reasons rather than because one weak procedure made it look promising.",
+				"The project improved once our team recognized that the first cold-plunge setup was too weak to stand in for sustained winter use. Separating dexterity and thermal testing made the comparison more honest, weakened the knob-turner path, and made the glove path defensible for the right reasons rather than because one weak procedure made it look promising.",
 		},
 		{
 			title: "Biomimicry changed the early divergence logic, not the final proof",
 			body:
-				"Biomimicry helped the team generate non-default ideas such as selective insulation, protected warm zones, and modal dexterity instead of defaulting immediately to a standard heated glove. Its real value was early: it widened the design space and seeded thermal-zoning logic, but later validation still had to decide which of those ideas could survive in a real astronomy workflow.",
+				"Biomimicry helped our team generate non-default ideas such as selective insulation, protected warm zones, and modal dexterity instead of defaulting immediately to a standard heated glove. Its real value was early: it widened the design space and seeded thermal-zoning logic, but later validation still had to decide which of those ideas could survive in a real astronomy workflow.",
 		},
 	],
 	closing:
@@ -1108,7 +1278,10 @@ const PraxisIProjectPage = ({
 
           <div className="grid gap-6">
             {[praxisIFigures.testing, praxisIFigures.slider].map((figure) => (
-              <article key={figure.label} className={`${lightPanelClass} overflow-hidden p-4`}>
+              <article
+                key={figure.label}
+                id={getFigureAnchorId("praxis-i", figure.refKey!)}
+                className={`${lightPanelClass} scroll-mt-28 overflow-hidden p-4`}>
                 <div className="mb-4 flex items-center justify-between gap-3 px-2 pt-2">
                   <p
                     className="text-[0.68rem] uppercase tracking-[0.3em] text-slate-700/60"
@@ -1118,7 +1291,7 @@ const PraxisIProjectPage = ({
                 </div>
                 <div className="overflow-hidden rounded-[1.45rem] border border-slate-900/10 bg-white">
                   <div className="relative h-[18rem] w-full">
-                    <Image src={figure.src} alt={figure.alt} fill className={figure.imageClassName} />
+                    {renderProjectFigureMedia(figure, `${figure.label} ${figure.alt}`)}
                   </div>
                 </div>
                 <p
@@ -1215,18 +1388,23 @@ const PraxisIProjectPage = ({
               <p
                 className="text-[0.68rem] uppercase tracking-[0.3em] text-slate-700/60"
                 style={{ fontFamily: "var(--font-vercetti)" }}>
-                {praxisIFigures.slider.label}
+                {praxisIFigures.sliderAnimation.label}
               </p>
             </div>
 
-            <div className="overflow-hidden rounded-[1.45rem] border border-slate-900/10 bg-white">
+            <div
+              id={getFigureAnchorId("praxis-i", praxisIFigures.sliderAnimation.refKey!)}
+              className="scroll-mt-28 overflow-hidden rounded-[1.45rem] border border-slate-900/10 bg-white">
               <div className="relative h-[24rem] w-full">
-                <Image
-                  src={praxisIFigures.slider.src}
-                  alt={praxisIFigures.slider.alt}
-                  fill
-                  className={praxisIFigures.slider.imageClassName}
-                />
+                <video
+                  controls
+                  playsInline
+                  preload="metadata"
+                  aria-label={praxisIFigures.sliderAnimation.alt}
+                  className="h-full w-full object-contain p-4">
+                  <source src={praxisIFigures.sliderAnimation.src as string} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
               </div>
             </div>
 
@@ -1261,7 +1439,7 @@ const PraxisIProjectPage = ({
             <p
               className="mt-5 text-base leading-8 text-slate-200"
               style={{ fontFamily: "var(--font-vercetti)" }}>
-              {praxisISelectionParagraph}
+              <FigureReferenceText text={praxisISelectionParagraph} refs={praxisIFigureReferences} />
             </p>
 
             <div className="mt-8 grid gap-3 md:grid-cols-2">
@@ -1293,7 +1471,8 @@ const PraxisIProjectPage = ({
               {[praxisIFigures.acoustic, praxisIFigures.pressure, praxisIFigures.co2].map((figure, index) => (
                 <article
                   key={figure.label}
-                  className={`rounded-[1.35rem] border border-white/10 bg-[#101d2b] p-4 ${index === 0 ? "xl:col-span-2" : ""}`}>
+                  id={getFigureAnchorId("praxis-i", figure.refKey!)}
+                  className={`scroll-mt-28 rounded-[1.35rem] border border-white/10 bg-[#101d2b] p-4 ${index === 0 ? "xl:col-span-2" : ""}`}>
                   <div className="mb-3 flex items-center justify-between gap-3">
                     <p
                       className="text-[0.68rem] uppercase tracking-[0.28em] text-sky-200/70"
@@ -1361,7 +1540,9 @@ const PraxisIProjectPage = ({
           </div>
 
           <div className="mt-8 grid gap-4 xl:grid-cols-[1.2fr_0.8fr]">
-            <article className="rounded-[1.6rem] border border-white/10 bg-[#101d2b] p-4">
+            <article
+              id={getFigureAnchorId("praxis-i", praxisIFigures.morph.refKey!)}
+              className="scroll-mt-28 rounded-[1.6rem] border border-white/10 bg-[#101d2b] p-4">
               <div className="mb-4 flex items-center justify-between gap-3 px-2 pt-2">
                 <div>
                   <p
@@ -1390,7 +1571,10 @@ const PraxisIProjectPage = ({
 
             <div className="grid gap-4">
               {[praxisIFigures.needle, praxisIFigures.water, praxisIFigures.rubber].map((figure) => (
-                <article key={figure.label} className="rounded-[1.35rem] border border-white/10 bg-white/5 p-4">
+                <article
+                  key={figure.label}
+                  id={getFigureAnchorId("praxis-i", figure.refKey!)}
+                  className="scroll-mt-28 rounded-[1.35rem] border border-white/10 bg-white/5 p-4">
                   <div className="mb-3 flex items-center justify-between gap-3">
                     <p
                       className="text-[0.68rem] uppercase tracking-[0.28em] text-sky-200/70"
@@ -1414,7 +1598,7 @@ const PraxisIProjectPage = ({
           </div>
         </section>
 
-        <section className="mt-6 grid gap-6 xl:grid-cols-[1.04fr_0.96fr]">
+        <section className="mt-6">
           <article className={`${lightPanelClass} p-6 md:p-8`}>
             <p
               className="text-[0.68rem] uppercase tracking-[0.3em] text-slate-700/60"
@@ -1454,33 +1638,6 @@ const PraxisIProjectPage = ({
               ))}
             </div>
           </article>
-
-          <article className={`${darkPanelClass} overflow-hidden p-4`}>
-            <div className="mb-4 flex items-center justify-between gap-3 px-2 pt-2">
-              <div>
-                <p
-                  className="text-[0.68rem] uppercase tracking-[0.3em] text-sky-200/70"
-                  style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {praxisIFigures.anchor.label}
-                </p>
-                <h2
-                  className="mt-2 text-3xl text-white"
-                  style={{ fontFamily: "var(--font-soria)" }}>
-                  Evidence broke the original frame
-                </h2>
-              </div>
-            </div>
-            <div className="overflow-hidden rounded-[1.35rem] border border-white/10 bg-[#0b131d]">
-              <div className="relative h-[26rem] w-full">
-                <Image src={praxisIFigures.anchor.src} alt={praxisIFigures.anchor.alt} fill className={praxisIFigures.anchor.imageClassName} />
-              </div>
-            </div>
-            <p
-              className="mt-4 px-2 text-sm leading-7 text-slate-300"
-              style={{ fontFamily: "var(--font-vercetti)" }}>
-              {praxisIFigures.anchor.caption}
-            </p>
-          </article>
         </section>
 
         <section className="mt-6 grid gap-6 xl:grid-cols-[0.92fr_1.08fr]">
@@ -1503,32 +1660,51 @@ const PraxisIProjectPage = ({
           </article>
 
           <article className={`${darkPanelClass} p-6 md:p-8`}>
-            <div className="flex flex-col gap-6 xl:flex-row">
-              <div className="min-w-0 flex-1">
+            <p
+              className="text-[0.68rem] uppercase tracking-[0.3em] text-sky-200/70"
+              style={{ fontFamily: "var(--font-vercetti)" }}>
+              Self-Reflection
+            </p>
+
+            <div className="mt-6 grid gap-4 xl:grid-cols-2">
+              <div>
                 <p
-                  className="text-[0.68rem] uppercase tracking-[0.3em] text-sky-200/70"
+                  className="mb-3 text-[0.68rem] uppercase tracking-[0.3em] text-sky-200/70"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  Self-Reflection
+                  {praxisIFigures.anchor.label}
                 </p>
-                <div className="mt-5 grid gap-4">
-                  {praxisIReflectionParagraphs.map((paragraph) => (
-                    <p
-                      key={paragraph}
-                      className="text-base leading-8 text-slate-200"
-                      style={{ fontFamily: "var(--font-vercetti)" }}>
-                      {paragraph}
-                    </p>
-                  ))}
+                <div
+                  id={getFigureAnchorId("praxis-i", praxisIFigures.anchor.refKey!)}
+                  className="scroll-mt-28 overflow-hidden rounded-[1.35rem] border border-white/10 bg-[#0b131d]">
+                  <div className="relative h-[23rem] w-full">
+                    {renderProjectFigureMedia(
+                      praxisIFigures.anchor,
+                      `${praxisIFigures.anchor.label} ${praxisIFigures.anchor.alt}`,
+                    )}
+                  </div>
                 </div>
+                <p
+                  className="mt-4 text-sm leading-7 text-slate-300"
+                  style={{ fontFamily: "var(--font-vercetti)" }}>
+                  {praxisIFigures.anchor.caption}
+                </p>
               </div>
 
-              <div className="xl:w-[24rem]">
-                <div className="overflow-hidden rounded-[1.35rem] border border-white/10 bg-white">
+              <div>
+                <p
+                  className="mb-3 text-[0.68rem] uppercase tracking-[0.3em] text-sky-200/70"
+                  style={{ fontFamily: "var(--font-vercetti)" }}>
+                  {praxisIFigures.reflection.label}
+                </p>
+                <div
+                  id={getFigureAnchorId("praxis-i", praxisIFigures.reflection.refKey!)}
+                  className="scroll-mt-28 overflow-hidden rounded-[1.35rem] border border-white/10 bg-white">
                   <div className="relative h-[23rem] w-full">
                     <Image
                       src={praxisIFigures.reflection.src}
                       alt={praxisIFigures.reflection.alt}
                       fill
+                      sizes="(max-width: 1279px) 100vw, 42vw"
                       className={praxisIFigures.reflection.imageClassName}
                     />
                   </div>
@@ -1539,6 +1715,17 @@ const PraxisIProjectPage = ({
                   {praxisIFigures.reflection.caption}
                 </p>
               </div>
+            </div>
+
+            <div className="mt-8 grid gap-4">
+              {praxisIReflectionParagraphs.map((paragraph) => (
+                <p
+                  key={paragraph}
+                  className="text-base leading-8 text-slate-200"
+                  style={{ fontFamily: "var(--font-vercetti)" }}>
+                  {paragraph}
+                </p>
+              ))}
             </div>
           </article>
         </section>
@@ -1561,9 +1748,12 @@ const PraxisIProjectPage = ({
               {praxisITeamCredit}
             </p>
             <div className="mt-5 grid gap-3" style={{ fontFamily: "var(--font-vercetti)" }}>
-              {praxisITeam.map((name) => (
-                <div key={name} className="rounded-[1.15rem] border border-white/10 bg-white/5 px-4 py-3 text-sm text-white">
-                  {name}
+              {praxisITeam.map((member) => (
+                <div
+                  key={member.name}
+                  className="rounded-[1.15rem] border border-white/10 bg-white/5 px-4 py-4">
+                  <p className="text-sm text-white">{member.name}</p>
+                  <p className="mt-2 text-sm leading-7 text-slate-300">{member.role}</p>
                 </div>
               ))}
             </div>
@@ -1587,33 +1777,39 @@ const PraxisIProjectPage = ({
             </p>
 
             <div className="mt-8 flex flex-col gap-4">
-              {praxisCtmfs.map((ctmf) => (
-                <RememberedLink
-                  key={ctmf.slug}
-                  href={`/ctmfs/${ctmf.slug}`}
-                  returnHref={`/projects/${slug}`}
-                  returnLabel="Back to Praxis I"
-                  className="rounded-[1.45rem] border border-slate-900/10 bg-white/70 p-5 transition-transform duration-300 hover:-translate-y-1 hover:bg-white">
-                  <p
-                    className="text-[0.68rem] uppercase tracking-[0.28em] text-slate-700/58"
-                    style={{ fontFamily: "var(--font-vercetti)" }}>
-                    [{ctmf.stage.charAt(0)}] {ctmf.stage}
-                  </p>
-                  <h3
-                    className="mt-3 text-[2rem] leading-tight text-slate-950"
-                    style={{ fontFamily: "var(--font-soria)" }}>
-                    {ctmf.title}
-                  </h3>
-                  <p
-                    className="mt-4 text-sm leading-7 text-slate-900/72"
-                    style={{ fontFamily: "var(--font-vercetti)" }}>
-                    {praxisICtmfLessons[ctmf.slug]}
-                  </p>
-                </RememberedLink>
-              ))}
+              {praxisCtmfs.map((ctmf) => {
+                const stageTheme = getFdcrStageTheme(ctmf.stageCode, ctmf.stage);
+
+                return (
+                  <RememberedLink
+                    key={ctmf.slug}
+                    href={`/ctmfs/${ctmf.slug}`}
+                    returnHref={`/projects/${slug}`}
+                    returnLabel="Back to Praxis I"
+                    className="rounded-[1.45rem] border border-slate-900/10 bg-white/70 p-5 transition-transform duration-300 hover:-translate-y-1 hover:bg-white">
+                    <span
+                      className={`inline-flex px-3 py-2 text-[0.68rem] uppercase tracking-[0.28em] ${stageTheme.indicatorClassName}`}
+                      style={{ fontFamily: "var(--font-vercetti)" }}>
+                      {getFdcrStageLabel(ctmf.stageCode ?? ctmf.stage.charAt(0), ctmf.stage)}
+                    </span>
+                    <h3
+                      className="mt-3 text-[2rem] leading-tight text-slate-950"
+                      style={{ fontFamily: "var(--font-soria)" }}>
+                      {ctmf.title}
+                    </h3>
+                    <p
+                      className="mt-4 text-sm leading-7 text-slate-900/72"
+                      style={{ fontFamily: "var(--font-vercetti)" }}>
+                      {praxisICtmfLessons[ctmf.slug]}
+                    </p>
+                  </RememberedLink>
+                );
+              })}
             </div>
           </article>
         </section>
+
+        <ReferencesSection className="mt-6" />
       </div>
     </main>
   );
@@ -1697,7 +1893,7 @@ const CIV102ProjectPage = ({
                   key={paragraph}
                   className="max-w-4xl text-base leading-8 text-slate-200"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {paragraph}
+                  <CitationText text={paragraph} />
                 </p>
               ))}
             </div>
@@ -1752,7 +1948,7 @@ const CIV102ProjectPage = ({
                   key={paragraph}
                   className="text-sm leading-7 text-slate-900/80"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {paragraph}
+                  <CitationText text={paragraph} />
                 </p>
               ))}
             </div>
@@ -1773,6 +1969,29 @@ const CIV102ProjectPage = ({
                 </div>
               ))}
             </div>
+
+            <article className="mt-6 rounded-[1.25rem] border border-slate-900/10 bg-white/70 p-4">
+              <p
+                className="mb-3 text-[0.68rem] uppercase tracking-[0.3em] text-slate-700/60"
+                style={{ fontFamily: "var(--font-vercetti)" }}>
+                {civ102Figures.loadingConfiguration.label}
+              </p>
+              <div className="overflow-hidden rounded-[1.2rem] border border-slate-900/10 bg-white">
+                <div className="relative h-[18rem] w-full">
+                  <Image
+                    src={civ102Figures.loadingConfiguration.src}
+                    alt={civ102Figures.loadingConfiguration.alt}
+                    fill
+                    className={civ102Figures.loadingConfiguration.imageClassName}
+                  />
+                </div>
+              </div>
+              <p
+                className="mt-4 text-sm leading-7 text-slate-900/76"
+                style={{ fontFamily: "var(--font-vercetti)" }}>
+                {civ102Figures.loadingConfiguration.caption}
+              </p>
+            </article>
           </article>
 
           <article className={`${darkPanelClass} p-6 md:p-8`}>
@@ -1788,7 +2007,7 @@ const CIV102ProjectPage = ({
                   key={paragraph}
                   className="text-base leading-8 text-slate-200"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {paragraph}
+                  <CitationText text={paragraph} />
                 </p>
               ))}
             </div>
@@ -1846,21 +2065,56 @@ const CIV102ProjectPage = ({
               </div>
             </div>
 
-            <div className="overflow-hidden rounded-[1.4rem] border border-slate-900/10 bg-white">
-              <div className="relative h-[18rem] w-full">
-                <Image
-                  src={civ102Figures.diaphragm.src}
-                  alt={civ102Figures.diaphragm.alt}
-                  fill
-                  className={civ102Figures.diaphragm.imageClassName}
-                />
+            <div className="grid gap-4">
+              <div className="overflow-hidden rounded-[1.4rem] border border-slate-900/10 bg-white">
+                <div className="px-4 pt-4">
+                  <p
+                    className="text-[0.68rem] uppercase tracking-[0.3em] text-slate-700/60"
+                    style={{ fontFamily: "var(--font-vercetti)" }}>
+                    {civ102Figures.diaphragm.label}
+                  </p>
+                </div>
+                <div className="relative h-[18rem] w-full">
+                  <Image
+                    src={civ102Figures.diaphragm.src}
+                    alt={civ102Figures.diaphragm.alt}
+                    fill
+                    className={civ102Figures.diaphragm.imageClassName}
+                  />
+                </div>
               </div>
+              <p
+                className="mt-0 px-2 text-sm leading-7 text-slate-800/78"
+                style={{ fontFamily: "var(--font-vercetti)" }}>
+                {civ102Figures.diaphragm.caption}
+              </p>
+
+              <div className="overflow-hidden rounded-[1.4rem] border border-slate-900/10 bg-white">
+                <div className="px-4 pt-4">
+                  <p
+                    className="text-[0.68rem] uppercase tracking-[0.3em] text-slate-700/60"
+                    style={{ fontFamily: "var(--font-vercetti)" }}>
+                    {civ102Figures.buildReview.label}
+                  </p>
+                </div>
+                <div className="relative h-[22rem] w-full">
+                  <video
+                    controls
+                    playsInline
+                    preload="metadata"
+                    aria-label={civ102Figures.buildReview.alt}
+                    className="h-full w-full object-contain bg-white p-3">
+                    <source src={civ102Figures.buildReview.src as string} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              </div>
+              <p
+                className="mt-0 px-2 text-sm leading-7 text-slate-800/78"
+                style={{ fontFamily: "var(--font-vercetti)" }}>
+                {civ102Figures.buildReview.caption}
+              </p>
             </div>
-            <p
-              className="mt-4 px-2 text-sm leading-7 text-slate-800/78"
-              style={{ fontFamily: "var(--font-vercetti)" }}>
-              {civ102Figures.diaphragm.caption}
-            </p>
 
             <div className="mt-4 grid gap-4 px-2">
               {civ102FinalSolutionParagraphs.map((paragraph) => (
@@ -1878,7 +2132,7 @@ const CIV102ProjectPage = ({
             <p
               className="text-[0.68rem] uppercase tracking-[0.3em] text-amber-200/70"
               style={{ fontFamily: "var(--font-vercetti)" }}>
-              Why This Solution Was Selected
+              Final Performance Review
             </p>
 
             <div className="mt-5 grid gap-4">
@@ -1898,7 +2152,7 @@ const CIV102ProjectPage = ({
                   <tr>
                     <th className="px-4 py-4">Measure</th>
                     <th className="px-4 py-4">Value</th>
-                    <th className="px-4 py-4">Why It Mattered</th>
+                    <th className="px-4 py-4">What It Shows</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-white/10">
@@ -1932,7 +2186,7 @@ const CIV102ProjectPage = ({
             <p
               className="max-w-xl text-sm leading-7 text-slate-300"
               style={{ fontFamily: "var(--font-vercetti)" }}>
-              The bridge became stronger when the team stopped treating geometry, fitting, and fabrication as separate conversations and instead treated them as one structural argument.
+              The bridge became stronger when our team stopped treating geometry, fitting, and fabrication as separate conversations and instead treated them as one structural argument.
             </p>
           </div>
 
@@ -2046,6 +2300,13 @@ const CIV102ProjectPage = ({
             </div>
 
             <div className="overflow-hidden rounded-[1.4rem] border border-slate-900/10 bg-white">
+              <div className="px-4 pt-4">
+                <p
+                  className="text-[0.68rem] uppercase tracking-[0.3em] text-slate-700/60"
+                  style={{ fontFamily: "var(--font-vercetti)" }}>
+                  {civ102Figures.splice.label}
+                </p>
+              </div>
               <div className="relative h-[18rem] w-full">
                 <Image
                   src={civ102Figures.splice.src}
@@ -2081,6 +2342,13 @@ const CIV102ProjectPage = ({
             </p>
 
             <div className="mt-6 overflow-hidden rounded-[1.35rem] border border-white/10 bg-white">
+              <div className="px-4 pt-4">
+                <p
+                  className="text-[0.68rem] uppercase tracking-[0.3em] text-amber-200/70"
+                  style={{ fontFamily: "var(--font-vercetti)" }}>
+                  {civ102Figures.failure.label}
+                </p>
+              </div>
               <div className="relative h-[18rem] w-full">
                 <Image
                   src={civ102Figures.failure.src}
@@ -2141,6 +2409,78 @@ const CIV102ProjectPage = ({
               style={{ fontFamily: "var(--font-vercetti)" }}>
               {civ102TeamCredit}
             </p>
+
+            <div className="mt-6 grid gap-3 md:grid-cols-2">
+              {civ102TeamContributions.map((member) => (
+                <article key={member.name} className="rounded-[1.25rem] border border-slate-900/10 bg-white/70 px-4 py-4">
+                  <p
+                    className="text-[0.7rem] uppercase tracking-[0.26em] text-slate-700/62"
+                    style={{ fontFamily: "var(--font-vercetti)" }}>
+                    {member.name}
+                  </p>
+                  <p
+                    className="mt-2 text-sm leading-7 text-slate-900/78"
+                    style={{ fontFamily: "var(--font-vercetti)" }}>
+                    {member.role}
+                  </p>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-6 rounded-[1.25rem] border border-slate-900/10 bg-[#171a22] px-4 py-4 text-[#f8f3e8]">
+              <p
+                className="text-[0.68rem] uppercase tracking-[0.28em] text-amber-200/70"
+                style={{ fontFamily: "var(--font-vercetti)" }}>
+                Shared Construction Work
+              </p>
+              <p
+                className="mt-3 text-sm leading-7 text-slate-200"
+                style={{ fontFamily: "var(--font-vercetti)" }}>
+                {civ102FabricationCredit}
+              </p>
+            </div>
+
+            <div className="mt-6 grid gap-3 md:grid-cols-4">
+              {civ102TimeLogHighlights.map((entry) => (
+                <div
+                  key={entry.name}
+                  className="rounded-[1.2rem] border border-slate-900/10 bg-white px-4 py-4 text-center">
+                  <p
+                    className="text-[0.68rem] uppercase tracking-[0.24em] text-slate-700/60"
+                    style={{ fontFamily: "var(--font-vercetti)" }}>
+                    {entry.name}
+                  </p>
+                  <p
+                    className="mt-2 text-2xl text-slate-950"
+                    style={{ fontFamily: "var(--font-soria)" }}>
+                    {entry.total}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-6 overflow-hidden rounded-[1.4rem] border border-slate-900/10 bg-white">
+              <div className="px-4 pt-4">
+                <p
+                  className="text-[0.68rem] uppercase tracking-[0.3em] text-slate-700/60"
+                  style={{ fontFamily: "var(--font-vercetti)" }}>
+                  {civ102Figures.timeLog.label}
+                </p>
+              </div>
+              <div className="relative h-[24rem] w-full">
+                <Image
+                  src={civ102Figures.timeLog.src}
+                  alt={civ102Figures.timeLog.alt}
+                  fill
+                  className={civ102Figures.timeLog.imageClassName}
+                />
+              </div>
+            </div>
+            <p
+              className="mt-4 max-w-4xl text-sm leading-7 text-slate-900/72"
+              style={{ fontFamily: "var(--font-vercetti)" }}>
+              {civ102Figures.timeLog.caption}
+            </p>
           </article>
         </section>
 
@@ -2164,33 +2504,39 @@ const CIV102ProjectPage = ({
             </p>
 
             <div className="mt-8 flex flex-col gap-4">
-              {civCtmfs.map((ctmf) => (
-                <RememberedLink
-                  key={ctmf.slug}
-                  href={`/ctmfs/${ctmf.slug}`}
-                  returnHref={`/projects/${slug}`}
-                  returnLabel="Back to CIV102"
-                  className="rounded-[1.45rem] border border-slate-900/10 bg-white/70 p-5 transition-transform duration-300 hover:-translate-y-1 hover:bg-white">
-                  <p
-                    className="text-[0.68rem] uppercase tracking-[0.28em] text-slate-700/58"
-                    style={{ fontFamily: "var(--font-vercetti)" }}>
-                    [{ctmf.stage.charAt(0)}] {ctmf.stage}
-                  </p>
-                  <h3
-                    className="mt-3 text-[1.9rem] leading-tight text-slate-950"
-                    style={{ fontFamily: "var(--font-soria)" }}>
-                    {ctmf.title}
-                  </h3>
-                  <p
-                    className="mt-4 text-sm leading-7 text-slate-900/72"
-                    style={{ fontFamily: "var(--font-vercetti)" }}>
-                    {civ102CtmfLessons[ctmf.slug]}
-                  </p>
-                </RememberedLink>
-              ))}
+              {civCtmfs.map((ctmf) => {
+                const stageTheme = getFdcrStageTheme(ctmf.stageCode, ctmf.stage);
+
+                return (
+                  <RememberedLink
+                    key={ctmf.slug}
+                    href={`/ctmfs/${ctmf.slug}`}
+                    returnHref={`/projects/${slug}`}
+                    returnLabel="Back to CIV102"
+                    className="rounded-[1.45rem] border border-slate-900/10 bg-white/70 p-5 transition-transform duration-300 hover:-translate-y-1 hover:bg-white">
+                    <span
+                      className={`inline-flex px-3 py-2 text-[0.68rem] uppercase tracking-[0.28em] ${stageTheme.indicatorClassName}`}
+                      style={{ fontFamily: "var(--font-vercetti)" }}>
+                      {getFdcrStageLabel(ctmf.stageCode ?? ctmf.stage.charAt(0), ctmf.stage)}
+                    </span>
+                    <h3
+                      className="mt-3 text-[1.9rem] leading-tight text-slate-950"
+                      style={{ fontFamily: "var(--font-soria)" }}>
+                      {ctmf.title}
+                    </h3>
+                    <p
+                      className="mt-4 text-sm leading-7 text-slate-900/72"
+                      style={{ fontFamily: "var(--font-vercetti)" }}>
+                      {civ102CtmfLessons[ctmf.slug]}
+                    </p>
+                  </RememberedLink>
+                );
+              })}
             </div>
           </article>
         </section>
+
+        <ReferencesSection className="mt-6" />
       </div>
     </main>
   );
@@ -2223,7 +2569,13 @@ const PraxisIIProjectPage = ({
 
       <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-[88rem] flex-col px-5 pb-12 pt-6 md:px-8 md:pb-16 md:pt-8">
         <div className="mb-8 flex items-center justify-between gap-4 border-b-[3px] border-black pb-6 md:mb-10">
-          <RememberedBackLink fallbackHref="/?portal=work" fallbackLabel="Back to Timeline" />
+          <Link
+            href="/?portal=work"
+            className="inline-flex items-center gap-3 text-sm uppercase tracking-[0.28em] neo-chip bg-[#efe7d6] px-4 py-2 text-black hover:-translate-y-1 hover:text-black"
+            style={{ fontFamily: "var(--font-vercetti)" }}>
+            <span aria-hidden="true">&larr;</span>
+            Back to Timeline
+          </Link>
           <div className="neo-chip -rotate-2 bg-[#ffd23c] px-4 py-2">
             <p
               className="text-right text-[0.7rem] uppercase tracking-[0.32em] text-black md:text-xs"
@@ -2350,6 +2702,11 @@ const PraxisIIProjectPage = ({
             <div className="mt-6 grid gap-4 md:grid-cols-2">
               {[praxisIIFigures.framing, praxisIIFigures.stakeholderMap].map((figure) => (
                 <article key={figure.label} className="rounded-[1.25rem] border border-slate-900/10 bg-white/70 p-4">
+                  <p
+                    className="mb-3 text-[0.68rem] uppercase tracking-[0.3em] text-slate-700/60"
+                    style={{ fontFamily: "var(--font-vercetti)" }}>
+                    {figure.label}
+                  </p>
                   <div className="overflow-hidden rounded-[1.2rem] border border-slate-900/10 bg-white">
                     <div className="relative h-[13rem] w-full">
                       <Image src={figure.src} alt={figure.alt} fill className={figure.imageClassName} />
@@ -2440,6 +2797,11 @@ const PraxisIIProjectPage = ({
             <div className="grid gap-4">
               {[praxisIIFigures.modes, praxisIIFigures.schematic].map((figure) => (
                 <article key={figure.label} className="overflow-hidden rounded-[1.4rem] border border-slate-900/10 bg-white p-4">
+                  <p
+                    className="mb-3 text-[0.68rem] uppercase tracking-[0.3em] text-slate-700/60"
+                    style={{ fontFamily: "var(--font-vercetti)" }}>
+                    {figure.label}
+                  </p>
                   <div className="overflow-hidden rounded-[1.25rem] border border-slate-900/10 bg-white">
                     <div className="relative h-[16rem] w-full">
                       <Image src={figure.src} alt={figure.alt} fill className={figure.imageClassName} />
@@ -2634,6 +2996,11 @@ const PraxisIIProjectPage = ({
             <div className="grid gap-4">
               {[praxisIIFigures.temp, praxisIIFigures.dexterity].map((figure) => (
                 <article key={figure.label} className="overflow-hidden rounded-[1.35rem] border border-slate-900/10 bg-white p-4">
+                  <p
+                    className="mb-3 text-[0.68rem] uppercase tracking-[0.3em] text-slate-700/60"
+                    style={{ fontFamily: "var(--font-vercetti)" }}>
+                    {figure.label}
+                  </p>
                   <div className="overflow-hidden rounded-[1.2rem] border border-slate-900/10 bg-white">
                     <div className="relative h-[15rem] w-full">
                       <Image src={figure.src} alt={figure.alt} fill className={figure.imageClassName} />
@@ -2668,6 +3035,13 @@ const PraxisIIProjectPage = ({
             </p>
 
             <div className="mt-6 overflow-hidden rounded-[1.35rem] border border-white/10 bg-white">
+              <div className="px-4 pt-4">
+                <p
+                  className="text-[0.68rem] uppercase tracking-[0.3em] text-emerald-200/70"
+                  style={{ fontFamily: "var(--font-vercetti)" }}>
+                  {praxisIIFigures.folding.label}
+                </p>
+              </div>
               <div className="relative h-[18rem] w-full">
                 <Image
                   src={praxisIIFigures.folding.src}
@@ -2748,31 +3122,37 @@ const PraxisIIProjectPage = ({
             </p>
 
             <div className="mt-8 flex flex-col gap-4">
-              {praxisIICtmfs.map((ctmf) => (
-                <RememberedLink
-                  key={ctmf.slug}
-                  href={`/ctmfs/${ctmf.slug}`}
-                  returnHref={`/projects/${slug}`}
-                  returnLabel="Back to Praxis II"
-                  className="rounded-[1.45rem] border border-slate-900/10 bg-white/70 p-5 transition-transform duration-300 hover:-translate-y-1 hover:bg-white">
-                  <p
-                    className="text-[0.68rem] uppercase tracking-[0.28em] text-slate-700/58"
-                    style={{ fontFamily: "var(--font-vercetti)" }}>
-                    [{ctmf.stage.charAt(0)}] {ctmf.stage}
-                  </p>
-                  <h3 className="mt-3 text-[2rem] leading-tight text-slate-950" style={{ fontFamily: "var(--font-soria)" }}>
-                    {ctmf.title}
-                  </h3>
-                  <p
-                    className="mt-4 text-sm leading-7 text-slate-900/72"
-                    style={{ fontFamily: "var(--font-vercetti)" }}>
-                    {praxisIICtmfLessons[ctmf.slug]}
-                  </p>
-                </RememberedLink>
-              ))}
+              {praxisIICtmfs.map((ctmf) => {
+                const stageTheme = getFdcrStageTheme(ctmf.stageCode, ctmf.stage);
+
+                return (
+                  <RememberedLink
+                    key={ctmf.slug}
+                    href={`/ctmfs/${ctmf.slug}`}
+                    returnHref={`/projects/${slug}`}
+                    returnLabel="Back to Praxis II"
+                    className="rounded-[1.45rem] border border-slate-900/10 bg-white/70 p-5 transition-transform duration-300 hover:-translate-y-1 hover:bg-white">
+                    <span
+                      className={`inline-flex px-3 py-2 text-[0.68rem] uppercase tracking-[0.28em] ${stageTheme.indicatorClassName}`}
+                      style={{ fontFamily: "var(--font-vercetti)" }}>
+                      {getFdcrStageLabel(ctmf.stageCode ?? ctmf.stage.charAt(0), ctmf.stage)}
+                    </span>
+                    <h3 className="mt-3 text-[2rem] leading-tight text-slate-950" style={{ fontFamily: "var(--font-soria)" }}>
+                      {ctmf.title}
+                    </h3>
+                    <p
+                      className="mt-4 text-sm leading-7 text-slate-900/72"
+                      style={{ fontFamily: "var(--font-vercetti)" }}>
+                      {praxisIICtmfLessons[ctmf.slug]}
+                    </p>
+                  </RememberedLink>
+                );
+              })}
             </div>
           </article>
         </section>
+
+        <ReferencesSection className="mt-6" />
       </div>
     </main>
   );
@@ -2821,7 +3201,11 @@ const GenericProjectPage = ({
 
       <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-[84rem] flex-col px-5 pb-12 pt-6 md:px-8 md:pb-16 md:pt-8">
         <div className="mb-8 flex items-center justify-between gap-4 border-b-[3px] border-black pb-6 md:mb-10">
-          <RememberedBackLink fallbackHref="/?portal=work" fallbackLabel="Back to Timeline" />
+          <RememberedBackLink
+            fallbackHref="/?portal=work"
+            fallbackLabel="Back to Timeline"
+            className="neo-chip bg-[#efe7d6] px-4 py-2 text-black hover:-translate-y-1 hover:text-black"
+          />
           <div className="neo-chip -rotate-2 bg-[#ffd23c] px-4 py-2">
             <p
               className="text-right text-[0.7rem] uppercase tracking-[0.32em] text-black md:text-xs"
@@ -2969,6 +3353,8 @@ const GenericProjectPage = ({
             </p>
           </article>
         </section>
+
+        <ReferencesSection className="mt-6" />
       </div>
     </main>
   );
@@ -3000,5 +3386,3 @@ const ProjectPage = async ({ params }: ProjectPageProps) => {
 };
 
 export default ProjectPage;
-
-

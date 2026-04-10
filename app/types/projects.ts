@@ -9,9 +9,17 @@ export interface CtmfDossierSection {
   calloutTitle?: string;
   callouts?: string[];
   figures?: {
+    kind?: "image" | "video";
     src: string;
     alt: string;
     caption: string;
+    label?: string;
+    refKey?: string;
+    posterSrc?: string;
+    imageClassName?: string;
+    frameClassName?: string;
+    figureClassName?: string;
+    sizes?: string;
   }[];
 }
 

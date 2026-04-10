@@ -6,6 +6,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
 import * as THREE from "three";
 
+import { getFdcrStageLabel, getFdcrStageTheme } from "@constants";
 import {
 	rememberReturnTarget,
 	rememberSceneSnapshot,
@@ -45,6 +46,25 @@ const ProjectTile = ({ project, itemKey, entranceIndex, position, rotation, acti
     anchorX: "left",
     anchorY: "top",
   }), []);
+
+  const stageTheme = useMemo(
+    () => getFdcrStageTheme(project.stageCode, project.stage),
+    [project.stageCode, project.stage],
+  );
+  const stageCode = useMemo(
+    () => project.stageCode ?? project.stage.charAt(0),
+    [project.stageCode, project.stage],
+  );
+  const isCombinedStage = useMemo(() => stageCode.includes("/"), [stageCode]);
+  const stageLabel = useMemo(
+    () => getFdcrStageLabel(stageCode, project.stage).toUpperCase(),
+    [stageCode, project.stage],
+  );
+  const stageBadgeWidth = isCombinedStage ? 2.35 : 2.55;
+  const stageBadgeCenterX = -2.52 + stageBadgeWidth / 2;
+  const stageTextX = -stageBadgeWidth / 2 + 0.16;
+  const stageFontSize = isCombinedStage ? 0.145 : 0.2;
+  const stageTextMaxWidth = isCombinedStage ? 3.18 : 2.12;
 
   useEffect(() => {
     if (!projectRef.current) return;
@@ -136,17 +156,19 @@ const ProjectTile = ({ project, itemKey, entranceIndex, position, rotation, acti
           fontSize={0.8}>
           {project.title}
         </Text>
-        <group position={[-1.25, 1.4, 0.01]}>
+        <group position={[stageBadgeCenterX, 1.4, 0.01]}>
           <mesh>
-            <planeGeometry args={[1.7, 0.4, 1]} />
-            <meshBasicMaterial color="#777" opacity={0} wireframe />
+            <planeGeometry args={[stageBadgeWidth, 0.46, 1]} />
+            <meshBasicMaterial color={stageTheme.tileFill} />
             <Edges color="black" lineWidth={1} />
           </mesh>
           <Text
             {...subtitleProps}
-            position={[-0.7, 0.2, 0]}
-            fontSize={0.3}>
-            {project.stage.toUpperCase()}
+            color={stageTheme.tileText}
+            position={[stageTextX, 0.16, 0.06]}
+            maxWidth={stageTextMaxWidth}
+            fontSize={stageFontSize}>
+            {stageLabel}
           </Text>
         </group>
         <Text

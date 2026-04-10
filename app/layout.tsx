@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 
+import GlobalUtilityDock from "./components/common/GlobalUtilityDock";
+import { ReferenceProvider } from "./components/common/ReferenceProvider";
 import SceneDebugHud from "./components/common/SceneDebugHud";
 import "./globals.css";
 
@@ -68,8 +70,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="overscroll-y-none">
       <body className={`${soriaFont.variable} ${vercettiFont.variable} font-sans antialiased`}>
-        {children}
-        {false && <SceneDebugHud />}
+        <ReferenceProvider>
+          {children}
+          <GlobalUtilityDock />
+          {false && <SceneDebugHud />}
+        </ReferenceProvider>
       </body>
     </html>
   );
