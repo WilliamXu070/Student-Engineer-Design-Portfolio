@@ -4,6 +4,19 @@ const VIDEO_URL_MAP_RAW = process.env.NEXT_PUBLIC_VIDEO_URL_MAP ?? "";
 
 let cachedVideoUrlMap: Record<string, string> | null = null;
 
+const DEFAULT_VIDEO_URL_MAP: Record<string, string> = {
+	"praxis1-interview":
+		"https://snprmafeymodxoduviut.supabase.co/storage/v1/object/public/Videos/Interview.mp4",
+	"praxis1-depressurization-test":
+		"https://snprmafeymodxoduviut.supabase.co/storage/v1/object/public/Videos/Praxis1_Depressurization_Test.mp4",
+	"praxis1-slider-animation":
+		"https://snprmafeymodxoduviut.supabase.co/storage/v1/object/public/Videos/Praxis1_Slider_Animation.mp4",
+	"praxis1-water-opener-sound-test":
+		"https://snprmafeymodxoduviut.supabase.co/storage/v1/object/public/Videos/Praxis1_Water_Opener_Sound_Test.mp4",
+	"civ102-build-review-video":
+		"https://snprmafeymodxoduviut.supabase.co/storage/v1/object/public/Videos/CIV102_Build_Review.mp4",
+};
+
 export const withBasePath = (path: string) => {
 	if (!path || path.startsWith("http://") || path.startsWith("https://") || path.startsWith("mailto:") || path.startsWith("data:")) {
 		return path;
@@ -20,7 +33,7 @@ const getVideoUrlMap = () => {
 	}
 
 	if (!VIDEO_URL_MAP_RAW) {
-		cachedVideoUrlMap = {};
+		cachedVideoUrlMap = DEFAULT_VIDEO_URL_MAP;
 		return cachedVideoUrlMap;
 	}
 
@@ -28,18 +41,22 @@ const getVideoUrlMap = () => {
 		const parsed = JSON.parse(VIDEO_URL_MAP_RAW) as unknown;
 
 		if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
-			cachedVideoUrlMap = {};
+			cachedVideoUrlMap = DEFAULT_VIDEO_URL_MAP;
 			return cachedVideoUrlMap;
 		}
 
-		cachedVideoUrlMap = Object.fromEntries(
+		const parsedMap = Object.fromEntries(
 			Object.entries(parsed).filter(
 				([key, value]) => Boolean(key) && typeof value === "string" && Boolean(value.trim()),
 			),
 		);
+		cachedVideoUrlMap = {
+			...DEFAULT_VIDEO_URL_MAP,
+			...parsedMap,
+		};
 		return cachedVideoUrlMap;
 	} catch {
-		cachedVideoUrlMap = {};
+		cachedVideoUrlMap = DEFAULT_VIDEO_URL_MAP;
 		return cachedVideoUrlMap;
 	}
 };
