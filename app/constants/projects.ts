@@ -1,4 +1,5 @@
 import { Ctmf } from "../types";
+import { resolveVideoPath } from "../lib/sitePath";
 
 type FdcrStageTheme = {
   indicatorClassName: string;
@@ -456,21 +457,21 @@ export const PROJECTS: Ctmf[] = [
             figures: [
               {
                 kind: "video",
-                src: "/videos/praxis1-functional-prototypes/slider.mov",
+                src: resolveVideoPath("praxis1-functional-slider", "/videos/praxis1-functional-prototypes/slider.mov"),
                 alt: "Praxis I force and torque test video for the slider opener prototype.",
                 caption:
                   "The slider test matters because it shows the selected concept performing the opening task under real force and control constraints rather than being judged from a render alone.",
               },
               {
                 kind: "video",
-                src: "/videos/praxis1-functional-prototypes/water-opener.mov",
+                src: resolveVideoPath("praxis1-functional-water-opener", "/videos/praxis1-functional-prototypes/water-opener.mov"),
                 alt: "Praxis I force and torque test video for the water opener prototype.",
                 caption:
                   "The water opener test matters because it exposed the tradeoff directly: a concept could still address sound while introducing more handling burden and less control over the opening event.",
               },
               {
                 kind: "video",
-                src: "/videos/praxis1-functional-prototypes/rubber-tab.mov",
+                src: resolveVideoPath("praxis1-functional-rubber-tab", "/videos/praxis1-functional-prototypes/rubber-tab.mov"),
                 alt: "Praxis I force and torque test video for the rubber tab opener prototype.",
                 caption:
                   "The rubber-tab test shows why functional prototyping was needed before convergence, since a concept that seemed plausible on paper still had to prove that its grip, force path, and opening control were strong enough to justify keeping it.",

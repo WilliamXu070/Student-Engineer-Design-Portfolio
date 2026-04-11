@@ -10,6 +10,7 @@ import {
 import HidePortalCloseButton from "@/app/components/common/HidePortalCloseButton";
 import RememberedBackLink from "@/app/components/common/RememberedBackLink";
 import RememberedLink from "@/app/components/common/RememberedLink";
+import { resolveVideoPath } from "@/app/lib/sitePath";
 import {
 	getFdcrStageLabel,
 	getFdcrStageTheme,
@@ -71,14 +72,14 @@ const stakeholderPraxisSections: CtmfDossierSection[] = [
 		figures: [
 			{
 				kind: "video",
-				src: "/videos/praxis1/interview.mp4",
+				src: resolveVideoPath("praxis1-interview", "/videos/praxis1/interview.mp4"),
 				alt: "Praxis I stakeholder interview video showing students discussing spills, awkward finger interaction, and opening difficulty.",
 				caption:
 					"The interview video shows what stakeholder analysis could reveal well: the frustrations students experienced while opening the can, including spills, awkward finger interaction, and opening burden.",
 			},
 			{
 				kind: "video",
-				src: "/videos/praxis1/depressurization-test.mp4",
+				src: resolveVideoPath("praxis1-depressurization-test", "/videos/praxis1/depressurization-test.mp4"),
 				posterSrc: "/context-evidence/raw/praxis1-p2-img1.png",
 				alt: "Praxis I acoustic testing video showing a phone decibel meter beside a soda can during opening.",
 				caption:

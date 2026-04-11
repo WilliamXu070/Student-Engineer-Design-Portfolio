@@ -9,6 +9,7 @@ import { FigureReferenceText, getFigureAnchorId, type FigureReferenceMap } from 
 import HidePortalCloseButton from "@/app/components/common/HidePortalCloseButton";
 import RememberedBackLink from "@/app/components/common/RememberedBackLink";
 import RememberedLink from "@/app/components/common/RememberedLink";
+import { resolveVideoPath } from "@/app/lib/sitePath";
 import {
   getFdcrStageLabel,
   getFdcrStageTheme,
@@ -312,7 +313,7 @@ const praxisIFigures: Record<string, PraxisIFigure> = {
   testing: {
     kind: "video",
     refKey: "01",
-    src: "/videos/praxis1/depressurization-test.mp4",
+    src: resolveVideoPath("praxis1-depressurization-test", "/videos/praxis1/depressurization-test.mp4"),
     posterSrc: "/context-evidence/raw/praxis1-p2-img1.png",
     alt: "Praxis I noise-testing video showing the phone-based decibel recording beside a soda can during opening.",
     caption: "Noise-testing video with phone-based dB recording beside a soda can. The project stopped being a simple noise-muffling exercise once this evidence began to contradict the original explanation.",
@@ -330,7 +331,7 @@ const praxisIFigures: Record<string, PraxisIFigure> = {
   sliderAnimation: {
     kind: "video",
     refKey: "03",
-    src: "/videos/praxis1/slider-animation.mp4",
+    src: resolveVideoPath("praxis1-slider-animation", "/videos/praxis1/slider-animation.mp4"),
     alt: "Praxis I slider animation showing the silent-can opening mechanism in motion.",
     caption: "Slider animation showing the opening mechanism in motion during the final solution stage.",
     label: "Fig. 03",
@@ -339,7 +340,7 @@ const praxisIFigures: Record<string, PraxisIFigure> = {
   anchor: {
     kind: "video",
     refKey: "11",
-    src: "/videos/praxis1/water-opener-sound-test.mp4",
+    src: resolveVideoPath("praxis1-water-opener-sound-test", "/videos/praxis1/water-opener-sound-test.mp4"),
     alt: "Praxis I sound test video for the water-opener concept during acoustic testing.",
     caption: "Water-opener sound test showing that muffling the user action did not remove the sharp opening impulse. This supported the later reframing: the dominant sound came from tearing the scored aluminum ligament, so the stronger solution was to remove the tear-strip mechanism rather than damp it from outside.",
     label: "Fig. 11",
@@ -719,7 +720,7 @@ const civ102Figures: Record<string, PraxisIFigure> = {
   buildReview: {
     kind: "video",
     refKey: "06",
-    src: "/videos/civ102/build-review-video.MOV",
+    src: resolveVideoPath("civ102-build-review-video", "/videos/civ102/build-review-video.MOV"),
     alt: "CIV102 build review video showing the completed bridge in hand and from multiple viewing angles.",
     caption: "Build review video of the completed bridge.",
     label: "Fig. 06",

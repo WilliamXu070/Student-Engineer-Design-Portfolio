@@ -1,4 +1,5 @@
 import type { ReferenceLibrary } from "@/app/types/references";
+import { resolveVideoPath } from "@/app/lib/sitePath";
 
 export const REFERENCE_LIBRARY: ReferenceLibrary = {
 	"noise-learning-motivation-memory": {
@@ -79,7 +80,7 @@ export const REFERENCE_LIBRARY: ReferenceLibrary = {
 		year: "2025",
 		title: "CIV102 Build Review Video",
 		note: "Project evidence video showing the completed bridge",
-		url: "/videos/civ102/build-review-video.MOV",
+		url: resolveVideoPath("civ102-build-review-video", "/videos/civ102/build-review-video.MOV"),
 		accessed: "Apr. 10, 2026",
 	},
 	"civ102-bridge-testing-video": {
@@ -88,7 +89,7 @@ export const REFERENCE_LIBRARY: ReferenceLibrary = {
 		year: "2025",
 		title: "CIV102 Bridge Testing Video",
 		note: "Project evidence video showing destructive testing",
-		url: "/videos/civ102/bridge-testing-video.MOV",
+		url: resolveVideoPath("civ102-bridge-testing-video", "/videos/civ102/bridge-testing-video.MOV"),
 		accessed: "Apr. 10, 2026",
 	},
 	"civ102-cross-section-photo": {
@@ -236,7 +237,7 @@ export const REFERENCE_LIBRARY: ReferenceLibrary = {
 		year: "2025",
 		title: "Praxis I Interview Video",
 		note: "Project interview and stakeholder evidence video",
-		url: "/videos/praxis1/interview.mp4",
+		url: resolveVideoPath("praxis1-interview", "/videos/praxis1/interview.mp4"),
 		accessed: "Apr. 10, 2026",
 	},
 	"praxis1-testing-video": {
@@ -245,7 +246,7 @@ export const REFERENCE_LIBRARY: ReferenceLibrary = {
 		year: "2025",
 		title: "Praxis I Depressurization Testing Video",
 		note: "Prototype testing video used for acoustic comparison and reframing",
-		url: "/videos/praxis1/depressurization-test.mp4",
+		url: resolveVideoPath("praxis1-depressurization-test", "/videos/praxis1/depressurization-test.mp4"),
 		accessed: "Apr. 10, 2026",
 	},
 	"praxis1-slider-animation": {
@@ -254,7 +255,7 @@ export const REFERENCE_LIBRARY: ReferenceLibrary = {
 		year: "2025",
 		title: "Praxis I Slider Mechanism Animation",
 		note: "Animation showing the slider-based can-opening mechanism",
-		url: "/videos/praxis1/slider-animation.mp4",
+		url: resolveVideoPath("praxis1-slider-animation", "/videos/praxis1/slider-animation.mp4"),
 		accessed: "Apr. 10, 2026",
 	},
 	"praxis1-annotated-cad": {
