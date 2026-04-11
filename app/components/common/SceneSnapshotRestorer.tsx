@@ -26,6 +26,7 @@ const SceneSnapshotRestorer = () => {
   const setWorkPortalScrollProgress = usePortalStore((state) => state.setWorkPortalScrollProgress);
   const setSceneMotionPaused = usePortalStore((state) => state.setSceneMotionPaused);
   const setSceneRestoring = usePortalStore((state) => state.setSceneRestoring);
+  const setRestoredPortalId = usePortalStore((state) => state.setRestoredPortalId);
   const setSceneCameraSnapshot = usePortalStore((state) => state.setSceneCameraSnapshot);
   const setScrollProgress = useScrollStore((state) => state.setScrollProgress);
   const clearTimelineItems = useTimelineOverlayStore((state) => state.clearItems);
@@ -114,6 +115,7 @@ const SceneSnapshotRestorer = () => {
 
     setSceneMotionPaused(true);
     setSceneRestoring(true);
+    setRestoredPortalId(snapshot.activePortalId);
     setActiveProjectSlug(null);
     clearTimelineItems();
     setHoveredSlug(null);
@@ -170,7 +172,7 @@ const SceneSnapshotRestorer = () => {
       retryFrames.forEach((frame) => window.cancelAnimationFrame(frame));
       retryTimers.forEach((timer) => window.clearTimeout(timer));
     };
-  }, [camera, clearTimelineItems, isMobile, searchParams, setActivePortal, setActiveProjectSlug, setHoveredSlug, setPortalReturnRootScrollProgress, setSceneCameraSnapshot, setSceneMotionPaused, setSceneRestoring, setScrollProgress, setSelectedSlug, setWorkPortalScrollProgress]);
+  }, [camera, clearTimelineItems, isMobile, searchParams, setActivePortal, setActiveProjectSlug, setHoveredSlug, setPortalReturnRootScrollProgress, setRestoredPortalId, setSceneCameraSnapshot, setSceneMotionPaused, setSceneRestoring, setScrollProgress, setSelectedSlug, setWorkPortalScrollProgress]);
 
   return null;
 };

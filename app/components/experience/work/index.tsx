@@ -19,10 +19,12 @@ const Work = () => {
   const { camera } = useThree();
   const isActive = usePortalStore((state) => state.activePortalId === 'work');
   const isSceneRestoring = usePortalStore((state) => state.isSceneRestoring);
+  const restoredPortalId = usePortalStore((state) => state.restoredPortalId);
   const workScrollProgress = usePortalStore((state) => state.workPortalScrollProgress);
   const setWorkPortalScrollProgress = usePortalStore((state) => state.setWorkPortalScrollProgress);
   const setScrollProgress = useScrollStore((state) => state.setScrollProgress);
   const isAdjustingScrollRef = useRef(false);
+  const restoredActivationRef = useRef(false);
 
   const handleScroll = (event: Event) => {
     const target = event.target as HTMLElement;
@@ -70,6 +72,7 @@ const Work = () => {
   // the scroll event.
   useEffect(() => {
     const isRestoringFromSnapshot = isSceneRestoring || hasPendingSceneSnapshotForPortal("work");
+    const isRestoredActivation = isRestoringFromSnapshot || restoredPortalId === "work" || restoredActivationRef.current;
     const retryFrames: number[] = [];
     const retryTimers: number[] = [];
 
@@ -127,11 +130,15 @@ const Work = () => {
     };
 
     if (isActive) {
-      if (!isRestoringFromSnapshot) {
+      if (isRestoringFromSnapshot) {
+        restoredActivationRef.current = true;
+      }
+
+      if (!isRestoredActivation) {
         gsap.to(camera.rotation, { x: -Math.PI / 2, y: 0, z: 0, duration: 0.8 });
       }
 
-      if (!isRestoringFromSnapshot) {
+      if (!isRestoredActivation) {
         setWorkPortalScrollProgress(0);
       }
 
@@ -139,6 +146,7 @@ const Work = () => {
         scheduleAttachRetries();
       }
     } else {
+      restoredActivationRef.current = false;
       const { work: workScrollWrapper } = getPortalScrollLayers();
       if (workScrollWrapper) {
         workScrollWrapper.scrollTop = 0;
@@ -152,7 +160,7 @@ const Work = () => {
       retryTimers.forEach((timer) => window.clearTimeout(timer));
       detachWorkInteractions();
     };
-  }, [camera.rotation, isActive, isSceneRestoring, setScrollProgress, setWorkPortalScrollProgress]);
+  }, [camera.rotation, isActive, isSceneRestoring, restoredPortalId, setScrollProgress, setWorkPortalScrollProgress]);
 
   return (
     <group>

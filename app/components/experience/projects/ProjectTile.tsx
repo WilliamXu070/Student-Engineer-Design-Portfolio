@@ -104,9 +104,11 @@ const ProjectTile = ({ project, itemKey, entranceIndex, position, rotation, acti
 
   useEffect(() => {
     if (projectRef.current) {
+      gsap.killTweensOf(projectRef.current.position);
       gsap.to(projectRef.current.position, {
         y: isProjectSectionActive ? 0 : -10,
         duration: 1,
+        overwrite: true,
         delay: isProjectSectionActive ? entranceIndex * 0.1 : 0,
       });
     }

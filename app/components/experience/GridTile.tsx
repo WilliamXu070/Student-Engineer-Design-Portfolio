@@ -26,12 +26,13 @@ const GridTile = (props: GridTileProps) => {
   const titleRef = useRef<THREE.Group>(null);
   const gridRef = useRef<THREE.Group>(null);
   const hoverBoxRef = useRef<THREE.Mesh>(null);
-  const portalRef = useRef(null);
+  const portalRef = useRef<{ blend: number } | null>(null);
   const { title, textAlign, children, color, position, id } = props;
   const { camera } = useThree();
   const setActivePortal = usePortalStore((state) => state.setActivePortal);
   const portalReturnRootScrollProgress = usePortalStore((state) => state.portalReturnRootScrollProgress);
   const setPortalReturnRootScrollProgress = usePortalStore((state) => state.setPortalReturnRootScrollProgress);
+  const setRestoredPortalId = usePortalStore((state) => state.setRestoredPortalId);
   const isActive = usePortalStore((state) => state.activePortalId === id);
   const activePortalId = usePortalStore((state) => state.activePortalId);
   const recordPortalEntryMetric = usePortalStore((state) => state.recordPortalEntryMetric);
@@ -57,11 +58,16 @@ const GridTile = (props: GridTileProps) => {
     }
   }, []);
 
-  useFrame(() => {
+  useFrame((_, delta) => {
     const d = data.range(0.95, 0.05);
     if (isMobile && titleRef.current) {
       /* eslint-disable  @typescript-eslint/no-explicit-any */
       (titleRef.current as any).fillOpacity = d;
+    }
+
+    if (portalRef.current) {
+      const targetBlend = isActive ? 1 : 0;
+      portalRef.current.blend = THREE.MathUtils.damp(portalRef.current.blend, targetBlend, 8, delta);
     }
   });
 
@@ -77,16 +83,14 @@ const GridTile = (props: GridTileProps) => {
     e.stopPropagation();
     entryStartRef.current = performance.now();
     setPortalReturnRootScrollProgress(rootScrollProgress);
+    setRestoredPortalId(null);
     setActivePortal(id);
     document.body.style.cursor = 'auto';
-    gsap.to(portalRef.current, {
-      blend: 1,
-      duration: 0.5,
-    });
   };
 
   const exitPortal = (force = false) => {
     if (!force && !activePortalId) return;
+    setRestoredPortalId(null);
     setActivePortal(null)
     const { root: rootScrollWrapper } = getPortalScrollLayers();
     const restoreRootScroll = () => {
@@ -108,11 +112,6 @@ const GridTile = (props: GridTileProps) => {
     gsap.to(camera.rotation, {
       x: -Math.PI / 2,
       y: 0,
-      duration: 1,
-    });
-
-    gsap.to(portalRef.current, {
-      blend: 0,
       duration: 1,
     });
 
@@ -143,10 +142,6 @@ const GridTile = (props: GridTileProps) => {
       ensurePortalCloseButton();
       document.body.addEventListener('keydown', handleEscape);
       window.addEventListener(PORTAL_CLOSE_EVENT, handlePortalClose);
-      gsap.to(portalRef.current, {
-        blend: 1,
-        duration: 0.5,
-      });
       return () => {
         window.cancelAnimationFrame(animationFrameOne);
         window.cancelAnimationFrame(animationFrameTwo);
@@ -155,17 +150,13 @@ const GridTile = (props: GridTileProps) => {
       };
     }
 
-    gsap.to(portalRef.current, {
-      blend: 0,
-      duration: 0.5,
-    });
     document.body.removeEventListener('keydown', handleEscape);
     window.removeEventListener(PORTAL_CLOSE_EVENT, handlePortalClose);
 
     if (!activePortalId) {
       removePortalCloseButton();
     }
-  }, [activePortalId, handlePortalClose, id, recordPortalEntryMetric]);
+  }, [activePortalId, handlePortalClose, id, recordPortalEntryMetric, setRestoredPortalId]);
 
   const fontProps: Partial<TextProps> = {
     font: withBasePath("/soria-font.ttf"),

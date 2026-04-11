@@ -13,6 +13,8 @@ interface PortalStore {
   setSceneMotionPaused: (paused: boolean) => void;
   isSceneRestoring: boolean;
   setSceneRestoring: (restoring: boolean) => void;
+  restoredPortalId: string | null;
+  setRestoredPortalId: (portalId: string | null) => void;
   sceneCameraPosition: [number, number, number];
   sceneCameraRotation: [number, number, number];
   setSceneCameraSnapshot: (position: [number, number, number], rotation: [number, number, number]) => void;
@@ -33,6 +35,8 @@ export const usePortalStore = create<PortalStore>((set) => ({
   setSceneMotionPaused: (isSceneMotionPaused) => set(() => ({ isSceneMotionPaused })),
   isSceneRestoring: false,
   setSceneRestoring: (isSceneRestoring) => set(() => ({ isSceneRestoring })),
+  restoredPortalId: null,
+  setRestoredPortalId: (restoredPortalId) => set(() => ({ restoredPortalId })),
   sceneCameraPosition: [0, 0, 5],
   sceneCameraRotation: [0, 0, 0],
   setSceneCameraSnapshot: (sceneCameraPosition, sceneCameraRotation) =>

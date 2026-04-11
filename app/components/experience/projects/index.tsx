@@ -6,7 +6,7 @@ import {
   hasPendingSceneSnapshotForPortal,
 } from "@/app/lib/navigationMemory";
 import gsap from "gsap";
-import { useLayoutEffect } from "react";
+import { useLayoutEffect, useRef } from "react";
 import { isMobile } from "react-device-detect";
 import * as THREE from "three";
 import { usePointerStore, usePortalStore } from "@stores";
@@ -19,28 +19,37 @@ const Projects = () => {
   const isActive = usePortalStore((state) => state.activePortalId === "projects");
   const isSceneMotionPaused = usePortalStore((state) => state.isSceneMotionPaused);
   const isSceneRestoring = usePortalStore((state) => state.isSceneRestoring);
+  const restoredPortalId = usePortalStore((state) => state.restoredPortalId);
   const pointer = usePointerStore((state) => state.pointer);
   const data = useScroll();
+  const restoredActivationRef = useRef(false);
 
   useLayoutEffect(() => {
     const isRestoringFromSnapshot = isSceneRestoring || hasPendingSceneSnapshotForPortal("projects");
+    const isRestoredActivation = isRestoringFromSnapshot || restoredPortalId === "projects" || restoredActivationRef.current;
 
     data.el.style.overflow = isActive ? 'hidden' : 'auto';
     data.fixed.style.pointerEvents = isActive ? 'none' : 'auto';
 
     if (isActive) {
-      if (!isRestoringFromSnapshot) {
+      if (isRestoringFromSnapshot) {
+        restoredActivationRef.current = true;
+      }
+
+      if (!isRestoredActivation) {
         const [x, y, z] = getProjectsPortalCameraPosition(isMobile);
         const [rotX, rotY, rotZ] = getProjectsPortalCameraRotation();
         gsap.to(camera.rotation, { x: rotX, y: rotY, z: rotZ, duration: 0.8 });
         gsap.to(camera.position, { x, y, z, duration: 1 });
       }
+    } else {
+      restoredActivationRef.current = false;
     }
 
     return () => {
       data.fixed.style.pointerEvents = 'auto';
     };
-  }, [camera.position, camera.rotation, data, isActive, isSceneRestoring]);
+  }, [camera.position, camera.rotation, data, isActive, isSceneRestoring, restoredPortalId]);
 
   useFrame((_, delta) => {
     if (isActive && !isSceneMotionPaused) {

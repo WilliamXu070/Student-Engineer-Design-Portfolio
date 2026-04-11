@@ -3,7 +3,6 @@ import localFont from "next/font/local";
 
 import GlobalUtilityDock from "./components/common/GlobalUtilityDock";
 import { ReferenceProvider } from "./components/common/ReferenceProvider";
-import SceneDebugHud from "./components/common/SceneDebugHud";
 import "./globals.css";
 
 const soriaFont = localFont({
@@ -73,7 +72,6 @@ export default function RootLayout({
         <ReferenceProvider>
           {children}
           <GlobalUtilityDock />
-          <SceneDebugHud />
         </ReferenceProvider>
       </body>
     </html>

@@ -25,9 +25,14 @@ const Experience = () => {
     const d = data.range(0.8, 0.2);
     const e = data.range(0.7, 0.2);
 
-    if (groupRef.current && !isActive) {
-      groupRef.current.position.y = d > 0 ? -1 : -30;
-      groupRef.current.visible = d > 0;
+    if (groupRef.current) {
+      if (isActive) {
+        groupRef.current.position.y = -1;
+        groupRef.current.visible = true;
+      } else {
+        groupRef.current.position.y = d > 0 ? -1 : -30;
+        groupRef.current.visible = d > 0;
+      }
     }
 
     if (titleRef.current) {

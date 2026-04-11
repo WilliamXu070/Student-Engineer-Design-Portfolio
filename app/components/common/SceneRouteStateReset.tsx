@@ -10,6 +10,7 @@ const SceneRouteStateReset = () => {
   const setActiveProjectSlug = usePortalStore((state) => state.setActiveProjectSlug);
   const setSceneMotionPaused = usePortalStore((state) => state.setSceneMotionPaused);
   const setSceneRestoring = usePortalStore((state) => state.setSceneRestoring);
+  const setRestoredPortalId = usePortalStore((state) => state.setRestoredPortalId);
   const clearTimelineItems = useTimelineOverlayStore((state) => state.clearItems);
   const setHoveredSlug = useTimelineOverlayStore((state) => state.setHoveredSlug);
   const setSelectedSlug = useTimelineOverlayStore((state) => state.setSelectedSlug);
@@ -19,6 +20,7 @@ const SceneRouteStateReset = () => {
     setActiveProjectSlug(null);
     setSceneMotionPaused(false);
     setSceneRestoring(false);
+    setRestoredPortalId(null);
     clearTimelineItems();
     setHoveredSlug(null);
     setSelectedSlug(null);
@@ -29,6 +31,7 @@ const SceneRouteStateReset = () => {
     setActivePortal,
     setActiveProjectSlug,
     setHoveredSlug,
+    setRestoredPortalId,
     setSceneMotionPaused,
     setSceneRestoring,
     setSelectedSlug,
