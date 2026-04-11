@@ -3,7 +3,7 @@ import { useThree } from "@react-three/fiber";
 import { hasPendingSceneSnapshotForPortal } from "@/app/lib/navigationMemory";
 import { getPortalScrollLayers } from "@/app/lib/portalUi";
 import { WORK_TIMELINE } from "@constants";
-import { usePortalStore } from "@stores";
+import { usePortalStore, useScrollStore } from "@stores";
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
@@ -21,6 +21,7 @@ const Work = () => {
   const isSceneRestoring = usePortalStore((state) => state.isSceneRestoring);
   const workScrollProgress = usePortalStore((state) => state.workPortalScrollProgress);
   const setWorkPortalScrollProgress = usePortalStore((state) => state.setWorkPortalScrollProgress);
+  const setScrollProgress = useScrollStore((state) => state.setScrollProgress);
   const isAdjustingScrollRef = useRef(false);
 
   const handleScroll = (event: Event) => {
@@ -68,31 +69,14 @@ const Work = () => {
   // ScrollControls doesn't work out of the box, so we have to manually handle
   // the scroll event.
   useEffect(() => {
-    const { root: rootScrollWrapper, work: workScrollWrapper } = getPortalScrollLayers();
     const isRestoringFromSnapshot = isSceneRestoring || hasPendingSceneSnapshotForPortal("work");
+    const retryFrames: number[] = [];
+    const retryTimers: number[] = [];
 
-    if (isActive) {
-      if (!isRestoringFromSnapshot) {
-        gsap.to(camera.rotation, { x: -Math.PI / 2, y: 0, z: 0, duration: 0.8 });
-      }
+    const detachWorkInteractions = () => {
+      const { root: rootScrollWrapper, work: workScrollWrapper } = getPortalScrollLayers();
 
-      if (!workScrollWrapper || !rootScrollWrapper) {
-        return;
-      }
-
-      if (!isRestoringFromSnapshot) {
-        setWorkPortalScrollProgress(0);
-      }
-      workScrollWrapper.removeEventListener('scroll', handleScroll);
-      workScrollWrapper.removeEventListener('wheel', handleWheel);
-      workScrollWrapper.addEventListener('scroll', handleScroll);
-      workScrollWrapper.addEventListener('wheel', handleWheel, { passive: false });
-      workScrollWrapper.style.zIndex = '1';
-      rootScrollWrapper.style.zIndex = '-1';
-    } else {
       if (workScrollWrapper) {
-        workScrollWrapper.scrollTop = 0;
-        setWorkPortalScrollProgress(0);
         workScrollWrapper.removeEventListener('scroll', handleScroll);
         workScrollWrapper.removeEventListener('wheel', handleWheel);
         workScrollWrapper.style.zIndex = '-1';
@@ -101,13 +85,74 @@ const Work = () => {
       if (rootScrollWrapper) {
         rootScrollWrapper.style.zIndex = '1';
       }
+    };
+
+    const attachWorkInteractions = () => {
+      const { root: rootScrollWrapper, work: workScrollWrapper } = getPortalScrollLayers();
+
+      if (!workScrollWrapper || !rootScrollWrapper) {
+        return false;
+      }
+
+      workScrollWrapper.removeEventListener('scroll', handleScroll);
+      workScrollWrapper.removeEventListener('wheel', handleWheel);
+      workScrollWrapper.addEventListener('scroll', handleScroll);
+      workScrollWrapper.addEventListener('wheel', handleWheel, { passive: false });
+      workScrollWrapper.style.zIndex = '1';
+      rootScrollWrapper.style.zIndex = '-1';
+
+      const rootScrollableHeight = rootScrollWrapper.scrollHeight - rootScrollWrapper.clientHeight;
+      const liveRootProgress = rootScrollableHeight > 0 ? rootScrollWrapper.scrollTop / rootScrollableHeight : 0;
+      setScrollProgress(liveRootProgress);
+
+      return true;
+    };
+
+    const scheduleAttachRetries = () => {
+      const retryAttach = () => {
+        if (!isActive) {
+          return;
+        }
+
+        attachWorkInteractions();
+      };
+
+      retryFrames.push(window.requestAnimationFrame(retryAttach));
+      retryFrames.push(window.requestAnimationFrame(() => {
+        retryFrames.push(window.requestAnimationFrame(retryAttach));
+      }));
+      retryTimers.push(window.setTimeout(retryAttach, 60));
+      retryTimers.push(window.setTimeout(retryAttach, 140));
+      retryTimers.push(window.setTimeout(retryAttach, 260));
+    };
+
+    if (isActive) {
+      if (!isRestoringFromSnapshot) {
+        gsap.to(camera.rotation, { x: -Math.PI / 2, y: 0, z: 0, duration: 0.8 });
+      }
+
+      if (!isRestoringFromSnapshot) {
+        setWorkPortalScrollProgress(0);
+      }
+
+      if (!attachWorkInteractions()) {
+        scheduleAttachRetries();
+      }
+    } else {
+      const { work: workScrollWrapper } = getPortalScrollLayers();
+      if (workScrollWrapper) {
+        workScrollWrapper.scrollTop = 0;
+        setWorkPortalScrollProgress(0);
+      }
+      detachWorkInteractions();
     }
 
     return () => {
-      workScrollWrapper?.removeEventListener('scroll', handleScroll);
-      workScrollWrapper?.removeEventListener('wheel', handleWheel);
+      retryFrames.forEach((frame) => window.cancelAnimationFrame(frame));
+      retryTimers.forEach((timer) => window.clearTimeout(timer));
+      detachWorkInteractions();
     };
-  }, [camera.rotation, isActive, isSceneRestoring, setWorkPortalScrollProgress]);
+  }, [camera.rotation, isActive, isSceneRestoring, setScrollProgress, setWorkPortalScrollProgress]);
 
   return (
     <group>
