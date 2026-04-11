@@ -1720,7 +1720,7 @@ const PraxisIProjectPage = ({
                   className="scroll-mt-28 overflow-hidden rounded-[1.35rem] border border-white/10 bg-white">
                   <div className="relative h-[23rem] w-full">
                     <Image
-                      src={praxisIFigures.reflection.src}
+                      src={resolveFigureAsset(praxisIFigures.reflection.src)}
                       alt={praxisIFigures.reflection.alt}
                       fill
                       sizes="(max-width: 1279px) 100vw, 42vw"
@@ -1997,7 +1997,7 @@ const CIV102ProjectPage = ({
               <div className="overflow-hidden rounded-[1.2rem] border border-slate-900/10 bg-white">
                 <div className="relative h-[18rem] w-full">
                   <Image
-                    src={civ102Figures.loadingConfiguration.src}
+                    src={resolveFigureAsset(civ102Figures.loadingConfiguration.src)}
                     alt={civ102Figures.loadingConfiguration.alt}
                     fill
                     className={civ102Figures.loadingConfiguration.imageClassName}
@@ -2050,7 +2050,7 @@ const CIV102ProjectPage = ({
               <div className="overflow-hidden rounded-[1.25rem] border border-white/10 bg-white">
                 <div className="relative h-[16rem] w-full">
                   <Image
-                    src={civ102Figures.loadEnvelope.src}
+                    src={resolveFigureAsset(civ102Figures.loadEnvelope.src)}
                     alt={civ102Figures.loadEnvelope.alt}
                     fill
                     className={civ102Figures.loadEnvelope.imageClassName}
@@ -2094,7 +2094,7 @@ const CIV102ProjectPage = ({
                 </div>
                 <div className="relative h-[18rem] w-full">
                   <Image
-                    src={civ102Figures.diaphragm.src}
+                    src={resolveFigureAsset(civ102Figures.diaphragm.src)}
                     alt={civ102Figures.diaphragm.alt}
                     fill
                     className={civ102Figures.diaphragm.imageClassName}
@@ -2327,7 +2327,7 @@ const CIV102ProjectPage = ({
               </div>
               <div className="relative h-[18rem] w-full">
                 <Image
-                  src={civ102Figures.splice.src}
+                  src={resolveFigureAsset(civ102Figures.splice.src)}
                   alt={civ102Figures.splice.alt}
                   fill
                   className={civ102Figures.splice.imageClassName}
@@ -2369,7 +2369,7 @@ const CIV102ProjectPage = ({
               </div>
               <div className="relative h-[18rem] w-full">
                 <Image
-                  src={civ102Figures.failure.src}
+                  src={resolveFigureAsset(civ102Figures.failure.src)}
                   alt={civ102Figures.failure.alt}
                   fill
                   className={civ102Figures.failure.imageClassName}
@@ -3015,7 +3015,7 @@ const PraxisIIProjectPage = ({
               </div>
               <div className="relative h-[18rem] w-full">
                 <Image
-                  src={praxisIIFigures.folding.src}
+                  src={resolveFigureAsset(praxisIIFigures.folding.src)}
                   alt={praxisIIFigures.folding.alt}
                   fill
                   className={praxisIIFigures.folding.imageClassName}
