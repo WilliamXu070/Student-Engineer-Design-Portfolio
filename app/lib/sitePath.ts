@@ -1,4 +1,5 @@
-const SITE_BASE_PATH = process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? "";
+const SITE_BASE_PATH =
+	process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? "/Student-Engineer-Design-Portfolio";
 const VIDEO_BASE_URL = (process.env.NEXT_PUBLIC_VIDEO_BASE_URL ?? "").trim().replace(/\/+$/, "");
 const VIDEO_URL_MAP_RAW = process.env.NEXT_PUBLIC_VIDEO_URL_MAP ?? "";
 

@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
 import FloatingUtilityButton from './FloatingUtilityButton';
+import { withBasePath } from '@/app/lib/sitePath';
 
 type EvidenceFigure = {
   id: string;
@@ -38,7 +39,7 @@ const evidenceFigures: EvidenceFigure[] = [
     project: 'Framing must change when the evidence changes',
     caption:
       'The Praxis I evidence sits here because it grounds the shift from simply solving the problem to questioning whether the original explanation of the problem was still valid.',
-    src: '/context-evidence/praxis1-anchor.png',
+    src: withBasePath('/context-evidence/praxis1-anchor.png'),
     alt: 'Praxis I evidence card combining the can-noise test setup with a written reflection about revisiting assumptions.',
     badgeClass: 'border-cyan-300/30 bg-cyan-300/10 text-cyan-100',
   },
@@ -48,7 +49,7 @@ const evidenceFigures: EvidenceFigure[] = [
     project: 'Simplicity is an engineering judgment, not a cosmetic one',
     caption:
       'The bridge figure supports the argument that simpler geometry was not chosen for appearance alone, but because it was easier to analyze, build, and justify.',
-    src: '/context-evidence/civ102-anchor.png',
+    src: withBasePath('/context-evidence/civ102-anchor.png'),
     alt: 'CIV102 evidence card combining a bridge cross-section diagram with a photo of the finished bridge.',
     badgeClass: 'border-amber-300/30 bg-amber-300/10 text-amber-100',
   },
@@ -58,7 +59,7 @@ const evidenceFigures: EvidenceFigure[] = [
     project: 'Scope and testing both had to reopen',
     caption:
       'The Praxis II evidence belongs here because the project only became defensible once the early scope, requirements, and testing logic were rebuilt around the real dexterity problem rather than preserved as if the first structure were already sound.',
-    src: '/context-evidence/praxis2-anchor.png',
+    src: withBasePath('/context-evidence/praxis2-anchor.png'),
     alt: 'Praxis II evidence card showing the project\'s reframed scope, revised requirements, and rebuilt testing logic around winter telescope dexterity.',
     badgeClass: 'border-emerald-300/30 bg-emerald-300/10 text-emerald-100',
   },
