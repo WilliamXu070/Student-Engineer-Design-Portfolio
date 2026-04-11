@@ -1,0 +1,38 @@
+Updated CIV102 Performance Summary
+
+Project:
+The Bifrost / CIV102 Matboard Bridge
+
+Observed Final Performance:
+- Actual failure load: 580 N
+- Predicted final failure load from report: 1367 N
+- Prediction realization: 42.4% of predicted capacity
+- Final bridge mass: 704 g
+- Self-weight: 6.91 N
+- Load per gram of bridge mass: 0.824 N/g
+- Strength-to-self-weight ratio: 83.98
+
+Observed Failure Mode:
+- The bridge failed at the front splice rather than through the analytically predicted global compression mode.
+- The splice appears to have been placed slightly off-center during manufacturing and assembly.
+- Up until the observed splice failure, there were no clear visible signs of progressive failure elsewhere in the structure.
+- The failure therefore appears to have been dominated by manufacturing uncertainty and splice placement error rather than by the idealized structural behavior assumed in the final analytical model.
+
+Evidence In Context Folder:
+- Splice Failure.jpg: highlights the front splice region where failure initiated.
+- failure.png: captures the bridge during / immediately after failure under testing load.
+
+Interpretation:
+- The final bridge was analytically strong on paper, but the observed performance shows that splice reliability became the real governing weakness in the physical artifact.
+- This means the design was more sensitive to fabrication uncertainty than the final model captured.
+- In hindsight, the splice strategy introduced a local failure risk that overwhelmed the expected global failure mode.
+
+Design Lesson:
+- A bridge can be structurally optimized in analysis while still underperforming if its local manufacturing details are too fragile or too sensitive to placement error.
+- For this project, the splice design and splice placement method should have been treated as a primary engineering decision, not a secondary construction detail.
+
+Future Improvement Direction:
+- Redesign the splice strategy so failure is less sensitive to one long, misaligned splice.
+- Replace long splice regions with multiple smaller, more frequent splices distributed lower in the structure.
+- Increase redundancy so that local manufacturing error at one splice does not trigger immediate catastrophic failure.
+- Incorporate splice placement tolerance and fabrication uncertainty directly into future design iterations and verification logic.

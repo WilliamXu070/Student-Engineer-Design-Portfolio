@@ -1,0 +1,6 @@
+{
+  "name": "ctmf-writing",
+  "version": "1.0.0",
+  "description": "CTMF evidence-writing workflow for Codex",
+  "skills": "./skills/"
+}
