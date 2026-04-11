@@ -15,6 +15,7 @@ type SnapshotView = {
 
 type LayerView = {
   root: string;
+  work: string;
   fixed: string;
   fill: string;
   close: string;
@@ -23,6 +24,7 @@ type LayerView = {
 };
 
 const formatNumber = (value: number) => value.toFixed(3);
+const formatInteger = (value: number) => value.toFixed(0);
 const formatLayer = (element: Element | null) => {
   if (!(element instanceof HTMLElement)) {
     return "null";
@@ -34,6 +36,16 @@ const formatLayer = (element: Element | null) => {
     : "";
 
   return `${element.tagName.toLowerCase()}${className} pe:${style.pointerEvents} z:${style.zIndex} pos:${style.position}`;
+};
+const formatScrollMetrics = (element: HTMLElement | null) => {
+  if (!element) {
+    return "null";
+  }
+
+  const scrollableHeight = element.scrollHeight - element.clientHeight;
+  const normalizedProgress = scrollableHeight > 0 ? element.scrollTop / scrollableHeight : 0;
+
+  return `top:${formatInteger(element.scrollTop)} h:${formatInteger(element.clientHeight)} sh:${formatInteger(element.scrollHeight)} prog:${formatNumber(normalizedProgress)}`;
 };
 
 const SceneDebugHud = () => {
@@ -47,23 +59,34 @@ const SceneDebugHud = () => {
   const workPortalScrollProgress = usePortalStore((state) => state.workPortalScrollProgress);
   const portalEntryMetrics = usePortalStore((state) => state.portalEntryMetrics);
   const scrollProgress = useScrollStore((state) => state.scrollProgress);
+  const [href, setHref] = useState("");
   const [pathname, setPathname] = useState("");
   const [search, setSearch] = useState("");
   const [snapshot, setSnapshot] = useState<SnapshotView>(null);
   const [layers, setLayers] = useState<LayerView | null>(null);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
+  const [rootMetrics, setRootMetrics] = useState("null");
+  const [workMetrics, setWorkMetrics] = useState("null");
+  const [viewport, setViewport] = useState({ width: 0, height: 0 });
+  const [timestamp, setTimestamp] = useState("");
 
   useEffect(() => {
     const sync = () => {
-      const { root } = getPortalScrollLayers();
+      const { root, work } = getPortalScrollLayers();
       const fixed = root?.firstElementChild ?? null;
       const fill = root?.lastElementChild ?? null;
 
+      setHref(window.location.href);
       setPathname(window.location.pathname);
       setSearch(window.location.search);
+      setViewport({ width: window.innerWidth, height: window.innerHeight });
+      setTimestamp(new Date().toLocaleTimeString());
       setSnapshot(readSceneSnapshot());
+      setRootMetrics(formatScrollMetrics(root));
+      setWorkMetrics(formatScrollMetrics(work));
       setLayers({
         root: formatLayer(root),
+        work: formatLayer(work),
         fixed: formatLayer(fixed),
         fill: formatLayer(fill),
         close: formatLayer(document.querySelector(".close")),
@@ -92,13 +115,35 @@ const SceneDebugHud = () => {
 
   return (
     <div
-      className="pointer-events-none fixed left-0 top-0 z-[140] h-screen w-[19rem] overflow-y-auto border-r border-white/15 bg-black/82 px-4 py-4 text-[11px] leading-5 text-white shadow-[12px_0_32px_rgba(0,0,0,0.28)] backdrop-blur-md"
-      style={{ fontFamily: "var(--font-vercetti)" }}>
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        bottom: 0,
+        width: "30rem",
+        overflowY: "auto",
+        padding: "14px 16px 18px",
+        background: "rgba(245, 255, 56, 0.96)",
+        color: "#111111",
+        borderRight: "4px solid #111111",
+        boxShadow: "18px 0 48px rgba(0, 0, 0, 0.35)",
+        zIndex: 2147483647,
+        pointerEvents: "none",
+        fontFamily: "Consolas, Monaco, monospace",
+        fontSize: "12px",
+        lineHeight: 1.45,
+        whiteSpace: "pre-wrap",
+      }}>
       <>
-      <div style={{ fontFamily: "var(--font-soria)" }}>Scene Debug</div>
+      <div style={{ fontFamily: "var(--font-soria)", fontSize: "20px", lineHeight: 1, marginBottom: "8px" }}>
+        DEBUG LIVE
+      </div>
       <div className="mt-2">
+        <div>time: {timestamp || "null"}</div>
+        <div>href: {href || "null"}</div>
         <div>path: {pathname || "/"}</div>
         <div>search: {search || "none"}</div>
+        <div>viewport: {viewport.width} x {viewport.height}</div>
         <div>portal: {activePortalId ?? "null"}</div>
         <div>project: {activeProjectSlug ?? "null"}</div>
         <div>paused: {String(isSceneMotionPaused)}</div>
@@ -106,6 +151,8 @@ const SceneDebugHud = () => {
         <div>rootScroll: {formatNumber(scrollProgress)}</div>
         <div>returnRoot: {formatNumber(portalReturnRootScrollProgress)}</div>
         <div>workScroll: {formatNumber(workPortalScrollProgress)}</div>
+        <div>rootMetrics: {rootMetrics}</div>
+        <div>workMetrics: {workMetrics}</div>
         <div>cursor: {cursorPosition.x}, {cursorPosition.y}</div>
         <div>
           cam pos: {formatNumber(sceneCameraPosition[0])}, {formatNumber(sceneCameraPosition[1])}, {formatNumber(sceneCameraPosition[2])}
@@ -132,6 +179,7 @@ const SceneDebugHud = () => {
         </div>
         <div className="mt-2 border-t border-white/15 pt-2">layer order</div>
         <div>root: {layers?.root ?? "null"}</div>
+        <div>work: {layers?.work ?? "null"}</div>
         <div>fixed: {layers?.fixed ?? "null"}</div>
         <div>fill: {layers?.fill ?? "null"}</div>
         <div>close: {layers?.close ?? "null"}</div>
