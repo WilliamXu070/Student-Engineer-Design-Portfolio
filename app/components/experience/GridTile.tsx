@@ -26,7 +26,7 @@ const GridTile = (props: GridTileProps) => {
   const titleRef = useRef<THREE.Group>(null);
   const gridRef = useRef<THREE.Group>(null);
   const hoverBoxRef = useRef<THREE.Mesh>(null);
-  const portalRef = useRef<{ blend: number } | null>(null);
+  const portalRef = useRef(null);
   const { title, textAlign, children, color, position, id } = props;
   const { camera } = useThree();
   const setActivePortal = usePortalStore((state) => state.setActivePortal);
@@ -65,9 +65,10 @@ const GridTile = (props: GridTileProps) => {
       (titleRef.current as any).fillOpacity = d;
     }
 
-    if (portalRef.current) {
+    const portal = portalRef.current as { blend: number } | null;
+    if (portal) {
       const targetBlend = isActive ? 1 : 0;
-      portalRef.current.blend = THREE.MathUtils.damp(portalRef.current.blend, targetBlend, 8, delta);
+      portal.blend = THREE.MathUtils.damp(portal.blend, targetBlend, 8, delta);
     }
   });
 
