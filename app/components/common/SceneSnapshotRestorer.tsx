@@ -119,7 +119,7 @@ const SceneSnapshotRestorer = () => {
     setHoveredSlug(null);
     setSelectedSlug(null);
     setPortalReturnRootScrollProgress(snapshot.rootScrollProgress);
-    setActivePortal(snapshot.activePortalId);
+    
     if (snapshot.activePortalId === "projects") {
       const { root: rootScrollWrapper } = getPortalScrollLayers();
       const fixedLayer = rootScrollWrapper?.firstElementChild as HTMLElement | null;
@@ -128,8 +128,10 @@ const SceneSnapshotRestorer = () => {
       }
       ensurePortalCloseButton();
     }
+    
     setScrollProgress(snapshot.rootScrollProgress);
     setWorkPortalScrollProgress(snapshot.workScrollProgress);
+    setActivePortal(snapshot.activePortalId);
     applyCameraSnapshot();
     const retryTimers: number[] = [];
     const retryFrames: number[] = [];
