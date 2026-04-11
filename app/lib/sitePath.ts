@@ -15,6 +15,14 @@ const DEFAULT_VIDEO_URL_MAP: Record<string, string> = {
 		"https://snprmafeymodxoduviut.supabase.co/storage/v1/object/public/Videos/Praxis1_Water_Opener_Sound_Test.mp4",
 	"civ102-build-review-video":
 		"https://snprmafeymodxoduviut.supabase.co/storage/v1/object/public/Videos/CIV102_Build_Review.mp4",
+	"civ102-bridge-testing-video":
+		"https://snprmafeymodxoduviut.supabase.co/storage/v1/object/public/Videos/bridge-testing-video.MOV",
+	"praxis1-functional-slider":
+		"https://snprmafeymodxoduviut.supabase.co/storage/v1/object/public/Videos/slider.mov",
+	"praxis1-functional-water-opener":
+		"https://snprmafeymodxoduviut.supabase.co/storage/v1/object/public/Videos/water-opener.mov",
+	"praxis1-functional-rubber-tab":
+		"https://snprmafeymodxoduviut.supabase.co/storage/v1/object/public/Videos/rubber-tab.mov",
 };
 
 export const withBasePath = (path: string) => {
