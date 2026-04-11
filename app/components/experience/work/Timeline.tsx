@@ -152,6 +152,10 @@ const Timeline = ({ progress }: { progress: number }) => {
     () => timeline.filter((point) => point.selectable !== false),
     [timeline]
   );
+  const visibleTimeline = useMemo(
+    () => timeline.filter((point) => point.selectable !== false || point.displayOnly),
+    [timeline]
+  );
 
   const curve = useMemo(() => new THREE.CatmullRomCurve3(timeline.map((p) => p.point), false), [timeline]);
   const curvePoints = useMemo(() => curve.getPoints(500), [curve]);
@@ -160,10 +164,8 @@ const Timeline = ({ progress }: { progress: number }) => {
     [curvePoints, progress]
   );
   const visibleTimelinePoints = useMemo(
-    () => timeline
-      .slice(0, Math.max(1, Math.round(progress * (timeline.length - 1) + 1)))
-      .filter((point) => point.selectable !== false),
-    [timeline, progress]
+    () => visibleTimeline.slice(0, Math.max(1, Math.round(progress * (visibleTimeline.length - 1) + 1))),
+    [visibleTimeline, progress]
   );
 
   const [visibleDashedCurvePoints, setVisibleDashedCurvePoints] = useState<THREE.Vector3[]>([]);
@@ -275,7 +277,8 @@ const Timeline = ({ progress }: { progress: number }) => {
       )}
       <group ref={groupRef}>
         {visibleTimelinePoints.map((point, i) => {
-          const diff = Math.min(2 * Math.max(i - progress * (selectableTimeline.length - 1), 0), 1);
+          const referenceTimeline = point.displayOnly ? visibleTimeline : selectableTimeline;
+          const diff = Math.min(2 * Math.max(i - progress * (referenceTimeline.length - 1), 0), 1);
           return <TimelinePoint point={point} key={point.slug} diff={diff} progress={progress} />;
         })}
       </group>

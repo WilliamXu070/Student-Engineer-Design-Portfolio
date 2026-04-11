@@ -96,9 +96,11 @@ const getProjectPageData = (slug: string) => {
 };
 
 export const generateStaticParams = () => {
-  return WORK_TIMELINE.map((point) => ({
-    slug: point.slug,
-  }));
+  return WORK_TIMELINE
+    .filter((point) => point.slug !== "beyond")
+    .map((point) => ({
+      slug: point.slug,
+    }));
 };
 
 export const generateMetadata = async ({ params }: ProjectPageProps): Promise<Metadata> => {

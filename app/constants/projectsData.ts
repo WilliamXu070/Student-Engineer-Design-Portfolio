@@ -102,27 +102,5 @@ export const PROJECT_DETAILS: Record<string, ProjectDetail> = {
       assessment: "Design choices were evaluated according to readability, narrative coherence, and how effectively they communicated both process and capability. The final direction favored clarity and intention over adding more content for its own sake.",
       reflection: "Building the portfolio turned past assignments into a clearer picture of how my design thinking has changed. It made growth visible by connecting individual projects to broader habits of iteration, communication, and systems thinking.",
     }
-  },
-  "beyond": {
-    title: "Evolving Designer",
-    course: "Beyond",
-    overview: "A forward-looking project page that frames the next phase of growth: carrying lessons from early coursework into more ambitious engineering, collaboration, and design opportunities.",
-    criteria: [
-      "Identify strengths worth deepening through future work",
-      "Recognize skill gaps that need deliberate practice",
-      "Set a direction that remains adaptable as new opportunities appear",
-      "Translate reflection into concrete next steps",
-    ],
-    ctmfRefs: [
-      "systems-thinking",
-      "stakeholder-mapping",
-      "weighted-decision-matrix",
-    ],
-    process: {
-      refinement: "Looking forward required separating short-term goals from longer-term values. The focus shifted from predicting one exact path to defining the kinds of problems, teams, and responsibilities worth moving toward.",
-      generation: "Possible next steps were considered across coursework, extracurriculars, technical skill-building, and portfolio development. Each option was useful only if it contributed to a stronger design practice rather than a disconnected checklist.",
-      assessment: "Future directions were weighed by learning potential, alignment with current interests, and the opportunity to practice both technical rigor and human-centered thinking.",
-      reflection: "This final point on the timeline is intentionally open-ended. It marks the transition from documenting completed projects to shaping the kind of engineer and designer I want to become next.",
-    }
   }
 };
