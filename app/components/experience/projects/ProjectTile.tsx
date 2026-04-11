@@ -11,6 +11,7 @@ import {
 	rememberReturnTarget,
 	rememberSceneSnapshot,
 } from "@/app/lib/navigationMemory";
+import { withBasePath } from "@/app/lib/sitePath";
 import { getPortalScrollLayers } from "@/app/lib/portalUi";
 import { usePortalStore, useScrollStore } from "@stores";
 import { Ctmf } from "@types";
@@ -36,12 +37,12 @@ const ProjectTile = ({ project, itemKey, entranceIndex, position, rotation, acti
   const rootScrollProgress = useScrollStore((state) => state.scrollProgress);
 
   const titleProps = useMemo(() => ({
-    font: "/soria-font.ttf",
+    font: withBasePath("/soria-font.ttf"),
     color: "black",
   }), []);
 
   const subtitleProps: Partial<TextProps> = useMemo(() => ({
-    font: "./Vercetti-Regular.woff",
+    font: withBasePath("/Vercetti-Regular.woff"),
     color: "black",
     anchorX: "left",
     anchorY: "top",

@@ -7,6 +7,7 @@ import * as THREE from 'three';
 import GridTile from "./GridTile";
 import Projects from "./projects";
 import Work from "./work";
+import { withBasePath } from "@/app/lib/sitePath";
 
 const Experience = () => {
   const titleRef = useRef<THREE.Group>(null);
@@ -15,7 +16,7 @@ const Experience = () => {
   const isActive = usePortalStore((state) => !!state.activePortalId);
 
   const fontProps = {
-    font: "/soria-font.ttf",
+    font: withBasePath("/soria-font.ttf"),
     fontSize: 0.4,
     color: 'white',
   };

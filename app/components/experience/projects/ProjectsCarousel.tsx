@@ -4,6 +4,7 @@ import { isMobile } from "react-device-detect";
 import ProjectTile from "./ProjectTile";
 
 import { PROJECTS, PROJECT_DETAILS } from "@constants";
+import { withBasePath } from "@/app/lib/sitePath";
 import { usePortalStore } from "@stores";
 
 const GROUP_ORDER = [
@@ -13,14 +14,14 @@ const GROUP_ORDER = [
 ] as const;
 
 const headingTextProps = {
-  font: "/soria-font.ttf",
+  font: withBasePath("/soria-font.ttf"),
   color: "black",
   anchorX: "center" as const,
   anchorY: "middle" as const,
 };
 
 const kickerTextProps: Partial<TextProps> = {
-  font: "./Vercetti-Regular.woff",
+  font: withBasePath("/Vercetti-Regular.woff"),
   color: "black",
   anchorX: "center",
   anchorY: "middle",

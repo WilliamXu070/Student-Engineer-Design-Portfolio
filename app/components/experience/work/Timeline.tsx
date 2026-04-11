@@ -8,9 +8,12 @@ import * as THREE from "three";
 
 import { WORK_TIMELINE } from "@constants";
 import { WorkTimelinePoint } from "@types";
+import { withBasePath } from "@/app/lib/sitePath";
 
 const reusableLeft = new THREE.Vector3(-0.3, 0, -0.1);
 const reusableRight = new THREE.Vector3(0.3, 0, -0.1);
+const soriaFontPath = withBasePath("/soria-font.ttf");
+const vercettiFontPath = withBasePath("/Vercetti-Regular.woff");
 const getFocusFramePosition = (position: WorkTimelinePoint["position"]) =>
   new THREE.Vector3(position === "left" ? -1.28 : 1.28, -0.56, -0.16);
 
@@ -50,7 +53,7 @@ const TimelinePoint = ({ point, diff, progress }: { point: WorkTimelinePoint; di
 
   const textProps: Partial<TextProps> = useMemo(
     () => ({
-      font: "/Vercetti-Regular.woff",
+      font: vercettiFontPath,
       color: "white",
       anchorX: textAlign,
       fillOpacity: 2 - 2 * activeTextDiff,
@@ -61,7 +64,7 @@ const TimelinePoint = ({ point, diff, progress }: { point: WorkTimelinePoint; di
   const titleProps = useMemo(
     () => ({
       ...textProps,
-      font: "/soria-font.ttf",
+      font: soriaFontPath,
       fontSize: hasLongTitle ? 0.48 : 0.6,
       maxWidth: hasLongTitle ? 3.25 : 3,
     }),
@@ -256,7 +259,7 @@ const Timeline = ({ progress }: { progress: number }) => {
 
   return (
     <group position={[0, -0.1, -0.1]}>
-      <Text font="/soria-font.ttf" fontSize={isMobile ? 0.18 : 0.24} color="#dbe7f3" anchorX="center" position={[0, 2.35, 0.1]}>
+      <Text font={soriaFontPath} fontSize={isMobile ? 0.18 : 0.24} color="#dbe7f3" anchorX="center" position={[0, 2.35, 0.1]}>
         Click each project to open its page
       </Text>
       <Line points={visibleCurvePoints} color="white" lineWidth={3} />

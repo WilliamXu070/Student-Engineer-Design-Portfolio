@@ -6,6 +6,7 @@ import gsap from "gsap";
 import Image from 'next/image';
 import { useEffect, useRef, useState } from "react";
 import { isMobile } from "react-device-detect";
+import { withBasePath } from "@/app/lib/sitePath";
 
 const ThemeSwitcher = () => {
   const themeSwitcherRef = useRef<HTMLDivElement>(null);
@@ -38,7 +39,7 @@ const ThemeSwitcher = () => {
     <div className={`fixed ${positionClass}`} ref={themeSwitcherRef} style={{ opacity: 0, zIndex: 2 }}>
       <div className="flex items-center justify-center gap-2">
         <a className="hover:cursor-pointer" onClick={toggleTheme}>
-          <Image src="icons/night-mode.svg" width={24} height={24} alt="night mode" loading="lazy" />
+          <Image src={withBasePath("/icons/night-mode.svg")} width={24} height={24} alt="night mode" loading="lazy" />
         </a>
       </div>
     </div>

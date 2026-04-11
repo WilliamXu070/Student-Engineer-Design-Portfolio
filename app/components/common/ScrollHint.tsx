@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 import { usePortalStore, useScrollStore } from "@stores";
+import { withBasePath } from "@/app/lib/sitePath";
 
 export const ScrollHint = () => {
   const [hintText, setHintText] = useState('');
@@ -92,7 +93,9 @@ export const ScrollHint = () => {
     }
   }, [portal, showScrollHint]);
 
-  const svgSrc = hintText === 'PAN' ? 'icons/chevrons-left-right.svg' : 'icons/chevrons-up-down.svg';
+  const svgSrc = hintText === 'PAN'
+    ? withBasePath('/icons/chevrons-left-right.svg')
+    : withBasePath('/icons/chevrons-up-down.svg');
 
   return (
     <div ref={hintRef} className="fixed w-full bottom-5 scroll-hint" style={{ opacity: 0 }}>

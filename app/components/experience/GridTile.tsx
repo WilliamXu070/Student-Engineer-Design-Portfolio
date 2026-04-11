@@ -9,6 +9,7 @@ import { useEffect, useRef } from 'react';
 import { isMobile } from 'react-device-detect';
 import * as THREE from 'three';
 import { TriangleGeometry } from './Triangle';
+import { withBasePath } from '@/app/lib/sitePath';
 
 interface GridTileProps {
   id: string;
@@ -167,7 +168,7 @@ const GridTile = (props: GridTileProps) => {
   }, [activePortalId, handlePortalClose, id, recordPortalEntryMetric]);
 
   const fontProps: Partial<TextProps> = {
-    font: "/soria-font.ttf",
+    font: withBasePath("/soria-font.ttf"),
     maxWidth: 2,
     anchorX: 'center',
     anchorY: 'bottom',

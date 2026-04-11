@@ -6,6 +6,7 @@ import { isMobile } from "react-device-detect";
 import * as THREE from "three";
 import { FOOTER_COPY, FOOTER_LINKS } from "../../constants";
 import { FooterLink } from "../../types";
+import { withBasePath } from "@/app/lib/sitePath";
 
 const FooterLinkItem = ({ link }: { link: FooterLink }) => {
   const textRef = useRef<THREE.Group>(null);
@@ -25,7 +26,7 @@ const FooterLinkItem = ({ link }: { link: FooterLink }) => {
   };
 
   const fontProps = {
-    font: "/Vercetti-Regular.woff",
+    font: withBasePath("/Vercetti-Regular.woff"),
     fontSize: 0.2,
     color: 'white',
     onPointerOver,
@@ -93,9 +94,9 @@ const FooterLinkItem = ({ link }: { link: FooterLink }) => {
   if (isMobile) {
     return (
       <group onClick={onClick} onPointerOver={onPointerOver} onPointerOut={onPointerOut}>
-        <Svg scale={0.00135} position={[0, 0.1, 0]} src={link.icon} />
+        <Svg scale={0.00135} position={[0, 0.1, 0]} src={withBasePath(link.icon)} />
         <Text
-          font="/Vercetti-Regular.woff"
+          font={withBasePath("/Vercetti-Regular.woff")}
           fontSize={0.08}
           color="white"
           position={[0, -0.16, 0]}
@@ -152,7 +153,7 @@ const Footer = () => {
       </mesh>
 
       <Text
-        font="/Vercetti-Regular.woff"
+        font={withBasePath("/Vercetti-Regular.woff")}
         fontSize={0.1}
         color="#bdd1e3"
         anchorX="left"
@@ -161,7 +162,7 @@ const Footer = () => {
       </Text>
 
       <Text
-        font="/soria-font.ttf"
+        font={withBasePath("/soria-font.ttf")}
         fontSize={isMobile ? 0.19 : 0.25}
         maxWidth={isMobile ? 4.1 : 5.2}
         lineHeight={1.0}
@@ -173,7 +174,7 @@ const Footer = () => {
       </Text>
 
       <Text
-        font="/Vercetti-Regular.woff"
+        font={withBasePath("/Vercetti-Regular.woff")}
         fontSize={isMobile ? 0.095 : 0.1}
         maxWidth={isMobile ? 4.1 : 7.8}
         lineHeight={1.18}

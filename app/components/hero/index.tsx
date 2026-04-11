@@ -10,6 +10,7 @@ import CloudContainer from "../models/Cloud";
 import StarsContainer from "../models/Stars";
 import WindowModel from "../models/WindowModel";
 import TextWindow from "./TextWindow";
+import { withBasePath } from "@/app/lib/sitePath";
 
 const Hero = () => {
   const titleRef = useRef<THREE.Mesh>(null);
@@ -47,7 +48,7 @@ const Hero = () => {
   }, [progress]);
 
   const fontProps = {
-    font: "/soria-font.ttf",
+    font: soriaFontPath,
     fontSize: 1.28,
   };
   
@@ -67,7 +68,7 @@ const Hero = () => {
         </Text>
         <Text
           ref={bodyRef}
-          font="/Vercetti-Regular.woff"
+          font={vercettiFontPath}
           fontSize={maxfont}
           maxWidth={maxWidth2}
           lineHeight={1.42}
@@ -80,7 +81,7 @@ const Hero = () => {
         </Text>
         <Text
           ref={detailRef}
-          font="/Vercetti-Regular.woff"
+          font={vercettiFontPath}
           fontSize={maxfont}
           maxWidth={maxWidth2}
           lineHeight={1.4}
@@ -93,7 +94,7 @@ const Hero = () => {
         </Text>
         <Text
           ref={cueRef}
-          font="/Vercetti-Regular.woff"
+          font={vercettiFontPath}
           fontSize={maxfont}
           maxWidth={maxWidth2}
           lineHeight={1.35}
@@ -117,3 +118,5 @@ const Hero = () => {
 };
 
 export default Hero;
+  const soriaFontPath = withBasePath("/soria-font.ttf");
+  const vercettiFontPath = withBasePath("/Vercetti-Regular.woff");
