@@ -3,7 +3,7 @@
 import { readSceneSnapshot } from "@/app/lib/navigationMemory";
 import { getPortalScrollLayers } from "@/app/lib/portalUi";
 import { usePortalStore, useScrollStore } from "@stores";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 type SnapshotView = {
   activePortalId: string | null;
@@ -43,14 +43,14 @@ const SceneDebugHud = () => {
   const isSceneRestoring = usePortalStore((state) => state.isSceneRestoring);
   const sceneCameraPosition = usePortalStore((state) => state.sceneCameraPosition);
   const sceneCameraRotation = usePortalStore((state) => state.sceneCameraRotation);
+  const portalReturnRootScrollProgress = usePortalStore((state) => state.portalReturnRootScrollProgress);
+  const workPortalScrollProgress = usePortalStore((state) => state.workPortalScrollProgress);
   const portalEntryMetrics = usePortalStore((state) => state.portalEntryMetrics);
   const scrollProgress = useScrollStore((state) => state.scrollProgress);
-  const hudRef = useRef<HTMLDivElement>(null);
   const [pathname, setPathname] = useState("");
+  const [search, setSearch] = useState("");
   const [snapshot, setSnapshot] = useState<SnapshotView>(null);
   const [layers, setLayers] = useState<LayerView | null>(null);
-  const [hudPosition, setHudPosition] = useState({ x: 16, y: 16 });
-  const [isCollapsed, setIsCollapsed] = useState(false);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -60,6 +60,7 @@ const SceneDebugHud = () => {
       const fill = root?.lastElementChild ?? null;
 
       setPathname(window.location.pathname);
+      setSearch(window.location.search);
       setSnapshot(readSceneSnapshot());
       setLayers({
         root: formatLayer(root),
@@ -89,82 +90,22 @@ const SceneDebugHud = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const element = hudRef.current;
-
-    if (!element) {
-      return;
-    }
-
-    let dragging = false;
-    let dragOffsetX = 0;
-    let dragOffsetY = 0;
-
-    const handlePointerDown = (event: PointerEvent) => {
-      dragging = true;
-      dragOffsetX = event.clientX - hudPosition.x;
-      dragOffsetY = event.clientY - hudPosition.y;
-      element.setPointerCapture(event.pointerId);
-    };
-
-    const handlePointerMove = (event: PointerEvent) => {
-      if (!dragging) {
-        return;
-      }
-
-      const nextX = Math.min(Math.max(0, event.clientX - dragOffsetX), Math.max(0, window.innerWidth - element.offsetWidth));
-      const nextY = Math.min(Math.max(0, event.clientY - dragOffsetY), Math.max(0, window.innerHeight - element.offsetHeight));
-      setHudPosition({ x: nextX, y: nextY });
-    };
-
-    const handlePointerUp = (event: PointerEvent) => {
-      dragging = false;
-      if (element.hasPointerCapture(event.pointerId)) {
-        element.releasePointerCapture(event.pointerId);
-      }
-    };
-
-    element.addEventListener("pointerdown", handlePointerDown);
-    element.addEventListener("pointermove", handlePointerMove);
-    element.addEventListener("pointerup", handlePointerUp);
-    element.addEventListener("pointercancel", handlePointerUp);
-
-    return () => {
-      element.removeEventListener("pointerdown", handlePointerDown);
-      element.removeEventListener("pointermove", handlePointerMove);
-      element.removeEventListener("pointerup", handlePointerUp);
-      element.removeEventListener("pointercancel", handlePointerUp);
-    };
-  }, [hudPosition.x, hudPosition.y]);
-
   return (
     <div
-      ref={hudRef}
-      className={`fixed z-[100] cursor-move border border-white/35 bg-black/70 text-[11px] leading-5 text-white shadow-[0_12px_32px_rgba(0,0,0,0.28)] backdrop-blur-md ${isCollapsed ? "flex h-12 w-12 items-center justify-center rounded-full" : "rounded-2xl px-4 py-3"}`}
-      style={{ left: hudPosition.x, top: hudPosition.y, touchAction: "none" }}>
-      <button
-        type="button"
-        onPointerDown={(event) => {
-          event.stopPropagation();
-        }}
-        onClick={(event) => {
-          event.stopPropagation();
-          setIsCollapsed((current) => !current);
-        }}
-        className={`absolute ${isCollapsed ? "inset-0 rounded-full" : "right-2 top-2 rounded-full px-2 py-1"} border border-white/15 bg-white/5 text-white/80 transition-colors hover:bg-white/10 hover:text-white`}
-        style={{ fontFamily: "var(--font-vercetti)" }}>
-        {isCollapsed ? "D" : "Hide"}
-      </button>
-      {!isCollapsed && (
+      className="pointer-events-none fixed left-0 top-0 z-[140] h-screen w-[19rem] overflow-y-auto border-r border-white/15 bg-black/82 px-4 py-4 text-[11px] leading-5 text-white shadow-[12px_0_32px_rgba(0,0,0,0.28)] backdrop-blur-md"
+      style={{ fontFamily: "var(--font-vercetti)" }}>
       <>
       <div style={{ fontFamily: "var(--font-soria)" }}>Scene Debug</div>
-      <div style={{ fontFamily: "var(--font-vercetti)" }}>
+      <div className="mt-2">
         <div>path: {pathname || "/"}</div>
+        <div>search: {search || "none"}</div>
         <div>portal: {activePortalId ?? "null"}</div>
         <div>project: {activeProjectSlug ?? "null"}</div>
         <div>paused: {String(isSceneMotionPaused)}</div>
         <div>restoring: {String(isSceneRestoring)}</div>
         <div>rootScroll: {formatNumber(scrollProgress)}</div>
+        <div>returnRoot: {formatNumber(portalReturnRootScrollProgress)}</div>
+        <div>workScroll: {formatNumber(workPortalScrollProgress)}</div>
         <div>cursor: {cursorPosition.x}, {cursorPosition.y}</div>
         <div>
           cam pos: {formatNumber(sceneCameraPosition[0])}, {formatNumber(sceneCameraPosition[1])}, {formatNumber(sceneCameraPosition[2])}
@@ -198,7 +139,6 @@ const SceneDebugHud = () => {
         <div>hit tl: {layers?.topLeft ?? "null"}</div>
       </div>
       </>
-      )}
     </div>
   );
 };

@@ -73,7 +73,7 @@ export default function RootLayout({
         <ReferenceProvider>
           {children}
           <GlobalUtilityDock />
-          {false && <SceneDebugHud />}
+          <SceneDebugHud />
         </ReferenceProvider>
       </body>
     </html>
