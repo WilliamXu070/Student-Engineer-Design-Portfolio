@@ -10,6 +10,7 @@ import {
 import HidePortalCloseButton from "@/app/components/common/HidePortalCloseButton";
 import RememberedBackLink from "@/app/components/common/RememberedBackLink";
 import RememberedLink from "@/app/components/common/RememberedLink";
+import SceneRouteStateReset from "@/app/components/common/SceneRouteStateReset";
 import { resolveVideoPath, withBasePath } from "@/app/lib/sitePath";
 import {
 	getFdcrStageLabel,
@@ -189,13 +190,15 @@ const CtmfPage = async ({ params }: CtmfPageProps) => {
 	const ctmfStageTheme = getFdcrStageTheme(ctmf.stageCode, ctmf.stage);
 
 	return (
-		<main className="ctmf-brutalist relative min-h-screen overflow-hidden text-[#f8f3e8]">
-			<HidePortalCloseButton />
-			<div className="pointer-events-none absolute inset-0">
-				<div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:44px_44px] opacity-40" />
-			</div>
+		<>
+			<SceneRouteStateReset />
+			<main className="ctmf-brutalist relative min-h-screen overflow-hidden text-[#f8f3e8]">
+				<HidePortalCloseButton />
+				<div className="pointer-events-none absolute inset-0">
+					<div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:44px_44px] opacity-40" />
+				</div>
 
-			<div className="relative z-10 mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-8 md:px-10 md:py-12">
+				<div className="relative z-10 mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 py-8 md:px-10 md:py-12">
 				<div className="mb-10 flex items-center justify-between gap-4 border-b-[3px] border-black pb-6">
 					<RememberedBackLink
 						fallbackHref="/?portal=projects"
@@ -415,7 +418,7 @@ const CtmfPage = async ({ params }: CtmfPageProps) => {
 											{artifact.src ? (
 												<div className="relative mt-4 aspect-[16/10] overflow-hidden rounded-[0.35rem] border-[3px] border-black bg-[#efe7d6]">
 													<Image
-														src={artifact.src}
+														src={resolveFigureAsset(artifact.src)}
 														alt={artifact.alt ?? artifact.title}
 														fill
 														sizes="(max-width: 1279px) 100vw, 30vw"
@@ -432,7 +435,7 @@ const CtmfPage = async ({ params }: CtmfPageProps) => {
 
 											{artifact.sourceHref ? (
 												<a
-													href={artifact.sourceHref}
+													href={withBasePath(artifact.sourceHref)}
 													className="mt-4 inline-flex border-[3px] border-black bg-[#ffd23c] px-3 py-2 text-[11px] uppercase tracking-[0.24em] text-black transition-transform hover:-translate-y-1"
 													style={{ fontFamily: "var(--font-vercetti)" }}>
 													{artifact.sourceLabel ?? "View Source"}
@@ -531,8 +534,9 @@ const CtmfPage = async ({ params }: CtmfPageProps) => {
 					</div>
 				</section>
 
-			</div>
-		</main>
+				</div>
+			</main>
+		</>
 	);
 };
 

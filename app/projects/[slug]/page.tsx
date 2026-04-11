@@ -9,6 +9,7 @@ import { FigureReferenceText, getFigureAnchorId, type FigureReferenceMap } from 
 import HidePortalCloseButton from "@/app/components/common/HidePortalCloseButton";
 import RememberedBackLink from "@/app/components/common/RememberedBackLink";
 import RememberedLink from "@/app/components/common/RememberedLink";
+import SceneRouteStateReset from "@/app/components/common/SceneRouteStateReset";
 import { resolveVideoPath, withBasePath } from "@/app/lib/sitePath";
 import {
   getFdcrStageLabel,
@@ -3347,18 +3348,38 @@ const ProjectPage = async ({ params }: ProjectPageProps) => {
   const { detail, timelinePoint } = data;
 
   if (slug === "praxis-i") {
-    return <PraxisIProjectPage slug={slug} detail={detail} timelinePoint={timelinePoint} />;
+    return (
+      <>
+        <SceneRouteStateReset />
+        <PraxisIProjectPage slug={slug} detail={detail} timelinePoint={timelinePoint} />
+      </>
+    );
   }
 
   if (slug === "civ102-bridge") {
-    return <CIV102ProjectPage slug={slug} detail={detail} timelinePoint={timelinePoint} />;
+    return (
+      <>
+        <SceneRouteStateReset />
+        <CIV102ProjectPage slug={slug} detail={detail} timelinePoint={timelinePoint} />
+      </>
+    );
   }
 
   if (slug === "praxis-ii") {
-    return <PraxisIIProjectPage slug={slug} detail={detail} timelinePoint={timelinePoint} />;
+    return (
+      <>
+        <SceneRouteStateReset />
+        <PraxisIIProjectPage slug={slug} detail={detail} timelinePoint={timelinePoint} />
+      </>
+    );
   }
 
-  return <GenericProjectPage slug={slug} detail={detail} timelinePoint={timelinePoint} />;
+  return (
+    <>
+      <SceneRouteStateReset />
+      <GenericProjectPage slug={slug} detail={detail} timelinePoint={timelinePoint} />
+    </>
+  );
 };
 
 export default ProjectPage;
