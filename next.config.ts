@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 
-const siteBasePath = process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? "/Student-Engineer-Design-Portfolio";
+const defaultSiteBasePath = process.env.NODE_ENV === "production" ? "/Student-Engineer-Design-Portfolio" : "";
+const siteBasePath = process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? defaultSiteBasePath;
 
 const nextConfig: NextConfig = {
   /* config options here */

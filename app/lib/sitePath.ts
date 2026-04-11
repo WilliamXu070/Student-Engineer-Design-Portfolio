@@ -1,5 +1,7 @@
+const DEFAULT_SITE_BASE_PATH =
+	process.env.NODE_ENV === "production" ? "/Student-Engineer-Design-Portfolio" : "";
 const SITE_BASE_PATH =
-	process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? "/Student-Engineer-Design-Portfolio";
+	process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? DEFAULT_SITE_BASE_PATH;
 const VIDEO_BASE_URL = (process.env.NEXT_PUBLIC_VIDEO_BASE_URL ?? "").trim().replace(/\/+$/, "");
 const VIDEO_URL_MAP_RAW = process.env.NEXT_PUBLIC_VIDEO_URL_MAP ?? "";
 

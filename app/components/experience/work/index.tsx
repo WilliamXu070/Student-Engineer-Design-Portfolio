@@ -1,5 +1,6 @@
 import { ScrollControls } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
+import { hasPendingSceneSnapshotForPortal } from "@/app/lib/navigationMemory";
 import { getPortalScrollLayers } from "@/app/lib/portalUi";
 import { WORK_TIMELINE } from "@constants";
 import { usePortalStore } from "@stores";
@@ -68,9 +69,10 @@ const Work = () => {
   // the scroll event.
   useEffect(() => {
     const { root: rootScrollWrapper, work: workScrollWrapper } = getPortalScrollLayers();
+    const isRestoringFromSnapshot = isSceneRestoring || hasPendingSceneSnapshotForPortal("work");
 
     if (isActive) {
-      if (!isSceneRestoring) {
+      if (!isRestoringFromSnapshot) {
         gsap.to(camera.rotation, { x: -Math.PI / 2, y: 0, z: 0, duration: 0.8 });
       }
 
@@ -78,7 +80,7 @@ const Work = () => {
         return;
       }
 
-      if (!isSceneRestoring) {
+      if (!isRestoringFromSnapshot) {
         setWorkPortalScrollProgress(0);
       }
       workScrollWrapper.removeEventListener('scroll', handleScroll);

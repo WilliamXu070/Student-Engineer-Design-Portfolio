@@ -9,7 +9,7 @@ import { FigureReferenceText, getFigureAnchorId, type FigureReferenceMap } from 
 import HidePortalCloseButton from "@/app/components/common/HidePortalCloseButton";
 import RememberedBackLink from "@/app/components/common/RememberedBackLink";
 import RememberedLink from "@/app/components/common/RememberedLink";
-import { resolveVideoPath } from "@/app/lib/sitePath";
+import { resolveVideoPath, withBasePath } from "@/app/lib/sitePath";
 import {
   getFdcrStageLabel,
   getFdcrStageTheme,
@@ -77,6 +77,11 @@ type ProjectCtmfSynthesis = {
 	entries: ProjectCtmfSynthesisEntry[];
 	closing: string;
 };
+
+const resolveFigureAsset = (src: string | StaticImageData) =>
+	typeof src === "string" ? withBasePath(src) : src;
+
+const resolvePosterAsset = (src?: string) => (src ? withBasePath(src) : undefined);
 
 const getProjectPageData = (slug: string) => {
   const timelinePoint = WORK_TIMELINE.find((point) => point.slug === slug);
@@ -441,10 +446,10 @@ const renderProjectFigureMedia = (figure: PraxisIFigure, videoLabel: string) => 
         controls
         playsInline
         preload="metadata"
-        poster={figure.posterSrc}
+        poster={resolvePosterAsset(figure.posterSrc)}
         aria-label={videoLabel}
         className={`h-full w-full ${figure.imageClassName ?? "object-cover"}`}>
-        <source src={figure.src} type="video/mp4" />
+        <source src={withBasePath(figure.src)} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     );
@@ -452,7 +457,7 @@ const renderProjectFigureMedia = (figure: PraxisIFigure, videoLabel: string) => 
 
   return (
     <Image
-      src={figure.src}
+      src={resolveFigureAsset(figure.src)}
       alt={figure.alt}
       fill
       sizes="(max-width: 1279px) 100vw, 40vw"
@@ -1410,7 +1415,7 @@ const PraxisIProjectPage = ({
                   preload="metadata"
                   aria-label={praxisIFigures.sliderAnimation.alt}
                   className="h-full w-full object-contain p-4">
-                  <source src={praxisIFigures.sliderAnimation.src as string} type="video/mp4" />
+                  <source src={withBasePath(praxisIFigures.sliderAnimation.src as string)} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
               </div>
@@ -1495,7 +1500,7 @@ const PraxisIProjectPage = ({
                   </div>
                   <div className="overflow-hidden rounded-[1.2rem] border border-white/10 bg-white">
                     <div className={`relative w-full ${index === 0 ? "h-[16rem]" : "h-[20rem] md:h-[24rem]"}`}>
-                      <Image src={figure.src} alt={figure.alt} fill className={figure.imageClassName} />
+                      <Image src={resolveFigureAsset(figure.src)} alt={figure.alt} fill className={figure.imageClassName} />
                     </div>
                   </div>
                   <p
@@ -1572,7 +1577,7 @@ const PraxisIProjectPage = ({
               </div>
               <div className="overflow-hidden rounded-[1.35rem] border border-white/10 bg-white">
                 <div className="relative h-[25rem] w-full">
-                  <Image src={praxisIFigures.morph.src} alt={praxisIFigures.morph.alt} fill className={praxisIFigures.morph.imageClassName} />
+                  <Image src={resolveFigureAsset(praxisIFigures.morph.src)} alt={praxisIFigures.morph.alt} fill className={praxisIFigures.morph.imageClassName} />
                 </div>
               </div>
               <p
@@ -1597,7 +1602,7 @@ const PraxisIProjectPage = ({
                   </div>
                   <div className="overflow-hidden rounded-[1.2rem] border border-white/10 bg-white">
                     <div className="relative h-[12rem] w-full">
-                      <Image src={figure.src} alt={figure.alt} fill className={figure.imageClassName} />
+                      <Image src={resolveFigureAsset(figure.src)} alt={figure.alt} fill className={figure.imageClassName} />
                     </div>
                   </div>
                   <p
@@ -1934,7 +1939,7 @@ const CIV102ProjectPage = ({
                 </div>
                 <div className="overflow-hidden rounded-[1.45rem] border border-slate-900/10 bg-white">
                   <div className="relative h-[18rem] w-full">
-                    <Image src={figure.src} alt={figure.alt} fill className={figure.imageClassName} />
+                    <Image src={resolveFigureAsset(figure.src)} alt={figure.alt} fill className={figure.imageClassName} />
                   </div>
                 </div>
                 <p
@@ -2116,7 +2121,7 @@ const CIV102ProjectPage = ({
                     preload="metadata"
                     aria-label={civ102Figures.buildReview.alt}
                     className="h-full w-full object-contain bg-white p-3">
-                    <source src={civ102Figures.buildReview.src as string} type="video/mp4" />
+                    <source src={withBasePath(civ102Figures.buildReview.src as string)} type="video/mp4" />
                     Your browser does not support the video tag.
                   </video>
                 </div>
@@ -2238,7 +2243,7 @@ const CIV102ProjectPage = ({
                 </div>
                 <div className="overflow-hidden rounded-[1.35rem] border border-white/10 bg-[#0b131d]">
                   <div className="relative h-[16rem] w-full">
-                    <Image src={figure.src} alt={figure.alt} fill className={figure.imageClassName} />
+                    <Image src={resolveFigureAsset(figure.src)} alt={figure.alt} fill className={figure.imageClassName} />
                   </div>
                 </div>
                 <p
@@ -2605,7 +2610,7 @@ const PraxisIIProjectPage = ({
                 </div>
                 <div className="overflow-hidden rounded-[1.45rem] border border-slate-900/10 bg-white">
                   <div className="relative h-[18rem] w-full">
-                    <Image src={figure.src} alt={figure.alt} fill className={figure.imageClassName} />
+                    <Image src={resolveFigureAsset(figure.src)} alt={figure.alt} fill className={figure.imageClassName} />
                   </div>
                 </div>
                 <p
@@ -2663,7 +2668,7 @@ const PraxisIIProjectPage = ({
                   </p>
                   <div className="overflow-hidden rounded-[1.2rem] border border-slate-900/10 bg-white">
                     <div className="relative h-[20rem] w-full md:h-[24rem] lg:h-[22rem]">
-                      <Image src={figure.src} alt={figure.alt} fill className={figure.imageClassName} />
+                      <Image src={resolveFigureAsset(figure.src)} alt={figure.alt} fill className={figure.imageClassName} />
                     </div>
                   </div>
                   <p
@@ -2722,7 +2727,7 @@ const PraxisIIProjectPage = ({
                     </p>
                     <div className="relative h-[34rem] w-full">
                       <Image
-                        src={figure.src}
+                        src={resolveFigureAsset(figure.src)}
                         alt={figure.alt}
                         fill
                         sizes="(min-width: 1280px) 44vw, 100vw"
@@ -2768,7 +2773,7 @@ const PraxisIIProjectPage = ({
                   </p>
                   <div className="overflow-hidden rounded-[1.25rem] border border-slate-900/10 bg-white">
                     <div className="relative h-[16rem] w-full">
-                      <Image src={figure.src} alt={figure.alt} fill className={figure.imageClassName} />
+                      <Image src={resolveFigureAsset(figure.src)} alt={figure.alt} fill className={figure.imageClassName} />
                     </div>
                   </div>
                   <p
@@ -2887,7 +2892,7 @@ const PraxisIIProjectPage = ({
                 </div>
                 <div className="overflow-hidden rounded-[1.35rem] border border-white/10 bg-[#0b131d]">
                   <div className="relative h-[16rem] w-full">
-                    <Image src={figure.src} alt={figure.alt} fill className={figure.imageClassName} />
+                    <Image src={resolveFigureAsset(figure.src)} alt={figure.alt} fill className={figure.imageClassName} />
                   </div>
                 </div>
                 <p
@@ -2968,7 +2973,7 @@ const PraxisIIProjectPage = ({
                   </p>
                   <div className="overflow-hidden rounded-[1.2rem] border border-slate-900/10 bg-white">
                     <div className="relative h-[15rem] w-full">
-                      <Image src={figure.src} alt={figure.alt} fill className={figure.imageClassName} />
+                      <Image src={resolveFigureAsset(figure.src)} alt={figure.alt} fill className={figure.imageClassName} />
                     </div>
                   </div>
                   <p

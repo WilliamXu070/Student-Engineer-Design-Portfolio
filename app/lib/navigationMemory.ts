@@ -69,6 +69,11 @@ export const readSceneSnapshot = (): SceneSnapshot | null => {
   }
 };
 
+export const hasPendingSceneSnapshotForPortal = (portalId: string) => {
+  const snapshot = readSceneSnapshot();
+  return snapshot?.activePortalId === portalId;
+};
+
 export const clearSceneSnapshot = () => {
   if (typeof window === "undefined") {
     return;

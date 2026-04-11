@@ -1,6 +1,10 @@
 import { useScroll } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
-import { getProjectsPortalCameraPosition, getProjectsPortalCameraRotation } from "@/app/lib/navigationMemory";
+import {
+  getProjectsPortalCameraPosition,
+  getProjectsPortalCameraRotation,
+  hasPendingSceneSnapshotForPortal,
+} from "@/app/lib/navigationMemory";
 import gsap from "gsap";
 import { useLayoutEffect } from "react";
 import { isMobile } from "react-device-detect";
@@ -19,11 +23,13 @@ const Projects = () => {
   const data = useScroll();
 
   useLayoutEffect(() => {
+    const isRestoringFromSnapshot = isSceneRestoring || hasPendingSceneSnapshotForPortal("projects");
+
     data.el.style.overflow = isActive ? 'hidden' : 'auto';
     data.fixed.style.pointerEvents = isActive ? 'none' : 'auto';
 
     if (isActive) {
-      if (!isSceneRestoring) {
+      if (!isRestoringFromSnapshot) {
         const [x, y, z] = getProjectsPortalCameraPosition(isMobile);
         const [rotX, rotY, rotZ] = getProjectsPortalCameraRotation();
         gsap.to(camera.rotation, { x: rotX, y: rotY, z: rotZ, duration: 0.8 });

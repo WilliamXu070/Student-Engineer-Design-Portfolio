@@ -10,7 +10,7 @@ import {
 import HidePortalCloseButton from "@/app/components/common/HidePortalCloseButton";
 import RememberedBackLink from "@/app/components/common/RememberedBackLink";
 import RememberedLink from "@/app/components/common/RememberedLink";
-import { resolveVideoPath } from "@/app/lib/sitePath";
+import { resolveVideoPath, withBasePath } from "@/app/lib/sitePath";
 import {
 	getFdcrStageLabel,
 	getFdcrStageTheme,
@@ -25,6 +25,10 @@ type CtmfPageProps = {
 		slug: string;
 	}>;
 };
+
+const resolveFigureAsset = (src: string) => withBasePath(src);
+
+const resolvePosterAsset = (src?: string) => (src ? withBasePath(src) : undefined);
 
 const stakeholderPraxisSections: CtmfDossierSection[] = [
 	{
@@ -362,15 +366,15 @@ const CtmfPage = async ({ params }: CtmfPageProps) => {
 																	controls
 																	playsInline
 																	preload="metadata"
-																	poster={figure.posterSrc}
+																	poster={resolvePosterAsset(figure.posterSrc)}
 																	aria-label={figure.alt}
 																	className="h-full w-full object-cover">
-																	<source src={figure.src} type="video/mp4" />
+																	<source src={resolveFigureAsset(figure.src)} type="video/mp4" />
 																	Your browser does not support the video tag.
 																</video>
 															) : (
 																<Image
-																	src={figure.src}
+																	src={resolveFigureAsset(figure.src)}
 																	alt={figure.alt}
 																	fill
 																	sizes={figure.sizes ?? "(max-width: 1279px) 100vw, 40vw"}
