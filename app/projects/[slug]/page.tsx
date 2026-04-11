@@ -9,7 +9,6 @@ import { FigureReferenceText, getFigureAnchorId, type FigureReferenceMap } from 
 import HidePortalCloseButton from "@/app/components/common/HidePortalCloseButton";
 import RememberedBackLink from "@/app/components/common/RememberedBackLink";
 import RememberedLink from "@/app/components/common/RememberedLink";
-import ReferencesSection from "@/app/components/common/ReferencesSection";
 import {
   getFdcrStageLabel,
   getFdcrStageTheme,
@@ -124,13 +123,13 @@ const lightPanelClass =
   "neo-panel rounded-[0.35rem] border-[3px] border-black bg-[#efe7d6] text-black shadow-[10px_10px_0_#000]";
 
 const praxisIOverviewParagraphs = [
-  "Praxis I addressed a simple but easily underestimated design problem: opening a carbonated beverage can in a quiet shared environment creates a sharp, disruptive acoustic impulse. In lecture halls, libraries, and study spaces, that opening event can momentarily dominate the room, turning an ordinary action into a social and practical disruption. The project therefore began with a clear need: reduce the noise of can opening without making the product harder to use, less safe, or less believable as an everyday object.",
-  "The project became more than a straightforward noise-reduction exercise once it became clear that our initial understanding of the problem was incomplete. Early on, the challenge appeared to be about controlling depressurization. As testing progressed, however, the project became less about softening an existing opening event and more about understanding what actually caused the sharp impulse in the first place. That shift changed not just the ranking of concepts, but the logic of the design problem itself.",
+  "Praxis I began with a design problem that seemed simple and was therefore easy to underestimate. Opening a carbonated beverage can in a lecture hall, library, or study space creates a sharp acoustic impulse that can briefly disrupt the room, and research on young students has shown that noise exposure can affect learning, motivation, and memory [[cite:noise-learning-motivation-memory]]. The project therefore began with a clear need: reduce the noise of can opening without making the product harder to use, less safe, or less believable as an everyday object.",
+  "The project stopped being a straightforward noise-reduction exercise once our original explanation of the problem began to weaken. Early on, we treated depressurization as the main source of the disturbance and assumed the task was simply to soften an opening event we already understood. As testing progressed, that assumption became harder to defend, and the more important question became what was actually causing the sharp impulse in the first place. That shift changed more than the ranking of concepts. It changed the logic of the design problem itself [[cite:praxis1-report]].",
 ];
 
 const praxisIObjectivesParagraphs = [
-  "The project's objective was to design a quieter can-opening approach for use in quiet academic and public settings while preserving usability, cleanliness, portability, and beverage integrity. That objective was shaped by several stakeholder groups whose needs pushed the project beyond a narrow 'make it quieter' target.",
-  "Students and educators needed a solution that could reduce a disruptive opening event in lecture halls, libraries, and similar quiet spaces. Users with reduced strength or dexterity pushed the design toward lower hand pressure, fewer gestures, and a more accessible interaction. Manufacturers and regulators introduced pressures around compactness, hygiene, food-safe contact, and conceptual compatibility with familiar can geometry and use patterns. Together, these stakeholders made clear that success could not be defined by decibel reduction alone. A good solution had to remain credible as a real engineered product rather than a one-variable demonstration piece.",
+  "The project's objective was to design a quieter can-opening approach for use in quiet academic and public settings while preserving usability, cleanliness, portability, and beverage integrity. That objective was shaped by several stakeholder groups whose needs pushed the project beyond a narrow make it quieter target.",
+  "Students and educators needed a solution that could reduce a disruptive opening event in lecture halls, libraries, and similar quiet spaces. Users with reduced strength or dexterity pushed the design toward lower hand pressure, fewer gestures, and a more accessible interaction. Manufacturers and regulators introduced pressures around compactness, hygiene, food-safe contact, and conceptual compatibility with familiar can geometry and use patterns. Together, these stakeholders made clear that success could not be defined by decibel reduction alone [[cite:praxis1-converging-doc]].",
 ];
 
 const praxisIStakeholders = [
@@ -149,8 +148,8 @@ const praxisIStakeholders = [
 ];
 
 const praxisIRequirementsParagraphs = [
-  "From those stakeholder pressures, our team developed a requirement set that defined what a viable solution had to protect while reducing noise. The design needed to produce strong peak-noise reduction during opening, minimize liquid loss, control CO2 boil-off, remain portable for everyday use, allow accessible low-force interaction, and maintain safe, clean contact around the drinking surface. These were not secondary checks added after concept generation. They were the conditions that kept the design effort grounded in actual use.",
-  "The concepts were therefore evaluated not just by whether they were quieter, but by whether they balanced the broader problem well. Peak noise, liquid loss, CO2 retention, hand pressure, and gesture count became the most useful comparative criteria because together they captured both technical performance and user practicality. This structure also fits the portfolio rubric, which rewards project summaries and annotations that clearly identify the project context, key design considerations, and the final design solution rather than treating the artifact in isolation.",
+  "From those stakeholder pressures, our team developed a requirement set that defined what a viable solution had to protect while reducing noise. The design needed to produce strong peak-noise reduction during opening, minimize liquid loss, control CO2 boil-off, remain portable for everyday use, allow accessible low-force interaction, and maintain safe, clean contact around the drinking surface. Success was therefore defined by whether a concept could make opening quieter while still preserving the conditions that made the can practical and credible in everyday use.",
+  "The concepts were then compared through peak noise, liquid loss, CO2 retention, hand pressure, and gesture count, since those criteria captured both performance and usability [[cite:praxis1-pugh-chart-2]].",
 ];
 
 const praxisIRequirements = [
@@ -164,11 +163,13 @@ const praxisIRequirements = [
 
 const praxisIFinalSolutionParagraphs = [
   "The final concept was a slider-based silent can. Instead of relying on the traditional pull-tab tear-strip event, the design replaced that mechanism with a rotatable slider positioned over a pre-formed opening. This allowed the opening area to be revealed gradually rather than all at once, spreading the release event over a longer interval and reducing the sharp acoustic impulse associated with conventional can opening.",
-  "The final concept also included a raised tab to reduce required hand pressure and improve accessibility, as well as an integrated gasket to improve sealing and reduce post-opening liquid and CO2 loss. The key strength of the concept was that it did not merely attempt to damp the old mechanism from outside. It replaced the mechanism responsible for the noise event itself.",
+  "The final concept also included a raised tab to reduce required hand pressure and improve accessibility, as well as an integrated gasket to improve sealing and reduce post-opening liquid and CO2 loss. The key strength of the concept was that it did not merely attempt to damp the old mechanism from outside. It replaced the mechanism responsible for the noise event itself [[cite:praxis1-report]].",
 ];
 
-const praxisISelectionParagraph =
-  "The slider was selected because it performed best against the measured criteria while also matching the revised understanding of the problem (see [[fig:04|Figs. 04-06]]). Compared with the control can, it reduced peak noise from 102 dB to 61 dB, cut liquid loss from 0.70% to 0.46%, limited CO2 boil-off over 90 seconds to 0.4 g compared with 1.3 g for the control and 1.2 g for the rubber-tab concept (see [[fig:10]]), lowered maximum hand pressure to 80 kPa compared with 135 kPa for the rubber tab and 600 kPa for the water opener (see [[fig:09]]), and required only two gestures instead of three or five. These results made it the strongest overall concept because it improved the acoustic outcome without breaking the other evaluation criteria.";
+const praxisISelectionParagraphs = [
+  "The final slider concept was selected only after the team worked through several different approaches to quiet can opening. Early concept generation explored mechanisms that tried to vent, damp, modify, or replace the standard opening event: a needle-straw vent, a water opener, a rubber-tab attachment, and the slider mechanism (see [[fig:04|Figs. 04-06]]). The needle-straw and water-opener directions weakened because they added safety, contamination, liquid-loss, or interaction burdens. The rubber tab stayed more credible for longer because it modified the existing tab, but it still depended on softening the old opening event rather than changing the event responsible for the sharp impulse.",
+  "The slider was selected because it performed best against the measured criteria while also matching the revised understanding of the problem. Compared with the control can, it reduced peak noise from 102 dB to 61 dB, cut liquid loss from 0.70% to 0.46%, limited CO2 boil-off over 90 seconds to 0.4 g compared with 1.3 g for the control and 1.2 g for the rubber-tab concept (see [[fig:10]]), lowered maximum hand pressure to 80 kPa compared with 135 kPa for the rubber tab and 600 kPa for the water opener (see [[fig:09]]), and required only two gestures instead of three or five. These results made it the strongest overall concept because it improved the acoustic outcome without breaking the other evaluation criteria [[cite:praxis1-report]].",
+];
 
 const praxisIMetrics: PraxisIMetricCard[] = [
   {
@@ -207,25 +208,25 @@ const praxisIDecisionsIntro = "Three engineering decisions shaped the project mo
 
 const praxisIDecisions = [
   {
-    title: "Treating the original frame as provisional",
+    title: "Clarifying the problem through stakeholder input",
     body:
-      "The first was the decision to treat the original problem frame as provisional rather than fixed. Our team initially approached the challenge as finding a quieter way to open a standard can, which naturally produced concepts like puncture vents, water damping, and tab attachments. That direction was reasonable under the original assumptions, but it depended on the belief that rapid depressurization was the dominant noise source.",
+      "Stakeholder input showed that the opening experience involved more than sound, which kept the team from judging concepts too narrowly around noise alone.",
   },
   {
-    title: "Letting contradictory evidence reopen the problem",
+    title: "Reframing the can expanded the design space",
     body:
-      "The second was the decision to let contradictory test evidence reopen the problem. Vented and unvented openings produced similar dB levels, which suggested that the loudest part of the event was not simply gas escape, but the fracture of the scored aluminum tear strip. The important engineering decision was not just to record that result, but to treat it as a reason to revise the mechanism-level explanation behind the project.",
+      "Reframing the problem required the team to stop treating the standard can as fixed. Early concepts stayed limited to attachments and external interventions, while that shift opened more direct ways to change the opening event itself.",
   },
   {
-    title: "Accepting a more radical redesign",
+    title: "Generating many variations within the same solution type",
     body:
-      "The third was the decision to accept a more radical redesign once the old frame weakened. Once our team recognized that the fracture event itself was central, easier retrofit concepts became less convincing. The slider was worth the extra complexity because it directly removed the abrupt tear-strip event while still performing best against the explicit criteria.",
+      "A third major decision was to explore multiple concepts within the same solution category rather than settling on a single rough idea.",
   },
 ];
 
 const praxisIProcessParagraphs = [
-  "The design process was iterative not just because multiple concepts were generated, but because the project looped back to framing after evidence weakened the initial explanation. The project began with a relatively stable opportunity statement and a set of early concepts shaped by that frame. Initial divergence explored ways to soften the opening event through vents, damping, and tab-based attachments. That work was useful, but in retrospect it was built on an assumption that had not been adequately challenged.",
-  "Testing then acted less as a validator of chosen concepts and more as a diagnostic tool for the problem definition itself. Once the vented-versus-unvented result suggested the tear-strip fracture mattered more than expected, our team had to return to the opportunity statement and reframe the project. That reframing produced a different concept space, one in which mechanism redesign became newly reasonable. Convergence only became meaningful after that reframing, because only then did the evaluation criteria line up with the real structure of the problem.",
+  "The design process was iterative because the project returned to framing after evidence weakened the initial explanation. Early concepts such as vents, damping, and tab attachments came from the original frame, but that work relied on an assumption that had not yet been tested.",
+  "Testing then acted less as validation and more as diagnosis. Once results suggested the tear-strip fracture mattered more than expected, our team reframed the problem and opened a new concept space where mechanism redesign became reasonable. Convergence only became meaningful after that shift.",
 ];
 
 const praxisIPhases: PraxisIPhase[] = [
@@ -254,22 +255,22 @@ const praxisIPhases: PraxisIPhase[] = [
 const praxisICtmfSynthesis: ProjectCtmfSynthesis = {
 	title: "How The CTMFs Changed This Project",
 	intro:
-		"Praxis I only became intellectually coherent once three CTMFs started doing different kinds of work. One clarified what success had to protect, one widened the mechanism space, and one made convergence defensible only after the frame improved.",
+		"Praxis I only became coherent once the CTMFs began doing different kinds of work. One clarified what the project had to protect, another widened the mechanism space, and another made convergence defensible only after the frame improved.",
 	entries: [
 		{
 			title: "Stakeholder analysis changed what the project had to protect",
 			body:
-				"Primary student conversations widened the project beyond noise alone by surfacing spill control, beverage disturbance, awkward finger interaction, and opening burden. That changed the requirement structure early, which is why the final recommendation had to protect usability, beverage integrity, and accessibility rather than only reduce dB.",
+				"Primary student conversations expanded the problem beyond noise by surfacing spill control, beverage disturbance, awkward finger interaction, and opening burden. The final recommendation therefore had to protect usability, beverage integrity, and accessibility, not only reduce dB.",
 		},
 		{
 			title: "The morph chart changed what kinds of concepts could be compared",
 			body:
-				"The morph chart made divergence more systematic by producing the concept families our team later carried into convergence: needle-straw, water opener, rubber tab, and slider. Its limit was equally important: much of that early space still assumed the problem could be solved through venting, damping, or managing the existing opening event, so the chart widened implementation diversity more than explanatory diversity.",
+				"The morph chart made divergence more systematic by generating the concept families later carried into convergence: needle-straw, water opener, rubber tab, and slider. Its limit was that it still assumed the problem could be solved through venting, damping, or managing the existing opening event, so it widened implementation diversity more than explanatory diversity.",
 		},
 		{
 			title: "Convergence tools only became trustworthy once the frame improved",
 			body:
-				"The Pugh-style comparison and measured criteria helped our team defend the slider against the remaining alternatives, but only after vented-versus-unvented testing weakened the original depressurization story. In other words, convergence did not rescue the project on its own; it became meaningful only once the criteria were aligned with a better explanation of the noise event.",
+				"The Pugh-style comparison and measured criteria helped defend the slider against the remaining alternatives only after vented-versus-unvented testing weakened the original depressurization story. Convergence became meaningful only once the criteria were aligned with a better explanation of the noise event.",
 		},
 	],
 	closing:
@@ -277,17 +278,16 @@ const praxisICtmfSynthesis: ProjectCtmfSynthesis = {
 };
 
 const praxisILearningParagraphs = [
-  "The most important lesson from Praxis I was that testing can expose a framing error, not just validate or rank solutions. Before this project, it was easier to think of evidence as something used mainly near the end of a process to justify a final choice. Praxis I showed something harder: evidence can reveal that a team has been solving the wrong version of the problem.",
-  "The project also strengthened my understanding that concept comparison only becomes meaningful when the criteria reflect the actual logic of the problem. A matrix or ranking system can look rigorous while still resting on a weak frame. In Praxis I, convergence improved only once the frame improved. That made the design process feel less linear and less comfortable, but also more honest.",
+  "Praxis I showed that testing can force a team to confront a framing error rather than simply compare solutions within an accepted problem definition. Before this project, I tended to treat evidence as something used later in the process, once the work had already narrowed and a final direction needed support. What this project made clear was less comfortable: evidence can show that the problem itself has been specified incorrectly, so the real task is not to rank concepts more carefully, but to reopen the logic that produced them.",
+  "The project also changed how I think about convergence. Concept comparison only becomes meaningful when the criteria arise from a sound account of the problem, since a matrix can appear rigorous while still inheriting the weakness of a bad frame. In Praxis I, convergence became more credible only after the framing improved, which made the process less tidy, less linear, and more intellectually honest [[cite:praxis1-reflection]].",
 ];
 
 const praxisIReflectionParagraphs = [
-  "This project matters in my portfolio because it was the first time I saw clearly that engineering can fail at the level of framing, not only at the level of solution quality. That insight now sits near the center of my position on engineering design: good engineering depends on framing, not just solving. When evidence breaks the logic of a design, I would rather reopen the problem than defend a polished answer to the wrong question.",
-  "At the same time, Praxis I exposed a tension in how I work. My drive for rigor helped me notice when the original logic had weakened, but it also made me less patient with continued work inside a frame that no longer felt defensible. That is both a strength and a risk. It helps me question assumptions early, but it can also create friction if I do not communicate that concern carefully within a team. In practice, that meant the collaborative task was not only recognizing that the depressurization story had weakened, but turning that concern into a shared reason to reopen the criteria and concept logic instead of continuing to compare retrofit ideas as if the frame were still stable. The project therefore shaped not only the product I value, but the kind of engineering judgment I am trying to develop: one that is evidence-driven, willing to reframe, and aware that technical rigor also affects collaboration.",
+  "This project matters in my portfolio because it was the first time I saw clearly that engineering can fail at the level of framing, not only at the level of solution quality. A team can reason carefully, compare systematically, and still converge on the wrong problem. That changed how I judge design quality. I now care not only about how well a project answers its question, but whether that question remains defensible as evidence develops. Once the logic of the frame begins to fail, I would rather reopen the problem than keep refining an answer built on it [[cite:praxis1-reflection]].",
 ];
 
 const praxisITeamCredit =
-  "Praxis I was completed collaboratively within the course context, but different members carried different parts of the work. Katherine Chen and Issac Ng carried out prototype testing, with Ng also contributing to interviews and stakeholder analysis. Shupeng Liu developed the morph chart used to structure concept generation. I developed the Pugh chart and produced the CAD for all prototypes.";
+  "Praxis I was completed collaboratively within the course team, with each member\'s responsibilities are outlined below:";
 
 const praxisITeam = [
   {
@@ -304,7 +304,7 @@ const praxisITeam = [
   },
   {
     name: "William Xu",
-    role: "Developed the Pugh chart and produced the CAD for all prototypes.",
+    role: "Developed the Pugh chart, produced the CAD for all prototypes, and helped to develop the morph chart.",
   },
 ];
 
@@ -339,10 +339,9 @@ const praxisIFigures: Record<string, PraxisIFigure> = {
   anchor: {
     kind: "video",
     refKey: "11",
-    src: "/api/videos/praxis1",
-    posterSrc: "/context-evidence/raw/praxis1-p2-img1.png",
-    alt: "Praxis I noise-testing video showing the contradictory result that later grounded the anchoring-bias reflection.",
-    caption: "The contradictory test result belongs beside the later reflection because it is the evidence that forced the original framing to weaken before the team could re-understand the problem.",
+    src: "/api/videos/praxis1-water-opener",
+    alt: "Praxis I sound test video for the water-opener concept during acoustic testing.",
+    caption: "Water-opener sound test showing that muffling the user action did not remove the sharp opening impulse. This supported the later reframing: the dominant sound came from tearing the scored aluminum ligament, so the stronger solution was to remove the tear-strip mechanism rather than damp it from outside.",
     label: "Fig. 11",
     imageClassName: "object-cover",
   },
@@ -366,7 +365,7 @@ const praxisIFigures: Record<string, PraxisIFigure> = {
     refKey: "04",
     src: acousticImpulseChart,
     alt: "Acoustic impulse comparison over time for the control can and the slider concepts.",
-    caption: "Acoustic impulse comparison showing how the slider concept spread the opening event over time instead of preserving the sharp control-can spike.",
+    caption: "Acoustic impulse comparison graph showing how the different versions of the slider prototype spread the opening event over time compared to the control (normal aluminum can).",
     label: "Fig. 04",
     imageClassName: "object-contain bg-white p-3",
   },
@@ -374,7 +373,7 @@ const praxisIFigures: Record<string, PraxisIFigure> = {
     refKey: "05",
     src: contactPressureChart,
     alt: "Opening contact pressure comparison for the control can and the slider concepts.",
-    caption: "Opening contact pressure comparison showing why the slider also improved accessibility and hand pressure.",
+    caption: "Opening contact pressure comparison graph showing how the slider design also improved accessibility by spreading the hand pressure over a longer duration, compared to the sharp peak pressure of the control.",
     label: "Fig. 05",
     imageClassName: "object-contain bg-white p-3",
   },
@@ -382,7 +381,7 @@ const praxisIFigures: Record<string, PraxisIFigure> = {
     refKey: "06",
     src: co2Chart,
     alt: "CO2 boil-off comparison between the control can and slider designs.",
-    caption: "CO2 boil-off comparison. Slider V2 approached the control in retention while remaining quieter.",
+    caption: "CO2 boil-off comparison chart showing how the slider design also improved the CO2 retention rate.",
     label: "Fig. 06",
     imageClassName: "object-contain bg-white p-3",
   },
@@ -390,7 +389,7 @@ const praxisIFigures: Record<string, PraxisIFigure> = {
     refKey: "08",
     src: needleVentConcept,
     alt: "Praxis I puncture vent concept sketch from the early retrofit concept space.",
-    caption: "Early puncture vent concept produced under the original frame.",
+    caption: "Early puncture-vent concept, in which the aluminum can was replaced with a thin puncturable membrane, similar to Kool-Aid Jammers pouch reference designs [[cite:kool-aid-jammers-product]].",
     label: "Fig. 08",
     imageClassName: "object-contain bg-white p-3",
   },
@@ -398,7 +397,7 @@ const praxisIFigures: Record<string, PraxisIFigure> = {
     refKey: "09",
     src: waterOpenerConcept,
     alt: "Praxis I water-opener concept render from the early retrofit concept space.",
-    caption: "Water-damping concept aimed at softening the opening event without changing the can itself.",
+    caption: "Water-damping concept, in which the top lid of an alunimum can was covered with liquid to muffle the acoustic impulse from the can opening.",
     label: "Fig. 09",
     imageClassName: "object-contain bg-white p-3",
   },
@@ -406,7 +405,7 @@ const praxisIFigures: Record<string, PraxisIFigure> = {
     refKey: "10",
     src: rubberTabConcept,
     alt: "Praxis I rubber-tab concept render from the early retrofit concept space.",
-    caption: "Rubber-tab attachment concept that stayed closer to the original opening mechanism.",
+    caption: "Rubber-tab attachment concept, in which the tear line of the alunimum can was covered to absorb the acoustic effect and muffle the acoustic impulse generated.",
     label: "Fig. 10",
     imageClassName: "object-contain bg-white p-3",
   },
@@ -466,13 +465,13 @@ const civ102Claims = [
 ];
 
 const civ102OverviewParagraphs = [
-  "The CIV102 bridge project asked teams to design and build a small-scale matboard box-girder bridge that could carry a moving train across a 1200 mm span, then survive increasing loads until failure while also predicting that failure load as accurately as possible [[cite:civ102-handout-2025]]. At first, what looked like a pure structural optimization problem was actually a constrained engineering problem in which analysis, geometry, material limits, and fabrication all interacted.",
-  "The bridge problem got harder once our team had to actually design the geometry and figure out how the bridge would be cut. Every increase in strength competed with something else: material usage, sheet fitting, assembly difficulty, splice reliability, or buckling risk. Increasing height improved bending resistance but made fitting the bridge onto one matboard sheet harder; adding reinforcement improved capacity but consumed material and complicated construction. The project therefore became less about maximizing one number and more about building the strongest bridge that remained structurally credible and manufacturable under the actual rules of the assignment.",
+  "The CIV102 bridge project asked teams to design and build a small-scale matboard box-girder bridge that could carry a moving train across a 1200 mm span, then survive increasing loads until failure while also predicting that failure load as accurately as possible. At first, what looked like a pure structural optimization problem was actually a constrained engineering problem in which analysis, geometry, material limits, and fabrication all interacted.",
+  "The bridge problem got harder once our team had to actually design the geometry and figure out how the bridge would be cut. Every increase in strength competed with something else: material usage, sheet fitting, assembly difficulty, splice reliability, or buckling risk. Increasing height improved bending resistance but made fitting the bridge onto one matboard sheet harder; adding reinforcement improved capacity but consumed material and complicated construction. The project therefore became less about maximizing one number and more about building the strongest bridge that remained structurally credible and manufacturable under the actual rules of the assignment [[cite:civ102-design-report]].",
 ];
 
 const civ102ObjectivesParagraphs = [
-  "The handout defined the project's primary objective as designing and building a bridge that could support large gravity loads across a 1200 mm span using only the permitted materials, while using beam theory and thin-plate buckling theory to predict the maximum load before failure. It also required teams to document design decisions, communicate the design through drawings, and demonstrate planning and prototyping through the construction process.",
-  "Within the project itself, three stakeholder pressures mattered most. First, the moving-load test governed the bridge as a structural system: bending, shear, and buckling had to be controlled across the span under a train that moved and progressively increased in weight. Second, material and fabrication limits acted as stakeholders of their own, because one 813 mm x 1016 mm x 1.27 mm sheet of matboard and two tubes of contact cement meant that strength could never be separated from cutting, fitting, splicing, and assembly logic. Third, geometric constraints forced the bridge to remain usable as a track: the total length had to fall between 1250 mm and 1270 mm, the deck had to stay horizontal, at least 100 mm wide, and below the allowed height above the supports.",
+  "The project’s primary objective was to design and build a bridge that could support large gravity loads across a 1200 mm span using only the permitted materials, while using beam theory and thin-plate buckling theory to predict the maximum load before failure. Teams were also required to document their design decisions, communicate the design through drawings, and demonstrate planning and prototyping throughout the construction process.",
+  "Within the project itself, three stakeholder pressures mattered most. First, the moving-load test governed the bridge as a structural system: bending, shear, and buckling had to be controlled across the span under a train that moved and progressively increased in weight. Second, material and fabrication limits acted as stakeholders of their own, because one 813 mm x 1016 mm x 1.27 mm sheet of matboard and two tubes of contact cement meant that strength could never be separated from cutting, fitting, splicing, and assembly logic. Third, geometric constraints forced the bridge to remain usable as a track: the total length had to fall between 1250 mm and 1270 mm, the deck had to stay horizontal, at least 100 mm wide, and below the allowed height above the supports [[cite:civ102-handout-2025]].",
 ];
 
 const civ102Stakeholders = [
@@ -491,9 +490,9 @@ const civ102Stakeholders = [
 ];
 
 const civ102RequirementsParagraphs = [
-  "The bridge had to satisfy both explicit project constraints and performance-based evaluation criteria. At the requirement level, the bridge had to span 1200 mm between supports, be at least 1250 mm long overall, keep the track horizontal and unobstructed, maintain a deck width of at least 100 mm, stay within the allowable height envelope, and rest on 60 mm flat support regions at both ends. It also had to be made only from the provided matboard and contact cement, with the material properties fixed by the handout rather than chosen by our team.",
-  "The loading requirements made the project structurally richer than a single static calculation. The bridge first had to survive Load Case 1, a moving 400 N train distributed across six axles, and then, if successful, withstand progressively heavier passes under Load Case 2, where the locomotive and freight cars increased in prescribed ratios [[cite:civ102-handout-2025]]. The first pass of Load Case 2 already raised the total train weight to 452 N, and the later loading sequence remained intentionally undisclosed to force robust design rather than overfitting to one exact case.",
-  "The official grading structure also mattered because it clarified what 'good' meant in this project. Beyond the written deliverables, bridge testing awarded marks for construction quality, bridge performance, and accuracy of failure-load estimation. Construction quality rewarded clean assembly and material handling; bridge performance rewarded actual tested strength, adjusted through a strength-to-weight based scoring method; and prediction accuracy rewarded how well the analytical model anticipated the final failure load.",
+  "The bridge had to meet fixed geometric and material constraints. It had to span 1200 mm, be at least 1250 mm long, keep the track horizontal and clear, provide a deck width of at least 100 mm, stay within the height limit, and rest on 60 mm flat supports at both ends. It also had to use only the provided matboard and contact cement.",
+  "The loading requirements made the design problem more demanding than a single static case. The bridge first had to survive a 400 N moving train load, then withstand progressively heavier passes under a second loading case. Because the later sequence was undisclosed, the design had to be robust rather than tuned to one exact load.",
+  "The grading scheme clarified what counted as success. Marks depended on construction quality, bridge performance, and failure-load prediction accuracy. In other words, the bridge had to be well built, strong in testing, and supported by a credible analytical model [[cite:civ102-handout-2025]].",
 ];
 
 const civ102Requirements = [
@@ -506,13 +505,13 @@ const civ102Requirements = [
 ];
 
 const civ102FinalSolutionParagraphs = [
-  "The final bridge was a simple pi-beam / box-girder style design built around structural clarity and constructability rather than geometric flourish. It used a 100 mm double-layer top flange, two centered webs spaced 60 mm apart, and an unequal diaphragm arrangement concentrated where buckling risk was highest. The final form was deliberately cleaner and simpler than visually more ambitious alternatives because our team prioritized a geometry that could be analyzed, fit onto the sheet, and built with enough consistency that the calculations still meant something.",
-  "This design was selected not because it produced the highest theoretical number our team ever saw, but because it was the strongest design that remained structurally credible, materially efficient, and manufacturable. That distinction mattered. A more aggressive evenly spaced diaphragm design reached 2.12 kN in analysis, but it could not fit on one matboard sheet and therefore was not a serious final candidate. The chosen bridge accepted some reduction in predicted capacity in exchange for a design that could actually be cut, assembled, and tested under real fabrication limits.",
+  "The final bridge was a restrained pi-beam box-girder design shaped by structural clarity and constructability rather than geometric complexity. It used a 100 mm double-layer top flange, two centered webs spaced 60 mm apart, and an unequal diaphragm arrangement concentrated in the regions most vulnerable to buckling. The geometry was intentionally simpler than more ambitious alternatives because our team prioritized a form that could be analyzed reliably, fit on a single sheet, and be assembled with enough consistency for the calculations to remain meaningful.",
+  "The design was chosen as the strongest option that still remained structurally credible, materially efficient, and feasible to manufacture. A more aggressive diaphragm arrangement reached 2.12 kN in analysis, though it could not fit on one matboard sheet and was therefore never a viable final candidate. The selected bridge accepted a lower predicted capacity in exchange for a design that could actually be cut, assembled, and tested within the fabrication constraints of the project [[cite:civ102-design-report]].",
 ];
 
 const civ102SelectionParagraphs = [
-  "The final bridge performed as a mixed but very informative result when compared against the analytical prediction. On paper, the completed pi-beam was expected to fail at 1.367 kN with a final mass of 704 g, corresponding to 0.824 N/g and a strength-to-self-weight ratio of 83.98. Those values showed that the final geometry remained structurally efficient relative to its own weight while still satisfying the fitting and manufacturability limits that had ruled out stronger but unbuildable earlier concepts.",
-  "Physical testing revealed where that analytical story stopped being reliable. The bridge failed at 580 N, which is 42.4% of the predicted 1.367 kN capacity, and it failed at the front splice rather than in the expected global compression mode. That mismatch is the most important result of the final review because it shows that the bridge was no longer primarily limited by the global section calculations. It was limited by local fabrication sensitivity, especially splice behavior, which the analytical model did not capture strongly enough.",
+  "The final bridge produced a mixed but informative result. On paper, the completed pi-beam was predicted to fail at 1.367 kN with a mass of 704 g, giving 0.824 N/g and a strength-to-self-weight ratio of 83.98.",
+  "In testing, the bridge failed at 580 N, or 42.4% of the predicted capacity, and it failed at the front splice rather than in the expected global compression mode. When we examined the wreckage, we found that the splice had been placed asymmetrically across the splice joint, which turned lateral forces into shear stress at the joint. This showed that the bridge was limited less by global section behavior and more by poor fabrication, especially splice design [[cite:civ102-performance-summary]].",
 ];
 
 const civ102Metrics = [
@@ -549,13 +548,13 @@ const civ102Metrics = [
 ];
 
 const civ102DecisionsIntro =
-  "Four engineering decisions shaped the bridge more than any single dimension.";
+  "Three engineering decisions shaped the bridge design.";
 
 const civ102Decisions = [
   {
     title: "Choose a simple bridge form",
     body:
-      "Our team selected a pi-beam / box-girder style section over truss or trapezoidal alternatives because it was easier to analyze systematically, easier to construct accurately from matboard, and easier to strengthen in response to a known governing mode. The point was not that simpler shapes are always stronger, but that in this project a structurally legible geometry gave our team better control over iteration.",
+      "Our team chose a pi-beam box-girder section over truss and trapezoidal alternatives because it gave us more control over the whole design process: the section was easier to analyze systematically, easier to construct accurately in matboard, and easier to revise once the governing weakness became clear. The value of that choice was not for simplicity\'s sake, but the fact that a more legible geometry made iteration more disciplined and more responsive to evidence.",
   },
   {
     title: "Let governing failure modes drive iteration",
@@ -563,21 +562,16 @@ const civ102Decisions = [
       "Design 0 made the first real weakness visible: the bridge was badly understrength, with thin-plate buckling case 1 controlling at a factor of safety of 0.597. From that point onward, major changes were made in response to whichever failure mode currently governed, not to whatever geometry looked stronger in isolation.",
   },
   {
-    title: "Sacrifice theoretical strength for manufacturability",
+    title: "Accept lower theoretical capacity for a buildable design",
     body:
-      "Once the strongest evenly spaced diaphragm iteration proved impossible to fit on the sheet, the bridge had to be redesigned downward into a version that could physically exist. That tradeoff led to the removal of the bottom flange, tighter web spacing, reduced flange layering, and a lower bridge depth. The project became strongest not when it chased the peak analytical number, but when it accepted that sheet fitting and assembly were structural constraints rather than afterthoughts.",
-  },
-  {
-    title: "Treat splice reliability as a primary structural issue",
-    body:
-      "The handout explicitly warned that splice connections were unavoidable because the matboard was shorter than the required span and that splice failure would not be captured by the standard calculations. Final testing confirmed exactly that concern. In hindsight, splice design and placement tolerance should have been treated as primary engineering decisions, not secondary construction details.",
+      "Once the strongest evenly spaced diaphragm iteration proved impossible to fit on a single matboard sheet, the bridge had to be redesigned into a form that could actually be fabricated. That tradeoff led to removing the bottom flange, tightening the web spacing, reducing flange layering, and lowering the bridge depth, so the final design emerged not from chasing the highest analytical load, but from accepting that sheet fitting and assembly were structural constraints with as much authority as the calculations themselves.",
   },
 ];
 
 const civ102ProcessParagraphs = [
-  "The handout framed the project as an iterative process beginning from Design 0. Teams were expected to compute the factor of safety for that initial bridge, identify the critical train positions for shear and bending, calculate applied stresses and capacities, determine the minimum factor of safety, then change geometric parameters and repeat. Each major iteration had to record design decisions, justifications, and results, while balancing material constraints and feasibility constraints rather than optimizing blindly.",
-  "That structure matched how the bridge actually evolved. The project did not improve through one smooth optimization path. It moved from a clearly understrength baseline, to stronger flange logic, to more aggressive diaphragm-based analytical concepts, and then back toward a simpler but buildable final bridge. Keeping the bridge logic structurally legible mattered here because it gave our team a shared basis for convergence: each revision could be judged against the current governing weakness, fitting limits, and buildability without losing track of why one bridge state should survive over another. Each stage solved one problem while often creating another: improving compression resistance increased material use, improving buckling control complicated fitting, and improving theoretical capacity raised fabrication sensitivity.",
-  "The most important iterative turn came at the end, when the physical test overruled the final analytical story. Up to failure, there were no obvious global distress signs elsewhere in the bridge; instead, the front splice failed first and dominated the outcome. That made the final iteration retrospective rather than geometric: the project had to be re-understood not as a bridge that was analytically weak, but as a bridge whose local manufacturing vulnerability had been underestimated.",
+  "The handout framed the project as an iterative process: analyze the baseline bridge, identify the governing weakness, revise the geometry, and repeat while balancing strength, material limits, and buildability.",
+  "Our bridge followed that pattern. It moved from an understrength baseline to analytically stronger concepts, then back toward a simpler final form that was easier to fabricate. Each iteration resolved one weakness while introducing another, especially between strength, sheet fitting, and construction complexity.",
+  "The most important revision came after testing, when failure at the front splice rather than in the expected global mode showed that local fabrication vulnerability had been underestimated [[cite:civ102-design-report]].",
 ];
 
 const civ102Skills = [
@@ -610,38 +604,40 @@ const civ102Phases: PraxisIPhase[] = [
 ];
 
 const civ102LearningParagraphs = [
-  "CIV102 taught me that structural optimization is a system problem, not a sequence of isolated geometry changes. A bridge can look analytically excellent while still being too sensitive to local details, fitting constraints, or construction tolerances to perform as predicted. That was the most important technical lesson of the project: strength is not just about whether the global section is large enough, but about whether the entire structural logic remains intact after fabrication.",
-  "The project also made clear that simple forms can be better engineering choices when they are easier to analyze, predict, and build accurately. In this bridge, structural clarity was not the opposite of ambition. It was the condition that allowed iteration to remain interpretable. At the same time, the test showed the limit of that clarity: even a clean global model can miss local failure mechanisms if splice geometry, alignment tolerance, and construction uncertainty are treated too lightly.",
+  "CIV102 taught me that structural optimization is not just a matter of changing geometry until the calculations improve, because analytical strength means little once local details, fabrication quality, and construction tolerances begin to weaken the load path the model assumes. The final splice failure made this fact apparant: the bridge was limited less by the predicted global mode than by a local weakness created at the joint itself.",
+  "The project also clarified why simpler forms can be stronger engineering choices, because they are easier to analyze, predict, and build accurately. The final test also showed the limit of that clarity: the bridge did not fail in the predicted global mode, but at the splice, where alignment and fabrication had created the real weak point [[cite:civ102-splice-failure-photo]].",
 ];
 
 const civ102ReflectionParagraphs = [
-  "This project sharpened my position on engineering design. CIV102 taught me that the strongest design is not the one with the highest analytical number, but the strongest design that remains structurally credible, materially efficient, and buildable under real fabrication limits. That is the lesson behind the bridge's mismatch between model and test: the global section was strong, but the local detail that had the least tolerance for error became the real governing condition.",
-	"More personally, the project clarified what I value when designs compete. I do not simply prefer 'simple' structures in the abstract. I prefer designs whose behavior can be understood, improved, and reproduced without depending on fragile assumptions about fabrication perfection. CIV102 therefore pushed me toward a more grounded definition of rigor: not just stronger calculations, but better control over the conditions that decide whether those calculations survive contact with the built object.",
+  "CIV102 sharpened my view of engineering design by showing that the best bridge was not the one with the highest predicted capacity, but the one that remained structurally credible, materially efficient, and buildable under real fabrication limits.",
+  "This project also demosntrated my trust in engineering designs that can be analyzed clearly, built consistently, and still perform without depending on near-perfect execution [[cite:civ102-design-report]].",
 ];
 
 const civ102CtmfSynthesis: ProjectCtmfSynthesis = {
-	title: "How The CTMFs Changed This Project",
-	intro:
-		"CIV102 improved through a sequence of CTMFs that each did a different kind of engineering work. One clarified what kind of bridge was worth building, one generated the next bridge state from the current governing weakness, and one made convergence traceable across successive revisions.",
-	entries: [
-		{
-			title: "Challenge assumptions changed what kind of bridge was worth optimizing",
-			body:
-				"This CTMF mattered early because it helped our team reject unnecessary structural complexity and visible overdesign before calculations hardened around them. Choosing the simpler pi-beam direction and later removing the bottom flange were both consequences of questioning whether extra geometry or material was actually doing useful structural work.",
-		},
-		{
-			title: "Calculations and simulation changed how the bridge evolved",
-			body:
-				"The scripts and section calculations turned each iteration into a response to the current governing weakness instead of a guess about what might be stronger. That is why the bridge progressed through a legible path of flange thickening, height optimization, diaphragm revision, and fitting-driven redesign rather than through ad hoc trial and error.",
-		},
-		{
-			title: "The six Pugh charts changed how convergence was justified",
-			body:
-				"The six bridge comparison charts made convergence traceable by showing what each major revision actually changed: which failure mode improved, which one became governing next, and when strength had to be traded away for buildability. Their limit was visible in the final failure: they converged the analytical bridge more completely than the built one, because splice reliability and fabrication sensitivity never entered the structure with equal force.",
-		},
-	],
-	closing:
-		"Together, these CTMFs taught me that strong structural reasoning is not only about making a bridge stronger on paper. CIV102 changed my understanding of rigor by showing that framing, generation, and convergence can all be logically strong while still underrepresenting the local fabrication condition that will actually fail first.",
+  title: "How The CTMFs Changed This Project",
+  intro:
+    "CIV102 improved through a sequence of CTMFs that each changed the bridge in a different way: one clarified what kind of bridge was worth building, one directed iteration toward the current governing weakness, and one made convergence across revisions easier to justify.",
+
+  entries: [
+    {
+      title: "Challenge assumptions changed what kind of bridge was worth optimizing",
+      body:
+        "This CTMF helped us reject complexity that was not earning its place. Choosing the pi-beam and later removing the bottom flange both came from asking whether added geometry was improving structural performance enough to justify the material, fitting, and fabrication cost it introduced.",
+    },
+    {
+      title: "Calculations and simulation changed how the bridge evolved",
+      body:
+        "The calculations turned each revision into a response to the current governing weakness rather than a speculative change in search of higher strength. That gave the bridge a more disciplined path of development, where each iteration followed from the structural limit exposed by the previous one.",
+    },
+    {
+      title: "The six Pugh charts changed how convergence was justified",
+      body:
+        "The six comparison charts made convergence traceable by showing what each revision improved, what weakness governed next, and where strength had to be traded for buildability. Their limit appeared in final testing, when splice sensitivity and fabrication error governed failure more strongly than the analytical comparisons had captured.",
+    },
+  ],
+
+  closing:
+    "Together, these CTMFs showed me that strong structural reasoning is not just about making a bridge stronger on paper. CIV102 made clear that framing, iteration, and convergence can all be logical while still missing the local fabrication condition that fails first.",
 };
 
 const civ102TeamCredit =
@@ -668,13 +664,6 @@ const civ102TeamContributions = [
 
 const civ102FabricationCredit =
   "Everyone helped build the bridge, including outlining, cutting, gluing, and finishing during construction.";
-
-const civ102TimeLogHighlights = [
-  { name: "William", total: "25.5 h" },
-  { name: "Michael", total: "24 h" },
-  { name: "Beckett", total: "23 h" },
-  { name: "Jeffrey", total: "23.5 h" },
-];
 
 const civ102Figures: Record<string, PraxisIFigure> = {
   bridge: {
@@ -730,7 +719,7 @@ const civ102Figures: Record<string, PraxisIFigure> = {
     refKey: "06",
     src: "/api/videos/civ102-build-review",
     alt: "CIV102 build review video showing the completed bridge in hand and from multiple viewing angles.",
-    caption: "Build review video of the completed bridge. It belongs in the final solution section because it shows the built object as the real outcome of the final geometry and fabrication decisions.",
+    caption: "Build review video of the completed bridge.",
     label: "Fig. 06",
     imageClassName: "object-contain bg-white p-3",
   },
@@ -754,7 +743,7 @@ const civ102Figures: Record<string, PraxisIFigure> = {
     refKey: "10",
     src: "/context-evidence/raw/civ102-failure.png",
     alt: "Bridge collapsed during testing under moving-train loading.",
-    caption: "Failure during testing. The bridge underperformed not because the calculations were useless, but because the built artifact was more splice-sensitive than the model represented.",
+    caption: "Image of Bifrost being crushed under the force of 580 N.",
     label: "Fig. 10",
     imageClassName: "object-cover",
   },
@@ -802,7 +791,7 @@ const civ102Annotations: ProjectAnnotation[] = [
     id: "civ102-rebuttal",
     kicker: "Reality Check",
     title: "580 N changed the meaning of the project.",
-    body: "The test did not merely show that the bridge was weaker than predicted. It showed that local fabrication sensitivity had become the real governing condition.",
+    body: "The test did not merely show that the bridge was weaker than predicted. It showed that poor fabrication had become the real governing condition.",
     accent: "#31d7c4",
     depth: "back",
     positionClassName: "left-[3.5%] bottom-[14rem] hidden xl:block",
@@ -821,19 +810,19 @@ const civ102Annotations: ProjectAnnotation[] = [
 ];
 
 const praxisIIOverviewParagraphs = [
-  "Praxis II began with a simple-looking winter astronomy problem, but the behavior that mattered most was more specific: amateur astronomers were removing their gloves to perform fine telescope adjustments. That made the issue less about generic warmth and more about a dexterity-manipulability gap. Cold and bulky gloves were interfering with focusing, eyepiece changes, small controls, and the recovery of dropped parts during real telescope use.",
-  "The project only became strong once that mismatch was treated as the real issue and not just one symptom of being cold outside. From there, the challenge was no longer to make a warmer glove in the abstract. It was to preserve fine task performance in low light, remain compatible with diverse telescope setups, avoid telescope-specific modification, and deal honestly with the fact that some astronomy actions still demanded near-direct fingertip control. The final outcome was a convertible heated glove system, but the stronger result was the chain of evidence that made that solution defensible.",
+  "Cold-weather amateur astronomy was a strong design opportunity because winter extends the observing window at exactly the time when telescope use becomes hardest to sustain, giving RASC centres longer nights for star parties and overnight sessions while forcing astronomers to work through January conditions near -6.7°C; in Toronto, the roughly 6.5 extra hours of darkness around the December solstice therefore arrived with the same seasonal cold that made precise operation harder on the hands [[cite:toronto-sun-december-timeanddate,toronto-climate-normals-1991-2020]].",
+  "What made the opportunity worth pursuing was not cold in general, but the specific conflict it created during use, since amateur astronomers often had to remove their gloves to focus, swap eyepieces, turn small controls, or recover dropped parts, exposing a direct gap between the fine manual precision telescope tasks demanded and what cold or gloved hands could actually do [[cite:praxis2-rfp]].",
 ];
 
 const praxisIIClaims = [
-  "The project became stronger once it stopped treating winter astronomy as a warmth problem and started treating it as a manipulability problem.",
-  "The first testing procedure was not trustworthy enough, so the evidence model had to be redesigned before convergence meant anything.",
-  "The final glove mattered because it accepted the warmth-versus-precision tradeoff through controlled modes instead of pretending one state could satisfy every task.",
+  "The project became stronger once it stopped treating winter astronomy as a warmth problem and started treating it as a manipulability problem [[cite:praxis2-rfp]].",
+  "The first testing procedure was not trustworthy enough, so the evidence model had to be redesigned before convergence meant anything [[cite:praxis2-showcase-doc]].",
+  "The final glove mattered because it accepted the warmth-versus-precision tradeoff through controlled modes instead of pretending one state could satisfy every task [[cite:praxis2-showcase-doc]].",
 ];
 
 const praxisIIObjectivesParagraphs = [
-  "The original Praxis II brief framed the opportunity broadly around improving cold-weather telescope operation, but stakeholder conversations and direct observation made the bottleneck more specific. The recurring failure was not simply that users felt cold. It was that cold hands and bulky gloves disrupted the fine manipulations telescope use depends on, especially focusing, small adjustments, and accessory handling in low light.",
-  "That reframing also clarified the two main project paths. One path was to redesign the telescope interaction itself through attachments or assistive devices. The other was to preserve user dexterity directly. Three pressures then shaped which path stayed credible: active RASC observers needed fingertip-level control during real winter tasks, telescope diversity made permanent telescope-specific redesign less defensible, and winter field conditions imposed cold, moisture, dim-light, portability, and setup-burden constraints that a serious solution had to respect.",
+  "The original Praxis II Request For Proposals document framed the opportunity broadly as improving cold-weather telescope operation, though stakeholder conversations and direct observation narrowed the governing issue much more sharply [[cite:praxis2-rfp]]. The recurring failure was not cold in the abstract, but the loss of fine manual control, since cold hands and bulky gloves interfered with focusing, small adjustments, and accessory handling in low light.",
+  "That reframing left two main directions: change the telescope through attachments, or preserve the user\'s dexterity directly. The second path proved more credible because observers still needed precise finger control, telescope setups varied too much for a single redesign, and the solution had to work in cold, wet, low-light conditions [[cite:praxis2-rfp,praxis2-one-pager]].",
 ];
 
 const praxisIIStakeholders = [
@@ -842,31 +831,26 @@ const praxisIIStakeholders = [
     body: "Needed a solution that preserved fine control during focusing, accessory changes, and small adjustments in real winter observing sessions.",
   },
   {
-    title: "Community equipment diversity",
+    title: "Equipment diversity across the RASC community",
     body: "Commercial and DIY telescope variation made permanent telescope-specific redesign less inclusive and less generalizable across the RASC community.",
   },
   {
     title: "Adjacent cold-weather dexterity users",
     body: "Food delivery drivers, hunters, sailors, and similar users reinforced that the underlying challenge was broader than astronomy alone: some cold-weather tasks still demand fine control, quick access, and reliable hand function outdoors.",
   },
-  {
-    title: "Winter field conditions",
-    body: "Cold, moisture, dim red-light use, portability, and setup burden all constrained what a credible astronomy solution could be.",
-  },
 ];
 
 const praxisIIRequirementsParagraphs = [
-  "By the final showcase stage, the requirement structure was no longer a broad winter-use summary. It was organized as a final constraint set with explicit requirement and evaluation-code logic around functionality, safety and comfort, reliability, portability, and astronomical-context compatibility.",
-  "That final showcase structure also made one design consequence explicit: observational quality was removed as its own constraint set because the glove did not modify the telescope. The end-state requirements therefore focused on what the glove itself had to do well, how it would be measured, and which earlier criteria were no longer relevant once the concept path had stabilized.",
+  "By the final showcase stage, the requirements worked best as a compact statement of what the glove had to preserve in real winter use, since the project was never just about adding heat and only held together as a solution when dexterity remained intact without bulk, fragility, or setup burden quietly breaking it [[cite:praxis2-showcase-doc]].",
+  "At the project-page level, the important structure is the governing constraint groups rather than every coded requirement, because criteria tied to telescope modification fell away once the project converged on preserving user dexterity directly rather than altering the telescope itself [[cite:praxis2-one-pager,praxis2-showcase-doc]].",
 ];
 
 const praxisIIRequirements = [
-  "Constraint Set 1, Functionality: R1.1 improve general dexterity relative to the heavy-glove concept; EC1.1 maximize general dexterity using the building test; EC1.2 maximize task-specific dexterity using the microscope test.",
-  "Constraint Set 2, Safety and Comfort: R2.1 maintain a safe contact temperature range consistent with the RFP; EC2.1 minimize overall temperature range; EC2.2 minimize temperature gradient.",
-  "Conditional Constraint Set 3, Reliability: R3.1 meet the functional-retention requirement; R3.2 meet the IP54 water-resistance standard; R3.3 allow no open circuits; EC3.1 maximize functional retention.",
-  "Constraint Set 4, Observational Quality: removed at the showcase stage because the glove made no telescope modifications or attachments.",
-  "Constraint Set 5, Portability: EC5.1 minimize action count; EC5.2 minimize mass; EC5.3 minimize volume.",
-  "Constraint Set 6, Astronomical Context Compatibility: R6.1 permit no telescope modifications or attachments; EC6.1 minimize the actuation force required to perform dexterous tasks while wearing the glove.",
+  "Functionality: preserve enough general and task-specific dexterity that fine telescope adjustments remain possible in winter conditions.",
+  "Safety and comfort: provide useful warmth without creating unsafe contact temperatures, harsh thermal gradients, or an uncomfortable hand state.",
+  "Reliability: keep the glove system functional under repeated outdoor use, including moisture exposure, wire durability, and stable electrical performance.",
+  "Portability: remain compact and low-burden enough that carrying, setup, and mode-switching do not undermine real observing use.",
+  "Astronomy compatibility: work with existing telescope setups and observing routines without requiring telescope-specific attachments or redesign.",
 ];
 
 const praxisIIFigures: Record<string, PraxisIFigure> = {
@@ -902,12 +886,20 @@ const praxisIIFigures: Record<string, PraxisIFigure> = {
     label: "Fig. 04",
     imageClassName: "object-contain bg-white p-3",
   },
-  performance: {
+  onePagerFront: {
     refKey: "05",
-    src: "/context-evidence/raw/praxis2-graph-time.png",
-    alt: "Average performance index or completion-time comparison across Praxis II prototype trials.",
-    caption: "Performance comparison across prototype trials. The project only became trustworthy once concept comparison was tied to task performance rather than to general warmth claims or feature count.",
-    label: "Fig. 05",
+    src: "/api/images/praxis2-one-pager/front",
+    alt: "Front side of the Praxis II one-pager summarizing requirements, evaluation criteria, and project framing.",
+    caption: "One-pager front side. This fits the Requirements and Evaluation Criteria section better because it summarizes the project framing and requirement logic rather than jumping ahead to later testing results.",
+    label: "Fig. 05A",
+    imageClassName: "object-contain bg-white p-3",
+  },
+  onePagerBack: {
+    refKey: "05b",
+    src: "/api/images/praxis2-one-pager/back",
+    alt: "Back side of the Praxis II one-pager summarizing requirements, evaluation criteria, and solution constraints.",
+    caption: "One-pager back side. Read with Fig. 05A, it keeps the section focused on the design brief, constraints, and evaluation logic rather than the final showcase poster.",
+    label: "Fig. 05B",
     imageClassName: "object-contain bg-white p-3",
   },
   modes: {
@@ -927,47 +919,47 @@ const praxisIIFigures: Record<string, PraxisIFigure> = {
     imageClassName: "object-contain bg-white p-3",
   },
   folding: {
-    refKey: "09",
+    refKey: "10",
     src: "/context-evidence/raw/praxis2-folding-configuration.webp",
     alt: "Folding configuration of the Praxis II physical prototype.",
     caption: "Folding configuration of the physical prototype. The convertible structure became necessary once validation showed that some astronomy tasks still required a higher-dexterity mode.",
-    label: "Fig. 09",
-    imageClassName: "object-contain bg-white p-3",
-  },
-  temp: {
-    refKey: "10",
-    src: "/context-evidence/raw/praxis2-graph-temp.png",
-    alt: "Temperature-loss comparison graph used in Praxis II testing.",
-    caption: "Temperature testing supported the glove's thermal logic, but the project only became trustworthy once thermal and dexterity questions were separated and then recombined carefully.",
     label: "Fig. 10",
     imageClassName: "object-contain bg-white p-3",
   },
-  dexterity: {
+  temp: {
     refKey: "11",
-    src: "/context-evidence/raw/praxis2-graph-dexterity.png",
-    alt: "Dexterity versus temperature graph from Praxis II testing.",
-    caption: "Dexterity versus temperature evidence showed why preserving usable fingertip performance mattered more than solving cold discomfort abstractly.",
+    src: "/context-evidence/raw/praxis2-graph-temp.png",
+    alt: "Temperature-loss comparison graph used in Praxis II testing.",
+    caption: "Temperature testing supported the glove's thermal logic, but the project only became trustworthy once thermal and dexterity questions were separated and then recombined carefully.",
     label: "Fig. 11",
     imageClassName: "object-contain bg-white p-3",
   },
+  dexterity: {
+    refKey: "12",
+    src: "/context-evidence/raw/praxis2-graph-dexterity.png",
+    alt: "Dexterity versus temperature graph from Praxis II testing.",
+    caption: "Dexterity versus temperature evidence showed why preserving usable fingertip performance mattered more than solving cold discomfort abstractly.",
+    label: "Fig. 12",
+    imageClassName: "object-contain bg-white p-3",
+  },
   wireOptimization: {
-    refKey: "08",
+    refKey: "09",
     src: "/context-evidence/raw/praxis2-wire-optimization.webp",
     alt: "Optimization study relating wire length to generated heat in the Praxis II glove system.",
     caption: "Wire-length optimization study. Limited electrical power made localized finger heating more defensible than trying to heat the entire glove uniformly.",
-    label: "Fig. 08",
+    label: "Fig. 09",
     imageClassName: "object-contain bg-white p-3",
   },
 };
 
 const praxisIIFinalSolutionParagraphs = [
-  "The final engineering solution was a convertible heated glove system designed around the fingers rather than the hand as a single thermal zone. Resistive carbon-fiber heating was concentrated where dexterity loss mattered most, because the project’s calculations and prototype testing showed that limited electrical power had to be used selectively rather than distributed everywhere. The battery was moved off the hand and onto a wrist-mounted support so the system would not reduce precision through added hand weight.",
-  "The glove also became explicitly multi-modal. A flip-back outer section allowed the user to move between a protected low-dexterity mode and a higher-dexterity operating mode for fine telescope tasks. That move came directly from validation. The project became stronger once it stopped pretending that one glove state could satisfy every astronomy action equally well and instead treated controlled switching between warmth and precision as part of the solution.",
+  "The final engineering solution was a convertible heated glove system designed around the fingers rather than the hand as a single thermal zone. Resistive carbon-fiber heating was concentrated where dexterity loss mattered most, because the project\'s calculations and prototype testing showed that limited electrical power had to be used selectively rather than distributed everywhere. The battery was moved off the hand and onto a wrist-mounted support so the system would not reduce precision through added hand weight [[cite:praxis2-showcase-doc,praxis2-final-poster]].",
+  "The glove also became explicitly multi-modal, using a flip-back outer section to let the user shift between a protected low-dexterity mode and a higher-dexterity mode for fine telescope tasks, a move supported by secondary validation with food delivery riders on electric bikes whose winter gloves reflected the same underlying need to alternate between thermal protection and precise hand use outdoors. The project improved once it stopped treating one glove state as sufficient for every astronomy action and instead built controlled switching between warmth and precision into the solution itself [[cite:praxis2-showcase-doc,praxis2-discord-record]].",
 ];
 
 const praxisIISelectionParagraphs = [
-  "The final concept was selected because it responded most directly to the reframed issue while respecting community-fit constraints. Early on, our team explored environment systems, software or error-mitigation ideas, telescope attachments, knob-turner concepts, and glove-based concepts. Several of those weakened once portability, setup burden, and telescope diversity were treated as real constraints rather than decorative considerations. A solution that depended on one telescope geometry or added too much interaction burden stopped being persuasive even if it looked clever in isolation.",
-  "The strongest showcase improvement is that convergence now has a clearer logic. Stage 1 revealed that the original cold-plunge procedure could not hold the cold condition long enough to generate trustworthy evidence, so the testing procedure itself had to change. Later observation and validation then weakened the knob-turner more decisively: only about 27.3% of observed actions were rotational, telescope operation involved many non-rotational hand tasks, and a turning aid added its own equip/unequip burden. The glove remained strongest because it preserved dexterity directly, stayed more generalizable across telescope setups, and later evolved into a convertible design that matched the real warmth-versus-precision tradeoff more honestly.",
+  "The final concept was selected because it responded most directly to the reframed issue while respecting community-fit constraints. Early on, our team explored environment systems, software or error-mitigation ideas, telescope attachments, knob-turner concepts, and glove-based concepts. Several of those weakened once portability, setup burden, and telescope diversity were treated as real constraints rather than decorative considerations. A solution that depended on one telescope geometry or added too much interaction burden stopped being persuasive even if it looked clever in isolation [[cite:praxis2-beta-release,praxis2-showcase-doc]].",
+  "The strongest improvement made was to make convergence have a clearer logic. Stage 1 revealed that the original cold-plunge procedure could not hold the cold condition long enough to generate trustworthy evidence, so the testing procedure itself had to change. Later observation and validation then weakened the knob-turner more decisively: only about 27.3% of observed actions were rotational, telescope operation involved many non-rotational hand tasks, and a turning aid added its own equip/unequip burden. The glove remained strongest because it preserved dexterity directly, stayed more generalizable across telescope setups, and later evolved into a convertible design that matched the real warmth-versus-precision tradeoff more honestly [[cite:praxis2-showcase-doc,praxis2-discord-record]].",
 ];
 
 const praxisIISelectionMetrics = [
@@ -1010,37 +1002,31 @@ const praxisIISelectionMetrics = [
 
 const praxisIIDecisions = [
   {
-    title: "Frame the issue as manipulability failure, not just warmth loss",
+    title: "Rebuild the testing procedure before trusting convergence",
     body:
-      "The project became stronger once it stopped treating winter astronomy as a generic comfort problem and instead focused on the task-level mismatch between cold-impaired hands and dexterity-sensitive telescope operation. That move made later decisions more defensible because our team could judge concepts by whether they preserved micro-task performance rather than by whether they simply sounded warm or protective.",
+      "The first cold-plunge setup looked rigorous, though it could only produce a few seconds of meaningful impairment before the hands began to recover, which meant the procedure was too weak to support honest comparison between concepts. The project improved once Stage 2 separated dexterity and thermal questions before bringing them back together later, because convergence only became defensible after the evidence model itself had been rebuilt [[cite:praxis2-showcase-doc]].",
   },
   {
-    title: "Redesign the testing procedure before trusting convergence",
+    title: "Use observed workflow to eliminate the knob-turner path",
     body:
-      "The first cold-plunge setup looked rigorous, but it only produced 1 to 3 seconds of meaningful impairment before the body reheated the hands. That meant the procedure itself was too weak to compare concepts honestly. Stage 2 improved the project by separating dexterity and thermal questions before recombining them later, which made the evidence behind convergence much stronger.",
+      "The knob-turner weakened once the team learned more about telescope use itself, not simply because the glove direction improved. Observation showed that only about 27.3% of actions were rotational, while many of the tasks that actually governed use depended on broader hand dexterity, and the turning aid introduced its own burden of attachment, removal, and telescope-specific fit. The project therefore shifted away from redesigning one motion and toward preserving hand capability across the larger workflow [[cite:praxis2-showcase-doc]].",
   },
   {
-    title: "Use workflow evidence to eliminate the knob-turner path",
+    title: "Treat controlled switching between warmth and precision as part of the solution",
     body:
-      "The knob-turner did not weaken only because the glove improved. It weakened because the project learned more about telescope use itself. Only about 27.3% of observed actions were rotational, many critical tasks involved broader hand dexterity, and a turning aid was not generalizable across different telescope mechanisms. The project therefore shifted away from redesigning one action and toward preserving hand capability across the workflow.",
-  },
-  {
-    title: "Accept controlled mode changes as part of the final solution",
-    body:
-      "The final glove improved when our team stopped treating glove removal as a failure to eliminate completely and instead treated it as a real use condition to manage. The multi-mode glove was stronger because it supported controlled transitions between warmth and precision rather than denying that the tradeoff existed. Finger-focused heating, wrist battery placement, and the flip-back outer layer all became more persuasive once they were tied to that reality.",
+      "The final glove became stronger once the team stopped acting as though glove removal had to be eliminated completely and instead treated the warmth-versus-precision tradeoff as a real condition of use that had to be managed directly. The multi-mode glove was more defensible for that reason, since finger-focused heating, wrist battery placement, and the flip-back outer layer all supported controlled transitions between protection and fingertip access rather than pretending one glove state could serve every astronomy action equally well.",
   },
 ];
 
 const praxisIIProcessParagraphs = [
-  "The Praxis II process did not move cleanly from problem statement to final glove. It began with a broad winter-astronomy usability opportunity, then expanded into multiple intervention levels including environment concepts, software or error-mitigation ideas, telescope attachments, knob-turner concepts, and direct handwear solutions. Early scoping and Beta preparation show that our team was still negotiating what the real issue was and what kind of solution space was actually defensible.",
-  "The strongest turn in the project came when both framing and testing were reopened. Stakeholder evidence and direct telescope interaction narrowed the issue toward preserving dexterity directly. Stage 1 testing then exposed that the cold-plunge method produced only 1 to 3 seconds of meaningful impairment, so the procedure itself had to change before concepts could be judged fairly. Once the requirements and testing questions were stated more clearly, our team had a firmer basis for comparing concept paths, weakening the knob-turner more honestly, and explaining why the glove remained the stronger direction. Once thermal and dexterity evidence were separated and later recombined, our team could weaken the knob-turner path more honestly, justify finger-focused heating, and converge on the final multi-mode glove with stronger evidence behind it.",
+  "Praxis II began with a broad winter-astronomy usability frame and expanded across multiple intervention levels, which meant the early project was still unstable in both problem definition and solution space. It only improved once framing and testing were reopened together, because stakeholder evidence narrowed the issue toward preserving dexterity directly while Stage 1 showed that the cold-plunge procedure was too weak to compare concepts fairly; from there, clearer requirements and testing logic made it possible to reject the knob-turner more honestly, justify finger-focused heating, and converge on the final multi-mode glove [[cite:praxis2-beta-release,praxis2-showcase-doc]].",
 ];
 
 const praxisIIPhases: PraxisIPhase[] = [
   {
     id: "01",
-    title: "Broad winter usability brief",
-    body: "The project started with an over-broad winter astronomy opportunity that still allowed multiple, competing interpretations of what actually needed to be fixed.",
+    title: "Broad winter-use framing",
+    body: "The project began with a broad winter astronomy opportunity that still allowed multiple interpretations of what actually needed to be fixed.",
   },
   {
     id: "02",
@@ -1050,48 +1036,48 @@ const praxisIIPhases: PraxisIPhase[] = [
   {
     id: "03",
     title: "Testing procedure reopened",
-    body: "The first cold-plunge setup failed to hold the key condition long enough, so the project had to redesign its testing logic before it could trust its own comparisons or defend concept rankings.",
+    body: "The first cold-plunge setup failed to hold the key condition long enough, so the project had to rebuild its testing logic before concept comparisons could be trusted.",
   },
   {
     id: "04",
-    title: "Convertible glove convergence",
-    body: "The final concept emerged after staged testing justified finger-focused heating, weakened the knob-turner path, and showed that one glove mode could not honestly satisfy every telescope task.",
+    title: "Convergence on the multi-mode glove",
+    body: "The final concept emerged after staged testing justified finger-focused heating, weakened the knob-turner path, and showed that no single glove state could honestly satisfy every telescope task.",
   },
 ];
 
 const praxisIILearningParagraphs = [
-  "Praxis II taught me that winter-use engineering here was really a manipulability problem, not just a warmth problem. The strongest design move was not adding more heat everywhere. It was identifying which part of the workflow was failing, then preserving that capability as directly as possible. That changed how I think about user-centered engineering: the best intervention often targets the exact function being lost, not the broadest symptom surrounding it.",
-  "The project also made clear that testing procedures are themselves engineering decisions. The first test setup looked rigorous, but it produced unstable evidence because the cold condition disappeared too quickly. The project improved only after our team treated that procedural weakness as real, separated confounded variables, and redesigned the testing logic before defending the concepts too confidently.",
+  "Praxis II made clear that winter telescope use does not fail simply because users are cold, but because cold and bulky handwear begin to erode the fine manual control that the workflow repeatedly demands, so the project improved only once it treated manipulability rather than warmth as the real quantity to protect. From that point on, the strongest design decisions were the ones that preserved fingertip performance directly instead of responding to cold at the level of a broad, less useful symptom.",
+  "The project also showed that poor testing logic can make a design process look more certain than it actually is, because the original cold-plunge method produced only brief impairment and therefore could not support fair comparison between concepts even though it appeared rigorous on the surface. Once that weakness was treated as a real engineering problem, and not just an inconvenience in the procedure, the team could separate thermal and dexterity questions, rebuild the evidence model, and defend convergence on stronger ground.",
 ];
 
 const praxisIIReflectionParagraphs = [
-  "Praxis II sharpened my position on design rigor. I still value explicit requirements, traceable justification, and structured convergence, but this project showed me that rigor becomes harmful when it hardens the scope or the criteria before the evidence deserves that certainty. Early in the project, detailed objectives and narrow expectations behaved more like constraints on thinking than supports for design.",
-	"More personally, the project clarified one of my recurring biases: I am more comfortable tightening a problem than living with ambiguity. That helps when the logic is ready, but it can also make me trust early structure too quickly. Praxis II became one of the clearest reminders that good engineering is not only about tightening the design space. It is also about knowing when the design space has been tightened too early, when the testing procedure is too weak, and when both need to reopen before a concept can be trusted.",
+  "Praxis II sharpened my view of design rigor by showing that rigor is useful only when the scope, criteria, and testing logic remain answerable to evidence. Early in the project, detailed objectives and narrow expectations created structure before the problem had been understood well enough, so what looked rigorous at first was sometimes narrowing the project too soon.",
+	"The project also clarified a recurring bias in my own practice: I am more comfortable tightening a problem than staying with ambiguity, which helps once the logic is ready, though it can also make early structure feel more trustworthy than it is. Praxis II made that risk difficult to ignore, because the project only improved after both the framing and the testing procedure were reopened, and that made the lesson more specific than “stay flexible”: good engineering depends on recognizing when the problem has narrowed too early, when the evidence is too weak to support convergence, and when both have to be rebuilt before a concept deserves trust.",
 ];
 
 const praxisIICtmfSynthesis: ProjectCtmfSynthesis = {
 	title: "How The CTMFs Changed This Project",
 	intro:
-		"Praxis II became much stronger once its main CTMFs stopped acting like separate exercises and started changing the project in sequence. One identified the real mismatch, one rebuilt the evidence model, and one widened early thermal logic without being mistaken for proof of the final answer.",
+		"Praxis II improved once its main CTMFs stopped reading as separate course exercises and began reshaping the project in sequence, with one reframing the problem around the actual use failure, one rebuilding the evidence model, and one expanding the early design space without being mistaken for proof of the final concept.",
 	entries: [
 		{
 			title: "Root cause analysis changed what the project was actually about",
 			body:
-				"This CTMF stopped our team from treating winter astronomy as a generic warmth problem and instead exposed a dexterity-manipulability breakdown during telescope micro-tasks. That reframing mattered because it opened two real intervention paths at the start: reduce the dexterity demand of telescope use or preserve user dexterity directly under winter conditions.",
+				"Root cause analysis shifted the project away from winter discomfort in general and toward the actual breakdown in use: the loss of dexterity during fine telescope tasks. That reframing clarified the real intervention paths from the start.",
 		},
 		{
 			title: "Verification and validation changed which evidence could be trusted",
 			body:
-				"The project improved once our team recognized that the first cold-plunge setup was too weak to stand in for sustained winter use. Separating dexterity and thermal testing made the comparison more honest, weakened the knob-turner path, and made the glove path defensible for the right reasons rather than because one weak procedure made it look promising.",
+				"Verification and validation exposed that the first cold-plunge setup was too weak to support serious comparison. Rebuilding the testing logic made later convergence more credible and weakened the knob-turner on firmer grounds.",
 		},
 		{
 			title: "Biomimicry changed the early divergence logic, not the final proof",
 			body:
-				"Biomimicry helped our team generate non-default ideas such as selective insulation, protected warm zones, and modal dexterity instead of defaulting immediately to a standard heated glove. Its real value was early: it widened the design space and seeded thermal-zoning logic, but later validation still had to decide which of those ideas could survive in a real astronomy workflow.",
+				"Biomimicry widened the early concept space by introducing ideas like selective insulation and mode-based dexterity instead of defaulting immediately to a standard heated glove. Its value was in generating directions, not proving which one should win.",
 		},
 	],
 	closing:
-		"Together, these CTMFs taught me that this project was not mainly about inventing a glove. Praxis II changed my process by showing that good engineering sometimes means redesigning the problem definition and the evidence model before the final concept deserves to be trusted.",
+		"Together, these CTMFs made the project stronger by correcting the problem definition and the evidence before the final concept was trusted.",
 };
 
 const ProjectCtmfSynthesisSection = ({
@@ -1145,14 +1131,33 @@ const ProjectCtmfSynthesisSection = ({
 };
 
 const praxisIISkills = [
-  "The real engineering issue was loss of manipulability during telescope use, not generic winter discomfort alone.",
-  "A clean testing procedure can be as important as a good concept, because weak evidence can make convergence look stronger than it is.",
-  "Workflow evidence can invalidate a seemingly clever concept if that concept only addresses one small portion of the real task sequence.",
-  "A design can be stronger when it manages a real tradeoff honestly instead of pretending that tradeoff can be designed away.",
+  "The core engineering problem was loss of manipulability during telescope use, not winter discomfort in general.",
+  "Testing logic matters as much as concept quality, because weak evidence can make convergence seem more justified than it is.",
+  "Workflow evidence can weaken a concept that only solves one narrow part of a larger task sequence.",
+  "A design often becomes stronger when it manages a real tradeoff directly instead of pretending it can eliminate it.",
 ];
 
 const praxisIITeamCredit =
-  "Praxis II was completed collaboratively within the course context. Framing, research, divergence, prototyping, testing, and presentation work should be credited to the full project team rather than to one individual artifact owner.";
+  "Praxis II was completed collaboratively within the course team, with each member's responsibilities are outlined below:";
+
+const praxisIITeam = [
+  {
+    name: "William Xu",
+    role: "Developed the prototype and led the root cause analysis and external validation with food delivery workers.",
+  },
+  {
+    name: "Mike Liu",
+    role: "Led design research, optimized the circuit, and contributed to testing.",
+  },
+  {
+    name: "Mikael Sharify-Funk",
+    role: "Contributed to prototype testing and developed the comparison matrices and divergence-convergence process.",
+  },
+  {
+    name: "Alex Zhu",
+    role: "Contributed to prototype development and poster production.",
+  },
+];
 
 const praxisIICtmfLessons: Record<string, string> = {
   "root-cause-analysis":
@@ -1270,7 +1275,7 @@ const PraxisIProjectPage = ({
                   key={paragraph}
                   className="max-w-4xl text-base leading-8 text-slate-200"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {paragraph}
+                  <CitationText text={paragraph} />
                 </p>
               ))}
             </div>
@@ -1317,7 +1322,7 @@ const PraxisIProjectPage = ({
                   key={paragraph}
                   className="text-base leading-8 text-slate-900/82"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {paragraph}
+                  <CitationText text={paragraph} />
                 </p>
               ))}
             </div>
@@ -1333,7 +1338,7 @@ const PraxisIProjectPage = ({
                   <p
                     className="mt-2 text-sm leading-7 text-slate-900/78"
                     style={{ fontFamily: "var(--font-vercetti)" }}>
-                    {stakeholder.body}
+                    <CitationText text={stakeholder.body} />
                   </p>
                 </div>
               ))}
@@ -1352,7 +1357,7 @@ const PraxisIProjectPage = ({
                   key={paragraph}
                   className="text-base leading-8 text-slate-200"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {paragraph}
+                  <CitationText text={paragraph} />
                 </p>
               ))}
             </div>
@@ -1414,7 +1419,7 @@ const PraxisIProjectPage = ({
                   key={paragraph}
                   className="text-base leading-8 text-slate-900/82"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {paragraph}
+                  <CitationText text={paragraph} />
                 </p>
               ))}
             </div>
@@ -1436,11 +1441,16 @@ const PraxisIProjectPage = ({
               </div>
             </div>
 
-            <p
-              className="mt-5 text-base leading-8 text-slate-200"
-              style={{ fontFamily: "var(--font-vercetti)" }}>
-              <FigureReferenceText text={praxisISelectionParagraph} refs={praxisIFigureReferences} />
-            </p>
+            <div className="mt-5 grid gap-4">
+              {praxisISelectionParagraphs.map((paragraph) => (
+                <p
+                  key={paragraph}
+                  className="text-base leading-8 text-slate-200"
+                  style={{ fontFamily: "var(--font-vercetti)" }}>
+                  <FigureReferenceText text={paragraph} refs={praxisIFigureReferences} />
+                </p>
+              ))}
+            </div>
 
             <div className="mt-8 grid gap-3 md:grid-cols-2">
               {praxisIMetrics.map((row) => (
@@ -1467,12 +1477,12 @@ const PraxisIProjectPage = ({
               ))}
             </div>
 
-            <div className="mt-8 grid gap-4 xl:grid-cols-2">
+            <div className="mt-8 grid gap-4">
               {[praxisIFigures.acoustic, praxisIFigures.pressure, praxisIFigures.co2].map((figure, index) => (
                 <article
                   key={figure.label}
                   id={getFigureAnchorId("praxis-i", figure.refKey!)}
-                  className={`scroll-mt-28 rounded-[1.35rem] border border-white/10 bg-[#101d2b] p-4 ${index === 0 ? "xl:col-span-2" : ""}`}>
+                  className="scroll-mt-28 rounded-[1.35rem] border border-white/10 bg-[#101d2b] p-4">
                   <div className="mb-3 flex items-center justify-between gap-3">
                     <p
                       className="text-[0.68rem] uppercase tracking-[0.28em] text-sky-200/70"
@@ -1481,7 +1491,7 @@ const PraxisIProjectPage = ({
                     </p>
                   </div>
                   <div className="overflow-hidden rounded-[1.2rem] border border-white/10 bg-white">
-                    <div className="relative h-[16rem] w-full">
+                    <div className={`relative w-full ${index === 0 ? "h-[16rem]" : "h-[20rem] md:h-[24rem]"}`}>
                       <Image src={figure.src} alt={figure.alt} fill className={figure.imageClassName} />
                     </div>
                   </div>
@@ -1533,7 +1543,7 @@ const PraxisIProjectPage = ({
                 <p
                   className="mt-4 text-sm leading-7 text-slate-200"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {decision.body}
+                  <CitationText text={decision.body} />
                 </p>
               </article>
             ))}
@@ -1590,7 +1600,7 @@ const PraxisIProjectPage = ({
                   <p
                     className="mt-3 text-sm leading-7 text-slate-300"
                     style={{ fontFamily: "var(--font-vercetti)" }}>
-                    {figure.caption}
+                    <CitationText text={figure.caption} />
                   </p>
                 </article>
               ))}
@@ -1611,7 +1621,7 @@ const PraxisIProjectPage = ({
                   key={paragraph}
                   className="text-base leading-8 text-slate-900/82"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {paragraph}
+                  <CitationText text={paragraph} />
                 </p>
               ))}
             </div>
@@ -1653,7 +1663,7 @@ const PraxisIProjectPage = ({
                   key={paragraph}
                   className="text-base leading-8 text-slate-900/82"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {paragraph}
+                  <CitationText text={paragraph} />
                 </p>
               ))}
             </div>
@@ -1723,7 +1733,7 @@ const PraxisIProjectPage = ({
                   key={paragraph}
                   className="text-base leading-8 text-slate-200"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {paragraph}
+                  <CitationText text={paragraph} />
                 </p>
               ))}
             </div>
@@ -1809,7 +1819,6 @@ const PraxisIProjectPage = ({
           </article>
         </section>
 
-        <ReferencesSection className="mt-6" />
       </div>
     </main>
   );
@@ -1904,7 +1913,7 @@ const CIV102ProjectPage = ({
                   key={claim}
                   className="rounded-[1.35rem] border border-white/10 bg-white/5 px-4 py-4 text-sm leading-7 text-slate-100"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {claim}
+                  <CitationText text={claim} />
                 </div>
               ))}
             </div>
@@ -1964,7 +1973,7 @@ const CIV102ProjectPage = ({
                   <p
                     className="mt-2 text-sm leading-7 text-slate-900/78"
                     style={{ fontFamily: "var(--font-vercetti)" }}>
-                    {stakeholder.body}
+                    <CitationText text={stakeholder.body} />
                   </p>
                 </div>
               ))}
@@ -2122,7 +2131,7 @@ const CIV102ProjectPage = ({
                   key={paragraph}
                   className="text-sm leading-7 text-slate-800/78"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {paragraph}
+                  <CitationText text={paragraph} />
                 </p>
               ))}
             </div>
@@ -2141,7 +2150,7 @@ const CIV102ProjectPage = ({
                   key={paragraph}
                   className="text-base leading-8 text-slate-200"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {paragraph}
+                  <CitationText text={paragraph} />
                 </p>
               ))}
             </div>
@@ -2186,7 +2195,7 @@ const CIV102ProjectPage = ({
             <p
               className="max-w-xl text-sm leading-7 text-slate-300"
               style={{ fontFamily: "var(--font-vercetti)" }}>
-              The bridge became stronger when our team stopped treating geometry, fitting, and fabrication as separate conversations and instead treated them as one structural argument.
+              The bridge improved once geometry, fitting, and fabrication were handled as one structural argument, since each constrained the others from the start.
             </p>
           </div>
 
@@ -2208,7 +2217,7 @@ const CIV102ProjectPage = ({
                 <p
                   className="mt-4 text-sm leading-7 text-slate-200"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {decision.body}
+                  <CitationText text={decision.body} />
                 </p>
               </article>
             ))}
@@ -2253,7 +2262,7 @@ const CIV102ProjectPage = ({
                   key={paragraph}
                   className="text-sm leading-7 text-slate-900/80"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {paragraph}
+                  <CitationText text={paragraph} />
                 </p>
               ))}
             </div>
@@ -2328,7 +2337,7 @@ const CIV102ProjectPage = ({
                   key={paragraph}
                   className="text-sm leading-7 text-slate-800/78"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {paragraph}
+                  <CitationText text={paragraph} />
                 </p>
               ))}
             </div>
@@ -2370,7 +2379,7 @@ const CIV102ProjectPage = ({
                   key={paragraph}
                   className="text-sm leading-7 text-slate-200"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {paragraph}
+                  <CitationText text={paragraph} />
                 </p>
               ))}
             </div>
@@ -2397,94 +2406,37 @@ const CIV102ProjectPage = ({
           accentClassName="text-slate-700/60"
         />
 
-        <section className="mt-6">
-          <article className={`${lightPanelClass} p-6 md:p-8`}>
+        <section className="mt-6 grid gap-6 xl:grid-cols-[0.82fr_1.18fr]">
+          <article className={`${darkPanelClass} p-6 md:p-7`}>
             <p
-              className="text-[0.68rem] uppercase tracking-[0.3em] text-slate-700/60"
+              className="text-[0.68rem] uppercase tracking-[0.3em] text-sky-200/70"
               style={{ fontFamily: "var(--font-vercetti)" }}>
               Team Credit
             </p>
             <p
-              className="mt-4 max-w-3xl text-sm leading-7 text-slate-900/78"
+              className="mt-4 text-sm leading-7 text-slate-300"
               style={{ fontFamily: "var(--font-vercetti)" }}>
               {civ102TeamCredit}
             </p>
 
-            <div className="mt-6 grid gap-3 md:grid-cols-2">
+            <div className="mt-5 grid gap-3" style={{ fontFamily: "var(--font-vercetti)" }}>
               {civ102TeamContributions.map((member) => (
-                <article key={member.name} className="rounded-[1.25rem] border border-slate-900/10 bg-white/70 px-4 py-4">
-                  <p
-                    className="text-[0.7rem] uppercase tracking-[0.26em] text-slate-700/62"
-                    style={{ fontFamily: "var(--font-vercetti)" }}>
-                    {member.name}
-                  </p>
-                  <p
-                    className="mt-2 text-sm leading-7 text-slate-900/78"
-                    style={{ fontFamily: "var(--font-vercetti)" }}>
-                    {member.role}
-                  </p>
-                </article>
-              ))}
-            </div>
-
-            <div className="mt-6 rounded-[1.25rem] border border-slate-900/10 bg-[#171a22] px-4 py-4 text-[#f8f3e8]">
-              <p
-                className="text-[0.68rem] uppercase tracking-[0.28em] text-amber-200/70"
-                style={{ fontFamily: "var(--font-vercetti)" }}>
-                Shared Construction Work
-              </p>
-              <p
-                className="mt-3 text-sm leading-7 text-slate-200"
-                style={{ fontFamily: "var(--font-vercetti)" }}>
-                {civ102FabricationCredit}
-              </p>
-            </div>
-
-            <div className="mt-6 grid gap-3 md:grid-cols-4">
-              {civ102TimeLogHighlights.map((entry) => (
                 <div
-                  key={entry.name}
-                  className="rounded-[1.2rem] border border-slate-900/10 bg-white px-4 py-4 text-center">
-                  <p
-                    className="text-[0.68rem] uppercase tracking-[0.24em] text-slate-700/60"
-                    style={{ fontFamily: "var(--font-vercetti)" }}>
-                    {entry.name}
-                  </p>
-                  <p
-                    className="mt-2 text-2xl text-slate-950"
-                    style={{ fontFamily: "var(--font-soria)" }}>
-                    {entry.total}
-                  </p>
+                  key={member.name}
+                  className="rounded-[1.15rem] border border-white/10 bg-white/5 px-4 py-4">
+                  <p className="text-sm text-white">{member.name}</p>
+                  <p className="mt-2 text-sm leading-7 text-slate-300">{member.role}</p>
                 </div>
               ))}
             </div>
 
-            <div className="mt-6 overflow-hidden rounded-[1.4rem] border border-slate-900/10 bg-white">
-              <div className="px-4 pt-4">
-                <p
-                  className="text-[0.68rem] uppercase tracking-[0.3em] text-slate-700/60"
-                  style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {civ102Figures.timeLog.label}
-                </p>
-              </div>
-              <div className="relative h-[24rem] w-full">
-                <Image
-                  src={civ102Figures.timeLog.src}
-                  alt={civ102Figures.timeLog.alt}
-                  fill
-                  className={civ102Figures.timeLog.imageClassName}
-                />
-              </div>
-            </div>
             <p
-              className="mt-4 max-w-4xl text-sm leading-7 text-slate-900/72"
+              className="mt-5 border-t border-white/10 pt-5 text-sm leading-7 text-slate-300"
               style={{ fontFamily: "var(--font-vercetti)" }}>
-              {civ102Figures.timeLog.caption}
+              {civ102FabricationCredit}
             </p>
           </article>
-        </section>
 
-        <section className="mt-6">
           <article className={`${lightPanelClass} p-6 md:p-8`}>
             <p
               className="text-[0.68rem] uppercase tracking-[0.3em] text-slate-700/60"
@@ -2494,7 +2446,7 @@ const CIV102ProjectPage = ({
             <h2
               className="mt-3 text-4xl text-slate-950"
               style={{ fontFamily: "var(--font-soria)" }}>
-              Four tools unpack the bridge in more detail
+              Three tools unpack the bridge in more detail
             </h2>
             <p
               className="mt-4 max-w-2xl text-sm leading-7 text-slate-800/72"
@@ -2536,7 +2488,6 @@ const CIV102ProjectPage = ({
           </article>
         </section>
 
-        <ReferencesSection className="mt-6" />
       </div>
     </main>
   );
@@ -2622,7 +2573,7 @@ const PraxisIIProjectPage = ({
                   key={paragraph}
                   className="max-w-4xl text-base leading-8 text-slate-200"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {paragraph}
+                  <CitationText text={paragraph} />
                 </p>
               ))}
             </div>
@@ -2633,7 +2584,7 @@ const PraxisIIProjectPage = ({
                   key={claim}
                   className="rounded-[1.35rem] border border-white/10 bg-white/5 px-4 py-4 text-sm leading-7 text-slate-100"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {claim}
+                  <CitationText text={claim} />
                 </div>
               ))}
             </div>
@@ -2677,7 +2628,7 @@ const PraxisIIProjectPage = ({
                   key={paragraph}
                   className="text-sm leading-7 text-slate-900/80"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {paragraph}
+                  <CitationText text={paragraph} />
                 </p>
               ))}
             </div>
@@ -2699,7 +2650,7 @@ const PraxisIIProjectPage = ({
               ))}
             </div>
 
-            <div className="mt-6 grid gap-4 md:grid-cols-2">
+            <div className="mt-6 grid gap-5">
               {[praxisIIFigures.framing, praxisIIFigures.stakeholderMap].map((figure) => (
                 <article key={figure.label} className="rounded-[1.25rem] border border-slate-900/10 bg-white/70 p-4">
                   <p
@@ -2708,7 +2659,7 @@ const PraxisIIProjectPage = ({
                     {figure.label}
                   </p>
                   <div className="overflow-hidden rounded-[1.2rem] border border-slate-900/10 bg-white">
-                    <div className="relative h-[13rem] w-full">
+                    <div className="relative h-[20rem] w-full md:h-[24rem] lg:h-[22rem]">
                       <Image src={figure.src} alt={figure.alt} fill className={figure.imageClassName} />
                     </div>
                   </div>
@@ -2735,7 +2686,7 @@ const PraxisIIProjectPage = ({
                   key={paragraph}
                   className="text-base leading-8 text-slate-200"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {paragraph}
+                  <CitationText text={paragraph} />
                 </p>
               ))}
             </div>
@@ -2755,24 +2706,34 @@ const PraxisIIProjectPage = ({
                 <p
                   className="text-[0.68rem] uppercase tracking-[0.3em] text-emerald-200/70"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {praxisIIFigures.performance.label}
+                  1-pager
                 </p>
               </div>
-              <div className="overflow-hidden rounded-[1.25rem] border border-white/10 bg-white">
-                <div className="relative h-[16rem] w-full">
-                  <Image
-                    src={praxisIIFigures.performance.src}
-                    alt={praxisIIFigures.performance.alt}
-                    fill
-                    className={praxisIIFigures.performance.imageClassName}
-                  />
-                </div>
+              <div className="grid gap-4">
+                {[praxisIIFigures.onePagerFront, praxisIIFigures.onePagerBack].map((figure) => (
+                  <figure key={figure.label} className="overflow-hidden rounded-[1.25rem] border border-white/10 bg-white p-3">
+                    <p
+                      className="mb-3 text-[0.68rem] uppercase tracking-[0.3em] text-slate-700/60"
+                      style={{ fontFamily: "var(--font-vercetti)" }}>
+                      {figure.label}
+                    </p>
+                    <div className="relative h-[34rem] w-full">
+                      <Image
+                        src={figure.src}
+                        alt={figure.alt}
+                        fill
+                        sizes="(min-width: 1280px) 44vw, 100vw"
+                        className={figure.imageClassName}
+                      />
+                    </div>
+                    <figcaption
+                      className="mt-4 text-sm leading-7 text-slate-900/80"
+                      style={{ fontFamily: "var(--font-vercetti)" }}>
+                      {figure.caption}
+                    </figcaption>
+                  </figure>
+                ))}
               </div>
-              <p
-                className="mt-4 px-2 text-sm leading-7 text-slate-300"
-                style={{ fontFamily: "var(--font-vercetti)" }}>
-                {praxisIIFigures.performance.caption}
-              </p>
             </article>
           </article>
         </section>
@@ -2822,10 +2783,11 @@ const PraxisIIProjectPage = ({
                   key={paragraph}
                   className="text-sm leading-7 text-slate-800/78"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {paragraph}
+                  <CitationText text={paragraph} />
                 </p>
               ))}
             </div>
+
           </article>
 
           <article className={`${darkPanelClass} p-6 md:p-8`}>
@@ -2841,7 +2803,7 @@ const PraxisIIProjectPage = ({
                   key={paragraph}
                   className="text-base leading-8 text-slate-200"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {paragraph}
+                  <CitationText text={paragraph} />
                 </p>
               ))}
             </div>
@@ -2886,7 +2848,7 @@ const PraxisIIProjectPage = ({
             <p
               className="max-w-xl text-sm leading-7 text-slate-300"
               style={{ fontFamily: "var(--font-vercetti)" }}>
-              Praxis II was not only a glove project. It was a project about recognizing what the issue actually was, what the community could accept, and what the testing procedure was trustworthy enough to claim.
+              Praxis II only started to make sense once the framing, the testing procedure, and the final concept were all aligned around the same winter telescope-use failure.
             </p>
           </div>
 
@@ -2904,7 +2866,7 @@ const PraxisIIProjectPage = ({
                 <p
                   className="mt-4 text-sm leading-7 text-slate-200"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {decision.body}
+                  <CitationText text={decision.body} />
                 </p>
               </article>
             ))}
@@ -2949,7 +2911,7 @@ const PraxisIIProjectPage = ({
                   key={paragraph}
                   className="text-sm leading-7 text-slate-900/80"
                   style={{ fontFamily: "var(--font-vercetti)" }}>
-                  {paragraph}
+                  <CitationText text={paragraph} />
                 </p>
               ))}
             </div>
@@ -3085,27 +3047,35 @@ const PraxisIIProjectPage = ({
           </article>
         </section>
 
-        <section className="mt-6">
-          <article className={`${lightPanelClass} p-6 md:p-8`}>
-            <p
-              className="text-[0.68rem] uppercase tracking-[0.3em] text-slate-700/60"
-              style={{ fontFamily: "var(--font-vercetti)" }}>
-              Team Credit
-            </p>
-            <p
-              className="mt-4 max-w-3xl text-sm leading-7 text-slate-900/78"
-              style={{ fontFamily: "var(--font-vercetti)" }}>
-              {praxisIITeamCredit}
-            </p>
-          </article>
-        </section>
-
         <ProjectCtmfSynthesisSection
           synthesis={praxisIICtmfSynthesis}
           accentClassName="text-slate-700/60"
         />
 
-        <section className="mt-6">
+        <section className="mt-6 grid gap-6 xl:grid-cols-[0.82fr_1.18fr]">
+          <article className={`${darkPanelClass} p-6 md:p-7`}>
+            <p
+              className="text-[0.68rem] uppercase tracking-[0.3em] text-sky-200/70"
+              style={{ fontFamily: "var(--font-vercetti)" }}>
+              Team Credit
+            </p>
+            <p
+              className="mt-4 text-sm leading-7 text-slate-300"
+              style={{ fontFamily: "var(--font-vercetti)" }}>
+              {praxisIITeamCredit}
+            </p>
+            <div className="mt-5 grid gap-3" style={{ fontFamily: "var(--font-vercetti)" }}>
+              {praxisIITeam.map((member) => (
+                <div
+                  key={member.name}
+                  className="rounded-[1.15rem] border border-white/10 bg-white/5 px-4 py-4">
+                  <p className="text-sm text-white">{member.name}</p>
+                  <p className="mt-2 text-sm leading-7 text-slate-300">{member.role}</p>
+                </div>
+              ))}
+            </div>
+          </article>
+
           <article className={`${lightPanelClass} p-6 md:p-8`}>
             <p
               className="text-[0.68rem] uppercase tracking-[0.3em] text-slate-700/60"
@@ -3152,7 +3122,6 @@ const PraxisIIProjectPage = ({
           </article>
         </section>
 
-        <ReferencesSection className="mt-6" />
       </div>
     </main>
   );
@@ -3354,7 +3323,6 @@ const GenericProjectPage = ({
           </article>
         </section>
 
-        <ReferencesSection className="mt-6" />
       </div>
     </main>
   );

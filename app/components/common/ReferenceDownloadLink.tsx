@@ -26,7 +26,7 @@ const ReferenceDownloadLink = ({
 	href,
 	className = "",
 	children,
-	label = "download PDF",
+	label = "download",
 }: ReferenceDownloadLinkProps) => {
 	const [isDownloading, setIsDownloading] = useState(false);
 

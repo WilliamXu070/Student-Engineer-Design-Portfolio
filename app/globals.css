@@ -472,6 +472,10 @@ body {
   background: linear-gradient(90deg, #31d7c4 0%, #31d7c4 48%, #7ab8ff 52%, #7ab8ff 100%);
 }
 
+.fdcr-indicator--frame-diverge {
+  background: linear-gradient(90deg, #31d7c4 0%, #31d7c4 48%, #ffd23c 52%, #ffd23c 100%);
+}
+
 .fdcr-indicator--represent-converge {
   background: linear-gradient(90deg, #7ab8ff 0%, #7ab8ff 48%, #ff8a5b 52%, #ff8a5b 100%);
 }

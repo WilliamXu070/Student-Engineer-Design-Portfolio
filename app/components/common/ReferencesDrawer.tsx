@@ -154,7 +154,7 @@ const ReferencesDrawer = () => {
 																<ReferenceDownloadLink
 																	href={reference.entry.url}
 																	className="underline decoration-current underline-offset-4 hover:text-white">
-																	[download PDF]
+																	[download]
 																</ReferenceDownloadLink>
 															</>
 														) : null}

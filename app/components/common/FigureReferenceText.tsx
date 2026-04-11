@@ -1,5 +1,7 @@
 import type { CSSProperties, ReactNode } from "react";
 
+import InlineCitation from "./InlineCitation";
+
 export type FigureReferenceMap = Record<
   string,
   {
@@ -16,7 +18,7 @@ type FigureReferenceTextProps = {
   linkClassName?: string;
 };
 
-const FIGURE_REF_PATTERN = /\[\[fig:([A-Za-z0-9.-]+)(?:\|([^\]]+))?\]\]/g;
+const MIXED_REF_PATTERN = /\[\[fig:([A-Za-z0-9.-]+)(?:\|([^\]]+))?\]\]|\[\[cite:([A-Za-z0-9._,\-\s]+)\]\]/g;
 
 export const getFigureAnchorId = (pageKey: string, figureKey: string) =>
   `${pageKey}-fig-${figureKey.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
@@ -31,16 +33,27 @@ export const FigureReferenceText = ({
   const nodes: ReactNode[] = [];
   let lastIndex = 0;
 
-  for (const match of text.matchAll(FIGURE_REF_PATTERN)) {
+  for (const match of text.matchAll(MIXED_REF_PATTERN)) {
     const matchIndex = match.index ?? 0;
-    const [fullMatch, figureKey, displayText] = match;
+    const [fullMatch, figureKey, displayText, rawCitationIds] = match;
 
     if (matchIndex > lastIndex) {
       nodes.push(text.slice(lastIndex, matchIndex));
     }
 
-    const target = refs[figureKey];
-    const linkLabel = displayText ?? target?.label ?? `Fig. ${figureKey}`;
+    if (rawCitationIds) {
+      nodes.push(
+        <InlineCitation
+          key={`${rawCitationIds}-${matchIndex}`}
+          referenceIds={rawCitationIds.split(",").map((value) => value.trim()).filter(Boolean)}
+        />,
+      );
+      lastIndex = matchIndex + fullMatch.length;
+      continue;
+    }
+
+    const target = figureKey ? refs[figureKey] : undefined;
+    const linkLabel = displayText ?? target?.label ?? (figureKey ? `Fig. ${figureKey}` : "");
 
     if (target) {
       nodes.push(

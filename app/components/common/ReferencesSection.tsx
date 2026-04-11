@@ -45,7 +45,7 @@ const ReferencesSection = ({ className = "" }: ReferencesSectionProps) => {
 										<ReferenceDownloadLink
 											href={reference.entry.url}
 											className="underline decoration-current underline-offset-4 hover:text-black">
-											[download PDF]
+											[download]
 										</ReferenceDownloadLink>
 									</>
 								) : null}

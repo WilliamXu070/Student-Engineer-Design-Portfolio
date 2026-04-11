@@ -13,25 +13,25 @@ Primary source files:
 
 ### Opening Paragraphs
 
-My position as an engineering designer is that rigor matters only when it keeps the framing of the opportunity, the criteria for judgment, and the recommended concept responsive to evidence. Otherwise, rigor hardens into premature closure.
+My position as an engineering designer is that rigor matters only when it keeps the framing of the opportunity, the criteria for judgment, and the recommended concept responsive to evidence.
 
-My earlier position statement presented engineering as a way of thinking before it is a way of building. I still believe that. I still see engineering design as a process of turning uncertainty into clarity through disciplined reasoning and experimentation. I still value questioning assumptions, working from first principles, reducing unnecessary complexity, and learning through iteration. What has changed over this year is not those values themselves, but my understanding of where they matter most in design practice.
+My earlier position statement argued that engineering begins as a way of thinking before it becomes a way of building. While I still see engineering design as a process of turning uncertainty into clarity through disciplined reasoning, experimentation, and iteration, and I still value questioning assumptions, working from first principles, reducing unnecessary complexity, and learning through revision, my understanding of where these matter most in practice has changed over the course of this year.
 
-Through Praxis I, CIV102, and Praxis II, I came to see that good engineering is not defined only by how efficiently a team solves a problem once a direction has been chosen. It depends just as much on whether the opportunity has been framed well, whether the criteria actually reflect the real constraints of the project, and whether the concept remains open to revision as representation, testing, and feedback produce new evidence. In other words, the quality of the final design depends on the quality of the reasoning that shapes it. That is the position that now organizes this portfolio.
+Through Praxis I, CIV102, and Praxis II, I have come to realize that good engineering is not defined only by how efficiently a team solves a problem once a direction has been chosen, but also dependent on whether the opportunity has been framed well, whether the criteria actually reflect the real constraints of the project, and whether the concept remains open to revision as testing, feedback, and verification produce new evidence. In other words, my new position emphasizes the quality of the reasoning that shapes the final design.
 
 ### Evolution Paragraphs
 
-My earlier position emphasized understanding over execution alone. I described engineering as a practice of questioning assumptions rather than accepting them, reasoning from fundamentals rather than copying inherited solutions, simplifying systems rather than making them impressive for their own sake, and using iteration as a way to learn through action. That earlier statement was useful, but it was still broad. It described the habits I valued without fully explaining how those habits shaped engineering design across Frame, Diverge, Converge, and Represent.
+My earlier position emphasized understanding over execution. I described engineering as a practice of questioning assumptions, reasoning from fundamentals, simplifying systems, and learning through iteration. These statements whie useful were still broad to be applied effectively to my engineering designs. It captured habits I valued without fully explaining how they shaped design across the Frame, Diverge, Converge, and Represent process.
 
-Praxis gave those habits sharper meaning. Questioning assumptions became, more specifically, a commitment to revisiting the frame of an opportunity when evidence weakens the original explanation. First-principles reasoning became a way of deciding which constraints are truly fundamental, which are inherited, and which should be challenged before being turned into fixed criteria. Simplicity became less of a general aesthetic preference and more of an engineering judgment: I now value concepts whose behavior can be explained, whose trade-offs can be justified, and whose construction and validation are feasible within the actual project conditions. Iteration also became more precise in my thinking. I no longer see it only as refining solutions. I now see it as testing whether the frame, assumptions, and criteria are still valid before convergence becomes too rigid.
+Praxis gave those habits sharper meaning. Questioning assumptions became, more specifically, a commitment to revisiting the frame of an opportunity when evidence weakens the original explanation. First-principles reasoning became a way of deciding which constraints are truly fundamental, which are inherited, and which should be challenged before being turned into fixed criteria. Simplicity became more of an engineering judgment. I now value concepts whose behavior can be explained, whose trade-offs can be justified, and whose construction and validation are feasible within the actual project constraints. Iteration also became more precise in my thinking. I now see it as testing whether the frame, assumptions, and criteria are still valid before convergence becomes too rigid.
 
-The main change, then, is this: I used to treat precision as a sign that the thinking was strong. Now I think strong engineering design depends on timing as much as precision. Criteria, structure, and convergence are useful, but only after the opportunity has been framed well enough. When they arrive too early, they can narrow the design space before our team understands what should actually be protected, optimized, or changed. That is the central lesson that emerged across the year.
+The main change, then, is this: I used to treat precision as a sign that the thinking was strong. Now I believe that strong engineering design depends on timing as much as precision. Criteria, structure, and convergence are useful, but only after the opportunity has been framed well enough. When they arrive too early, they can narrow the design space before the team understands what should actually be protected, optimized, or changed. This is the central lesson that emerged across this year of learning.
 
 ### Project Lessons
 
 #### Praxis I: framing must change when the evidence changes
 
-Praxis I exposed the cost of staying inside a weakened frame. In the can-noise work, the most important lesson was not simply that a test result was disappointing. It was that contradictory evidence should have triggered reframing, but our team remained attached to the original explanation of the problem. That moment clarified something important about my own practice: when evidence breaks the logic of the original opportunity framing, I would rather reopen the problem than continue optimizing within an unstable explanation.
+Praxis I exposed the cost of continuing inside a frame after the evidence had already weakened it. In the can-noise project, the key lesson was not the disappointing result alone, but the team's decision to remain attached to its original explanation of the problem even after contradictory evidence should have forced a reframing of the opportunity. What stayed with me was less the failed result than the failure to respond to it properly. Since then, I have become much more wary of optimization that continues after the underlying logic of the problem has started to break.
 
 Since then, I have become more alert to the difference between solving a problem well and solving the right problem.
 
@@ -39,34 +39,34 @@ Figure Reference: praxis1
 
 #### CIV102: simplicity is an engineering judgment, not a cosmetic one
 
-CIV102 clarified why I am drawn to simpler concepts. My preference was not for a design that merely looked cleaner or more elegant. I was drawn to the bridge form that was easier to analyze, easier to represent clearly, easier to construct reliably, and easier to justify in terms of likely performance. That project helped me articulate a value that was present in my earlier statement but not yet well defined: I prefer concepts that remain legible across analysis, making, and verification.
+CIV102 clarified that my preference for simpler concepts is really just a preference for concepts that stay defensible across the whole design process. I was not drawn to the bridge form because it looked cleaner or more elegant. I trusted it because its behaviour was easier to analyze, its geometry was easier to represent accurately, its construction introduced fewer uncertainties, and its expected performance could be justified more directly.
 
-When complexity improves performance and can be defended, I accept it. But when complexity mainly creates the appearance of sophistication without the same gain in clarity, constructability, or validation, I do not trust it as readily.
+When complexity improves performance and can be defended, I accept it. But when complexity mainly creates the appearance of sophistication without the same gain in clarity, constructability, or validation, I don't.
 
 Figure Reference: civ102
 
 #### Praxis II: scope and testing both had to reopen
 
-Praxis II did not simply show that criteria can harden too early. The deeper problem was that the project initially had both an unstable scope and an unstable evidence model. It began as a broad winter-astronomy opportunity, opened multiple intervention paths, and then had to be reframed more sharply once direct telescope interaction made it clear that the real issue was preserving dexterity during fine winter tasks, not just improving warmth in general.
+Praxis II exposed more than criteria hardening too early. The project narrowed before it had properly defined the problem, beginning with a broad winter-astronomy scope until direct telescope interaction showed that the real issue was dexterity during fine cold-weather tasks, not warmth in general.
 
-The later lesson was procedural as much as conceptual. The first cold-plunge test looked organized, but it produced only brief impairment, so the testing logic itself had to be rebuilt before convergence could be trusted. Once the requirements and testing questions were clarified, our team had a better basis for weakening the knob-turner path, justifying finger-focused heating, and defending the final multi-mode glove more honestly. Praxis II therefore made my main design risk visible in a sharper way: I can mistake early structure for strong thinking even when the project still needs reframing and better evidence before narrowing.
+The same problem appeared in testing. The first cold-plunge test looked rigorous, though it produced only brief impairment, so the testing logic had to be rebuilt before convergence could be trusted. Once the requirements and testing questions were clarified, the team could more honestly reject the knob-turner path, justify finger-focused heating, and defend the final multi-mode glove. Praxis II made one risk in my own process much clearer: I can read early structure as strong reasoning even when the project still needs reframing and better evidence before it deserves to narrow.
 
 Figure Reference: praxis2
 
 ### Design Practice Questions
 
-- Is the opportunity framing sound, or is our team solving inside assumptions that should still be challenged?
+- Is the opportunity framing sound, or is the team solving inside assumptions that should still be challenged?
 - Are the criteria grounded in actual stakeholder needs and project constraints, or have they hardened too early?
 - Is the concept strong enough to be represented, constructed, and explained clearly?
 - Can the concept be tested and validated in a way that produces meaningful evidence rather than only confirmation?
 
 ### Strengths, Bias, and Guardrails
 
-This position has clear strengths. It helps me expose weak assumptions, build defensible criteria, and converge toward concepts that are feasible and justifiable rather than merely attractive. It also supports the values in my earlier position statement: clarity over unnecessary complexity, understanding over execution alone, and iteration as a route to insight rather than just output.
+This position gives me a real strength in early-stage projects. I am usually the one turning vague goals into requirements, preferences into criteria, and opinions into tests. That helps me surface weak assumptions early and keeps me from trusting concepts for their appearance or intuition alone. It has also pushed me toward designs I can actually defend, because I tend to ask not whether an idea is appealing, but whether it can be justified, tested, and carried through.
 
-But this position also carries a bias. Because I trust explicit logic, measurable structure, and defensible criteria, ambiguity can start to feel like weak thinking even when ambiguity is still a necessary part of framing or divergence. That is why my main design risk is not lack of rigor, but premature closure. I can move too quickly toward structure, evaluation, and convergence before the opportunity has stabilized enough to support them.
+This position also creates a bias toward premature legibility. I am inclined to trust concepts once they can be organized into criteria, comparisons, and defensible arguments, which means I can undervalue ideas that are still messy, underdefined, or difficult to measure. The danger is not just early narrowing. It is allowing evaluability to stand in for actual design quality, so that the concepts easiest to structure begin to look like the concepts most worth pursuing.
 
-The guardrail I need is not less rigor. It is better-timed rigor: revisiting assumptions when evidence shifts, treating criteria as revisable, allowing divergence to do real work before narrowing, and using representation and testing to challenge the frame rather than merely confirm it.
+What I need is better judgment and more experience about when rigor should enter. Early on, that means resisting fixed criteria before the problem is clear. Later, it means changing those criteria when new evidence weakens them. It also means using sketches, prototypes, and tests to expose misunderstanding, not simply confirm what I already prefer.
 
 ### Closing Paragraphs
 
@@ -131,7 +131,7 @@ CTMF References:
 
 ### OverviewParagraphs
 
-Praxis I addressed a simple but easily underestimated design problem: opening a carbonated beverage can in a quiet shared environment creates a sharp, disruptive acoustic impulse. In lecture halls, libraries, and study spaces, that opening event can momentarily dominate the room, turning an ordinary action into a social and practical disruption. The project therefore began with a clear need: reduce the noise of can opening without making the product harder to use, less safe, or less believable as an everyday object.
+Praxis I began with a design problem that seemed simple and was therefore easy to underestimate. Opening a carbonated beverage can in a lecture hall, library, or study space creates a sharp acoustic impulse that can briefly disrupt the room, and research on young students has shown that noise exposure can affect learning, motivation, and memory [[cite:noise-learning-motivation-memory]]. The project therefore began with a clear need: reduce the noise of can opening without making the product harder to use, less safe, or less believable as an everyday object.
 
 What made the project more than a straightforward noise-reduction exercise was that our team's first understanding of the problem did not fully hold. Early on, the challenge appeared to be about controlling depressurization. As testing progressed, however, the project became less about softening an existing opening event and more about understanding what actually caused the sharp impulse in the first place. That shift changed not just the ranking of concepts, but the logic of the design problem itself.
 
@@ -305,9 +305,9 @@ Developed the Pugh chart and produced the CAD for all prototypes.
   - Caption: Slider animation showing the opening mechanism in motion during the final solution stage.
 - Figure: anchor
   - Label: Fig. 11
-  - Source: /api/videos/praxis1
-  - Alt: Praxis I noise-testing video showing the contradictory result that later grounded the anchoring-bias reflection.
-  - Caption: The contradictory test result belongs beside the later reflection because it is the evidence that forced the original framing to weaken before the team could re-understand the problem.
+  - Source: /api/videos/praxis1-water-opener
+  - Alt: Praxis I sound test video for the water-opener concept during acoustic testing.
+  - Caption: Water-opener sound test showing that muffling the user action did not remove the sharp opening impulse. This supported the later reframing: the dominant sound came from tearing the scored aluminum ligament, so the stronger solution was to remove the tear-strip mechanism rather than damp it from outside.
 - Figure: reflection
   - Label: Fig. 12
   - Source: /context-evidence/raw/praxis1-p3-img1.png
@@ -322,32 +322,32 @@ Developed the Pugh chart and produced the CAD for all prototypes.
   - Label: Fig. 04
   - Source: @/app/projects/praxis1-media/acoustic-impulse-chart.png
   - Alt: Acoustic impulse comparison over time for the control can and the slider concepts.
-  - Caption: Acoustic impulse comparison showing how the slider concept spread the opening event over time instead of preserving the sharp control-can spike.
+  - Caption: Acoustic impulse comparison graph showing how the different versions of the slider prototype spread the opening event over time compared to the control (normal aluminum can).
 - Figure: pressure
   - Label: Fig. 05
   - Source: @/app/projects/praxis1-media/contact-pressure-chart.png
   - Alt: Opening contact pressure comparison for the control can and the slider concepts.
-  - Caption: Opening contact pressure comparison showing why the slider also improved accessibility and hand pressure.
+  - Caption: Opening contact pressure comparison graph showing how the slider design also improved accessibility by spreading the hand pressure over a longer duration, compared to the sharp peak pressure of the control.
 - Figure: co2
   - Label: Fig. 06
   - Source: @/app/projects/praxis1-media/co2-chart.png
   - Alt: CO2 boil-off comparison between the control can and slider designs.
-  - Caption: CO2 boil-off comparison. Slider V2 approached the control in retention while remaining quieter.
+  - Caption: CO2 boil-off comparison chart showing how the slider design also improved the CO2 retention rate.
 - Figure: needle
   - Label: Fig. 08
   - Source: @/app/projects/praxis1-media/needle-vent-concept.png
   - Alt: Praxis I puncture vent concept sketch from the early retrofit concept space.
-  - Caption: Early puncture vent concept produced under the original frame.
+  - Caption: Early puncture-vent concept, in which the aluminum can was replaced with a thin puncturable membrane, similar to Kool-Aid Jammers pouch reference designs [[cite:kool-aid-jammers-product]].
 - Figure: water
   - Label: Fig. 09
   - Source: @/app/projects/praxis1-media/water-opener-concept.png
   - Alt: Praxis I water-opener concept render from the early retrofit concept space.
-  - Caption: Water-damping concept aimed at softening the opening event without changing the can itself.
+  - Caption: Water-damping concept, in which the top lid of an alunimum can was covered with liquid to muffle the acoustic impulse from the can opening.
 - Figure: rubber
   - Label: Fig. 10
   - Source: @/app/projects/praxis1-media/rubber-tab-concept.png
   - Alt: Praxis I rubber-tab concept render from the early retrofit concept space.
-  - Caption: Rubber-tab attachment concept that stayed closer to the original opening mechanism.
+  - Caption: Rubber-tab attachment concept, in which the tear line of the alunimum can was covered to absorb the acoustic effect and muffle the acoustic impulse generated.
 
 ### CtmfLessons
 
@@ -576,7 +576,7 @@ CIV102 was completed collaboratively within the course context. Shared design, c
   - Label: Fig. 06
   - Source: /api/videos/civ102-build-review
   - Alt: CIV102 build review video showing the completed bridge in hand and from multiple viewing angles.
-  - Caption: Build review video of the completed bridge. It belongs in the final solution section because it shows the built object as the real outcome of the final geometry and fabrication decisions.
+  - Caption: Build review video of the completed bridge.
 - Figure: designZero
   - Label: Fig. 07
   - Source: /context-evidence/raw/civ102-p5-img1.png
@@ -596,13 +596,18 @@ CIV102 was completed collaboratively within the course context. Shared design, c
   - Label: Fig. 10
   - Source: /context-evidence/raw/civ102-failure.png
   - Alt: Bridge collapsed during testing under moving-train loading.
-  - Caption: Failure during testing. The bridge underperformed not because the calculations were useless, but because the built artifact was more splice-sensitive than the model represented.
+  - Caption: Image of Bifrost being crushed under the force of 580 N.
+- Figure: timeLog
+  - Label: Fig. 11
+  - Source: /api/images/civ102-time-log
+  - Alt: CIV102 team time log showing task-by-task hours for William, Michael, Beckett, and Jeffrey across design calculations, drawings, construction, and report work.
+  - Caption: Team time log showing how effort was distributed across design calculations, drawings, construction, and report work. It supports the contribution split by making the labor record visible rather than implied.
 
 ### CtmfLessons
 
 - challenge-assumptions: Kept the bridge from becoming a blind optimization exercise by questioning form complexity early and splice confidence late.
 - calculations-simulation: Turned bridge iteration into a structured search through height, flange, web, diaphragm, and fitting tradeoffs, while the test later exposed what the model still missed.
-- pugh-chart-civ102: Showed how convergence only became meaningful when performance, buildability, and fabrication credibility were being judged together.
+- pugh-chart-civ102: Showed how six explicit comparison charts narrowed the bridge by judging strength, buildability, and fabrication credibility together instead of by intuition.
 
 ### Skills
 
@@ -651,129 +656,137 @@ CTMF References:
 
 ### OverviewParagraphs
 
-Praxis II began with a simple-looking winter astronomy problem, but the behavior that mattered most was more specific: amateur astronomers were removing their gloves to perform fine telescope adjustments. That made the issue less about generic warmth and more about a dexterity-manipulability gap. Cold and bulky gloves were interfering with focusing, eyepiece changes, small controls, and the recovery of dropped parts during real telescope use.
+Cold-weather amateur astronomy was a strong design opportunity because winter extends the observing window at exactly the time when telescope use becomes hardest to sustain, giving RASC centres longer nights for star parties and overnight sessions while forcing astronomers to work through January conditions near -6.7°C; in Toronto, the roughly 6.5 extra hours of darkness around the December solstice therefore arrived with the same seasonal cold that made precise operation harder on the hands [[cite:toronto-sun-december-timeanddate,toronto-climate-normals-1991-2020]].
 
-The project only became strong once that mismatch was treated as the real issue and not just one symptom of being cold outside. From there, the challenge was no longer to make a warmer glove in the abstract. It was to preserve fine task performance in low light, remain compatible with diverse telescope setups, avoid telescope-specific modification, and deal honestly with the fact that some astronomy actions still demanded near-direct fingertip control. The final outcome was a convertible heated glove system, but the stronger result was the chain of evidence that made that solution defensible.
+What made the opportunity worth pursuing was not cold in general, but the specific conflict it created during use, since amateur astronomers often had to remove their gloves to focus, swap eyepieces, turn small controls, or recover dropped parts, exposing a direct gap between the fine manual precision telescope tasks demanded and what cold or gloved hands could actually do [[cite:praxis2-rfp]].
 
 ### Claims
 
-The project became stronger once it stopped treating winter astronomy as a warmth problem and started treating it as a manipulability problem.
+The project became stronger once it stopped treating winter astronomy as a warmth problem and started treating it as a manipulability problem [[cite:praxis2-rfp]].
 
-The first testing procedure was not trustworthy enough, so the evidence model had to be redesigned before convergence meant anything.
+The first testing procedure was not trustworthy enough, so the evidence model had to be redesigned before convergence meant anything [[cite:praxis2-showcase-doc]].
 
-The final glove mattered because it accepted the warmth-versus-precision tradeoff through controlled modes instead of pretending one state could satisfy every task.
+The final glove mattered because it accepted the warmth-versus-precision tradeoff through controlled modes instead of pretending one state could satisfy every task [[cite:praxis2-showcase-doc]].
 
 ### ObjectivesParagraphs
 
-The original Praxis II brief framed the opportunity broadly around improving cold-weather telescope operation, but stakeholder conversations and direct observation made the bottleneck more specific. The recurring failure was not simply that users felt cold. It was that cold hands and bulky gloves disrupted the fine manipulations telescope use depends on, especially focusing, small adjustments, and accessory handling in low light.
+The original Praxis II Request For Proposals document framed the opportunity broadly as improving cold-weather telescope operation, though stakeholder conversations and direct observation narrowed the governing issue much more sharply [[cite:praxis2-rfp]]. The recurring failure was not cold in the abstract, but the loss of fine manual control, since cold hands and bulky gloves interfered with focusing, small adjustments, and accessory handling in low light.
 
-That reframing also clarified the two main project paths. One path was to redesign the telescope interaction itself through attachments or assistive devices. The other was to preserve user dexterity directly. Three pressures then shaped which path stayed credible: active RASC observers needed fingertip-level control during real winter tasks, telescope diversity made permanent telescope-specific redesign less defensible, and winter field conditions imposed cold, moisture, dim-light, portability, and setup-burden constraints that a serious solution had to respect.
+That reframing left two main directions: change the telescope through attachments, or preserve the user's dexterity directly. The second path proved more credible because observers still needed precise finger control, telescope setups varied too much for a single redesign, and the solution had to work in cold, wet, low-light conditions [[cite:praxis2-rfp,praxis2-one-pager]].
 
 ### Stakeholders
 
 - Active RASC observers
   - body: Needed a solution that preserved fine control during focusing, accessory changes, and small adjustments in real winter observing sessions.
-- Community equipment diversity
+- Equipment diversity across the RASC community
   - body: Commercial and DIY telescope variation made permanent telescope-specific redesign less inclusive and less generalizable across the RASC community.
 - Adjacent cold-weather dexterity users
   - body: Food delivery drivers, hunters, sailors, and similar users reinforced that the underlying challenge was broader than astronomy alone: some cold-weather tasks still demand fine control, quick access, and reliable hand function outdoors.
-- Winter field conditions
-  - body: Cold, moisture, dim red-light use, portability, and setup burden all constrained what a credible astronomy solution could be.
 
 ### RequirementsParagraphs
 
-By the final showcase stage, the requirement structure was no longer a broad winter-use summary. It was organized as a final constraint set with explicit requirement and evaluation-code logic around functionality, safety and comfort, reliability, portability, and astronomical-context compatibility.
+By the final showcase stage, the requirements worked best as a compact statement of what the glove had to preserve in real winter use, since the project was never just about adding heat and only held together as a solution when dexterity remained intact without bulk, fragility, or setup burden quietly breaking it [[cite:praxis2-showcase-doc]].
 
-That final showcase structure also made one design consequence explicit: observational quality was removed as its own constraint set because the glove did not modify the telescope. The end-state requirements therefore focused on what the glove itself had to do well, how it would be measured, and which earlier criteria were no longer relevant once the concept path had stabilized.
+At the project-page level, the important structure is the governing constraint groups rather than every coded requirement, because criteria tied to telescope modification fell away once the project converged on preserving user dexterity directly rather than altering the telescope itself [[cite:praxis2-one-pager,praxis2-showcase-doc]].
 
 ### Requirements
 
-Constraint Set 1, Functionality: R1.1 improve general dexterity relative to the heavy-glove concept; EC1.1 maximize general dexterity using the building test; EC1.2 maximize task-specific dexterity using the microscope test.
+Functionality: preserve enough general and task-specific dexterity that fine telescope adjustments remain possible in winter conditions.
 
-Constraint Set 2, Safety and Comfort: R2.1 maintain a safe contact temperature range consistent with the RFP; EC2.1 minimize overall temperature range; EC2.2 minimize temperature gradient.
+Safety and comfort: provide useful warmth without creating unsafe contact temperatures, harsh thermal gradients, or an uncomfortable hand state.
 
-Conditional Constraint Set 3, Reliability: R3.1 meet the functional-retention requirement; R3.2 meet the IP54 water-resistance standard; R3.3 allow no open circuits; EC3.1 maximize functional retention.
+Reliability: keep the glove system functional under repeated outdoor use, including moisture exposure, wire durability, and stable electrical performance.
 
-Constraint Set 4, Observational Quality: removed at the showcase stage because the glove made no telescope modifications or attachments.
+Portability: remain compact and low-burden enough that carrying, setup, and mode-switching do not undermine real observing use.
 
-Constraint Set 5, Portability: EC5.1 minimize action count; EC5.2 minimize mass; EC5.3 minimize volume.
-
-Constraint Set 6, Astronomical Context Compatibility: R6.1 permit no telescope modifications or attachments; EC6.1 minimize the actuation force required to perform dexterous tasks while wearing the glove.
+Astronomy compatibility: work with existing telescope setups and observing routines without requiring telescope-specific attachments or redesign.
 
 ### FinalSolutionParagraphs
 
-The final engineering solution was a convertible heated glove system designed around the fingers rather than the hand as a single thermal zone. Resistive carbon-fiber heating was concentrated where dexterity loss mattered most, because the project’s calculations and prototype testing showed that limited electrical power had to be used selectively rather than distributed everywhere. The battery was moved off the hand and onto a wrist-mounted support so the system would not reduce precision through added hand weight.
+The final engineering solution was a convertible heated glove system designed around the fingers rather than the hand as a single thermal zone. Resistive carbon-fiber heating was concentrated where dexterity loss mattered most, because the project's calculations and prototype testing showed that limited electrical power had to be used selectively rather than distributed everywhere. The battery was moved off the hand and onto a wrist-mounted support so the system would not reduce precision through added hand weight [[cite:praxis2-showcase-doc,praxis2-final-poster]].
 
-The glove also became explicitly multi-modal. A flip-back outer section allowed the user to move between a protected low-dexterity mode and a higher-dexterity operating mode for fine telescope tasks. That move came directly from validation. The project became stronger once it stopped pretending that one glove state could satisfy every astronomy action equally well and instead treated controlled switching between warmth and precision as part of the solution.
+The glove also became explicitly multi-modal, using a flip-back outer section to let the user shift between a protected low-dexterity mode and a higher-dexterity mode for fine telescope tasks, a move supported by secondary validation with food delivery riders on electric bikes whose winter gloves reflected the same underlying need to alternate between thermal protection and precise hand use outdoors. The project improved once it stopped treating one glove state as sufficient for every astronomy action and instead built controlled switching between warmth and precision into the solution itself [[cite:praxis2-showcase-doc,praxis2-discord-record]].
 
 ### SelectionParagraphs
 
-The final concept was selected because it responded most directly to the reframed issue while respecting community-fit constraints. Early on, our team explored environment systems, software or error-mitigation ideas, telescope attachments, knob-turner concepts, and glove-based concepts. Several of those weakened once portability, setup burden, and telescope diversity were treated as real constraints rather than decorative considerations. A solution that depended on one telescope geometry or added too much interaction burden stopped being persuasive even if it looked clever in isolation.
+The final concept was selected because it responded most directly to the reframed issue while respecting community-fit constraints. Early on, our team explored environment systems, software or error-mitigation ideas, telescope attachments, knob-turner concepts, and glove-based concepts. Several of those weakened once portability, setup burden, and telescope diversity were treated as real constraints rather than decorative considerations. A solution that depended on one telescope geometry or added too much interaction burden stopped being persuasive even if it looked clever in isolation [[cite:praxis2-beta-release,praxis2-showcase-doc]].
 
-The strongest showcase improvement is that convergence now has a clearer logic. Stage 1 revealed that the original cold-plunge procedure could not hold the cold condition long enough to generate trustworthy evidence, so the testing procedure itself had to change. Later observation and validation then weakened the knob-turner more decisively: only about 27.3% of observed actions were rotational, telescope operation involved many non-rotational hand tasks, and a turning aid added its own equip/unequip burden. The glove remained strongest because it preserved dexterity directly, stayed more generalizable across telescope setups, and later evolved into a convertible design that matched the real warmth-versus-precision tradeoff more honestly.
+The strongest improvement made was to make convergence have a clearer logic. Stage 1 revealed that the original cold-plunge procedure could not hold the cold condition long enough to generate trustworthy evidence, so the testing procedure itself had to change. Later observation and validation then weakened the knob-turner more decisively: only about 27.3% of observed actions were rotational, telescope operation involved many non-rotational hand tasks, and a turning aid added its own equip/unequip burden. The glove remained strongest because it preserved dexterity directly, stayed more generalizable across telescope setups, and later evolved into a convertible design that matched the real warmth-versus-precision tradeoff more honestly [[cite:praxis2-showcase-doc,praxis2-discord-record]].
 
 ### Decisions
 
-- Frame the issue as manipulability failure, not just warmth loss
-  - body: The project became stronger once it stopped treating winter astronomy as a generic comfort problem and instead focused on the task-level mismatch between cold-impaired hands and dexterity-sensitive telescope operation. That move made later decisions more defensible because our team could judge concepts by whether they preserved micro-task performance rather than by whether they simply sounded warm or protective.
-- Redesign the testing procedure before trusting convergence
-  - body: The first cold-plunge setup looked rigorous, but it only produced 1 to 3 seconds of meaningful impairment before the body reheated the hands. That meant the procedure itself was too weak to compare concepts honestly. Stage 2 improved the project by separating dexterity and thermal questions before recombining them later, which made the evidence behind convergence much stronger.
-- Use workflow evidence to eliminate the knob-turner path
-  - body: The knob-turner did not weaken only because the glove improved. It weakened because the project learned more about telescope use itself. Only about 27.3% of observed actions were rotational, many critical tasks involved broader hand dexterity, and a turning aid was not generalizable across different telescope mechanisms. The project therefore shifted away from redesigning one action and toward preserving hand capability across the workflow.
-- Accept controlled mode changes as part of the final solution
-  - body: The final glove improved when our team stopped treating glove removal as a failure to eliminate completely and instead treated it as a real use condition to manage. The multi-mode glove was stronger because it supported controlled transitions between warmth and precision rather than denying that the tradeoff existed. Finger-focused heating, wrist battery placement, and the flip-back outer layer all became more persuasive once they were tied to that reality.
+- Rebuild the testing procedure before trusting convergence
+  - body: The first cold-plunge setup looked rigorous, though it could only produce a few seconds of meaningful impairment before the hands began to recover, which meant the procedure was too weak to support honest comparison between concepts. The project improved once Stage 2 separated dexterity and thermal questions before bringing them back together later, because convergence only became defensible after the evidence model itself had been rebuilt [[cite:praxis2-showcase-doc]].
+- Use observed workflow to eliminate the knob-turner path
+  - body: The knob-turner weakened once the team learned more about telescope use itself, not simply because the glove direction improved. Observation showed that only about 27.3% of actions were rotational, while many of the tasks that actually governed use depended on broader hand dexterity, and the turning aid introduced its own burden of attachment, removal, and telescope-specific fit. The project therefore shifted away from redesigning one motion and toward preserving hand capability across the larger workflow [[cite:praxis2-showcase-doc]].
+- Treat controlled switching between warmth and precision as part of the solution
+  - body: The final glove became stronger once the team stopped acting as though glove removal had to be eliminated completely and instead treated the warmth-versus-precision tradeoff as a real condition of use that had to be managed directly. The multi-mode glove was more defensible for that reason, since finger-focused heating, wrist battery placement, and the flip-back outer layer all supported controlled transitions between protection and fingertip access rather than pretending one glove state could serve every astronomy action equally well.
 
 ### ProcessParagraphs
 
-The Praxis II process did not move cleanly from problem statement to final glove. It began with a broad winter-astronomy usability opportunity, then expanded into multiple intervention levels including environment concepts, software or error-mitigation ideas, telescope attachments, knob-turner concepts, and direct handwear solutions. Early scoping and Beta preparation show that our team was still negotiating what the real issue was and what kind of solution space was actually defensible.
-
-The strongest turn in the project came when both framing and testing were reopened. Stakeholder evidence and direct telescope interaction narrowed the issue toward preserving dexterity directly. Stage 1 testing then exposed that the cold-plunge method produced only 1 to 3 seconds of meaningful impairment, so the procedure itself had to change before concepts could be judged fairly. Once the requirements and testing questions were stated more clearly, our team had a firmer basis for comparing concept paths, weakening the knob-turner more honestly, and explaining why the glove remained the stronger direction. Once thermal and dexterity evidence were separated and later recombined, our team could weaken the knob-turner path more honestly, justify finger-focused heating, and converge on the final multi-mode glove with stronger evidence behind it.
+Praxis II began with a broad winter-astronomy usability frame and expanded across multiple intervention levels, which meant the early project was still unstable in both problem definition and solution space. It only improved once framing and testing were reopened together, because stakeholder evidence narrowed the issue toward preserving dexterity directly while Stage 1 showed that the cold-plunge procedure was too weak to compare concepts fairly; from there, clearer requirements and testing logic made it possible to reject the knob-turner more honestly, justify finger-focused heating, and converge on the final multi-mode glove [[cite:praxis2-beta-release,praxis2-showcase-doc]].
 
 ### Phases
 
-- Broad winter usability brief
+- Broad winter-use framing
   - id: 01
-  - body: The project started with an over-broad winter astronomy opportunity that still allowed multiple, competing interpretations of what actually needed to be fixed.
+  - body: The project began with a broad winter astronomy opportunity that still allowed multiple interpretations of what actually needed to be fixed.
 - Competing intervention paths
   - id: 02
   - body: Environment systems, software ideas, telescope attachments, knob-turners, and glove concepts were all explored before workflow evidence and community fit narrowed the field.
 - Testing procedure reopened
   - id: 03
-  - body: The first cold-plunge setup failed to hold the key condition long enough, so the project had to redesign its testing logic before it could trust its own comparisons or defend concept rankings.
-- Convertible glove convergence
+  - body: The first cold-plunge setup failed to hold the key condition long enough, so the project had to rebuild its testing logic before concept comparisons could be trusted.
+- Convergence on the multi-mode glove
   - id: 04
-  - body: The final concept emerged after staged testing justified finger-focused heating, weakened the knob-turner path, and showed that one glove mode could not honestly satisfy every telescope task.
+  - body: The final concept emerged after staged testing justified finger-focused heating, weakened the knob-turner path, and showed that no single glove state could honestly satisfy every telescope task.
 
 ### LearningParagraphs
 
-Praxis II taught me that winter-use engineering here was really a manipulability problem, not just a warmth problem. The strongest design move was not adding more heat everywhere. It was identifying which part of the workflow was failing, then preserving that capability as directly as possible. That changed how I think about user-centered engineering: the best intervention often targets the exact function being lost, not the broadest symptom surrounding it.
+Praxis II made clear that winter telescope use does not fail simply because users are cold, but because cold and bulky handwear begin to erode the fine manual control that the workflow repeatedly demands, so the project improved only once it treated manipulability rather than warmth as the real quantity to protect. From that point on, the strongest design decisions were the ones that preserved fingertip performance directly instead of responding to cold at the level of a broad, less useful symptom.
 
-The project also made clear that testing procedures are themselves engineering decisions. The first test setup looked rigorous, but it produced unstable evidence because the cold condition disappeared too quickly. The project improved only after our team treated that procedural weakness as real, separated confounded variables, and redesigned the testing logic before defending the concepts too confidently.
+The project also showed that poor testing logic can make a design process look more certain than it actually is, because the original cold-plunge method produced only brief impairment and therefore could not support fair comparison between concepts even though it appeared rigorous on the surface. Once that weakness was treated as a real engineering problem, and not just an inconvenience in the procedure, the team could separate thermal and dexterity questions, rebuild the evidence model, and defend convergence on stronger ground.
 
 ### ReflectionParagraphs
 
-Praxis II sharpened my position on design rigor. I still value explicit requirements, traceable justification, and structured convergence, but this project showed me that rigor becomes harmful when it hardens the scope or the criteria before the evidence deserves that certainty. Early in the project, detailed objectives and narrow expectations behaved more like constraints on thinking than supports for design.
+Praxis II sharpened my view of design rigor by showing that rigor is useful only when the scope, criteria, and testing logic remain answerable to evidence. Early in the project, detailed objectives and narrow expectations created structure before the problem had been understood well enough, so what looked rigorous at first was sometimes narrowing the project too soon.
 
-More personally, the project clarified one of my recurring biases: I am more comfortable tightening a problem than living with ambiguity. That helps when the logic is ready, but it can also make me trust early structure too quickly. Praxis II became one of the clearest reminders that good engineering is not only about tightening the design space. It is also about knowing when the design space has been tightened too early, when the testing procedure is too weak, and when both need to reopen before a concept can be trusted.
+The project also clarified a recurring bias in my own practice: I am more comfortable tightening a problem than staying with ambiguity, which helps once the logic is ready, though it can also make early structure feel more trustworthy than it is. Praxis II made that risk difficult to ignore, because the project only improved after both the framing and the testing procedure were reopened, and that made the lesson more specific than "stay flexible": good engineering depends on recognizing when the problem has narrowed too early, when the evidence is too weak to support convergence, and when both have to be rebuilt before a concept deserves trust.
 
 ### CtmfSynthesis
 
 Title: How The CTMFs Changed This Project
 
-Praxis II became much stronger once its main CTMFs stopped acting like separate exercises and started changing the project in sequence. One identified the real mismatch, one rebuilt the evidence model, and one widened early thermal logic without being mistaken for proof of the final answer.
+Praxis II improved once its main CTMFs stopped reading as separate course exercises and began reshaping the project in sequence, with one reframing the problem around the actual use failure, one rebuilding the evidence model, and one expanding the early design space without being mistaken for proof of the final concept.
 
 - Root cause analysis changed what the project was actually about
-  - This CTMF stopped our team from treating winter astronomy as a generic warmth problem and instead exposed a dexterity-manipulability breakdown during telescope micro-tasks. That reframing mattered because it opened two real intervention paths at the start: reduce the dexterity demand of telescope use or preserve user dexterity directly under winter conditions.
+  - Root cause analysis shifted the project away from winter discomfort in general and toward the actual breakdown in use: the loss of dexterity during fine telescope tasks. That reframing clarified the real intervention paths from the start.
 - Verification and validation changed which evidence could be trusted
-  - The project improved once our team recognized that the first cold-plunge setup was too weak to stand in for sustained winter use. Separating dexterity and thermal testing made the comparison more honest, weakened the knob-turner path, and made the glove path defensible for the right reasons rather than because one weak procedure made it look promising.
+  - Verification and validation exposed that the first cold-plunge setup was too weak to support serious comparison. Rebuilding the testing logic made later convergence more credible and weakened the knob-turner on firmer grounds.
 - Biomimicry changed the early divergence logic, not the final proof
-  - Biomimicry helped our team generate non-default ideas such as selective insulation, protected warm zones, and modal dexterity instead of defaulting immediately to a standard heated glove. Its real value was early: it widened the design space and seeded thermal-zoning logic, but later validation still had to decide which of those ideas could survive in a real astronomy workflow.
+  - Biomimicry widened the early concept space by introducing ideas like selective insulation and mode-based dexterity instead of defaulting immediately to a standard heated glove. Its value was in generating directions, not proving which one should win.
 
-Together, these CTMFs taught me that this project was not mainly about inventing a glove. Praxis II changed my process by showing that good engineering sometimes means redesigning the problem definition and the evidence model before the final concept deserves to be trusted.
+Together, these CTMFs made the project stronger by correcting the problem definition and the evidence before the final concept was trusted.
 
 ### TeamCredit
 
-Praxis II was completed collaboratively within the course context. Framing, research, divergence, prototyping, testing, and presentation work should be credited to the full project team rather than to one individual artifact owner.
+Praxis II was completed collaboratively within the course team, with each member's responsibilities are outlined below:
+
+William Xu
+
+- Developed the prototype and led the root cause analysis and external validation with food delivery workers.
+
+Mike Liu
+
+- Led design research, optimized the circuit, and contributed to testing.
+
+Mikael Sharify-Funk
+
+- Contributed to prototype testing and developed the comparison matrices and divergence-convergence process.
+
+Alex Zhu
+
+- Contributed to prototype development and poster production.
 
 ### Figures
 
@@ -797,11 +810,16 @@ Praxis II was completed collaboratively within the course context. Framing, rese
   - Source: /context-evidence/raw/praxis2-fig4-stakeholders.png
   - Alt: Stakeholder map for the Praxis II winter astronomy project.
   - Caption: Stakeholder map showing that the project was constrained not only by users, but also by community fit, equipment diversity, and observing conditions.
-- Figure: performance
-  - Label: Fig. 05
-  - Source: /context-evidence/raw/praxis2-graph-time.png
-  - Alt: Average performance index or completion-time comparison across Praxis II prototype trials.
-  - Caption: Performance comparison across prototype trials. The project only became trustworthy once concept comparison was tied to task performance rather than to general warmth claims or feature count.
+- Figure: onePagerFront
+  - Label: Fig. 05A
+  - Source: /api/images/praxis2-one-pager/front
+  - Alt: Front side of the Praxis II one-pager summarizing requirements, evaluation criteria, and project framing.
+  - Caption: One-pager front side. This fits the Requirements and Evaluation Criteria section better because it summarizes the project framing and requirement logic rather than jumping ahead to later testing results.
+- Figure: onePagerBack
+  - Label: Fig. 05B
+  - Source: /api/images/praxis2-one-pager/back
+  - Alt: Back side of the Praxis II one-pager summarizing requirements, evaluation criteria, and solution constraints.
+  - Caption: One-pager back side. Read with Fig. 05A, it keeps the section focused on the design brief, constraints, and evaluation logic rather than the final showcase poster.
 - Figure: modes
   - Label: Fig. 06
   - Source: /context-evidence/raw/praxis2-high-low-modes.png
@@ -813,22 +831,22 @@ Praxis II was completed collaboratively within the course context. Framing, rese
   - Alt: Internal schematic of the GRIPPy glove concept showing the heating layout and major components.
   - Caption: Internal schematic of the final glove, showing finger-focused heating, routing logic, and the system architecture behind the final concept.
 - Figure: folding
-  - Label: Fig. 09
+  - Label: Fig. 10
   - Source: /context-evidence/raw/praxis2-folding-configuration.webp
   - Alt: Folding configuration of the Praxis II physical prototype.
   - Caption: Folding configuration of the physical prototype. The convertible structure became necessary once validation showed that some astronomy tasks still required a higher-dexterity mode.
 - Figure: temp
-  - Label: Fig. 10
+  - Label: Fig. 11
   - Source: /context-evidence/raw/praxis2-graph-temp.png
   - Alt: Temperature-loss comparison graph used in Praxis II testing.
   - Caption: Temperature testing supported the glove's thermal logic, but the project only became trustworthy once thermal and dexterity questions were separated and then recombined carefully.
 - Figure: dexterity
-  - Label: Fig. 11
+  - Label: Fig. 12
   - Source: /context-evidence/raw/praxis2-graph-dexterity.png
   - Alt: Dexterity versus temperature graph from Praxis II testing.
   - Caption: Dexterity versus temperature evidence showed why preserving usable fingertip performance mattered more than solving cold discomfort abstractly.
 - Figure: wireOptimization
-  - Label: Fig. 08
+  - Label: Fig. 09
   - Source: /context-evidence/raw/praxis2-wire-optimization.webp
   - Alt: Optimization study relating wire length to generated heat in the Praxis II glove system.
   - Caption: Wire-length optimization study. Limited electrical power made localized finger heating more defensible than trying to heat the entire glove uniformly.
@@ -841,13 +859,13 @@ Praxis II was completed collaboratively within the course context. Framing, rese
 
 ### Skills
 
-The real engineering issue was loss of manipulability during telescope use, not generic winter discomfort alone.
+The core engineering problem was loss of manipulability during telescope use, not winter discomfort in general.
 
-A clean testing procedure can be as important as a good concept, because weak evidence can make convergence look stronger than it is.
+Testing logic matters as much as concept quality, because weak evidence can make convergence seem more justified than it is.
 
-Workflow evidence can invalidate a seemingly clever concept if that concept only addresses one small portion of the real task sequence.
+Workflow evidence can weaken a concept that only solves one narrow part of a larger task sequence.
 
-A design can be stronger when it manages a real tradeoff honestly instead of pretending that tradeoff can be designed away.
+A design often becomes stronger when it manages a real tradeoff directly instead of pretending it can eliminate it.
 
 ## CTMF Dossier Content
 

@@ -32,6 +32,11 @@ const FDCR_STAGE_THEME_BY_CODE: Record<string, FdcrStageTheme> = {
     tileFill: "#31d7c4",
     tileText: "#000000",
   },
+  "F/D": {
+    indicatorClassName: "fdcr-indicator fdcr-indicator--frame-diverge",
+    tileFill: "#31d7c4",
+    tileText: "#000000",
+  },
   "R/C": {
     indicatorClassName: "fdcr-indicator fdcr-indicator--represent-converge",
     tileFill: "#7ab8ff",
@@ -68,20 +73,20 @@ export const PROJECTS: Ctmf[] = [
   {
     slug: "challenge-assumptions",
     title: 'Challenge Assumptions',
-    stage: 'Frame',
-    stageCode: 'F',
+    stage: 'Frame / Diverge',
+    stageCode: 'F/D',
     subtext: 'Questioned whether the bottom flange was still doing enough useful structural work to justify its material cost once manufacturability became a real structural constraint.',
-    overview: 'Challenge assumptions is a framing CTMF that asks whether a feature still deserves to survive once the governing evidence changes, or whether it is being preserved out of habit, inheritance, or misplaced caution.',
-    whyItMatters: 'In CIV102, it mattered because the bridge stopped being about the strongest closed section on paper and became about the strongest bridge that could actually fit on one sheet and be built.',
+    overview: 'Challenge assumptions is a frame / diverge CTMF that tests whether inherited features still deserve authority under the current evidence, then opens new design directions once they stop matching the real constraint set.',
+    whyItMatters: 'In CIV102, it mattered because the bridge stopped being judged as the strongest closed section on paper and started being judged as the strongest bridge that could actually fit on one sheet and be built.',
     evidence: [
       'CIV102: after Design 3 reached about 2.12 kN but failed the fitting check, the team challenged whether the bottom flange still deserved to remain and shifted the bridge toward a pi-beam.',
       'Praxis I: the same mindset became critical once evidence showed that can-opening noise was not mainly being driven by depressurization.',
     ],
-    application: 'I use Challenge Assumptions when a feature feels structurally obvious, but the project evidence suggests it may no longer be earning its material, complexity, or authority.',
+    application: 'I use Challenge Assumptions when a feature still feels structurally obvious, but the evidence suggests it may no longer be earning its material, complexity, or authority.',
     dossiers: [
       {
         project: 'CIV102',
-        phaseCode: 'F',
+        phaseCode: 'F/D',
         claimHeadline: 'Challenge Assumptions Mattered When The Bottom Flange Stopped Earning Its Place Once Manufacturability Became Structural.',
         summary:
           'In CIV102, challenging assumptions mattered when the bridge stopped being judged as the strongest closed section on paper and started being judged as the strongest bridge that could actually be built. After Design 3 reached about 2.12 kN but failed the manufacturability check, the team challenged the assumption that the bottom flange still had to remain. Removing it reduced predicted load to 1861 N, saved about 25% of the material, and reframed the bridge as a buildable pi-beam rather than an unbuildable box section.',
@@ -89,7 +94,7 @@ export const PROJECTS: Ctmf[] = [
           {
             title: 'Core Claim',
             bullets: [
-              'In CIV102, challenging assumptions mattered because it let the team revoke a structurally inherited feature once it stopped serving the real governing problem. After Design 3 reached about 2.12 kN analytically but failed the manufacturability check, the important framing move was no longer choosing a simple bridge family in the abstract. It was challenging the assumption that the bottom flange still deserved to remain. Removing it reduced predicted load to about 1861 N, saved roughly 25% of the material, and shifted the bridge toward a pi-beam. The CTMF therefore changed both the bridge form and the criterion by which the bridge was being judged.',
+              'In CIV102, challenging assumptions mattered because it let the team revoke an inherited structural feature once it stopped serving the real governing problem. After Design 3 reached about 2.12 kN analytically but failed the manufacturability check, the important move was no longer to make the bridge stronger in the abstract, but to ask whether the bottom flange was still earning its place. Removing it reduced predicted load to about 1861 N, saved roughly 25% of the material, and shifted the bridge toward a pi-beam, so the CTMF changed both the bridge form and the criterion by which the bridge was being judged.',
             ],
             figures: [
               {
@@ -113,17 +118,17 @@ export const PROJECTS: Ctmf[] = [
           {
             title: 'CTMF Description / What It Is',
             bullets: [
-              'Challenge assumptions is a framing CTMF that asks which parts of the current design logic are genuinely required by the evidence and which parts only feel necessary because they were inherited from an earlier version of the design.',
+              'Challenge assumptions is a frame / diverge CTMF that tests whether features that feel structurally obvious are still justified by the current evidence, then opens a different design path once inherited form stops matching the real constraint set.',
               'In CIV102, that mattered once optimization had already produced a bridge that looked excellent analytically but still could not fit on one matboard sheet.',
-              'At that point, the better framing question was no longer "how do we make this bridge even stronger?" but "which structural features are still earning their place under the real assignment constraints?"',
+              'At that point, the better question was no longer simply how to make the bridge stronger, but which structural features were still earning their place under the real assignment constraints and what new bridge form became possible once they were removed.',
             ],
           },
           {
             title: 'How I Used It In CIV102',
             bullets: [
-              'The strongest use of this CTMF came in Design 4.1, after the fitting algorithm showed that the analytically strongest bridge was functionally impossible to manufacture. Up to that point, the bridge still carried the inherited logic of a closed box section, and the bottom flange still looked structurally natural to preserve.',
-              'Once manufacturability became a real structural constraint, that logic had to be questioned. The team responded by asking whether the bottom flange was still doing enough useful work to justify its material and fitting cost. The report’s answer was no: several modes were heavily overprotected, especially tension and buckling case 2, while the project still needed to reduce effective area to move toward a buildable layout.',
-              'Removing the bottom flange therefore was not just geometry reduction. It was assumption-challenging because the team stopped treating a closed section as automatically better and instead asked whether that feature still matched the actual problem. The result was a bridge that moved toward a pi-beam and a project that started optimizing around buildability rather than inherited form.',
+              'The strongest use of this CTMF came in Design 4.1, once the fitting algorithm showed that the analytically strongest bridge was not manufacturable and the project had to decide which parts of its inherited structural logic were still worth paying for.',
+              'Up to that point, the closed box section and bottom flange still carried the authority of a familiar strong form, though once sheet fitting became a real structural constraint, that authority had to be tested rather than preserved automatically. The team responded by asking whether the bottom flange was still doing enough useful work to justify its material and fitting cost, and the report’s answer was no: several modes were already heavily overprotected, especially tension and buckling case 2, while the effective area still had to shrink if the bridge was going to move toward a buildable layout.',
+              'Removing the bottom flange therefore was not just geometry reduction. It was a framing decision that shifted the bridge away from inherited form and toward a pi-beam logic shaped by the actual constraint now governing the project.',
             ],
             figures: [
               {
@@ -147,25 +152,25 @@ export const PROJECTS: Ctmf[] = [
           {
             title: 'Limitations Of The CTMF',
             bullets: [
-              'The limitation was not that the CTMF failed to question the bottom flange. It did that well. The limitation was that the same skepticism was not extended strongly enough into local fabrication conditions such as splice reliability, adhesive behavior, and alignment tolerance.',
-              'The project successfully challenged an inherited global feature, but the built bridge still later failed at the front splice rather than in the predicted global mode. So the framing improved at the level of section form and manufacturability, but not yet enough at the level of local fabrication sensitivity.',
+              'The limitation was not that the CTMF failed to question the bottom flange, because it did that well, but that the same skepticism was not extended strongly enough into local fabrication conditions such as splice reliability, adhesive behavior, and alignment tolerance.',
+              'The project successfully challenged an inherited global feature, but the built bridge still later failed at the front splice rather than in the predicted global mode, so the framing improved at the level of section form and manufacturability without reaching the local fabrication sensitivity that ultimately governed failure.',
               'The deeper lesson is that challenging assumptions has to keep moving downward into the details a final design quietly depends on. In CIV102, revoking the bottom flange was the right framing correction, but it was not the last one the bridge needed.',
             ],
           },
           {
             title: 'Impact On My Position In Context',
             bullets: [
-              'This CTMF fits my preference for engineering that is explicit, analyzable, and defensible, but CIV102 changed what that preference means in practice. The bottom flange looked necessary because it was familiar, symmetrical, and intuitively safer.',
-              'The project showed me that a structurally "obvious" feature can keep authority longer than it deserves if I do not force it to answer the current evidence. In this case, good framing meant stopping the bridge from protecting an older idea of strength after manufacturability had become the real bottleneck.',
-              'The deeper lesson for me was that framing is not only about choosing the right concept family early. It is also about knowing when to revoke structural privileges once the governing problem changes.',
+              'This CTMF still fits my preference for engineering that is explicit, analyzable, and defensible, though CIV102 changed what that means in practice by showing that a feature can keep its authority simply because it looks familiar, symmetrical, or intuitively safer, even after the evidence has shifted elsewhere.',
+              'What mattered here was not preserving the structurally obvious form, but recognizing when the governing problem had changed and revoking a feature that no longer deserved its material cost.',
+              'The project made me see more clearly that framing is not only about choosing the right concept early. It is also about knowing when a feature that once made sense no longer does.',
             ],
           },
           {
             title: 'Future Steps',
             bullets: [
-              'Use this CTMF once before optimization hardens, to question inherited form assumptions early, and again after manufacturability and fitting enter the project, to test whether major structural features are still earning their material cost.',
-              'Extend the same skepticism into local details such as splices, adhesives, and alignment-sensitive regions instead of only using it on global section form.',
-              'My practical rule after CIV102 is: if a feature is consuming substantial material but no longer protecting the governing problem, it should lose its privileged status and be challenged directly.',
+              'Use this CTMF once before optimization hardens to question inherited form early, then use it again after fitting and manufacturability enter the project to test whether major structural features are still earning their place.',
+              'Extend the same skepticism into splice regions, adhesive behavior, and alignment-sensitive details instead of applying it mainly to global section form.',
+              'My practical rule after CIV102 is simple: if a feature consumes substantial material but no longer protects the governing problem, it should lose its privileged status and be challenged directly.',
             ],
           },
         ],
@@ -175,17 +180,17 @@ export const PROJECTS: Ctmf[] = [
   {
     slug: "stakeholder-mapping",
     title: 'Stakeholder Analysis',
-    stage: 'Frame / Represent',
-    stageCode: 'F/R',
-    subtext: 'Used primary stakeholder conversations to widen the can-opening problem beyond noise alone and translate those concerns into explicit requirements.',
-    overview: 'Stakeholder analysis identifies who is affected by a design, who constrains implementation, and how those pressures should be translated into requirements before the project narrows too quickly around one metric.',
+    stage: 'Frame',
+    stageCode: 'F',
+    subtext: 'Used primary stakeholder conversations to frame the can-opening problem beyond noise alone before the team narrowed around a solution.',
+    overview: 'Stakeholder analysis is a framing CTMF that identifies who is affected by a design and what success has to protect before the project narrows too quickly around one metric.',
     whyItMatters: 'In Praxis I, it mattered because primary student conversations surfaced spill control, beverage disturbance, and awkward interaction as real concerns, which expanded the problem beyond noise alone.',
     evidence: [],
-    application: 'I use stakeholder analysis early to turn stakeholder pressure into measurable requirements, then revisit it after testing to check whether the project is still protecting what those users actually cared about.',
+    application: 'I use stakeholder analysis early to frame what the project must protect, then revisit it after testing to check whether the project is still responding to what those users actually cared about.',
     dossiers: [
       {
         project: 'Praxis I',
-        phaseCode: 'F/R',
+        phaseCode: 'F',
         claimHeadline: 'Stakeholder Analysis Should Expand the Design Frame Before the Project Collapses Into Noise Alone.',
         summary:
           'In Praxis I, stakeholder analysis mattered because it widened the project beyond noise alone, translated unexpected student concerns into clearer requirements, and changed what counted as a successful design during convergence.',
@@ -199,7 +204,7 @@ export const PROJECTS: Ctmf[] = [
           {
             title: 'CTMF Description / What It Is',
             bullets: [
-              'Stakeholder analysis is a framing / representing CTMF that identifies who is affected by a design, what they care about, and how those concerns should be translated into requirements before the project narrows too quickly around one metric.',
+              'Stakeholder analysis is a framing CTMF that identifies who is affected by a design, what they care about, and what success has to protect before the project narrows too quickly around one metric.',
               'In Praxis I, it was needed to stop the project from collapsing into noise reduction alone and to keep other user-visible consequences of can opening in view.',
             ],
           },
@@ -421,12 +426,12 @@ export const PROJECTS: Ctmf[] = [
   {
     slug: "calculations-simulation",
     title: 'Calculations / Simulation',
-    stage: 'Diverge',
-    stageCode: 'D',
+    stage: 'Represent',
+    stageCode: 'R',
     subtext:
       'Used MATLAB and Python to search a bounded bridge-design space, compare candidate geometries by their weakest factor of safety, and remove wasted material without losing the governing structural margins.',
     overview:
-      'Calculations and simulation can act as a diverging CTMF when they define a search space, vary key parameters, and compare candidate states systematically rather than adjusting geometry by feel.',
+      'Calculations and simulation are a representing CTMF when they convert a physical design into explicit variables, equations, failure modes, and comparable outputs that can guide later optimization.',
     whyItMatters:
       'In CIV102, it mattered because the bridge did not improve through one heroic calculation. It improved through repeated parameter sweeps over web spacing, diaphragm layout, and top-flange reinforcement under the real limits of material usage and matboard fitting.',
     evidence: [
@@ -434,11 +439,11 @@ export const PROJECTS: Ctmf[] = [
       'Praxis I: the same mindset later appeared in using measured criteria and proxy testing to compare can-opening concepts more rigorously.',
     ],
     application:
-      'I use calculations and simulation when a project has several tunable variables and the team needs an explicit comparison rule for deciding which changes are genuinely improving the design and which are only adding material or complexity.',
+      'I use calculations and simulation when a project needs a clear analytical representation of the design variables, constraints, and failure modes before the team trusts an optimization result.',
     dossiers: [
       {
         project: 'CIV102',
-        phaseCode: 'D',
+        phaseCode: 'R',
         claimHeadline:
           'Calculations And Simulation Should Turn Bridge Design Into A Bounded Search For The Strongest Manufacturable Option.',
         summary:
@@ -471,10 +476,10 @@ export const PROJECTS: Ctmf[] = [
               },
             ],
             bullets: [
-              'Calculations and simulation act as a diverging CTMF when they define a feasible search space, vary important design variables, and generate multiple candidate states that can be compared systematically.',
+              'Calculations and simulation act as a representing CTMF when they turn a physical design into explicit variables, equations, constraints, failure modes, and comparable outputs.',
               'In CIV102, that meant using MATLAB and Python not just to check one bridge, but to sweep variables such as web spacing, diaphragm spacing, and top-flange material distribution while keeping the bridge inside material and fitting limits.',
               'The key comparison rule was the minimum factor of safety across the tracked failure modes. In plain terms, that meant each candidate was judged by the first place it was likely to fail, not by its best-looking number.',
-              'That is what made the CTMF useful here. It did not just say whether a bridge worked. It turned the bridge into a bounded search problem with an explicit way to compare alternatives.',
+              'That is what made the CTMF useful here. It did not just say whether a bridge worked. It represented the bridge as a bounded analytical model with an explicit way to compare alternatives.',
             ],
           },
           {
@@ -559,9 +564,9 @@ export const PROJECTS: Ctmf[] = [
     title: 'Morphological Chart',
     stage: 'Diverge',
     stageCode: 'D',
-    subtext: 'Used a morphological chart to generate distinct mechanism families for quieter can opening, then learned that divergence breadth is only as good as the frame beneath it.',
-    overview: 'Morphological charts break a design problem into sub-functions and candidate means so teams can generate distinct mechanism families systematically instead of ideating in vague whole-product terms.',
-    whyItMatters: 'In Praxis I, it mattered because it generated the actual concept families that later entered convergence, while later testing showed that the chart had widened implementation diversity more than explanatory diversity.',
+    subtext: 'Used a morphological chart to generate distinct mechanism families for quieter can opening, then learned that divergence stays meaningful only if the chart is rebuilt when the explanation of the problem changes.',
+    overview: 'Morphological charts break a design problem into sub-functions and candidate means so teams can generate distinct mechanism combinations systematically instead of ideating in vague whole-product terms.',
+    whyItMatters: 'In Praxis I, it mattered because it generated the mechanism families that later entered convergence, while later testing showed that the chart had widened implementation diversity more than explanatory diversity.',
     evidence: [],
     application: 'I use morphological charts when a problem can be decomposed into sub-functions, but I now treat them as revisable divergence tools that should be rebuilt when later evidence changes the frame.',
     dossiers: [
@@ -570,14 +575,14 @@ export const PROJECTS: Ctmf[] = [
         phaseCode: 'D',
         claimHeadline: 'Morph Charts Should Generate Distinct Mechanism Families, Then Be Rebuilt When Evidence Changes The Frame.',
         summary:
-          'In Praxis I, the morphological chart mattered because it generated the mechanism families our team later compared and eliminated. Its main limit was not lack of breadth, but that many early branches still depended on the same weakening causal story about the sound event. Once testing challenged that story, the chart should have been rebuilt.',
+          'In Praxis I, the morphological chart mattered because it generated the mechanism families our team later compared and eliminated. Its limit was not a lack of breadth, but the fact that many early branches still depended on the same weakening explanation of the sound event. Once testing challenged that explanation, the chart should have been rebuilt.',
         sections: [
           {
             title: 'CTMF Description / What It Is',
             bullets: [
               'A morphological chart is a diverging CTMF that breaks a design problem into functions or sub-functions, then generates multiple candidate means under each so concept combinations can be explored systematically rather than through vague whole-object brainstorming.',
-              'In Praxis I, it was needed because the project risk was premature fixation on one intuitive "quiet opener" idea before our team had compared materially different mechanism directions.',
-              'In practice, it decomposed the opening event into rows like opening, depressurizing, handling, and silencing so divergence could happen at the level of mechanism logic rather than cosmetic variation.',
+              'In Praxis I, it mattered because the project risk was premature fixation on one intuitive quiet-opener idea before our team had compared materially different mechanism directions.',
+              'In practice, it decomposed the opening event into rows such as opening, depressurizing, handling, and silencing so divergence could happen at the level of mechanism logic rather than cosmetic variation.',
             ],
           },
           {
@@ -594,27 +599,27 @@ export const PROJECTS: Ctmf[] = [
                 src: '/api/images/praxis1-morph-chart',
                 alt: 'Praxis I morphological chart showing rows for opening, depressurizing, handling, and silencing with alternative means under each.',
                 caption:
-                  'The actual morph chart is the key CTMF evidence. It shows how the project moved from a vague "quiet opener" idea to a structured mechanism space built from explicit sub-functions.',
+                  'The morph chart is the key CTMF evidence because it shows the project moving from a vague quiet-opener idea to a structured mechanism space built from explicit sub-functions.',
                 imageClassName: 'object-contain',
               },
               {
                 src: '/context-evidence/raw/praxis1-alpha-brainstorming.png',
                 alt: 'Praxis I Alpha release brainstorming page listing early mechanism directions for quieter can opening.',
                 caption:
-                  'This Alpha release page shows the downstream effect of the chart: the generated rows turned into distinct concept families that the team could carry into later comparison.',
+                  'This Alpha release page shows the downstream effect of the chart, where the generated rows turned into distinct concept families that the team could carry into later comparison.',
               },
             ],
             bullets: [
               'I used the morph chart to make divergence structured, visible, and traceable so later convergence would compare mechanism families rather than defend favorite sketches.',
-              'That changed the level at which the project diverged. Instead of comparing variants of one opener, our team had to compare puncture venting, external damping, interface modification, and mechanism replacement as different intervention logics.',
+              'That changed the level at which the project diverged, because instead of comparing variants of one opener, our team had to compare puncture venting, external damping, interface modification, and mechanism replacement as materially different intervention logics.',
             ],
           },
           {
             title: 'What It Generated',
             bullets: [
               'The chart generated the four families that actually stayed alive in the project: needle-straw vent, water opener, rubber tab, and slider.',
-              'Those families then became the real convergence path. Needle-straw was removed first, then water opener, and the final comparison became slider versus rubber tab.',
-              'Its downstream effect was visible in testing: the slider was eventually strongest overall because it improved noise reduction without the spill, boil-off, pressure, and gesture penalties that weakened the other families.',
+              'Those families then became the real convergence path, with needle-straw removed first, then water opener, and the final comparison narrowing to slider versus rubber tab.',
+              'Its downstream effect remained visible in testing, where the slider emerged as the strongest overall because it improved noise reduction without the spill, boil-off, pressure, and gesture penalties that weakened the other families.',
             ],
           },
           {
@@ -624,21 +629,21 @@ export const PROJECTS: Ctmf[] = [
                 src: '/context-evidence/raw/praxis1-p3-img1.png',
                 alt: 'Praxis I reflection sheet about divergence and anchoring during the project.',
                 caption:
-                  'This reflection captures the real limit of the chart: it widened the concept space, but many branches still inherited the same underlying explanation of the sound event.',
+                  'This reflection captures the real limit of the chart, since the concept space widened while many branches still inherited the same explanation of the sound event.',
               },
             ],
             bullets: [
-              'The main limitation was not lack of breadth. The first chart still carried a hidden causal assumption about the sound event.',
-              'Several branches assumed the problem could be solved by depressurizing, damping, or muffling the standard opening event. That made concepts like the needle-straw, water opener, and rubber tab look diverse as artifacts while still sharing the same broader logic.',
-              'Later vented-versus-unvented testing weakened that explanation. The deeper issue was that the chart widened implementation diversity more than explanatory diversity.',
+              'The main limitation was not breadth, but the hidden causal assumption the first chart carried about the sound event itself.',
+              'Several branches still assumed the problem could be solved by depressurizing, damping, or muffling the standard opening event, which made concepts like the needle-straw, water opener, and rubber tab look diverse as artifacts while still sharing the same broader logic.',
+              'Later vented-versus-unvented testing weakened that explanation, which made clear that the chart had widened implementation diversity more than explanatory diversity.',
             ],
           },
           {
             title: 'What I Learned / How I Would Use It Next Time',
             bullets: [
-              'This CTMF still fits my preference for explicit, structured divergence because it kept multiple mechanism families visible long enough to compare.',
+              'This CTMF still fits my preference for structured divergence because it kept multiple mechanism families visible long enough to compare.',
               'The deeper lesson from Praxis I is that a morph chart can protect against fixation on one concept without protecting against fixation on one causal story.',
-              'My future rule is to mark assumed rows clearly and rebuild the chart after any major test result that changes the explanation of the problem. In Praxis I, the vented-versus-unvented result should have triggered that second pass.',
+              'My future rule is to mark assumed rows more clearly and rebuild the chart after any major test result that changes the explanation of the problem. In Praxis I, the vented-versus-unvented result should have triggered that second pass.',
             ],
           },
         ],
@@ -909,13 +914,13 @@ export const PROJECTS: Ctmf[] = [
       },
     ],
   },
-  {
+   {
     slug: "pugh-chart-praxis-i",
     title: 'Pugh Chart',
     stage: 'Converge',
     stageCode: 'C',
     subtext: 'Used pairwise comparison and two Pugh-chart passes in Praxis I to eliminate weak concepts early and identify which surviving ones still needed testing.',
-    overview: 'A Pugh chart compares concepts against a datum using explicit criteria, but in Praxis I it worked as staged convergence: first screening out unjustifiable concepts, then making unresolved tradeoffs visible enough to justify more testing.',
+    overview: 'A Pugh chart compares concepts against a datum through explicit criteria, though in Praxis I it worked less as a final verdict than as staged convergence: first eliminating weak concepts, then turning unresolved tradeoffs into a testing agenda.',
     whyItMatters: 'In Praxis I, it mattered because it removed the needle-straw concept early and showed that the water opener, rubber tab, and slider still needed evidence rather than an immediate winner.',
     evidence: [],
     application: 'I use Pugh charts to make concept narrowing traceable, especially when the correct result is not yet "choose the winner" but "decide what must be tested next."',
@@ -925,7 +930,7 @@ export const PROJECTS: Ctmf[] = [
         phaseCode: 'C',
         claimHeadline: 'In Praxis I, the Pugh chart staged convergence by eliminating unjustifiable concepts early and turning unresolved tradeoffs into a testing plan.',
         summary:
-          'In Praxis I, the Pugh chart did not function as a final verdict. It converted stakeholder-informed criteria and concept comparisons into a staged narrowing process: the first pass was strong enough to remove the needle-straw concept, while the second pass exposed enough uncertainty that the water opener, rubber tab, and slider had to be prototyped and tested before one could be recommended honestly.',
+          'In Praxis I, the Pugh chart did not function as a final verdict. It converted stakeholder-informed criteria and concept comparisons into a staged narrowing process: the first pass removed the needle-straw concept, while the second showed enough uncertainty that the water opener, rubber tab, and slider had to be prototyped and tested before one could be recommended honestly.',
         sections: [
           {
             title: 'Core Claim',
@@ -936,22 +941,22 @@ export const PROJECTS: Ctmf[] = [
           {
             title: 'What The CTMF Is',
             bullets: [
-              'A Pugh chart is a converging CTMF that compares concepts against a datum using explicit criteria so elimination, retention, and uncertainty are visible instead of being hidden inside preference.',
-              'In Praxis I, it sat after stakeholder analysis and the morph chart had already widened the criteria and generated distinct concept families. By that point, our team no longer needed more raw ideas; we needed a disciplined way to decide which concepts should stop, which ones should continue, and which criteria were still too uncertain to settle without testing.',
+              'A Pugh chart is a converging CTMF that compares concepts against a datum through explicit criteria so concept elimination and remaining uncertainty can be judged more systematically.',
+              'In Praxis I, it mattered because once stakeholder analysis and divergence had widened the frame and generated distinct mechanism families, the project needed a disciplined way to narrow concepts without pretending the evidence was already complete.',
             ],
           },
           {
             title: 'How I Used It In Praxis I',
             bullets: [
-              'The pairwise comparison matrix in Appendix A acted as the first filter. It surfaced the practical claims and rebuttals behind each concept before the formal Pugh chart translated them into explicit criteria-based judgments.',
-              'Pugh Chart Version 1 compared concepts at a high level against the control using criteria such as noise, edge safety, and food safety. That first pass was already strong enough to justify removing the needle-straw concept because its force, sharpness, and contamination problems were difficult to defend against the project requirements.',
-              'Pugh Chart Version 2 widened the criteria to include liquid loss, volume, weight, and food safety. That did not produce a clean winner. Instead, it exposed how much remained uncertain, especially for the water opener, rubber tab, and slider.',
+              'The pairwise comparison matrix in Appendix A served as the first convergence filter by surfacing the practical claims and rebuttals behind each concept before those judgments were formalized in the Pugh charts.',
+              'Pugh Chart Version 1 compared concepts against the control using high-level criteria such as noise, edge safety, and food safety, and it was strong enough to eliminate the needle-straw because its sharpness, force, accessibility, and contamination risks were already difficult to defend.',
+              'Pugh Chart Version 2 then widened the criteria to include liquid loss, volume, weight, and food safety, which did not identify a winner so much as show where uncertainty still remained across the water opener, rubber tab, and slider.',
             ],
             calloutTitle: 'Convergence Path',
             callouts: [
-              'Pairwise comparison prepared the claims, rebuttals, and requirement-linked concerns before the formal chart.',
-              'Version 1 was strong enough to remove the needle-straw concept early.',
-              'Version 2 turned uncertainty into a testing plan for the water opener, rubber tab, and slider.',
+              'The pairwise comparison prepared the claims and requirement-linked concerns that the formal chart later organized.',
+              'Version 1 removed the needle-straw early.',
+              'Version 2 narrowed the field to the water opener, rubber tab, and slider and made clear that testing, not further scoring alone, had to decide between them.',
             ],
             figures: [
               {
@@ -968,7 +973,7 @@ export const PROJECTS: Ctmf[] = [
                 src: '/context-evidence/raw/praxis1-pugh-chart-v1.png',
                 alt: 'Praxis I Pugh Chart Version 1 comparing candidate designs against the control using high-level criteria such as noise, edge safety, and food safety.',
                 caption:
-                  'Pugh Chart Version 1 translated the pairwise reasoning into explicit plus, neutral, minus, and uncertain judgments against the control. It was strong enough to remove the needle-straw concept early because its accessibility, sharpness, force, and contamination risks were already difficult to defend against the project requirements.',
+                  'Pugh Chart Version 1 translated the pairwise reasoning into explicit plus, neutral, minus, and uncertain judgments against the control, and it was strong enough to remove the needle-straw because its accessibility, sharpness, force, and contamination risks were already difficult to defend.',
                 imageClassName: 'object-contain bg-white p-4',
                 frameClassName: 'aspect-[24/10] bg-white',
                 figureClassName: 'xl:col-span-2',
@@ -978,7 +983,7 @@ export const PROJECTS: Ctmf[] = [
                 src: '/context-evidence/raw/praxis1-pugh-chart-v2.png',
                 alt: 'Praxis I Pugh Chart Version 2 comparing the water opener, slider, and rubber-tab concepts against the control across criteria including noise, liquid loss, volume, weight, and food safety.',
                 caption:
-                  'Pugh Chart Version 2 expanded the criteria to include liquid loss, volume, weight, and food safety, and it exposed how much still remained unresolved. Those uncertainties are why the water opener, rubber tab, and slider advanced to prototype testing and data collection instead of being settled by the chart alone.',
+                  'Pugh Chart Version 2 expanded the criteria to include liquid loss, volume, weight, and food safety, and it exposed how much still remained unresolved, which is why the water opener, rubber tab, and slider advanced to prototype testing instead of being settled by the chart alone.',
                 imageClassName: 'object-contain bg-white p-4',
                 frameClassName: 'aspect-[24/10] bg-white',
                 figureClassName: 'xl:col-span-2',
@@ -989,24 +994,24 @@ export const PROJECTS: Ctmf[] = [
           {
             title: 'What It Generated',
             bullets: [
-              'It generated early elimination of the needle-straw concept because that design did not meet key safety and accessibility requirements strongly enough to justify further prototyping.',
-              'It generated a second, narrower comparison among the water opener, rubber tab, and slider instead of forcing our team into premature commitment.',
-              'Most importantly, it generated the next engineering task. The many question marks in the second chart showed that prototype testing was still required for noise, liquid loss, hygiene, and overall usability before a final recommendation could be defended.',
+              'The chart generated early elimination of the needle-straw, a narrower second comparison among the water opener, rubber tab, and slider, and a testing agenda for the remaining uncertainties.',
+              'It kept the surviving concepts in play without forcing premature commitment.',
+              'The unresolved question marks in Version 2 showed that noise, liquid loss, hygiene, and usability still required prototype evidence before a final recommendation could be defended.',
             ],
           },
           {
             title: 'Its Limitation',
             bullets: [
-              'The Pugh chart could organize comparison, but it could not resolve uncertainty by itself. In Praxis I, Version 2 still contained too many unknowns for the chart to serve as a final recommendation tool.',
-              'It also could not prove that the project frame was fully correct. A concept could still score well while the team was operating inside an incomplete explanation of the sound event.',
-              'That is why later testing mattered so much. The chart narrowed the field responsibly, but only measurement could show whether the surviving concepts actually performed better on the criteria that mattered.',
+              'The Pugh chart could organize comparison, though it could not resolve uncertainty on its own. In Praxis I, Version 2 still contained too many unknowns to support a final recommendation.',
+              'It also could not test whether the project’s physical explanation of the sound event was fully correct, since a concept could still score well while the team was working inside a weakened frame.',
+              'Later measurement therefore mattered because only testing could show whether the surviving concepts actually performed better on the criteria that mattered.',
             ],
             figures: [
               {
                 src: '/context-evidence/raw/praxis1-converging-acoustic-comparison.png',
                 alt: 'Praxis I acoustic impulse comparison between the control pull-tab can and the slider can over time.',
                 caption:
-                  'This later acoustic result is the rebuttal to overtrusting the chart. The Pugh comparison narrowed the field, but measured evidence was still needed to show whether the surviving concept actually outperformed the control in practice.',
+                  'This later acoustic result shows the limit of the chart: the Pugh comparison narrowed the field, but measured evidence was still needed to show whether the surviving concept actually outperformed the control in practice.',
                 imageClassName: 'object-contain bg-white p-4',
                 frameClassName: 'aspect-[24/10] bg-white',
                 figureClassName: 'xl:col-span-2',
@@ -1017,16 +1022,16 @@ export const PROJECTS: Ctmf[] = [
           {
             title: 'What I Learned / How I Would Use It Next Time',
             bullets: [
-              'The main lesson was that a Pugh chart is strongest when it is used to decide what to do next, not when it is used to pretend uncertainty has disappeared.',
-              'In Praxis I, the most honest reading of the second chart was not "we have a winner." It was "we still need evidence." That is the part I would preserve next time.',
-              'Going forward, I would treat repeated question marks as an explicit trigger for prototype testing, and I would rebuild the chart if later evidence changed the criteria or the underlying problem frame.',
+              'The main lesson was that a Pugh chart is strongest when it clarifies what must be tested next rather than pretending uncertainty has disappeared.',
+              'In Praxis I, the honest reading of Version 2 was not that the team had found a winner, but that the remaining concepts had to be prototyped and measured before one could be trusted.',
+              'Going forward, I would treat repeated question marks as an explicit trigger for testing and rebuild the chart if later evidence changes either the criteria or the problem frame.',
             ],
           },
         ],
       },
     ],
   },
-  {
+    {
     slug: "pugh-chart-civ102",
     title: 'Pugh Chart',
     stage: 'Converge',
@@ -1034,15 +1039,15 @@ export const PROJECTS: Ctmf[] = [
     subtext:
       'Used six sequential bridge comparison charts to decide which design revision should survive, which should be rejected, and when strength had to be traded for buildability.',
     overview:
-      'A Pugh chart is a converging CTMF that compares alternatives using explicit criteria. In CIV102, that role was carried by six sequential failure-mode comparison tables that compared one bridge revision against the next using the same structural criteria.',
+      'A Pugh chart is a converging CTMF because it lets successive design revisions be judged against explicit criteria rather than against intuition, and in CIV102 those criteria were the tracked factors of safety, the governing failure mode, and the predicted failure load.',
     whyItMatters:
-      'It mattered because the project was not choosing between unrelated concept families. It was choosing which revision path deserved to continue once each design move changed the governing failure mode, the predicted load, or the bridge’s manufacturability.',
+      'It mattered because the project was not choosing between unrelated concept families, but deciding which revision path still deserved to continue once each design move changed the governing mode, the predicted load, or the bridge’s manufacturability.',
     evidence: [
-      'CIV102: six comparison charts tracked the bridge from Design 0 through Design 4.3, showing exactly which design move improved the weakest mode, which one exposed a new governing condition, and which one sacrificed strength to regain buildability.',
-      'CIV102: the final built bridge failed at 580 N rather than the predicted 1367 N, which revealed that the convergence structure was stronger for global section behavior than for splice-sensitive fabrication vulnerability.',
+      'CIV102: six comparison charts tracked the bridge from Design 0 through Design 4.3, showing which revisions improved the governing mode, which exposed a new bottleneck, and which accepted lower strength to regain buildability.',
+      'CIV102: the final built bridge failed at 580 N rather than the predicted 1367 N, which showed that the convergence structure was stronger for global section behavior than for splice-sensitive fabrication vulnerability.',
     ],
     application:
-      'I use Pugh charts when a project evolves through successive revisions and the team needs a visible rule for deciding whether a change actually improved the design overall, rather than just one appealing part of it.',
+      'I use Pugh charts when a project evolves through successive revisions and the team needs a visible rule for deciding whether a change has improved the design overall rather than only one appealing part of it.',
     dossiers: [
       {
         project: 'CIV102',
@@ -1050,22 +1055,22 @@ export const PROJECTS: Ctmf[] = [
         claimHeadline:
           'Pugh Charts Should Make Each Design Revision Answer The Weakest Mode Before That Revision Is Allowed To Survive.',
         summary:
-          'In CIV102, the six Pugh charts converged the bridge by asking one repeated question: after each design move, was the weakest mode now better enough to justify keeping that revision? That made the charts useful for more than ranking stronger-looking options. They documented when a design move truly improved the bridge, when it simply shifted the weakness elsewhere, and when load had to be sacrificed to regain manufacturability. Their limit was not poor organization, but false completeness: they converged the modeled bridge much more fully than they represented splice-sensitive behavior in the built bridge.',
+          'In CIV102, the six Pugh charts converged the bridge by asking one repeated question: after each design move, had the weakest condition improved enough to justify keeping that revision? That made the charts useful for more than ranking stronger-looking options, because they recorded when a change truly improved the bridge, when it merely shifted the weakness elsewhere, and when analytical strength had to be sacrificed to regain buildability. Their limit was not poor organization, but false completeness: they converged the modeled bridge more fully than they represented splice-sensitive behavior in the built bridge.',
         sections: [
           {
             title: 'Core Claim',
             bullets: [
               'In CIV102, the Pugh charts mattered because they turned six successive bridge revisions into a visible convergence chain rather than a blur of design changes.',
-              'Each chart compared the previous design to the next one using the same structural language: the factors of safety for each failure mode, the controlling mode, and the predicted failure load. That consistency made it possible to ask a simple converging question after every move: did this revision actually improve the bridge where it was weakest?',
-              'The final test exposed the boundary of that logic. The charts converged the analytical bridge very clearly, but they did not represent splice reliability with equal force, so the built bridge still failed for a more local reason than the charts had foregrounded.',
+              'Each chart compared one design against the next using the same structural language: the factors of safety for each failure mode, the controlling mode, and the predicted failure load. That consistency made it possible to ask the same converging question after every move: did this revision improve the bridge where it was weakest?',
+              'The final test exposed the boundary of that logic. The charts converged the analytical bridge clearly, but they did not represent splice reliability with equal force, so the built bridge still failed for a more local reason than the charts had foregrounded.',
             ],
           },
           {
             title: 'CTMF Description / What It Is',
             bullets: [
-              'A Pugh chart is a converging CTMF because it compares alternatives against explicit criteria rather than against intuition or personal preference. In CIV102, those criteria were the factors of safety for the tracked failure modes, the controlling mode, and the predicted failure load.',
-              'For a reader unfamiliar with the bridge, the most important point is that the charts were not measuring the same thing six times for no reason. They were recording what changed after each major design move so the team could see whether the bridge had actually improved overall or had only moved the problem somewhere else.',
-              'That is why this CTMF belongs in Converging. The charts were used to decide whether a revision should be kept, revised again, or rejected, especially once the bridge had to balance strength, material use, and manufacturability at the same time.',
+              'A Pugh chart is a converging CTMF because it compares alternatives against explicit criteria rather than against intuition or personal preference, and in CIV102 those criteria were the tracked factors of safety, the governing failure mode, and the predicted failure load.',
+              'What mattered was not that the team produced six charts for the sake of documentation, but that each chart recorded whether a revision had actually improved the bridge overall or had merely shifted weakness from one mode to another.',
+              'That is why this CTMF belongs in Converging. The charts were used to decide whether a revision should be kept, revised again, or rejected once the bridge had to balance strength, material use, and manufacturability at the same time.',
             ],
           },
           {
@@ -1080,20 +1085,20 @@ export const PROJECTS: Ctmf[] = [
               'Pugh 6: the bridge accepted a lower analytical load in exchange for the first genuinely buildable pi-beam revision.',
             ],
             bullets: [
-              'I used the Pugh charts to read each bridge revision as a claim about the weakest part of the design rather than as a vague attempt to make the whole bridge stronger everywhere. That made convergence explainable. Every major change had to show why it deserved to survive the next round.',
-              'The first chart, [[fig:01]], compared Design 0 with Design 1. It showed that the starting bridge was not remotely adequate: thin-plate buckling case 1 governed at a factor of safety of 0.597 and the bridge was predicted to fail at only 260 N. Doubling the top flange raised the predicted load to 668 N and moved the controlling mode to compression. That mattered because the chart showed a real overall improvement, not just a local gain in one number.',
-              'The second chart, [[fig:02]], is where the convergence logic becomes more interesting. Design 2 greatly improved tension, compression, and shear, but the predicted failure load still dropped from 668 N to 622 N because web shear buckling became the new governing mode. This chart proved that a stronger-looking revision was not automatically better overall if it created a weaker controlling condition elsewhere.',
-              'The third chart, [[fig:03]], justified the major diaphragm-spacing revision. By tightening the diaphragm spacing, the team raised the thin-plate shear buckling factor of safety from 1.556 to 5.30 and the predicted failure load from 622 N to 2120 N. This was the clearest analytical success in the chain, and it showed how powerful the charts were when the modeled weakness was represented correctly.',
-              'The fourth chart, [[fig:04]], documented the most important strength-for-buildability tradeoff. Removing the bottom flange dropped the predicted failure load from 2120 N to 1861 N, but the bridge remained safely governed by thin-plate shear buckling while shedding material and moving toward a buildable pi-beam. This chart mattered because it made that sacrifice legible rather than letting it look like a simple loss.',
-              'The fifth chart, [[fig:05]], showed that convergence was not only about chasing a higher failure load. Design 4.2 kept the predicted load at 1861 N, but it moved the bridge from a badly unbalanced buckling reserve to a much more balanced one by reducing the gap between buckling case 1 and buckling case 2. In other words, the chart justified a refinement that improved structural balance even without increasing the headline load.',
-              'The sixth chart, [[fig:06]], recorded the first full manufacturability concession. Design 4.3 reduced the predicted load from 1861 N to 1319 N by dropping to two top-flange layers and reducing the height, but it finally produced a bridge that could fit on the matboard. Later diaphragm and flange-distribution optimization raised the final predicted value back to about 1367 N, so this chart is best read as the moment when convergence stopped asking for the strongest bridge on paper and started asking for the strongest bridge that could actually exist.',
+              'I used the Pugh charts to read each bridge revision as a claim about the weakest part of the design rather than as a vague attempt to make the whole bridge stronger, which made convergence legible because every major change had to show what governing condition it improved, what new condition it exposed, or what tradeoff it accepted.',
+              'The first chart, [[fig:01]], compared Design 0 with Design 1 and showed that the starting bridge was nowhere near viable: thin-plate buckling case 1 governed at a factor of safety of 0.597 and predicted failure sat at only 260 N. Doubling the top flange raised the predicted load to 668 N and shifted the controlling mode to compression, so the revision was worth keeping because it improved the bridge as a whole rather than inflating one isolated number.',
+              'The second chart, [[fig:02]], made the convergence logic harder and more useful, because although Design 2 improved tension, compression, and shear, the predicted failure load still fell from 668 N to 622 N once web shear buckling became the new governing condition, which showed that a revision could look stronger in several places while still becoming worse overall if it created a weaker bottleneck elsewhere.',
+              'The third chart, [[fig:03]], justified the diaphragm-spacing revision, where tightening the spacing raised the thin-plate shear buckling factor of safety from 1.556 to 5.30 and pushed predicted failure to 2120 N, making this the clearest analytical success in the sequence because the governing weakness had been identified correctly and then improved directly.',
+              'The fourth chart, [[fig:04]], captured the key strength-for-buildability tradeoff. Removing the bottom flange reduced predicted load from 2120 N to 1861 N, though the bridge remained structurally credible while shedding material and moving toward a buildable pi-beam, so the chart mattered because it made that sacrifice intelligible instead of letting it read as simple regression.',
+              'The fifth chart, [[fig:05]], showed that convergence was not only about raising the headline load. Design 4.2 kept the predicted load at 1861 N while reducing the gap between buckling case 1 and buckling case 2, which meant the revision improved structural balance even though the top-level capacity number stayed the same.',
+              'The sixth chart, [[fig:06]], recorded the first full manufacturability concession. Design 4.3 dropped from 1861 N to 1319 N by reducing top-flange layers and height, though it finally produced a bridge that could fit on the matboard, so this moment marks the point where convergence stopped asking for the strongest bridge on paper and started asking for the strongest bridge that could actually be built.',
             ],
             figures: [
               {
                 src: '/api/images/civ102-pugh/1',
                 alt: 'CIV102 Pugh Chart 1 comparing Design 0 and Design 1 across all tracked failure modes.',
                 caption:
-                  'Pugh Chart 1 compares Design 0 against Design 1. It shows why the original bridge could not survive and why doubling the top flange was the first justified revision: the controlling mode moved from thin-plate buckling case 1 to compression, and predicted capacity rose from 260 N to 668 N.',
+                  'Pugh Chart 1 compares Design 0 against Design 1. This chart shows why the original bridge could not survive and why doubling the top flange was the first justified revision.',
                 label: 'Fig. 01',
                 refKey: '01',
                 imageClassName: 'object-contain bg-white p-3',
@@ -1102,7 +1107,7 @@ export const PROJECTS: Ctmf[] = [
                 src: '/api/images/civ102-pugh/2',
                 alt: 'CIV102 Pugh Chart 2 comparing Design 1 and Design 2 across all tracked failure modes.',
                 caption:
-                  'Pugh Chart 2 compares Design 1 against Design 2. It matters because it proves that better values in several modes did not automatically make the bridge better overall: web shear buckling became the new governing condition, and predicted failure load fell from 668 N to 622 N.',
+                  'Pugh Chart 2 compares Design 1 against Design 2. It matters because stronger values in several modes did not make the bridge better overall once web shear buckling became the new governing condition.',
                 label: 'Fig. 02',
                 refKey: '02',
                 imageClassName: 'object-contain bg-white p-3',
@@ -1111,7 +1116,7 @@ export const PROJECTS: Ctmf[] = [
                 src: '/api/images/civ102-pugh/3',
                 alt: 'CIV102 Pugh Chart 3 comparing Design 2 and Design 3 across all tracked failure modes.',
                 caption:
-                  'Pugh Chart 3 compares Design 2 against Design 3. Tightening diaphragm spacing dramatically improved thin-plate shear buckling and pushed predicted failure load to 2120 N, making this the strongest analytical design in the comparison chain.',
+                  'Pugh Chart 3 compares Design 2 against Design 3. Tightening diaphragm spacing dramatically improved thin-plate shear buckling and pushed predicted failure to 2120 N, making this the strongest analytical design in the sequence.',
                 label: 'Fig. 03',
                 refKey: '03',
                 imageClassName: 'object-contain bg-white p-3',
@@ -1120,7 +1125,7 @@ export const PROJECTS: Ctmf[] = [
                 src: '/api/images/civ102-pugh/4',
                 alt: 'CIV102 Pugh Chart 4 comparing Design 3 and Design 4.1 across all tracked failure modes.',
                 caption:
-                  'Pugh Chart 4 compares Design 3 against Design 4.1. It captures the key bottom-flange tradeoff: the bridge lost some analytical capacity, dropping from 2120 N to 1861 N, but remained structurally credible while becoming materially leaner and more buildable.',
+                  'Pugh Chart 4 compares Design 3 against Design 4.1. This chart captures the bottom-flange tradeoff, where the bridge lost some analytical capacity while becoming materially leaner and more buildable.',
                 label: 'Fig. 04',
                 refKey: '04',
                 imageClassName: 'object-contain bg-white p-3',
@@ -1129,7 +1134,7 @@ export const PROJECTS: Ctmf[] = [
                 src: '/api/images/civ102-pugh/5',
                 alt: 'CIV102 Pugh Chart 5 comparing Design 4.1 and Design 4.2 across all tracked failure modes.',
                 caption:
-                  'Pugh Chart 5 compares Design 4.1 against Design 4.2. Its importance is subtle: predicted load stayed at 1861 N, but the chart justified a web-spacing refinement that made the buckling reserves much more balanced instead of leaving one mode heavily overprotected.',
+                  'Pugh Chart 5 compares Design 4.1 against Design 4.2. Its importance lies in structural balance, since predicted load stayed constant while the buckling reserves became less wastefully uneven.',
                 label: 'Fig. 05',
                 refKey: '05',
                 imageClassName: 'object-contain bg-white p-3',
@@ -1138,7 +1143,7 @@ export const PROJECTS: Ctmf[] = [
                 src: '/api/images/civ102-pugh/6',
                 alt: 'CIV102 Pugh Chart 6 comparing Design 4.2 and Design 4.3 across all tracked failure modes.',
                 caption:
-                  'Pugh Chart 6 compares Design 4.2 against Design 4.3. This is the clearest manufacturability concession in the chart stack: predicted load dropped to 1319 N, but the bridge finally moved into a form that could fit and be built.',
+                  'Pugh Chart 6 compares Design 4.2 against Design 4.3. This is the clearest manufacturability concession in the series, because the bridge accepted a lower predicted load in exchange for becoming buildable.',
                 label: 'Fig. 06',
                 refKey: '06',
                 imageClassName: 'object-contain bg-white p-3',
@@ -1148,24 +1153,24 @@ export const PROJECTS: Ctmf[] = [
           {
             title: 'Limitations Of The CTMF',
             bullets: [
-              'The limitation was not that the charts were wrong. The limitation was that all six charts were only as complete as the criteria they compared.',
-              'They were excellent at tracking global structural behavior such as compression, shear, buckling, and material overdesign. They were much weaker at representing splice reliability, adhesive variability, cutting tolerance, and alignment sensitivity, even though the bridge depended on those details physically.',
-              'The clearest rebuttal is the final mismatch between prediction and test. After later optimizations, the bridge was predicted around 1367 N, but the built bridge failed around 580 N at the front splice. That means the convergence charts were strong enough to optimize the modeled bridge, but not complete enough to close the argument about the fabricated one.',
-              'That is the distinct lesson of this CTMF in CIV102: a clean comparison structure can still create false confidence if the compared criteria are much stronger for the represented bridge than for the real bridge.',
+              'The limitation was not that the charts compared the wrong global quantities, but that those quantities were still stronger representations of the modeled bridge than of the fabricated one.',
+              'Compression, shear, buckling, and material overdesign could be tracked cleanly, while splice reliability, adhesive variability, cutting tolerance, and alignment sensitivity remained much less visible inside the convergence structure even though the bridge depended on those details physically.',
+              'That limit became hardest to ignore in the final mismatch between prediction and test. After later optimizations the bridge was predicted at about 1367 N, though the built bridge failed around 580 N at the front splice, which showed that the charts had been strong enough to optimize the represented bridge without being complete enough to close the argument about the real one.',
+              'The distinct lesson of this CTMF in CIV102 is that a clean comparison structure can still create false confidence if the compared criteria are much stronger for the represented bridge than for the fabricated bridge.',
             ],
             figures: [
               {
                 src: '/context-evidence/raw/civ102-p3-img1.png',
                 alt: 'CIV102 matboard layout for the final buildable bridge revision.',
                 caption:
-                  'This layout shows what the convergence structure did capture well: it eventually produced a bridge that could actually be cut and assembled from one sheet. But layout success still did not guarantee that the modeled bridge and the fabricated bridge would fail for the same reason.',
+                  'This layout shows what the convergence structure did capture well: it eventually produced a bridge that could be cut and assembled from one sheet.',
                 imageClassName: 'object-contain bg-white p-3',
               },
               {
                 src: '/context-evidence/raw/civ102-failure.png',
                 alt: 'CIV102 bridge collapsing during destructive testing.',
                 caption:
-                  'This full collapse image is the strongest rebuttal on the page. The built bridge revealed a governing fabrication-sensitive condition that the Pugh charts had not represented with the same clarity as the global section behavior.',
+                  'This image is the clearest rebuttal on the page, because the built bridge revealed a fabrication-sensitive governing condition that the charts had not represented with equal force.',
                 imageClassName: 'object-contain bg-white p-3',
               },
             ],
@@ -1173,18 +1178,18 @@ export const PROJECTS: Ctmf[] = [
           {
             title: 'Impact On My Position In Context',
             bullets: [
-              'This CTMF fits my preference for explicit, analyzable comparison and for design decisions that can be defended through visible criteria rather than through vague structural intuition.',
-              'CIV102 also exposed the downside of that preference very clearly: when the comparison structure is clean, I can overtrust what is in the chart and underweight what the chart does not represent.',
-              'The deeper lesson for me was that good convergence is not just about choosing the strongest-looking revision. It is about knowing whether the criteria are still capturing the condition that will actually govern the built artifact. That is what makes this CTMF different from calculations and simulation: its main risk is not generation failure, but false confidence in narrowing.',
+              'This CTMF fits my preference for explicit comparison and for design decisions that can be defended through visible criteria, though CIV102 also showed the risk of that preference clearly, because once the comparison structure becomes clean it becomes easy to overtrust what the chart includes and underweight what it leaves out.',
+              'What the project clarified for me was that good convergence is not only about choosing the strongest-looking revision, but about knowing whether the criteria still capture the condition that will actually govern the built artifact.',
+              'That is what makes this CTMF different from calculations and simulation: its main risk is not generation failure, but false confidence in narrowing.',
             ],
           },
           {
             title: 'Future Steps',
             bullets: [
-              'Use the chart to decide the next revision, not to declare the structure solved.',
+              'Use the chart to decide the next revision rather than to declare the structure solved.',
               'Add an explicit local-reliability criterion whenever the design depends on splices, adhesive interfaces, or placement tolerances.',
-              'Mark clearly when a revision improves the weakest mode, when it only redistributes reserve, and when it sacrifices strength to regain manufacturability. Those are different kinds of convergence decisions and should not be blended together.',
-              'Treat destructive testing as a chance to reopen the chart structure, not just to judge whether the final bridge passed or failed.',
+              'Mark clearly when a revision improves the weakest mode, when it only redistributes reserve, and when it sacrifices strength to regain manufacturability, because those are different convergence moves and should not be blended together.',
+              'Treat destructive testing as a chance to reopen the chart structure rather than as a final verdict on whether the bridge worked.',
               "My practical rule is: if the bridge's success depends on a fabrication detail, that detail must appear in the convergence chart before I trust the numerical result too much.",
             ],
           },
@@ -1209,20 +1214,20 @@ export const PROJECTS: Ctmf[] = [
   {
     slug: "verification-validation",
     title: 'Verification + Validation',
-    stage: 'Represent / Converge',
-    stageCode: 'R/C',
+    stage: 'Represent',
+    stageCode: 'R',
     subtext: 'Used testing to challenge the procedure, separate blended claims, and change which concept path remained strongest.',
-    overview: 'Verification and validation combine technical checking with fit-to-context evaluation, but in Praxis II their deeper value was that they exposed when the testing procedure itself was too weak to support the design claims being made.',
+    overview: 'Verification and validation are representing CTMFs when tests define what counts as evidence, whether a prototype or procedure actually represents the use condition, and which claims the data can support.',
     whyItMatters: 'This CTMF keeps clean-looking numbers from being mistaken for trustworthy evidence when the test is still representing the phenomenon poorly.',
     evidence: [
       'Praxis II: splitting dexterity and temperature testing changed what counted as evidence, weakened the knob-turner path, and made the glove path more defensible.',
       'CIV102: physical bridge testing exposed where the analytical model stopped accounting for real splice vulnerability.',
     ],
-    application: 'I use verification and validation whenever a project needs evidence that can challenge assumptions, test whether the procedure deserves trust, and narrow concepts responsibly.',
+    application: 'I use verification and validation whenever a project needs evidence that can challenge assumptions and test whether the procedure actually represents the use condition it claims to measure.',
     dossiers: [
       {
         project: 'Praxis II',
-        phaseCode: 'R/C',
+        phaseCode: 'R',
         claimHeadline: 'Verification And Validation Should Change The Design Argument When The First Procedure Misrepresents The Problem.',
         summary:
           'In Praxis II, verification and validation mattered because the first testing procedure misrepresented the winter-use problem, and correcting that procedure changed which concept path remained strongest. The project improved not when it collected more data, but when it stopped letting one weak procedure stand in for both thermal validation and dexterity verification.',
@@ -1246,7 +1251,7 @@ export const PROJECTS: Ctmf[] = [
             title: 'CTMF Description / What It Is',
             bullets: [
               'Verification in Praxis II meant checking whether a concept or subsystem actually achieved measurable task or thermal performance. Validation meant checking whether that performance corresponded to the real use pattern of winter telescope operation.',
-              'This CTMF belonged in both Representing and Converging because the tests were not only checking prototypes. They were also deciding whether our team was even using the right success criteria and whether one procedure could honestly support two different claims.',
+              'This CTMF belonged in Representing because the tests were not only checking prototypes. They were deciding whether our team was even representing the winter-use condition honestly and whether one procedure could support two different claims.',
               'The project became stronger only once warmth and usable dexterity were no longer treated as one blended outcome. That distinction is the main reason this CTMF mattered here.',
             ],
             figures: [
